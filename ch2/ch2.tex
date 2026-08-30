@@ -1,0 +1,2839 @@
+%\documentclass[a4paper,12pt]{amsart}
+%\usepackage[dvipdfmx]{graphicx,xcolor,hyperref}%graphics
+%\usepackage{float}
+%\usepackage{amsmath}
+%\usepackage{verbatim}
+%\usepackage{latexsym}
+%\usepackage{amssymb}
+%\usepackage{ccicons}
+%%\usepackage{emath}
+%%\usepackage{maplestd2e}
+%%\usepackage{fancybox}%enclose by box
+%\hypersetup{% hyperrefオプションリスト
+%setpagesize=false,
+% bookmarksnumbered=true,
+% bookmarksopen=true,
+% colorlinks=true,
+%linkcolor=red,
+%citecolor=blue,
+%} 
+%
+%\renewcommand{\figurename}{図}
+%\renewcommand{\proofname}{証明}
+%\renewcommand{\tablename}{表}
+%
+%\newtheorem*{PP}{授業の目標}
+%\newtheorem*{Thm}{定理}
+%\newtheorem*{Prop}{命題}
+%\newtheorem*{Q}{考えたい課題}
+%\newtheorem*{Quiz}{問題}
+%
+%\theoremstyle{definition}
+%\newtheorem*{Def}{定義}
+%
+%\theoremstyle{remark}
+%\newtheorem*{ex}{例}
+%\newtheorem*{exQ}{例題}
+%
+%\def\emptyline{\vspace{12pt}}
+%
+%\DeclareMathOperator{\Ker}{Ker}
+%\DeclareMathOperator{\Image}{Im}
+%\DeclareMathOperator{\id}{id}
+%\DeclareMathOperator{\Is}{Is}
+%\begin{document}
+%%\pagestyle{empty}
+%\begin{flushright}
+%
+%2024年11月6日
+%
+%九大・数理 大津幸男
+%\end{flushright}
+%
+%\begin{center}
+%\large{微分幾何学大意・数学特論4\small{
+%\href{https://creativecommons.org/licenses/by-nc-nd/4.0/}{\ccbyncnd}}\par ---ユークリッド空間の合同変換群とその離散群 1---}
+%\end{center}
+
+\chapter{ユークリッド平面の結晶群と平坦曲面の分類}
+\section{ユークリッド空間の離散合同変換群}
+\subsection{ユークリッド空間の合同変換の特徴付け}
+$\mathbf R^n=(\mathbf R^n,(,))$をユークリッド空間とする．ただし，$\mathbf x=(x_1,\dots,x_n),
+	\mathbf y=(y_1,\dots,y_n)\in \mathbf R^n$ に対して
+\[
+	(\mathbf x,\mathbf y)
+	= 
+	x_1y_1+\dots +x_ny_n,\quad
+	\|\mathbf x\|
+	=
+	\sqrt{(\mathbf x,\mathbf x)}
+\]
+であった．簡単な計算で
+\begin{gather}
+	\|\mathbf x+\mathbf y\|^2 + \|\mathbf x-\mathbf y\|^2
+	=
+	2(\|\mathbf x\|^2+ \|\mathbf y\|^2)\label{normNorm}\\
+	\|\mathbf x+\mathbf y\|^2 -\|\mathbf x-\mathbf y\|^2
+	=
+	4(\mathbf x,\mathbf y)\label{normInnerP}\
+\end{gather}
+が分かる．
+写像$F:\mathbf R^n\to \mathbf R^n$が\term[]{合同変換}とは
+\begin{equation}\label{congruentT}
+	  \|F(\mathbf x)-F(\mathbf y)\|
+	  =
+	  \|\mathbf x-\mathbf y\|
+\end{equation}
+が全ての$\mathbf x,\mathbf y\in \mathbf R^n$ に対して成り立つことである．
+
+\begin{Prop}
+$F:\mathbf R^n\to \mathbf R^n$が合同変換 $ \Leftrightarrow $ 
+$A\in O(n)$, $\mathbf a\in \mathbf R^n$が存在して
+\[
+	F(\mathbf x)
+	=
+	A\mathbf x+\mathbf a
+\]
+（このような変換を\term[]{アファイン変換}と言った．）
+\end{Prop}
+\begin{proof}
+$\mathbf a=F(\mathbf 0)$とし
+\[
+	T(\mathbf x):=F(\mathbf x)-\mathbf a
+\]
+と置くと$T(\mathbf 0)=\mathbf 0$．
+\eqref{congruentT} より
+\begin{equation}
+	  \|T(\mathbf x)-T(\mathbf y)\|
+	  =
+	  \|\mathbf x-\mathbf y\|\quad\text{特に}\quad
+	\|T(\mathbf x)\|
+	  =
+	  \|\mathbf x\|
+\end{equation}
+\eqref{normNorm}より
+\[
+\begin{split}
+	\|T(\mathbf x)+T(\mathbf y)\|^2 
+	&=
+	2(\|T(\mathbf x)\|^2+ \|T(\mathbf y)\|^2)
+	-\|T(\mathbf x)-T(\mathbf y)\|^2\\
+	&=
+	2(\|\mathbf x\|^2+ \|\mathbf y\|^2)
+	-\|\mathbf x-\mathbf y\|^2\\
+	&=
+	\|\mathbf x+\mathbf y\|^2
+\end{split}
+\]
+\eqref{normInnerP}より
+\begin{equation}\label{orthogonal}
+\begin{split}
+	(T(\mathbf x),T(\mathbf y))
+	&=\frac14
+	(\|T(\mathbf x)+T(\mathbf y)\|^2 
+	-\|T(\mathbf x)-T(\mathbf y)\|^2)\\
+	&=\frac14
+	(\|\mathbf x+\mathbf y\|^2 -\|\mathbf x-\mathbf y\|^2)
+	=
+	(\mathbf x,\mathbf y)
+\end{split}
+\end{equation}
+
+次に，$T$が線形写像であることを示す：
+$\{\mathbf e_i\mid i=1,\dots,n\}$を$\mathbf R^n$の標準的な正規直交基底とする．
+$\mathbf a_i=T(\mathbf e_i)$ とおくと，\eqref{orthogonal}より
+$\{\mathbf a_i\mid i=1,\dots,n\}$も正規直交基底．
+$\mathbf x=\sum_{i=1}^n x_i\mathbf e_i$に対して\eqref{orthogonal}より
+\[
+	(\mathbf a_i,T(\mathbf x))
+	=
+	(T(\mathbf e_i),T(\mathbf x))
+	=
+	(\mathbf e_i,\mathbf x)
+	=
+	x_i
+\]
+よって
+\[
+	T(\mathbf x)=\sum_{i=1}^n x_i\mathbf a_i
+\]
+と表せるので$T$は線形写像．\eqref{orthogonal}より$T$は直交変換で，ある$A\in O(n)$が存在して$T(\mathbf x)=A\mathbf x$．つまり，
+\[
+	F(\mathbf x)
+	=
+	A\mathbf x+\mathbf a
+\]
+\end{proof}
+次に
+\[
+	\Is(\mathbf R^n)
+	=\{F:\mathbf R^n\to \mathbf R^n\mid \text{合同変換}\}
+\]
+と置く． $F\in \Is(\mathbf R^n)$について，上の証明の表記を使い
+\[
+	t(F)=\mathbf a,\quad r(F)=A\in O(n)
+\]
+と表す．
+\begin{Prop}
+$\Is(\mathbf R^n)$は写像の合成で群になる．
+\end{Prop}
+\begin{proof}
+\[
+	F(\mathbf x)
+	=
+	A\mathbf x+\mathbf a, \quad
+	G(\mathbf x)
+	=
+	B\mathbf x+\mathbf b \in \Is(\mathbf R^n)
+\]
+とすると
+\[
+	G\circ F(\mathbf x)
+	=
+	B(A\mathbf x+\mathbf a)+\mathbf b
+	=
+	B A\mathbf x +B\mathbf a+\mathbf b
+\]
+で$BA\in O(n)$なのでこれは合同変換．
+\[
+	\id(\mathbf x)=\mathbf x = E \mathbf x+ \mathbf 0
+\]
+が合同変換の単位元で，$A^{-1}\in O(n)$なので
+\[
+	F^{-1}(\mathbf x)
+	=
+	A^{-1}\mathbf x - A^{-1}\mathbf a
+\]
+と置くと$F^{-1}\circ F=F\circ F^{-1}=\id$となり逆元となり, 
+$\Is(\mathbf R^n)$は群になる（結合律は自らか）．
+\end{proof}
+
+
+\subsection{$n=2$の合同変換の特徴付け}
+以下$F\in \Is(\mathbf R^2)$の特徴付けを与える：
+
+Case 1) $r(F)\in SO(2)$ のとき, 第1回の授業で示したように，回転行列
+\[
+	r(F) = 
+	\begin{pmatrix}
+		\cos \theta &-\sin \theta\\
+		\sin \theta& \cos \theta\\
+	\end{pmatrix}
+	=:
+	S_\theta
+\]
+となる．$\theta=0$のとき$S_\theta=E$なので
+\[
+	F(\mathbf x)
+	=
+	\mathbf x+\mathbf a
+\]
+これは\term[]{平行移動}である．
+
+$0<\theta<2\pi $のとき$F$はある点$\mathbf x_0$を中心とした\term[]{回転}となる．実際
+\[
+	S_\theta\mathbf x_0+\mathbf a=\mathbf x_0
+	\Rightarrow
+	(E-S_\theta)\mathbf x_0=\mathbf a
+\]
+とすると
+\[
+\begin{split}
+	|E-S_\theta|
+	&=
+	\begin{vmatrix}
+		1-\cos \theta &\sin \theta\\
+		-\sin \theta& 1-\cos \theta\\
+	\end{vmatrix}
+	=
+	(1-\cos \theta)^2+\sin^2 \theta\\
+	&=
+	2(1-\cos\theta)
+	\neq
+	0\quad (0<\theta<2\pi)
+\end{split}
+\]
+なので，
+\[
+	\mathbf x_0=(E-S_\theta)^{-1}\mathbf a
+\]
+となり，一意的に$\mathbf x_0$が定まる．このとき
+\[
+\begin{split}
+	F(\mathbf x)-\mathbf x_0
+	&=
+	S_\theta\mathbf x+\mathbf a-\mathbf x_0\\
+	&=
+	S_\theta\mathbf x+(E-S_\theta)\mathbf x_0-\mathbf x_0
+	=
+	S_\theta(\mathbf x-\mathbf x_0)
+\end{split}
+\]
+なので，$F$は$\mathbf x_0$を中心とした角度$\theta$の回転になる．
+\begin{figure}[htb]
+   \centering
+   \begin{minipage}{0.4\columnwidth}
+      \centering
+      \includegraphics{~/Documents/GitHub/bEuclideanGeo/ch2/figureGroup4.1}
+      \caption{平行移動}
+   \end{minipage} 
+   \begin{minipage}{0.4\columnwidth}
+      \centering
+      \includegraphics{~/Documents/GitHub/bEuclideanGeo/ch2/figureGroup4.2}
+      \caption{回転}
+   \end{minipage} 
+\end{figure}
+
+
+\begin{Thm}[回転角の加法定理]
+角度$\alpha$の回転と角度$\beta$の回転の合成は
+角度$\alpha+\beta$の回転である．ただし，回転の中心は異なっていていい．また，角度$0$の回転とは無限遠点を中心にした回転，つまり，平行移動のことである．
+\end{Thm}
+\begin{proof}
+\[
+	F(\mathbf x)
+	=
+	S_\alpha\mathbf x+\mathbf a, \quad
+	G(\mathbf x)
+	=
+	S_\beta\mathbf x+\mathbf b 
+\]
+とすると
+\[
+	G\circ F(\mathbf x)
+	=
+	S_\beta S_\alpha\mathbf x +S_\beta\mathbf a+\mathbf b
+\]
+$S_\beta S_\alpha=S_{\alpha+\beta}$なので角度$\alpha+\beta$の回転である．
+\end{proof}
+\begin{itemize}
+\item
+平行移動を回転の一つと見ないと，命題の場合分けが複雑になるだけである．
+また群論の立場からも平行移動を回転の一つとみることは自然である．
+
+\item
+平行移動を無限遠点を中心にした角度$0$の回転と見なす意味を確認する：
+\[
+	F(\mathbf x)=
+	S_\theta\mathbf x+\mathbf a\to  \mathbf x+\mathbf a \quad
+	 (\theta \to 0)
+\]
+であり
+\[
+\begin{split}
+	\mathbf x_0&=(E-S_\theta)^{-1}\mathbf a\\
+	&=
+	\frac1{2(1-\cos\theta)}
+	\begin{pmatrix}
+		1-\cos \theta &-\sin \theta\\
+		\sin \theta& 1-\cos \theta\\
+	\end{pmatrix}\mathbf a\\
+	&=
+	\begin{pmatrix}
+		\frac12 &-\frac{\sin \theta}{2(1-\cos\theta)}\\
+		\frac{\sin \theta}{2(1-\cos\theta)}& \frac12\\
+	\end{pmatrix}\mathbf a
+\end{split}
+\]
+なので，$\mathbf a={}^t(a,b)\neq \mathbf 0$と表すと，Maclaurin展開により$\mathbf x_0$は$\theta \to +0$で
+$\frac1{\theta}$の早さで$(-b,a)$の方角へ，$\theta \to -0$で
+$\frac1{\theta}$の早さで$(b,-a)$の方角へ遠ざかることがわかる（図~\ref{limitRot}）．
+\end{itemize}
+\begin{figure}
+   \begin{minipage}{0.4\columnwidth}
+      \centering
+      \includegraphics{~/Documents/GitHub/bEuclideanGeo/ch2/figureGroup4.3}
+      \caption{回転の極限}\label{limitRot}
+      \end{minipage} 
+   \begin{minipage}{0.4\columnwidth}
+      \centering
+      \includegraphics{~/Documents/GitHub/bEuclideanGeo/ch2/figureGroup4.4}
+      \caption{鏡映}\label{ref1}
+   \end{minipage} 
+\end{figure}
+
+Case 2) $r(F)\in O(2)\setminus SO(2)$ とすると, 第1回の授業で示したように，
+\[
+	r(F)=
+	\begin{pmatrix}
+		\cos 2\theta &\sin 2\theta\\
+		\sin 2\theta&-\cos 2\theta\\
+	\end{pmatrix}
+	=:R_{\theta}
+\]
+つまり，原点を通る直線$\ell$についての\term[]{鏡映}となる．$\ell$の向きの単位ベクトルを$\mathbf e$, $\ell$の単位法線ベクトルを$\mathbf f$とすると
+\[
+	\mathbf e
+	=\begin{pmatrix}
+		\cos\theta\\
+		\sin\theta\\
+	\end{pmatrix},\quad
+	\mathbf f
+	=\begin{pmatrix}
+		-\sin\theta\\
+		\cos\theta\\
+	\end{pmatrix}
+\]
+となり(図~\ref{ref1}, \ref{ref2}) $\mathbf e\perp \mathbf f$で
+\[
+	R_{\theta}\mathbf e = \mathbf e,\quad
+	R_{\theta}\mathbf f = -\mathbf f
+\]
+\begin{figure}[htb]
+   \centering
+   \begin{minipage}{0.4\columnwidth}
+      \centering
+      \includegraphics{~/Documents/GitHub/bEuclideanGeo/ch2/figureGroup4.5}
+      \caption{鏡映}\label{ref2}
+   \end{minipage} 
+   \begin{minipage}{0.4\columnwidth}
+      \centering
+      \includegraphics{~/Documents/GitHub/bEuclideanGeo/ch2/figureGroup4.6}
+      \caption{並進鏡映}\label{paraRef}
+   \end{minipage} 
+\end{figure}
+この$F$について
+\[
+	F(\mathbf x_0)-\mathbf x_0 \perp \mathbf f
+\]
+が成り立つ$\mathbf x_0$が存在することを示す：このような$\mathbf x_0$は
+\[
+	0=(R_{\theta}\mathbf x_0+\mathbf a-\mathbf x_0,\mathbf f)
+	=-(\mathbf x_0,\mathbf f) + (\mathbf a,\mathbf f) 
+	-(\mathbf x_0,\mathbf f)
+\]
+をみたすので，
+\[
+	(\mathbf x_0,\mathbf f) = \frac12 (\mathbf a,\mathbf f) 
+\]
+をみたす必要がある．逆に
+\[
+	\mathbf x_0=\frac12 (\mathbf a,\mathbf f) \mathbf f
+\]
+と置くと
+\[
+\begin{split}
+	F(\mathbf x_0)
+	&=
+	R_{\theta}\mathbf x_0+ \mathbf a
+	=\frac12 (\mathbf a,\mathbf f) R_{\theta}\mathbf f+ \mathbf a\\
+	&=
+	-\frac12 (\mathbf a,\mathbf f) \mathbf f
+	+ (\mathbf a,\mathbf f) \mathbf f+ (\mathbf a,\mathbf e) \mathbf e\\
+	&=
+	\frac12 (\mathbf a,\mathbf f) \mathbf f
+	+(\mathbf a,\mathbf e) \mathbf e
+	=
+	\mathbf x_0+\alpha_0\mathbf e
+\end{split}
+\]
+より，欲しかった性質をもつことが分かる．
+ここで$\alpha_0=(\mathbf a,\mathbf e)$と置いた．
+
+$\ell$を$\mathbf x_0$を通り $\mathbf e$の向きに平行な直線とする．
+$\mathbf x=\mathbf x_0+\alpha\mathbf e+\beta \mathbf f$と表すと
+\[
+\begin{split}
+	F(\mathbf x)
+	&=
+	F(\mathbf x_0 )+\alpha R_{\theta}\mathbf e + \beta R_{\theta}\mathbf f
+	=\mathbf x_0+\alpha_0\mathbf e+\alpha \mathbf e -\beta \mathbf f\\
+	&=\mathbf x_0+\alpha \mathbf e +\color{red}{\alpha_0\mathbf e-\beta \mathbf f}
+\end{split}
+\]
+つまり，$F$は直線$\ell$ に関する\term[]{並進鏡映}である(図~\ref{paraRef})．
+特に，$\alpha_0=0 $ のときが直線$\ell$ に関する鏡映である．
+
+\[
+\begin{split}
+	F\circ F(\mathbf x)
+	&=F(\mathbf x_0+(\alpha +\alpha_0)\mathbf e -\beta \mathbf f)\\
+	&=
+	\mathbf x_0+(\alpha +\alpha_0+\alpha_0)\mathbf e +\beta \mathbf f
+	=\mathbf x +2\alpha_0\mathbf e
+\end{split}
+\]
+(図~\ref{ref3})
+なので
+\begin{Prop}
+並進鏡映を$2$回合成すると平行移動になる．
+\end{Prop}
+以上を纏めると：
+\begin{Thm}[シャール]
+   $\mathbf R^2$の合同変換は
+   平行移動，ある点を中心とした回転，並進鏡映（鏡映）のいずれか．
+\end{Thm}
+\begin{figure}[htb]
+   \centering
+   \begin{minipage}{0.4\columnwidth}
+      \centering
+      \includegraphics{~/Documents/GitHub/bEuclideanGeo/ch2/figureGroup4.16}
+      \caption{並進鏡映の合成}\label{ref3}
+   \end{minipage} 
+   \begin{minipage}{0.4\columnwidth}
+      \centering
+      \includegraphics{~/Documents/GitHub/bEuclideanGeo/ch2/figureGroup4.7}
+      \caption{$\mathbf Z^n$}\label{paraRef}
+   \end{minipage} 
+\end{figure}
+
+\subsection{離散部分群}
+\begin{gather*}
+	\Is^+(\mathbf R^n)
+	=\{F\in\Is(\mathbf R^n)\mid r(F)\in SO(n)\},\\
+	T(\mathbf R^n)
+	=\{F\in\Is^+(\mathbf R^n)\mid \text{平行移動}\}
+\end{gather*}
+と置く．次は明らかだろう
+\begin{Prop}
+   $\Is^+(\mathbf R^n)$ は$\Is(\mathbf R^n)$の部分群，
+   $T(\mathbf R^n)$ は$\Is^+(\mathbf R^n)$, $\Is(\mathbf R^n)$の部分群である．
+\end{Prop}
+
+\begin{Q}
+   $O(n)$ときは有限部分群を考察しだが，
+   $T(\mathbf R^n)$, $\Is(\mathbf R^n)$はコンパクトでないので，
+   どのような部分群が有限部分群の代わりになるだろうか？
+\end{Q}
+
+$G\subset \Is(\mathbf R^n)$を部分群とする．
+$G$が\term[]{離散部分群} とは，任意の$\mathbf x\in \mathbf R^n$に対して，$G$-軌道
+\[
+	G\mathbf x
+	=
+	\{F(\mathbf x)\in \mathbf R^n\mid F\in G\}
+	\subset \mathbf R^n
+\]
+が離散集合であること，つまり
+\[
+	\forall \mathbf x\in \mathbf R^n, 
+	\exists \varepsilon>0 \text{ such that }
+	B(\mathbf x, \varepsilon)\cap G\mathbf x
+	=\{\mathbf x\}
+\]
+ただし，$
+	B(\mathbf x, \varepsilon)
+	=\{\mathbf y\in \mathbf R^n\mid
+	 	\|\mathbf y-\mathbf x\|<\varepsilon
+	 \}
+$である．
+
+\begin{ex} $\mathbf Z$を整数全体とする．
+\[
+	\mathbf Z^n
+	=
+	\{
+		(z_1,\dots,z_n)\mid z_1,\dots, z_n \in \mathbf Z
+	\}
+	\subset T(\mathbf R^n)
+\]
+つまり，$\mathbf x\mapsto \mathbf x+ \mathbf z$ ($ \mathbf z \in \mathbf Z^n$)により$\mathbf R^n$に作用する．
+このとき$\mathbf x\in \mathbf R^n$ に対して
+$0<\varepsilon<1 $ と取れば
+\[
+	B(\mathbf x, \varepsilon)\cap \mathbf Z^n\mathbf x
+	=\{\mathbf x\}
+\]
+なので，$\mathbf Z^n$は離散部分群である．
+\end{ex}
+
+%
+%Case 0)
+%\[
+%	G\cap T(\mathbf R^2)=\{\id\}
+%\]
+%シャールの定理より$G$は回転と鏡映のみからなる，言い換えると，($\id$以外の)平行移動や．(鏡映以外の)並進鏡映を含まない．このとき
+
+%\emptyline
+%
+%これについては来週解説
+%\emptyline
+%
+%
+%以下の参考文献が（数理内からアクセスすれば）
+%\href{https://link.springer.com/}{ここから}
+%ダウンロード可能．
+%\begin{thebibliography}{9}
+%\item
+%Viacheslav V. Nikulin, Igor R. Shafarevich,\textit{Geometries and Groups}, UTX, 1996, Springer
+%\end{thebibliography}
+
+
+\section{$\mathbf R^2$の離散合同変換群の分類}\label{class_2dim}
+%\subsection{復習}
+%$\mathbf R^n=(\mathbf R^n,(,))$をユークリッド空間とする．写像$F:\mathbf R^n\to \mathbf R^n$が\term[]{合同変換}とは
+%\begin{equation}\label{congruentT}
+%	  \|F(\mathbf x)-F(\mathbf y)\|
+%	  =
+%	  \|\mathbf x-\mathbf y\|
+%\end{equation}
+%が全ての$\mathbf x,\mathbf y\in \mathbf R^n$ に対して成り立つこと．
+%\[
+%	\Is(\mathbf R^n)
+%	=\{F:\mathbf R^n\to \mathbf R^n\mid \text{合同変換}\}
+%\]
+%とは群であり，\term[]{等長変換群}という． 
+%\begin{Prop}
+%   $F:\mathbf R^n\to \mathbf R^n\in \Is(\mathbf R^n)$とすると，
+%   $A\in O(n)$, $\mathbf a\in \mathbf R^n$が存在して
+%   \[
+%   	F(\mathbf x)
+%   	=
+%   	A\mathbf x+\mathbf a
+%   \]
+%\end{Prop}
+%
+%$F\in \Is(\mathbf R^n)$について，上の表記を使い
+%\[
+%	t(F)=\mathbf a,\quad r(F)=A\in O(n)
+%\]
+%と置く．
+%\begin{gather*}
+%%	\Is^+(\mathbf R^n)
+%%	=\{F\in\Is(\mathbf R^n)\mid r(F)\in SO(n)\}, \\
+%	T(\mathbf R^n)
+%	=\{F\in\Is^+(\mathbf R^n)\mid \text{平行移動}\}
+%\end{gather*}
+%と置くと
+%%$\Is^+(\mathbf R^n)$ は$\Is(\mathbf R^n)$の部分群，
+%$T(\mathbf R^n)$ は$\Is(\mathbf R^n)$の部分群である．
+%
+%$r(F)\in SO(2)$のとき$F$は回転：
+%\begin{Thm}[回転角の加法定理]
+%   角度$\alpha$の回転と角度$\beta$の回転の合成は
+%   角度$\alpha+\beta$の回転である．ただし，角度$0$の回転とは
+%   無限遠点を中心にした回転，つまり，平行移動のことである．
+%\end{Thm}
+%
+%\begin{Thm}[シャール]
+%   $\mathbf R^2$の合同変換は
+%   平行移動，ある点を中心とした回転，並進鏡映（鏡映）のいずれか．
+%\end{Thm}
+%
+%\begin{figure}[htb]
+%   \centering
+%   \begin{minipage}{0.4\columnwidth}
+%      \centering
+%      \includegraphics{~/Documents/GitHub/bEuclideanGeo/ch2/figureGroup5.1}
+%      \caption{平行移動}
+%   \end{minipage} 
+%   \begin{minipage}{0.4\columnwidth}
+%      \centering
+%      \includegraphics{~/Documents/GitHub/bEuclideanGeo/ch2/figureGroup5.2}
+%      \caption{回転}
+%\end{minipage} 
+%\end{figure}
+%
+%\begin{figure}[htb]
+%   \centering
+%   \begin{minipage}{0.4\columnwidth}
+%      \centering
+%      \includegraphics{~/Documents/GitHub/bEuclideanGeo/ch2/figureGroup5.3}
+%      \caption{並進鏡映}\label{ref3}
+%   \end{minipage} 
+%   \begin{minipage}{0.4\columnwidth}
+%      \centering
+%      \includegraphics{~/Documents/GitHub/bEuclideanGeo/ch2/figureGroup5.4}
+%      \caption{鏡映}
+%   \end{minipage} 
+%\end{figure}
+%
+%
+%$G\subset \Is(\mathbf R^n)$を部分群とする．
+%$G$が\term[]{離散部分群}とは，任意の$\mathbf x\in \mathbf R^n$に対して，$G$-軌道
+%\[
+%	G\mathbf x
+%	=
+%	\{F(\mathbf x)\in \mathbf R^n\mid F\in G\}
+%	\subset \mathbf R^n
+%\]
+%が離散集合であること，つまり
+%\[
+%	\forall \mathbf x\in \mathbf R^n, 
+%	\exists \varepsilon>0 \text{ such that }
+%	B(\mathbf x, \varepsilon)\cap G\mathbf x
+%	=\{\mathbf x\}
+%\]
+%
+%\begin{Q}
+%   $\Is(\mathbf R^2)$の離散部分群の分類
+%\end{Q}
+\subsection{平行移動が$\id$以外にない場合}
+\begin{Q}
+	$\Is(\mathbf R^2)$の離散部分群の分類？
+\end{Q}
+
+方針：$G\subset \Is(\mathbf R^2)$を離散部分群として，$G\cap T(\mathbf R^2)$の大きさに従って場合分け：
+
+Case 0)
+\[
+	G\cap T(\mathbf R^2)=\{\id\}
+\]
+つまり，平行移動が$\id$以外にない場合．
+シャールの定理より$G$は回転と鏡映のみからなる，言い換えると，($\id$以外の)平行移動や．(鏡映以外の)並進鏡映を含まない．このとき
+\begin{Prop}
+ある$\mathbf x_0\in \mathbf R^n$が存在して，
+\[
+	G\mathbf x_0=\{\mathbf x_0\}
+\]
+\end{Prop}
+\begin{proof}
+・回転の中心は一意的：
+
+$ \mathbf x_0$を中心とする角度$\theta\in(0,2\pi)$の回転 $S\neq \id \in G$と$ \mathbf y_0\neq  \mathbf x_0$を中心とする角度$\theta'\in(0,2\pi)$の回転 $T\neq \id \in G$とが存在したとする．
+$S'=TST^{-1}$と置くと
+\[
+	S'(T \mathbf x_0)=TST^{-1}(T \mathbf x_0)=TS \mathbf x_0=T \mathbf x_0
+\]
+で，回転角の加法定理より$S'=TST^{-1}$の回転角は
+\[
+	\theta' + \theta - \theta' = \theta 
+\]
+なので$S'$は$T \mathbf x_0$を中心とする角度$\theta$の回転．
+\begin{figure}[htb]
+   \centering
+   \begin{minipage}{0.4\columnwidth}
+      \centering
+      \includegraphics{~/Documents/GitHub/bEuclideanGeo/ch2/figureGroup5.5}
+      \caption{}\label{rotationAnotherCenter}
+      \end{minipage} 
+   \begin{minipage}{0.4\columnwidth}
+      \centering
+      \includegraphics{~/Documents/GitHub/bEuclideanGeo/ch2/figureGroup5.6}
+      \caption{}\label{refRotRef}
+   \end{minipage} 
+\end{figure}
+
+
+$ \mathbf y_0\neq \mathbf x_0$より$Tx_0\neq \mathbf x_0$で，
+$S'\mathbf x_0\neq \mathbf x_0$である(図~\ref{rotationAnotherCenter})．$S'S^{-1}$は
+\[
+	S'S^{-1} \mathbf x_0 = S' \mathbf x_0\neq  \mathbf x_0
+\]
+をみたし，$S'S^{-1}$の回転角は回転角の加法定理より
+\[
+	 \theta - \theta =0
+\]
+となる．よって，上の結果から$\id $と異なる平行移動となり，仮定に矛盾．
+
+\emptyline
+
+・$G$が
+$\mathbf x_0$を中心とする角度$\theta\in(0,2\pi)$の回転 $S\neq \id$
+と直線$\ell$に関する鏡映$R$を含めば$\mathbf x_0\in \ell$：
+
+もし，$\mathbf x_0\notin \ell$ とすると$RSR^{-1}$
+\[
+	RSR^{-1}R\mathbf x_0=RS\mathbf x_0=R\mathbf x_0\neq \mathbf x_0
+\]
+をみたし，$RSR^{-1}$は$R\mathbf x_0$を中心とした回転(図~\ref{refRotRef})となり
+最初述べたことに矛盾する．
+
+・$G$が回転を含まないときは高々一つの鏡映しか含まない：
+
+回転を含まないとし，
+直線$\ell$に関する鏡映$R$と
+直線$m$に関する鏡映$R'\neq R$を含むとする．
+$\ell$と$m$が点$\mathbf b$で交わると$R'R$は回転(図~\ref{refRef1})になり矛盾．
+$\ell$と$m$が平行とすると，$R'R$はは平行移動(図~\ref{refRef2})になり矛盾．よって，このようなことは起こらない．
+
+$G=\{\id\}$のときは$x_0$は任意，$G=\{\id, R\}$で$R$が直線$\ell$に関する鏡映のときは$x_0\in \ell$とすれば良い．
+\end{proof}
+\begin{figure}[htb]
+   \centering
+   \begin{minipage}{0.4\columnwidth}
+      \centering
+      \includegraphics{~/Documents/GitHub/bEuclideanGeo/ch2/figureGroup5.7}
+      \caption{鏡映の合成は回転}\label{refRef1}
+   \end{minipage} 
+   \begin{minipage}{0.4\columnwidth}
+      \centering
+      \includegraphics{~/Documents/GitHub/bEuclideanGeo/ch2/figureGroup5.8}
+      \caption{鏡映の合成が平行移動}\label{refRef2}
+   \end{minipage} 
+\end{figure}
+
+\begin{figure}[htb]
+   \centering
+   \begin{minipage}{0.4\columnwidth}
+      \centering
+      \includegraphics{~/Documents/GitHub/bEuclideanGeo/ch2/figureGroup5.9}
+      \caption{$C_4$の基本領域}\label{C4}
+   \end{minipage} 
+   \begin{minipage}{0.4\columnwidth}
+      \centering
+      \includegraphics{~/Documents/GitHub/bEuclideanGeo/ch2/figureGroup5.10}
+      \caption{$D_4$の基本領域}\label{D4}
+   \end{minipage} 
+\end{figure}
+
+・$G$は$O(2)$の有限部分群：
+
+命題の$\mathbf x_0$を固定する．
+$G$の元は合同変換であるので$G$は
+\[
+	S^1(\mathbf x_0, 1)
+\]
+に作用してる．ただし
+$
+	S^1(\mathbf x_0, R)
+$ は$\mathbf x_0$を中心とした半径$R>0$の円．
+点$y_0\in S^1(\mathbf x_0, 1)$を固定すると
+$G$は離散なので，$Gy_0$は$ S^1(\mathbf x_0, 1)$の有限集合になる．
+$G$の元は回転か鏡映であり，回転は回転角のみで定まるので
+$G\cap SO(2)$は回転のなす有限群である．
+$G$が鏡映を含めば$G\cap SO(2)$にその鏡映を加えたものが$G$であるので
+$G$は$O(2)$の有限部分群である．
+\emptyline
+
+第1回の結果から，$G$は
+\[
+	C_m (m\ge 1),\quad D_m  (m\ge 1)
+\]
+に同形となる．
+\emptyline
+
+$G$を$\Is(\mathbf R^n)$の部分群とするとき，ある領域（つまり，連結開集合）$D\subset \mathbf R^n$が存在し
+\[
+	\bigcup_{F\in G} \overline{F(D)}=\mathbf R^n,\quad
+	F(D)\cap F'(D)=\emptyset\quad (F\neq F'\in G)
+\]
+のとき$D$を$G$の\term[]{基本領域}という．ただし，$\overline{F(D)}$は$F(D)$の閉包を表す．
+図~\ref{C4}, \ref{D4}に$C_4$, $D_4$の基本領域の例を図示している．
+
+
+\subsection{平行移動が一次元に限る場合}
+$G$に平行移動が$\id$以外にある場合．その平行移動のみを取り出した
+\[
+	\Gamma= G^* = G\cap T(\mathbf R^2)
+\]
+は群になるので，\term[]{格子群}という．
+また，後で示すように$r(G)\subset O(2)$は有限部分群になることが分かるので，
+これを\term[]{点群}と言う．
+
+まず$\Gamma$が一次元の場合を考える．
+また，$D_m$は$C_m$を正規部分群として含むので，最初は
+\[
+	r(G)\subset SO(2)
+\]
+と仮定する．つまり回転のみからなる場合を考える．
+\emptyline
+
+case 1 )
+$\Gamma=G\cap T(\mathbf R^2) $がある直線に平行な平行移動のみからなる
+
+とする．
+
+\emptyline
+case 1-1 ) $G\subset T(\mathbf R^2) $のとき：
+
+$T\in G$に対して$\mathbf a=T(\mathbf 0)$と置くと，$T=T_{\mathbf a}$である．仮定からある直線$\ell$が存在して
+\[
+	G\mathbf 0=\{\mathbf a\in \mathbf R^2\mid T_{\mathbf a}\in G\}
+	\subset \ell
+\]
+$G$は離散なので，ある$\mathbf a\in G\mathbf 0$が存在して
+\[
+	\|\mathbf a\|
+	=\min_{\mathbf b\neq \mathbf 0\in G\mathbf 0}\|\mathbf b\|
+\]
+このとき，任意の$\mathbf b\in G\mathbf 0$に対して，
+ある$m\in \mathbf Z$が存在して $\mathbf b=m\mathbf a$となる：
+
+もし，そうで無い$\mathbf b\in G\mathbf 0$が存在するとすると，
+ある$m\in \mathbf Z$が存在して
+\[
+	\mathbf b \text{ は } m\mathbf a \text{ と }(m+1)\mathbf a\text{ を結ぶ線分の内部にある}
+\]
+つまり，
+\[
+	\|\mathbf b- m\mathbf a\|<\| \mathbf a\|
+\]
+$\mathbf b- m\mathbf a\in G\mathbf 0$より，
+$\mathbf b=m\mathbf a$となり矛盾．
+\begin{figure}[htb]
+   \centering
+   \begin{minipage}{0.4\columnwidth}
+      \centering
+      \includegraphics{~/Documents/GitHub/bEuclideanGeo/ch2/figureGroup5.11}
+      \caption{}\label{}
+   \end{minipage} 
+   \begin{minipage}{0.4\columnwidth}
+      \centering
+      \includegraphics{~/Documents/GitHub/bEuclideanGeo/ch2/figureGroup5.12}
+      \caption{}\label{}
+   \end{minipage} 
+\end{figure}
+
+\emptyline 
+
+このような$\mathbf a$を\term[]{基本ベクトル}とよぶ．よって
+\[
+	G=\Gamma
+	=\{T_{n\mathbf a}\mid n \in \mathbf Z\}
+	=\{T_{\mathbf a}^n \mid n \in \mathbf Z\}
+	=\langle T_{\mathbf a}\rangle
+\]
+このような群を$F_1$と表す．
+図 \ref{F1} が$F_1$の基本領域の例である．
+\emptyline
+
+case 1-2 )  $G\subset \Is^{+}(\mathbf R^2) $が回転を含むとき：
+
+・上の結果から$\mathbf a\neq \mathbf 0$が存在して
+\[
+	G^* =\Gamma=\{T_{\mathbf a}^n \mid n \in \mathbf Z\}
+\]
+
+・$S$を点$\mathbf b$を中心にした回転角$\theta$の回転, $T_{\mathbf a}\in G$ を平行移動とする．
+$ST_{\mathbf a}S^{-1}$の回転角は$\theta+0-\theta=0$なので平行移動．$S(\mathbf x )= S_{\theta}(\mathbf x -\mathbf b)+\mathbf b$なので
+\[
+	ST_{\mathbf a}S^{-1}\mathbf b
+	=ST_{\mathbf a}\mathbf b
+	=S(\mathbf b+\mathbf a)
+	=\mathbf b+S_{\theta}\mathbf a
+\]
+つまり，
+$S_{\theta}\mathbf a$の平行移動である．
+\begin{figure}[htb]
+   \centering
+   \begin{minipage}{0.4\columnwidth}
+      \centering
+      \includegraphics{~/Documents/GitHub/bEuclideanGeo/ch2/figureGroup5.13}
+      \caption{$F_1$の基本領域}\label{F1}
+   \end{minipage} 
+   \begin{minipage}{0.4\columnwidth}
+      \centering
+      \includegraphics{~/Documents/GitHub/bEuclideanGeo/ch2/figureGroup5.14}
+      \caption{$ST_{\mathbf a}S^{-1}$}\label{}
+   \end{minipage} 
+\end{figure}
+
+・$S\neq \id\in G$を回転とすると$\pi$回転
+
+∵）$S\neq \id\in G$を$\theta$-回転とすると，$G\cap T(\mathbf R^2)=\langle T_{\mathbf a}\rangle$なので，上の性質から
+\[
+	 S_{\theta}\mathbf a=-\mathbf a,\quad\text{つまり}\quad
+	 S(\mathbf b +\mathbf x) = \mathbf b -\mathbf x
+\]
+つまり$\theta=\pi$(図~\ref{halfRot})．
+\emptyline
+
+$S\neq \id\in G$を$\pi$-回転とし，その回転の中心を$\mathbf x_0$と置き
+\[
+	\mathbf x_n = T^n\mathbf x_0 \quad n\in \mathbf Z
+\]
+と置く．
+
+・$T^nS$は$\mathbf x_0\mathbf x_n$の中点を中心とする$\pi$回転
+
+∵）$T^nS$は回転角は$n\cdot0+\pi=\pi$より$\pi$回転で
+\[
+	T^nS\mathbf x_0 = T^n\mathbf x_0=\mathbf x_n,\quad
+	T^nS\mathbf x_n = T^n\mathbf x_{-n} = \mathbf x_0
+\]
+なので$\mathbf x_0\mathbf x_n$の中点を中心とする$\pi$回転(図~\ref{$T^nS$})．
+
+$\mathbf y_n$ を$\mathbf x_n\mathbf x_{n+1}$の中点とすると，
+$\mathbf y_n$は$\pi$回転の中心．
+\begin{figure}[htb]
+   \centering
+   \begin{minipage}{0.4\columnwidth}
+      \centering
+      \includegraphics{~/Documents/GitHub/bEuclideanGeo/ch2/figureGroup5.15}
+      \caption{}\label{halfRot}
+   \end{minipage} 
+   \begin{minipage}{0.4\columnwidth}
+      \centering
+      \includegraphics{~/Documents/GitHub/bEuclideanGeo/ch2/figureGroup5.16}
+      \caption{$T^nS$}\label{$T^nS$}
+   \end{minipage} 
+\end{figure}
+
+・$R\in G$を任意の$\pi$回転とすると
+$RS^{-1}$の回転角は$\pi-\pi=0$なので平行移動．
+$\Gamma=G\cap T(\mathbf R^2)=\langle T_{\mathbf a}\rangle$なので
+\[
+	\exists\,  T_{\mathbf a}^m \text{ such that } 
+	RS^{-1}=T_{\mathbf a}^m\quad
+	\Rightarrow R=T_{\mathbf a}^mS
+\]
+
+・$x_0$を$y_0$に写す$\pi$回転$S$が存在すると，その中心は$x_0$と$y_0$の中点なので，$x_0$中心の$\pi$回転と$\pi$回転$S$を合成すると$x_0$を$y_0$に写す平行移動が存在することになり，$\mathbf a$の最小性に反する．$x_n$同士，$y_n$同士が$G$で移りあうことは明らかなので, 
+$Gx_0$, $Gy_0$は二つの異なる$G$軌道である．
+
+・$T_{\mathbf a}^mST_{\mathbf a}^mS=\id$なので
+\[
+	T_{\mathbf a}^mS=ST_{\mathbf a}^{-m}
+\]
+したがって
+\[
+	T_{\mathbf a}^3ST_{\mathbf a}^2ST_{\mathbf a}S
+	=T_{\mathbf a}^3T_{\mathbf a}^{-2}SST_{\mathbf a}S
+	=T_{\mathbf a}^{2}S
+\]
+のように計算して，積を$T_{\mathbf a}^m$, $T_{\mathbf a}^nS$の形に表すこことが出来る．
+
+\begin{figure}[htb]
+   \centering
+   \includegraphics{~/Documents/GitHub/bEuclideanGeo/ch2/figureGroup5.17}
+   \caption{$F_2$の基本領域二つ}\label{F2}
+\end{figure}
+
+以上から
+\[
+	G = \{T_{\mathbf a}^m, T_{\mathbf a}^nS\mid m,n \in \mathbf Z\}
+	= \langle T_{\mathbf a}, S\rangle
+\]
+このような群を$F_2$と呼ぶ．図 \ref{F2}に$F_2$の基本領域の例を二つ与える．
+\emptyline
+
+次に
+\subsection{$2$次元の平行移動からなる場合}
+%case 2 )
+%$\Gamma=G\cap T(\mathbf R^2) $ は
+%一次独立な二つ以上のベクトルからなる平行移動からなる．
+%
+%暫く，$r(G)\subset SO(2)$の場合のみ考える．
+%$\Gamma=G\cap T(\mathbf R^2) $を\term[]{格子群}といい，
+%集合としての$\Gamma$を\term[]{格子}という．
+%\emptyline
+%
+%case 1 )
+%$\Gamma=G\cap T(\mathbf R^2) $ がある直線に平行な平行移動からなる場合
+%
+%$G$は$F_1$, $F_2$のいずれかに同形．
+%
+%\begin{figure}[htb]
+%   \centering
+%   \begin{minipage}{0.4\columnwidth}
+%      \centering
+%      \includegraphics{~/Documents/GitHub/bEuclideanGeo/ch2/figureGroup6.5}
+%      \caption{$F_1$}
+%   \end{minipage} 
+%   \begin{minipage}{0.4\columnwidth}
+%      \centering
+%      \includegraphics{~/Documents/GitHub/bEuclideanGeo/ch2/figureGroup6.6}
+%      \caption{$F_2$}
+%   \end{minipage} 
+%\end{figure}
+%
+%\emptyline
+%
+case 2)
+$\Gamma=G\cap T(\mathbf R^2) $ は
+一次独立な二つ以上のベクトルからなる平行移動からなる場合
+
+%\[
+%	L=G\cap T(\mathbf R^2)
+%\]
+\emptyline
+
+$T\in \Gamma$に対して$\mathbf a=T(\mathbf 0)$と置くと，$T=T_{\mathbf a}$である．$G$は離散なので，ある$\mathbf a\in \Gamma \mathbf 0\setminus\{\mathbf 0\}$が存在して
+\[
+	\|\mathbf a\|
+	=\min_{\mathbf b\in \Gamma \mathbf 0\setminus\{\mathbf 0\} }\|\mathbf b\|
+\]
+このとき，仮定から
+\[
+	\Gamma \mathbf 0\supsetneqq \{n\mathbf a\mid n\in \mathbf Z\}
+\]
+なので，$\mathbf b\in G\mathbf 0\setminus  \{n\mathbf a\mid n\in \mathbf Z\}
+$ で
+\[
+	\|\mathbf b\|
+	=
+	\min_{
+		\mathbf c\in 
+		\Gamma \mathbf 0
+		\setminus  \{n\mathbf a\mid n\in \mathbf Z\}
+	}
+	\|\mathbf c\|
+\]
+成るものが存在する．このとき
+\[
+	\|\mathbf a\|\le \|\mathbf b\|,
+	\quad
+	 -\frac12\|\mathbf a\|
+	 \le
+	 (\mathbf b, \mathbf a)
+	 \le 
+	 \frac12\|\mathbf a\|
+\]
+が成り立ち(図~\ref{elementaryVectors},~\ref{elementaryVectors2})
+
+\begin{figure}[htb]
+   \centering
+   \begin{minipage}{0.4\columnwidth}
+      \centering
+      \includegraphics{~/Documents/GitHub/bEuclideanGeo/ch2/figureGroup6.7}
+      \caption{基本ベクトル}\label{elementaryVectors}
+   \end{minipage} 
+   \begin{minipage}{0.4\columnwidth}
+      \centering
+      \includegraphics{~/Documents/GitHub/bEuclideanGeo/ch2/figureGroup6.8}
+      \caption{基本ベクトル}\label{elementaryVectors2}
+   \end{minipage} 
+\end{figure}
+
+\[
+	\Gamma =
+	G\cap T(\mathbf R^2) 
+	= 
+	\{T_{m\mathbf a+n\mathbf b}\mid m,n \in \mathbf Z\}
+\]
+となる．%このような$\Gamma $を\term[]{格子}, 
+このような$\mathbf a$, $\mathbf b$を$\Gamma $の\term[]{基本ベクトル}とよぶ．
+\emptyline
+
+case 2-1) $G$が回転を含まないとき，つまり，$G\subset T(\mathbf R^2)$のとき 
+\[
+	G
+	= \Gamma =
+	\{T_{m\mathbf a+n\mathbf b}\mid m,n \in \mathbf Z\}
+	=\langle T_{\mathbf a}, T_{\mathbf b}\rangle
+\]
+となる．
+このような$G$を$M_1$と呼ぶ(図~\ref{M1})．
+\begin{figure}[htb]
+   \centering
+   \begin{minipage}{0.4\columnwidth}
+      \centering
+      \includegraphics{~/Documents/GitHub/bEuclideanGeo/ch2/figureGroup6.9}
+      \caption{$M_1$}\label{M1}
+      \end{minipage} 
+   \begin{minipage}{0.4\columnwidth}
+      \centering
+      \includegraphics{~/Documents/GitHub/bEuclideanGeo/ch2/figureGroup6.10}
+      \caption{$M_2$}\label{M2}
+   \end{minipage} 
+\end{figure}
+
+\emptyline
+
+case 2-2) $G$が回転としては$\pi$回転しか含まないとき.
+
+$S\neq \id\in G$を$\pi$-回転とし，$S$の回転の中心を$\mathbf x_{0,0}$と置く．
+\[
+	\mathbf x_{m,n} 
+	=T_{m\mathbf a+n\mathbf b}\mathbf x_{0,0} \quad 
+	T_{m\mathbf a+n\mathbf b}\in \Gamma 
+\]
+と置くと，
+先週示したのと同じ議論で：
+\emptyline
+
+・$T_{m\mathbf a+n\mathbf b}S$は$\mathbf x_{0,0}\mathbf x_{m,n} $の中点を中心とする$\pi$回転
+\emptyline
+
+
+・$R\in G$を任意の$\pi$回転とすると
+$RS^{-1}$の回転角は$\pi-\pi=0$なので平行移動，つまり
+\[
+	\exists\,  T_{m\mathbf a+n\mathbf b}\in \Gamma  
+	\text{ such that } 
+	RS^{-1}=T_{m\mathbf a+n\mathbf b}\quad
+	\Rightarrow R=T_{m\mathbf a+n\mathbf b}S
+\]
+
+・$T_{m\mathbf a+n\mathbf b}ST_{m\mathbf a+n\mathbf b}S=\id$なので
+\[
+	T_{m\mathbf a+n\mathbf b}S=ST_{-m\mathbf a-n\mathbf b}
+\]
+
+以上から
+\[
+	G = \{T_{m\mathbf a+n\mathbf b}, T_{m'\mathbf a+n'\mathbf b}S\mid m,n, m', n'\in \mathbf Z\}
+	=\langle T_{\mathbf a}, T_{\mathbf b}, S \rangle
+\]
+と表せる．
+このような群を$M_2$と呼ぶ．この$\pi$回転の中心は$4$個の$G$軌道に分かれていることを，前回と同じように示すことが出来る(図~\ref{M2}の$4$色の丸がそれを示している)．
+\emptyline
+
+
+case 2-3) $G$が回転角が$\pi$でない回転を含むとき：
+
+回転$S$の回転の中心$\mathbf x_0$を$\mathbf 0$とみなし，$\mathbf 0$を起点とした格子$\Gamma $を考える．
+\begin{Prop}[結晶条件]
+回転
+\[
+	S=\begin{pmatrix}
+		\cos \theta &-\sin \theta\\
+		\sin \theta& \cos \theta\\
+	\end{pmatrix}\neq E
+\]
+が$\Gamma $を保つ（$\Gamma $の$S$による像が$\Gamma $に移る）とすると，$S$の回転角は
+\[
+	\theta=\pm 2\pi/p\quad p=2, 3,4,6
+\]
+の何れかである．
+\end{Prop}
+\begin{proof}
+$\mathbf a$, $\mathbf b$を$\Gamma $の基本ベクトルとし，
+$U=\begin{pmatrix}\mathbf a&\mathbf b\end{pmatrix}$とおくと
+\[
+	SU
+	=
+	\begin{pmatrix}S\mathbf a& S\mathbf b\end{pmatrix}
+	=
+	(k\mathbf a+l\mathbf b, m\mathbf a+n\mathbf b)
+	=
+	U\begin{pmatrix}
+		k &m\\
+		l& n\\
+	\end{pmatrix}
+\]
+となる$k,l,m,n\in \mathbf Z$が存在する．
+\[
+	\tr S
+	=
+	\tr (U\begin{pmatrix}
+		k &m\\
+		l& n\\
+	\end{pmatrix}U^{-1})
+	=
+	\tr (\begin{pmatrix}
+		k &m\\
+		l& n\\
+	\end{pmatrix}U^{-1}U)
+	=
+	k+n \in \mathbf Z
+\]
+なので
+\[
+	2\cos \theta \in \mathbf Z
+\]
+$-1\le \cos \theta\le 1$より$\theta$は
+\[
+	\frac{\pi}{3},\quad\frac{\pi}{2},\quad\frac{2\pi}{3},\quad
+	\pi,\quad-\frac{\pi}{3},\quad -\frac{\pi}{2},\quad-\frac{2\pi}{3}
+\]
+のいずれかである．
+\end{proof}
+
+
+%$\pi$回転でない$\frac{2q\pi}{p}$回転$S$が見つかった場合，$p$と$q$は互いに素と取れるので，ユークリッドの互除法より$mp+kq=1$なる$m, k\in \mathbf Z$が見つかる．
+%$S^m$の回転角は
+%\[
+%	\frac{2\pi kq}{p}=\frac{2\pi(1-mp)}{p}=\frac{2\pi}{p} + 2\pi m
+%\]
+%なので$\frac{2\pi}{p}$回転が得られる．
+
+$\pi$回転でない点$\mathbf p$を中心とした回転は巡回群をなすので，
+$P$を$\mathbf p$を中心とした($P$の回転が時計回りの時は逆元に取り替えれば良いので，反時計回りの)$\frac{2\pi}{p}$回転で，
+仮定から$p\ge 3$として良い．ここで
+$T\neq \id \in \Gamma =G\cap T(\mathbf R^2) $を平行移動とすると，
+$TP$の回転角は$0+\frac{2\pi}{p}=\frac{2\pi}{p}$なので，$\pi$回転でない回転であり，$T\neq \id$より
+\[
+	TP\mathbf p=T\mathbf p \neq \mathbf p
+\]
+より，$G$は$\mathbf p$以外の点を中心とした$\pi$回転でない回転を含むことが分かる．まず，$\frac{2\pi}{p}$回転$P$の$p$はこのようなものの最小なものとする．
+そこで$Q$を$\mathbf q$を中心とした$\frac{2\pi}{q}$回転とし, $q\ge 3$で，更に
+\[
+	\|\mathbf p-\mathbf q\|
+	=\min_{%\mathbf q'\text{:$q\ge 3$の $\frac{2\pi}{q}$-回転中心}
+	\mathbf q': {2\pi}/{q'}\text{ 回転の中心}, q'\ge p\ge 3}
+		\|\mathbf p-\mathbf q'\|
+\]
+をみたすとして良い．ここでも反時計回りの$Q$を取る．
+
+$R=(QP)^{-1}$と置くと，
+\[
+	0<\frac{2\pi}{p}+\frac{2\pi}{q} 
+	\le \frac{4\pi}{3}<2\pi
+\]
+なので$R$の回転角は($2\pi$を加算して計算することで)
+\[
+	2\pi>2\pi-\frac{2\pi}{p}-\frac{2\pi}{q} 
+	\ge 2\pi- \frac{4\pi}{3}
+	=\frac{2\pi}{3}
+\]
+よって（$\pi$回転も含む）回転になる．その中心を$\mathbf r$と置く．
+上の命題より回転角は$\frac{2\pi}{r} $で，$r=2,3$としてよい．
+
+$RQP=\id$に注意して$\mathbf r$を探す．
+図~\ref{comp1}, ~\ref{comp2}の向きを考慮し，
+$\angle \mathbf r\mathbf p\mathbf q$ が回転$P$の回転角の半分で，
+$\angle \mathbf p\mathbf q\mathbf r$が回転$Q$の回転角の半分となるように$\mathbf r$を選ぶことが出来る．ただし，$\angle \mathbf p \mathbf q \mathbf r$は線分
+$\mathbf q\mathbf p $と$\mathbf q \mathbf r$の頂点$\mathbf q$での（反時計回りを正の方向とする）角度を表す．
+すると
+\[
+\begin{split}
+	&2\angle \mathbf r \mathbf p \mathbf q
+	=\angle \mathbf x \mathbf p P\mathbf x
+	= \frac{2\pi}{p},\\
+	& 2\angle \mathbf p \mathbf q \mathbf r
+	=\angle P\mathbf x \mathbf q QP\mathbf x
+	= \frac{2\pi}{q},\\
+	&2\angle \mathbf q \mathbf r\mathbf p 
+	=\angle QP\mathbf x \mathbf r \mathbf x
+	= \frac{2\pi}{r}
+\end{split}
+\]
+となり，三角形$ \triangle\mathbf p \mathbf q \mathbf r$の内角の和は$\pi$なので
+\[
+	\frac{\pi}{p}+\frac{\pi}{q}+\frac{\pi}{r} = \pi
+\]
+が分かる．
+
+\begin{figure}[htb]
+   \centering
+   \begin{minipage}{0.4\columnwidth}
+      \centering
+      \includegraphics{~/Documents/GitHub/bEuclideanGeo/ch2/figureGroup6.11}
+      \caption{}\label{comp1}
+   \end{minipage} 
+   \begin{minipage}{0.4\columnwidth}
+      \centering
+      \includegraphics{~/Documents/GitHub/bEuclideanGeo/ch2/figureGroup6.12}
+      \caption{}\label{comp2}
+   \end{minipage} 
+\end{figure}
+
+
+なので
+\begin{equation}
+	\frac{1}{p}+\frac{1}{q}+\frac{1}{r} =1,\quad 
+	p, q =3, 4, 6,\quad r= 2,3\tag{*}\label{cristal}
+\end{equation}
+まず，$q\ge p\ge 3$として良い．
+\begin{enumerate}
+\item 
+$p=q=3$のとき
+\[
+	\frac{1}{r} =1-\frac{1}{3}-\frac{1}{3}=\frac{1}{3}
+\]
+より，$r=3$.
+\item
+$q\ge p\ge 3$で$p=q=3$でないとき
+\[
+	\frac{1}{r} >1-\frac{1}{3}-\frac{1}{3}=\frac{1}{3}
+\]
+で$r=2, 3$なので$r=2$．すると
+\[
+	\frac{1}{p}+\frac{1}{q} =1-\frac{1}{2}=\frac{1}{2}
+\]
+$q\ge p\ge 5$とすると
+\[
+	\frac{1}{2}=\frac{1}{p}+\frac{1}{q}
+	\le \frac{1}{5}+\frac{1}{5}\le \frac{2}{5}
+\]
+となり矛盾するので，$p=3,4$の何れか．
+\begin{enumerate}
+\item 
+$p=3$ のとき
+\[
+	\frac{1}{q}=\frac{1}{2}-\frac{1}{3}=\frac{1}{6}
+\]
+より$q=6$．
+
+\item
+$p=4$のとき
+\[
+	\frac{1}{q}=\frac{1}{2}-\frac{1}{4}=\frac{1}{4}
+\]
+より$q=4$．
+\end{enumerate}
+
+\end{enumerate}
+まとめると
+\begin{table}[h]
+  \centering
+  \begin{tabular}{lll|l} 
+  	\noalign{\hrule height 1pt}
+	 $p$&$q$&$r$& 格子 \\ \hline \hline
+	 3&3&3&正六角形格子\\ \hline
+	 3&6&2&正六角形格子 \\ \hline
+	  4&4&2& 正方格子\\
+     \noalign{\hrule height 1pt}
+   \end{tabular}
+  \caption{可能な$p, q, r$}
+\end{table}
+
+注）第2回で説明した$SO(3)$の有限群の極の位数から導かれる関係式
+\[
+	1+\frac2n 
+	=
+	\frac1{\alpha_1}+\frac1{\alpha_2}+\frac1{\alpha_3}
+\]
+や類等式は条件\eqref{cristal}との類似になっている．ただし，$n=|G|$, $\alpha_i = |\stab(\mathbf x_i)|$.
+\emptyline
+
+これらの場合は回転で格子が保たれているので，常に
+\[
+	\|\mathbf a \|=\|\mathbf b \|
+\]
+が成り立つことも指摘しておく．
+%\begin{figure}[htb]
+%\centering
+%\includegraphics{~/Documents/GitHub/bEuclideanGeo/ch2/figureGroup6.15}
+%\caption{$M_3$}\label{comp1}
+%\end{figure}
+%\begin{figure}[htb]
+%\centering
+%\includegraphics{~/Documents/GitHub/bEuclideanGeo/ch2/figureGroup6.14}
+%\caption{正方格子}\label{comp2}
+%\end{figure}
+%\emptyline
+
+%\begin{figure}[htb]
+%\centering
+%\includegraphics{~/Documents/GitHub/bEuclideanGeo/ch2/figureGroup6.18}
+%\caption{格子}\label{}
+%\end{figure}
+%\emptyline
+%
+%\cite{C}の3, 4章，
+%\cite{HC}の2章，\cite{W} の3章に数式をあまり用いない解説が与えられている．いずれの本も（非専門家に向けた）近代幾何学の古典と言って良い本である．
+%
+%\begin{thebibliography}{9}
+%\bibitem{C}
+%H.S.M. コクセター, 幾何学入門〈上, 下〉 (ちくま学芸文庫) 2009 
+%
+%\bibitem{HC}
+%D・ヒルベルト, S・コーン=フォッセン, 直観幾何学【新装版】, 2019 , 
+%みすず書房 %(D. Hilbert, S. Cohn-Vossen, Geometry and the Imagination, 2020, Ams Chelsea Publishing) 
+%
+%\bibitem{W}
+%ヘルマン・ワイル, シンメトリー (ちくま学芸文庫) 2022
+%(Hermann Weyl, Symmetry, Princeton Science Library, 2016)
+%
+%%\bibitem{E}
+%%C.H.マックギラフィ, 有馬 朗人 , エッシャー—シンメトリーの世界
+%\end{thebibliography}
+%
+
+\subsection{鏡映や並進鏡映を含まない場合}
+暫く鏡映や並進鏡映を含まない場合を考える．
+
+case 2 )
+$\Gamma=G\cap T(\mathbf R^2) $ は
+一次独立な二つ以上のベクトルからなる平行移動からなる
+
+%\[
+%	\Gamma=
+%	G\cap T(\mathbf R^2) 
+%	= 
+%	\{T_{m\mathbf a+n\mathbf b}\mid m,n \in \mathbf Z\}
+%\]
+%となる．このような$\Gamma$を群としては\term[]{格子群}, 
+%集合としては\term[]{格子}, 
+%このような$\mathbf a$, $\mathbf b$を\term[]{基本ベクトル}とよぶ．
+%\emptyline
+
+case 2-1) $G$が回転を含まないとき，つまり，$G\subset T(\mathbf R^2)$のとき 
+\[
+	G
+	= \Gamma=
+	\{T_{m\mathbf a+n\mathbf b}\mid m,n \in \mathbf Z\}
+\]
+このような$G$を$M_1$ (P1\footnote{以下国際記号(International nomenclature)による群の表示を括弧内に追記する. 他にも})と呼ぶ(図~\ref{M1})．
+\begin{figure}[htb]
+   \centering
+   \begin{minipage}{0.4\columnwidth}
+      \centering
+      \includegraphics{~/Documents/GitHub/bEuclideanGeo/ch2/figureGroup7.1}
+      \caption{ $M_1$ ($P1$), Oblique, $C_1$}\label{M1}
+   \end{minipage} 
+   \begin{minipage}{0.4\columnwidth}
+      \centering
+      \includegraphics[trim=20 0  0 35, clip]{~/Documents/GitHub/bEuclideanGeo/ch2/figureGroup7.2}
+      \caption{ $M_2$ ($P2$), Oblique, $C_2$}\label{M2}
+   \end{minipage} 
+\end{figure}
+
+\emptyline
+
+case 2-2) $G$が回転としては$\pi$回転のみを含むとき.
+このような群を$M_2$ (P2)と呼ぶ(図~\ref{M2}, 格子群$\Gamma$ の基本領域を灰色でしめした)．
+\emptyline
+
+
+case 2-3)  $G$が$\pi$回転以外の回転を含むとき：
+\emptyline
+
+\begin{Prop}[結晶条件]
+$\mathbf 0$を中心とした回転
+\[
+	S=\begin{pmatrix}
+		\cos \theta &-\sin \theta\\
+		\sin \theta& \cos \theta\\
+	\end{pmatrix}
+\]
+が$\Gamma$を保つとすると，$S$の回転角は
+\[
+	\theta=\pm 2\pi/p\quad p=2, 3,4,6
+\]
+の何れか．
+\end{Prop}
+
+\emptyline
+
+$G$は異なる点を中心とした$\pi$回転でない回転を含む．まず，$\frac{2\pi}{p}$回転$P$の$p$はこのようなものの最小なもので，$p\ge 3$として良い．
+$Q$を$\mathbf q$を中心とした$\frac{2\pi}{q}$回転とし, $q\ge p\ge 3$で，更に
+\[
+	\|\mathbf p-\mathbf q\|
+	=\min_{\mathbf q': {2\pi}/{q'}\text{回転の中心}, q'\ge p\ge 3}\|\mathbf p-\mathbf q'\|
+\]
+をみたすとして良い．
+
+$R=(QP)^{-1}$と置くと，
+（$\pi$回転も含む）回転になる．その中心を$\mathbf r$と置く．
+上の命題より回転角は$\frac{2\pi}{r} $で，$r=2,3$としてよい．
+このとき，
+\begin{equation}\label{cristal}
+	\frac{1}{p}+\frac{1}{q}+\frac{1}{r} =1,\quad 
+	p\le q =3, 4, 6,\quad r= 2,3
+\end{equation}
+がわかり，組み合わせを調べることで次の場合しかないことが分かった．
+\begin{table}[h]
+   \centering
+   \begin{tabular}{lll|l} 
+  	\noalign{\hrule height 1pt}
+	 $p$&$q$&$r$& 格子 \\ \hline \hline
+	 3&3&3&正六角形格子\\ \hline
+	 3&6&2&正六角形格子 \\ \hline
+	  4&4&2& 正方格子\\
+  \noalign{\hrule height 1pt}
+\end{tabular}
+  \caption{可能な$p, q, r$}
+\end{table}
+
+\subsection{case 2-3の分類}
+\begin{Prop} 
+$P\in G$を$\mathbf p$を中心とする回転角$\theta$の回転とし，
+$Q\in G$を回転角$\theta'$の回転とすると
+$QPQ^{-1}$は$Q\mathbf p$を中心とする回転角$\theta$の回転．
+特に，$G$は回転の中心を回転の中心に写す．
+\end{Prop}
+\begin{proof}
+$QPQ^{-1}$の回転角は$\theta'+\theta -\theta'=\theta$なので，回転角$\theta$の回転．
+\[
+	QPQ^{-1}Q\mathbf p=QP\mathbf p=Q\mathbf p
+\]
+なので，$Q\mathbf p$が中心．
+\end{proof}
+
+$Q\in G$の群$G$への作用を
+\[
+	\iota_Q(P)= QPQ^{-1}\in G \quad (P\in G)
+\]
+で定めると
+\[
+\begin{split}
+	\iota_R(PQ) = R(PQ)R^{-1}&=RPR^{-1}RQR^{-1}=\iota_R(P)\iota_R(Q),\\
+	\iota_R\id& = R\id R^{-1}=\id
+\end{split}
+\]
+から$\iota_R:G\to G$は群の準同形になることが分かる．これを\term[]{内部自己同形}という．内部自己同形全体は
+\[
+	\iota_{RQ}=\iota_R\iota_Q,\quad \iota_{\id} = \id
+\]
+が成り立つので群を成すので，\term[]{内部自己同形群}という．
+上の命題は群$G$の内部自己同形群が
+$\mathbf R^2$のなかの$G$の回転の中心全体に作用していることを表している．
+
+\emptyline
+
+Case 2-3) $p=q=r=3$の場合：
+
+$P$を$\mathbf p$を中心とした$\frac{2\pi}{3}$回転とし，$Q$を$\mathbf q$を中心とした$\frac{2\pi}{3}$回転,  $R$を$\mathbf r$を中心とした$\frac{2\pi}{3}$回転とする．
+$S=QPQ^{-1}$と置くと命題より
+$S$は$\mathbf s=Q\mathbf p$を中心とする角度$\frac{2\pi}{3}$の回転．
+$S^{-1}Q$は
+\[
+	S^{-1}Q\mathbf p = S^{-1}\mathbf s = \mathbf s 
+\]
+をみたし，
+$S^{-1}Q$の回転角は$-\frac{2\pi}{3}+\frac{2\pi}{3}=0$なので，
+$\mathbf s-\mathbf p$の平行移動．これを$\mathbf a$ と置く．
+
+\begin{figure}[htb]
+   \centering
+   \begin{minipage}{0.4\columnwidth}
+      \centering
+      \includegraphics{~/Documents/GitHub/bEuclideanGeo/ch2/figureGroup7.3}
+      \caption{}\label{}
+   \end{minipage} 
+   \begin{minipage}{0.4\columnwidth}
+      \centering
+      \includegraphics{~/Documents/GitHub/bEuclideanGeo/ch2/figureGroup7.4}
+      \caption{}\label{}
+   \end{minipage} 
+\end{figure}
+\emptyline
+
+$S'=Q^{-1}PQ$と置くと$\mathbf s'=Q^{-1}\mathbf p$を中心とする角度$\frac{2\pi}{3}$の回転．
+$S'Q^{-1}$は
+\[
+	S'Q^{-1}\mathbf p = S'\mathbf s' = \mathbf s' 
+\]
+をみたす
+$\mathbf s'-\mathbf p=:\mathbf b$の平行移動．
+
+$\mathbf a$と$\mathbf b$は一次独立で平行移動を生成する．そこで
+格子群
+\[
+	 \Gamma=
+	\{T_{m\mathbf a+n\mathbf b}\mid m,n \in \mathbf Z\}
+	\subset
+	G \cap T(\mathbf R^2)
+\]
+を得る．
+\emptyline 
+
+・$P$, $Q$, $R$以外から生成される回転を$G$は含まない．
+
+∵）もし$\pi$-回転を含めば，$-\frac{2\pi}{3}$回転と合成することで
+$\frac{\pi}{3}$回転が得られる．そこで$P$, $Q$, $R$以外の回転は$\frac{2\pi}{m}$ $(m\ge 3)$回転
+と仮定していい．その回転の中心は
+$T(\mathbf R^2)\cap G$で平行移動して，三角形$\mathbf p\mathbf q\mathbf r$から作った$\mathbf p$を中心とした正六角形の内部と境界を含めた部分から頂点を除いた集合に移すことが出来る(図~\ref{fundDom2})が，
+これは$\mathbf q$を$\mathbf p$にもっとも近い$\frac{2\pi}{m}$ $(m\ge 3)$回転の中心とした仮定に反する．
+
+・$T_{\mathbf a}$, $T_{\mathbf b}$より短い平行移動は存在しない．
+
+∵）平行移動で$\frac{2\pi}{3}$の回転は$\frac{2\pi}{3}$の回転に移るので，
+そのような平行移動があるとすれば$\mathbf r -\mathbf p$(または$\mathbf q -\mathbf p$)の形の平行移動$T$である．このとき$RT$は
+\[
+	RT\mathbf p=R\mathbf r=\mathbf r,\quad
+	RT\mathbf r=\mathbf q,\quad
+	RT\mathbf q=\mathbf p
+\]
+となる(図~\ref{rotationAroundc})ので回転角$\frac{2\pi}{3}$の回転．したがって，三角形$\mathbf p\mathbf q\mathbf r$
+の重心$\mathbf c$を中心とした$\frac{2\pi}{3}$の回転となり，$\mathbf q$を$\mathbf p$にもっとも近い回転の中心とした仮定に反する．
+
+\emptyline
+したがって，
+\[
+	 \Gamma=
+	\{T_{m\mathbf a+n\mathbf b}\mid m,n \in \mathbf Z\}
+	=
+	G \cap T(\mathbf R^2)
+\]
+が格子群．
+\emptyline
+
+
+\begin{figure}[htb]
+   \centering
+   \begin{minipage}{0.4\columnwidth}
+      \centering
+      \includegraphics{~/Documents/GitHub/bEuclideanGeo/ch2/figureGroup7.5}
+      \caption{}\label{rotationAroundc}
+   \end{minipage} 
+   \begin{minipage}{0.4\columnwidth}
+      \centering
+      \includegraphics{~/Documents/GitHub/bEuclideanGeo/ch2/figureGroup7.6}
+      \caption{}\label{fundDom2}
+   \end{minipage} 
+\end{figure}
+
+
+
+\begin{figure}[htb]
+   \centering
+   \includegraphics[trim=60 60 60 100, clip]{~/Documents/GitHub/bEuclideanGeo/ch2/figureGroup7.7}
+   \caption{ $M_3$ ($P3$), 正六角形格子, $C_3$ }\label{comp1}
+\end{figure}
+
+以上より
+\[
+	G = \langle P, Q, R\rangle
+\]
+このような群$G$を$M_3$ (P3)という(図~\ref{comp1}回転の頂点の色は異なる$3$つの$G$軌道を表す)．
+\emptyline
+
+Case 2-4) $p=q=4, r=2$の場合：
+$P$を$\mathbf p$を中心とした$\frac{2\pi}{4}=\frac{\pi}{2}$回転とし，$Q_1$を$\mathbf q_1$を中心とした$\frac{\pi}{2}$回転,  $R$を$\mathbf r$を中心とした$\pi$回転とする．
+命題より
+$Q_2=PQ_1P^{-1}$ は$\mathbf q_2=P\mathbf q_1$を中心とした$\frac{\pi}{2}$回転,
+$Q_3=P^{2}Q_1P^{-2}$は$\mathbf q_3=P^{2}\mathbf q_1$を中心とした$\frac{\pi}{2}$回転，
+$Q_4=P^{3}Q_1P^{-3}$は$\mathbf q_4=P^{3}\mathbf q_1$を中心とした$\frac{\pi}{2}$回転
+
+$PQ_1^{-1}$, $P^{-1}Q_1$は 平行移動で
+\[
+	PQ_1^{-1}\mathbf q_1= P\mathbf q_1=\mathbf q_2,\quad
+	P^{-1}Q_1\mathbf q_1= P^{-1}\mathbf q_1=\mathbf q_4
+\]
+より，基本ベクトルを$\mathbf a = \mathbf q_2-\mathbf q_1$, $\mathbf b = \mathbf q_4-\mathbf q_1$と取ることが出来る．
+
+
+\begin{figure}[htb]
+   \centering
+   \begin{minipage}{0.4\columnwidth}
+      \centering
+      \includegraphics{~/Documents/GitHub/bEuclideanGeo/ch2/figureGroup7.8}
+      \caption{}\label{}
+   \end{minipage} 
+   \begin{minipage}{0.4\columnwidth}
+      \centering
+      \includegraphics{~/Documents/GitHub/bEuclideanGeo/ch2/figureGroup7.9}
+      \caption{}\label{rotM4}
+   \end{minipage} 
+\end{figure}
+
+・$P$, $Q$, $R$以外から生成されない回転を$G$は含まない．
+
+∵）$M_3$と同じ理由
+\emptyline
+
+
+・$T_{\mathbf a}$, $T_{\mathbf b}$より短い平行移動は存在しない．
+
+∵）平行移動は$\frac{\pi}{2}$回転を$\frac{\pi}{2}$回転に写すので，そのような平行移動があれば $\mathbf q - \mathbf p$の形の平行移動 $T$のはずである($\mathbf r' - \mathbf r$は$\mathbf a$か$\mathbf b$の整数倍なので無視していい)．
+$QT$は図~\ref{rotM4}より，$\mathbf r$ を中心とした$\frac{\pi}{2}$回転となり，$\mathbf q$を$\mathbf p$にもっとも近い$\frac{2\pi}{m}$ $(m\ge 3)$回転の中心とした仮定に反する．
+\emptyline
+したがって，
+\[
+	 \Gamma=
+	\{T_{m\mathbf a+n\mathbf b}\mid m,n \in \mathbf Z\}
+	=
+	G \cap T(\mathbf R^2)
+\]
+が格子群．
+\emptyline
+
+\begin{figure}[htb]
+   \centering
+   \includegraphics[trim=10 10 10 10, clip]{~/Documents/GitHub/bEuclideanGeo/ch2/figureGroup7.10}
+   \caption{$M_4$ (P4), 正方格子, $C_4$ }\label{comp2}
+\end{figure}
+
+
+
+このような群を$M_4$ (P4)という(図~\ref{comp2}回転の頂点の色は異なる$3$つの$G$軌道を表す)．．
+\emptyline 
+
+Case 2-3) $p=3, q=6, r=2$の場合：
+$P$を$\mathbf p$を中心とした$\frac{2\pi}{3}$回転とし，$Q_1$を$\mathbf q_1$を中心とした$\frac{2\pi}{6}=\frac{\pi}{3}$回転,  $R$を$\mathbf r$を中心とした$\pi$回転とする．
+命題より
+$Q_2=PQ_1P^{-1}$ は$\mathbf q_2=P\mathbf q_1$を中心とした$\frac{\pi}{3}$回転,
+$Q_3=P^{-1}Q_1P$は$\mathbf q_3=P^{-1}\mathbf q_1$を中心とした$\frac{\pi}{3}$回転．
+
+$\mathbf a = \mathbf q_2-\mathbf q_1$ ,$\mathbf b = \mathbf q_3-\mathbf q_1$を基本ベクトルに取ることができ，
+\emptyline
+
+
+・$P$, $Q$, $R$以外から生成されない回転を$G$は含まない．
+
+∵）$M_3$と同じ理由
+\emptyline
+
+
+・$T_{\mathbf a}$, $T_{\mathbf b}$より短い平行移動は存在しない．
+
+∵）平行移動で$\frac{2\pi}{m}$の回転は$\frac{2\pi}{m}$の回転に移るので，
+そのような平行移動があるとすれば$\mathbf p'-\mathbf p$, 
+$\mathbf r' -\mathbf r$の形の短い平行移動$T$であるが，どちらの場合も矛盾が生じる．
+
+\emptyline
+
+\begin{figure}[htb]
+   \centering
+   \begin{minipage}{0.4\columnwidth}
+      \centering
+      \includegraphics{~/Documents/GitHub/bEuclideanGeo/ch2/figureGroup7.11}
+      \caption{}\label{}
+   \end{minipage} 
+   \begin{minipage}{0.4\columnwidth}
+      \centering
+      \includegraphics[width = 5cm]{~/Documents/GitHub/bEuclideanGeo/ch2/figureGroup7.12}
+      \caption{}\label{}
+   \end{minipage} 
+\end{figure}
+
+\emptyline
+
+
+このような群を$M_5$ (P6)という(図~\ref{comp3}回転の頂点の色は異なる$3$つの$G$軌道を表す)．
+\emptyline 
+
+このようにして，case 2-3の離散群の分類が得られた．
+\emptyline 
+
+\begin{Quiz}
+$8$ $M_4$の場合に$($授業中に$)$残った部分に詳しい証明を与えよ．
+\end{Quiz}
+
+\begin{Quiz}$9$ $M_5$の場合に$($授業中に$)$残った部分に詳しい証明を与えよ．
+\end{Quiz}
+
+
+\emptyline 
+\begin{figure}[htb]
+   \centering
+   \includegraphics[trim=67 65  40 150, clip]{~/Documents/GitHub/bEuclideanGeo/ch2/figureGroup7.13}
+   \caption{$M_5$ (P6), 正三角形格子, $C_6$}\label{comp3}
+\end{figure}
+\emptyline
+
+
+\subsection{ラフな離散群の分類}
+\[
+	\Is(\mathbf R^n)
+	=\{F:\mathbf R^n\to \mathbf R^n\mid \text{合同変換}\}
+	\ni F, F'
+\]
+とすると
+\[
+	F(\mathbf x) =A\mathbf x+\mathbf b,\quad
+	F'(\mathbf x) =A'\mathbf x+\mathbf b'
+\]
+なので
+\begin{equation}\label{semiproduct}
+	F'\circ F(\mathbf x)
+	=F'(A\mathbf x+\mathbf b)
+	=A'(A\mathbf x+\mathbf b)+\mathbf b'
+	=A'A\mathbf x+A'\mathbf b+\mathbf b'
+\end{equation}
+特に
+\[
+	F^{-1}(\mathbf x)=A^{-1}\mathbf x - A^{-1}\mathbf b
+\]
+$r(F)=A\in O(n)$と置くと
+\[
+	r(F'\circ F)=A'A=r(F')r(F)\in O(n)
+\] 
+となり，$r:\Is(\mathbf R^n)\to O(n)$は準同形写像．
+
+$G$を$\Is(\mathbf R^n)$の離散部分群とする．
+\begin{gather*}
+	T(\mathbf R^n)
+	=\{F\in\Is(\mathbf R^n)\mid \text{平行移動}\}
+\end{gather*}
+とすると
+\[
+	G^* = G\cap T(\mathbf R^n)
+\]
+は$G$の部分群であり，$G$の\term[]{格子群}と呼ばれる．
+$G^*$は(離散な)可換群なので，一次独立な$\mathbf a_1,\cdots,\mathbf a_k$が存在して
+\[
+	G^*
+	= 
+	\{T_{m_1\mathbf a_1+\cdots +m_k\mathbf a_k}\mid m_1,\cdots ,m_k \in \mathbf Z\}
+\]
+と書ける．
+この$k$を次元という．
+
+更に，$G^*$は$G$の正規部分群である．なぜなら，
+$T_{\mathbf a}\in G^*$と $F\in G$に対して
+\[
+\begin{split}
+	F\circ T_{\mathbf a}\circ F^{-1}(\mathbf x)
+	&=
+	F\circ T_{\mathbf a}(A^{-1}\mathbf x - A^{-1}\mathbf b)\\
+	&=
+	F(A^{-1}\mathbf x - A^{-1}\mathbf b+\mathbf a)\\
+	&=
+	A(A^{-1}\mathbf x - A^{-1}\mathbf b+\mathbf a)+\mathbf b
+	=
+	\mathbf x  +A\mathbf a
+\end{split}
+\]
+なので$F\circ T_{\mathbf a}\circ F^{-1}= T_{A\mathbf a}\in G^*$, 
+つまり$F G^* F^{-1}\subset G^*$
+だからである．
+\emptyline
+
+$r(F)=A\in r(G)$なので，この作用で$r(G)\subset O(n)$は$G^*$に作用している．
+
+\emptyline
+
+$H$, $G$, $K$を群として，$f:H\to G$, $g:G\to K$が群の準同形で
+\[
+	H\overset{f}{\to} G\overset{g}{\to} H
+\]
+が\term[]{完全}とは
+\[
+	\Image f =\{f(a)\in G\mid a\in H\},\quad
+ 	\Ker g=\{b\in G\mid g(b)=0(=e)\}
+ \]と置くとき
+ $\Image f=\Ker g$が成り立つことである．
+ 例えば
+ \[
+	0\overset{f}{\to} G\overset{g}{\to} H
+\]
+が完全なときは$g$は単射であり，
+ \[
+	H\overset{f}{\to} G\overset{g}{\to} 0
+\]
+が完全なときは$f$は全射である．
+ 幾つかの群の系列にがあるとき，
+ 連続する全ての準同形のペアが完全なとき完全という．
+\emptyline
+
+・次の群の系列
+\[
+	0\to G^*\overset{i}{\to} G \overset{r}{\to} r(G)\to 0
+\]
+は完全系列である．ただし$i$は自然な埋め込み，最後の$0$は正確には積の単位元 $E$のこと．
+
+∵）$G^*\subset G$なので$i$は単射．
+$A\in r(G)\subset O(n)$ に対して$F\in G$が存在して$A=r(F)$は定義なので$r$は全射．$r(F)=E$と$F$が平行移動は同値なので完全．
+
+注意）$\Is(\mathbf R^n)$は\eqref{semiproduct}で積が定まる
+$T(\mathbf R^n)$と$O(n)$の\term[]{半直積}であり，このことを
+\[
+	\Is(\mathbf R^n)=T(\mathbf R^n)\rtimes O(n)
+\]
+と表す．一般の半直積の定義は一見すると分かりづらいが，この状況を一般化するように定式化されたものである．
+\emptyline
+
+%$n=2$のとき以下を示した：
+%\begin{Prop}[結晶条件]
+%$\mathbf 0$を中心とした回転$S\neq E$
+%が$2$次元の格子$G^*$を保つとすると，$S$の回転角$\theta$は
+%\[
+%	\theta=\pm 2\pi/p\quad p=2, 3,4,6
+%\]
+%の何れか．
+%\end{Prop}
+%\noindent
+%なので，
+$r(G)$は$O(2)$の有限部分群である．このような群を\term[]{点群}という．
+
+点群の分類は既に終わっているので，
+格子の次元毎に格子の形とその作用を調べれば離散部分群の分類が終わる．
+
+\begin{figure}[htb]
+   \centering
+   \begin{minipage}{0.4\columnwidth}
+      \centering
+      \includegraphics{~/Documents/GitHub/bEuclideanGeo/ch2/figureGroup8.1}
+      \caption{並進鏡映}\label{ref3}
+   \end{minipage} 
+   \begin{minipage}{0.4\columnwidth}
+      \centering
+      \includegraphics{~/Documents/GitHub/bEuclideanGeo/ch2/figureGroup8.2}
+      \caption{鏡映}
+   \end{minipage} 
+\end{figure}
+
+
+$r(G)$が$\subset SO(2)$のときは既に終わったので，$
+ r(G)\setminus SO(2)\neq\emptyset$のときを考える．
+ \begin{Thm}[シャール]
+$\mathbf R^2$の合同変換は
+平行移動，ある点を中心とした回転，並進鏡映（鏡映）のいずれか．
+\end{Thm}
+\noindent
+なので，これは$G$が鏡映か並進鏡映（あるいはその両方）を含むことを意味している．
+
+
+case 0)
+格子$G^*$が$0$次元の時は以前示したように一点を固定するので，
+$C_m$, $D_m$($m\ge 1$)を点群とする群で，この場合は
+\[
+	0\to 0\to G \overset{\simeq }{\to} r(G)\to 0
+\]
+より$G$と一致する．
+\emptyline
+
+case 1)
+格子$G^*$が$1$次元の時，$SO(2)$の有限部分群で点群になるのは$C_1$, $C_2$で，$C_1$が点群の時が$F_1$, $C_2$が点群の時が$F_2$であった．$D_n$は$C_n$を正規部分群として含むので，
+%$O(2)$の有限部分群の分類と，鏡映が$1$次元格子を保つことより，
+この場合の点群は
+\[
+	C_1,\quad C_2,\quad
+	D_1,\quad D_2
+\]
+のいずれかとなる．
+
+\begin{figure}[htb]
+   \centering
+   \begin{minipage}{0.4\columnwidth}
+   	\centering
+   	\includegraphics{~/Documents/GitHub/bEuclideanGeo/ch2/figureGroup8.16}
+   	\caption{$C_1=\{E\}$と$D_1$}\label{}
+   \end{minipage} 
+   \begin{minipage}{0.4\columnwidth}
+   	\centering
+   	\includegraphics{~/Documents/GitHub/bEuclideanGeo/ch2/figureGroup8.15}
+   	\caption{$C_2$と$D_2$}\label{}
+   \end{minipage} 
+\end{figure}
+
+
+\begin{figure}[htb]
+   \centering
+   \begin{minipage}{0.4\columnwidth}
+      \centering
+      \includegraphics{~/Documents/GitHub/bEuclideanGeo/ch2/figureGroup8.3}
+      \caption{$F_1$}
+   \end{minipage} 
+   \begin{minipage}{0.4\columnwidth}
+      \centering
+      \includegraphics{~/Documents/GitHub/bEuclideanGeo/ch2/figureGroup8.4}
+      \caption{$F_2$}
+   \end{minipage} 
+\end{figure}
+
+点群が$D_1$または$D_2$のとき
+一個の鏡映の格子$G^*=\{T_{n\mathbf a}\}$への作用で可能なものは，
+鏡映の軸を$\ell$とするとき，$\ell$が$\mathbf a$に平行なものと，
+$\ell$が$\mathbf a$に直交したものの二つがある．
+また，鏡映でない並進鏡映の合成は平行移動なので，鏡映でない並進鏡映の軸は$\mathbf a$に平行でなければならない．また，鏡映や並進鏡映と平行移動を合成すると鏡映や並進鏡映になる．これらを使い，群の可能な作用をしらみつぶしで調べると次のことがわかる．
+
+\begin{Thm}
+格子$G^*$が$1$次元のとき，離散部分群$G$は表 \ref{7}の
+7通りある．
+\end{Thm}
+
+\begin{table}[h]
+   \centering
+   \begin{tabular}{lll} 
+  	\noalign{\hrule height 1pt}
+	 点群& 格子&7個の離散群（以下国際記号） \\ \hline \hline
+	$C_1$&一次元格子&$P1$\\ \hline
+	$C_2$ &一次元格子&$P2$\\ \hline
+	$D_1$ &一次元格子&$P1m1$, $P11m$, $P11g$\\	 \hline
+	$D_2$ &一次元格子&$P2mm$, $P2mg$\\	
+	\noalign{\hrule height 1pt}
+   \end{tabular}
+      \caption{格子が$1$次元のときの離散部分群}\label{7}
+\end{table}
+
+
+\begin{Quiz}$10$群の表示の意味を調べ，（図~\ref{F1}--\ref{F5}の図も参考にして）この分類を示せ．もちろん一部分でも構わない．
+\end{Quiz}
+
+%\cite{NS} の p179〜183に図形による分類表がある．
+%\cite{NS}は（数理内からアクセスすれば）
+%\href{https://link.springer.com/}{ここから}
+%ダウンロード可能．
+
+\emptyline
+
+
+case 2)
+格子$G^*$が$2$次元の時，$O(2)$の有限部分群の分類と結晶条件より，点群$r(G)$は
+\[
+	C_1,\quad C_2,\quad C_3,\quad C_4,\quad C_6,\quad
+	D_1,\quad D_2,\quad D_3,\quad D_4,\quad D_6
+\]
+のいずれかである．
+
+
+一次元の場合と異なり，二次元の格子自体が幾何学的情報を持っているので，格子自体の構造を求める必要がある．
+点群が$C_1=\{E\}$の群は$M_1$, 点群が$C_2=\{E,P\}$($P$は$\pi$回転 )の群は$M_2$であり，それらの格子は\term[]{一般格子(oblique lattice)}と呼ばれるもので，基本ベクトルは大きさが異なり，なす角度が
+$\pi/2$, $\pi/3$, $2\pi/3$でもないものである．
+
+\begin{figure}[htb]
+   \centering
+   \begin{minipage}{0.4\columnwidth}
+      \centering
+      \includegraphics{~/Documents/GitHub/bEuclideanGeo/ch2/figureGroup8.5}
+      \caption{$M_1$}\label{M1}
+      \end{minipage} 
+   \begin{minipage}{0.4\columnwidth}
+      \centering
+      \includegraphics{~/Documents/GitHub/bEuclideanGeo/ch2/figureGroup8.6}
+      \caption{$M_2$}\label{M2}
+   \end{minipage} 
+\end{figure}
+
+
+$D_m$($m=3, 4, 6$)は必ず$C_m$を正規部分群として含むので，既に分類済みの$M_3$, $M_4$, $M_6$に（並進）鏡映を付け加えたものである．したがって，この場合の格子$G^*$は\term[]{正六角形格子}と\term[]{正方格子}の何れかである．
+
+残りは点群が$D_1$, $D_2$の場合である．任意の2次元格子$G^*$は$\pi$回転で不変であり，$D_1$は鏡映一個から成るが$\pi$回転と合成すると新たな鏡映が生まれる．これは$D_1$の元ではないが格子$G^*$はこの対称性を持っていないといけない．従って，
+点群が$D_2$の場合に不変な格子を探せば良い．
+
+$D_2$の二つの異なる2つ鏡映の合成は$\pi$回転なので，
+二つの異なる2つ鏡映の軸は直交していて，
+鏡映と$\pi$回転の合成はもう一つの鏡映を生み出すので，この対称性のある格子を見つける必要がある．
+
+\begin{figure}[htb]
+   \centering
+   \includegraphics{~/Documents/GitHub/bEuclideanGeo/ch2/figureGroup8.7}
+   \caption{鏡映と$\pi$回転の合成}\label{}
+\end{figure}
+
+以前示したように基本ベクトルは以下のように見つけることが出来る：
+$T\in G^*$に対して$\mathbf a=T(\mathbf 0)$と置くと，$T=T_{\mathbf a}$である．$G$は離散なので，ある$\mathbf a\neq\mathbf 0\in G^*\mathbf 0$が存在して
+\[
+	\|\mathbf a\|
+	=\min_{\mathbf b\neq\mathbf 0 \in G^*\mathbf 0}\|\mathbf b\|
+\]
+このとき，仮定から
+\[
+	G^*\mathbf 0\supsetneqq \{n\mathbf a\mid n\in \mathbf Z\}
+\]
+なので，$\mathbf b\in G\mathbf 0\setminus  \{n\mathbf a\mid n\in \mathbf Z\}
+$ で
+\[
+	\|\mathbf b\|
+	=
+	\min_{
+		\mathbf c\in 
+		G^*\mathbf 0
+		\setminus  \{n\mathbf a\mid n\in \mathbf Z\}
+	}
+	\|\mathbf c\|
+\]
+と選ぶことが出来る．このとき
+\[
+	\|\mathbf a\|\le \|\mathbf b\|,
+	\quad
+	 -\frac12\|\mathbf a\|
+	 \le
+	 (\mathbf b, \mathbf a)
+	 \le 
+	 \frac12\|\mathbf a\|
+\]
+
+\begin{figure}[htb]
+   \centering
+   \begin{minipage}{0.4\columnwidth}
+      \centering
+      \includegraphics{~/Documents/GitHub/bEuclideanGeo/ch2/figureGroup8.8}
+      \caption{基本ベクトル}\label{elementaryVectors}
+   \end{minipage} 
+   \begin{minipage}{0.4\columnwidth}
+      \centering
+      \includegraphics{~/Documents/GitHub/bEuclideanGeo/ch2/figureGroup8.9}
+      \caption{基本ベクトルの特別な配置}\label{elementaryVectors2}
+   \end{minipage} 
+\end{figure}
+
+
+\begin{figure}[htb]
+   \centering
+   \begin{minipage}{0.4\columnwidth}
+      \centering
+      \includegraphics{~/Documents/GitHub/bEuclideanGeo/ch2/figureGroup8.10}
+      \caption{長方形格子}\label{}
+   \end{minipage} 
+   \begin{minipage}{0.4\columnwidth}
+      \centering
+      \includegraphics{~/Documents/GitHub/bEuclideanGeo/ch2/figureGroup8.11}
+      \caption{菱形格子}\label{}
+   \end{minipage} 
+\end{figure}
+
+$\|\mathbf a\|< \|\mathbf b\|$とする．
+$D_2$の2つの鏡映を$R$, $S$とする．仮定より$\mathbf a$は最小なので
+\[
+	R\mathbf a  = -\mathbf a,\quad\text{あるいは}\quad
+	R\mathbf a  = \mathbf a,
+\]
+が成り立つが，
+後者の場合，更に，$S\mathbf a=\mathbf a$とすると二次元の鏡映なので，$R=S$となり矛盾．よって$S\mathbf a=-\mathbf a$でなければならない．そこで名前を入れ替えて常に$R\mathbf a  = -\mathbf a$と仮定してよい．そのとき, 格子$G^*$を保存することから
+$R\mathbf b$の可能性を検討すると，図~\ref{elementaryVectors}, \ref{elementaryVectors2} より
+\[
+	R\mathbf b=\mathbf b,\quad\text{あるいは}\quad
+	R\mathbf b=\mathbf b-\mathbf a,\quad\text{あるいは}\quad
+	R\mathbf b=\mathbf b+\mathbf a
+\]
+の何れかが成り立つ．このとき
+\[
+	S\mathbf b=-\mathbf b,\quad\text{あるいは}\quad
+	S\mathbf b=-\mathbf b+\mathbf a, 
+	\quad\text{あるいは}\quad
+	S\mathbf b=-\mathbf b-\mathbf a
+\]
+最初の格子が\term[]{長方形格子(rectangular lattice)}，最後の格子が(第2番目と第3番目は実は同じ格子である)\term[]{菱形格子(rhombic  lattice)}である．なお，菱形格子の基本ベクトルとして$\mathbf a$の代わりに$\mathbf b'=\mathbf a-\mathbf b$を取ることがあることを注意しておく．
+
+
+\noindent
+ただし，$\|\mathbf a\|= \|\mathbf b\|$の場合の
+正六角形格子と正方格子はその特殊な場合と解釈できる．
+
+\begin{figure}[htb]
+   \centering
+   \includegraphics{~/Documents/GitHub/bEuclideanGeo/ch2/figureGroup8.14}
+   \caption{正六角形格子と$M_3$}\label{comp1}
+\end{figure}
+\begin{figure}[htb]
+   \centering
+   \includegraphics{~/Documents/GitHub/bEuclideanGeo/ch2/figureGroup8.13}
+   \caption{正方格子と$M_4$}\label{comp2}
+\end{figure}
+
+
+これと点群$r(G)$の格子群への作用を見ることで
+\begin{Thm}
+   格子$G^*$が$2$次元のとき，離散部分群$G$は表 \ref{17}の
+   $17$通りある．
+\end{Thm}
+
+\begin{table}[bht]
+   \centering
+   \begin{tabular}{lll} 
+  	\noalign{\hrule height 1pt}
+	 点群& 格子&17個の離散群（以下国際記号） \\ \hline \hline
+	$C_1$ &一般格子&$P1$\\ \hline
+	$C_2$ &一般格子& $P2$\\ \hline
+	$D_1$ &長方形格子&$Pm$, $Pg$, $P2gg$  \\ \hline
+	$D_2$ &長方形格子&$P2mm$, $P2gm$ \\ \hline
+	 $D_1$ &菱形格子& $Cm$\\ \hline
+	 $D_2$ &菱形格子& $C2mm$\\ \hline	 
+	 $C_4$ &正方格子&$P4$\\  \hline
+	 $D_4$ &正方格子&$P4mm$, $P4gm$\\  \hline
+	 $C_3$&正六角形格子&$P3$\\   \hline
+	 $D_3$&正六角形格子&$P3m1$, $P31m$\\  \hline  
+	 $C_6$ &正六角形格子&$P6$\\  \hline  
+	 $D_6$&正六角形格子&$P6mm$\\  
+	\noalign{\hrule height 1pt}
+   \end{tabular}
+   \caption{格子が$2$次元のときの離散部分群}\label{17}
+\end{table}
+
+
+\begin{Quiz}$11$
+   群の表示の意味を調べ（図~\ref{P1}--\ref{P6mm}も参考にし），この分類を示せ．もちろん一部分でも構わない．
+\end{Quiz}
+
+
+
+%\begin{thebibliography}{9}
+%\bibitem{NS}
+%Viacheslav V. Nikulin, Igor R. Shafarevich, \textit{Geometries and Groups}, UTX, 1996, Springer, \href{https://link.springer.com/}{ここからダウンロード可能}
+%
+%\bibitem{E}
+%C.H.マックギラフィ, 有馬 朗人 , エッシャー—シンメトリーの世界
+%
+%\bibitem{I}
+%International Tables for Crystallography: vol. A, Space-Group Symmetry
+%\end{thebibliography}
+%
+%\newpage
+
+\subsection{$2$次元結晶群の分類の図示}\label{2dim}
+ユークリッド平面の等長群の離散部分群を結晶群・装飾群といい，
+その中でも万華鏡とは生成元が鏡映のみのものを言う．
+鏡映を鏡に変え，上から見ることで実際の万華鏡を作ることが出来る．
+但し，物理的な万華鏡は光を使うので数学的な理想化とは微妙に異なる性質を持つことがある．
+
+合わせ鏡を誰が最初に行ったか定かではないが，
+1816年イギリスの物理学者ブルースター David Brewster(1781‐1868)が二枚の一方の端を合わせた合わせ鏡を上から見ることで万華鏡(kaleidoscope,  図 \ref{D5},  \ref{D6} 参照)を作ったのが万華鏡の最初であるといわれている．
+
+\emptyline
+
+国際記号(International nomenclature\cite{I})と図の作成方法について：
+
+\begin{enumerate}
+\item
+格子, $P$ :プリミティブ，
+$C$ :(centerd)面心 
+
+\item
+$1$, $2$, $3$, $4$, $6=:n$は $C_n$($ \lhd\, D_n$)を表す．
+回転の中心を色のついた円で表し，同じ色は同じ$G$-軌道を表す．
+
+\item
+$m$:鏡映 その軸を太い直線，
+$g$:並進鏡映 その軸を破線
+
+\item
+基本領域がわかりにくいときは点線で表示．
+また，三角形を基本領域の中に描き，群作用でそれがどのように移るかを図示した．幾つかには格子の基本領域を灰色で示している．
+
+\item
+キャプションに：群の国際記号, 格子, 点群（ 万華鏡として実現出来るときは万華鏡）と記す.
+\end{enumerate}
+
+
+\emptyline
+
+
+$2$次元格子を格子とする装飾群を図~\ref{P1}--\ref{P6mm}に，
+$1$次元格子を格子とする装飾群を図~\ref{F1}--\ref{F5}に挙げる．
+また，
+$0$次元格子を格子（つまり自明な平行移動$\mathbf 0$の作る群）とする$C_m$, $D_m$系列の例を図~\ref{C5}--\ref{D6}に挙げる．
+
+\begin{figure}[h]
+   \centering
+   \begin{minipage}{0.4\columnwidth}
+      \centering
+      \includegraphics{~/Documents/GitHub/bEuclideanGeo/ch2/figureGroup81.1}
+      \caption{ $P1$ ( $M_1$ ), 一般, $C_1$}\label{P1}
+   \end{minipage} 
+   \begin{minipage}{0.4\columnwidth}
+      \centering
+      \includegraphics[trim=20 0  0 35, clip]{~/Documents/GitHub/bEuclideanGeo/ch2/figureGroup81.2}
+      \caption{ $P2$ ( $M_2$ ), 一般, $C_2$}\label{}
+   \end{minipage} 
+\end{figure}
+\begin{figure}[h]
+   \centering
+   \begin{minipage}{0.4\columnwidth}
+      \centering
+      \includegraphics{~/Documents/GitHub/bEuclideanGeo/ch2/figureGroup81.3}
+      \caption{ $Pm$, 長方形, $D_1$}\label{}
+      \end{minipage} 
+   \begin{minipage}{0.4\columnwidth}
+      \centering
+      \includegraphics{~/Documents/GitHub/bEuclideanGeo/ch2/figureGroup81.4}
+      \caption{ $Pg$, 長方形, $D_1$}\label{}
+   \end{minipage} 
+\end{figure}
+
+\begin{figure}[h]
+   \centering
+   \begin{minipage}{0.4\columnwidth}
+      \centering
+      \includegraphics{~/Documents/GitHub/bEuclideanGeo/ch2/figureGroup81.5}
+      \caption{ $Cm$, 菱形, $D_1$}\label{}
+      \end{minipage} 
+   \begin{minipage}{0.4\columnwidth}
+      \centering
+      \includegraphics{~/Documents/GitHub/bEuclideanGeo/ch2/figureGroup81.6}
+      \caption{ $P2mm$, 長方形, $D_2$, 万華鏡}\label{}
+   \end{minipage} 
+\end{figure}
+
+\begin{figure}[h]
+   \centering
+   \begin{minipage}{0.4\columnwidth}
+      \centering
+      \includegraphics[trim=10 0  10 0, clip]{~/Documents/GitHub/bEuclideanGeo/ch2/figureGroup81.7}
+      \caption{ $P2gm$, 長方形, $D_2$ }\label{}
+   \end{minipage} 
+   \begin{minipage}{0.4\columnwidth}
+      \centering
+      \includegraphics[trim=20 30  10 45, clip]{~/Documents/GitHub/bEuclideanGeo/ch2/figureGroup81.8}
+      \caption{  $P2gg$, 長方形, $D_2$ }\label{}
+   \end{minipage} 
+\end{figure}
+
+\begin{figure}[h]
+   \centering
+   \includegraphics{~/Documents/GitHub/bEuclideanGeo/ch2/figureGroup81.9}
+   \caption{ $C2mm$, 菱形, $D_2$ }\label{}
+\end{figure}
+
+\begin{figure}[htb]
+	\centering
+	\includegraphics[trim=0 10  0 10, clip]{~/Documents/GitHub/bEuclideanGeo/ch2/figureGroup81.10}
+	\caption{ $P4$ ($M_4$), 正方形, $C_4$ }\label{}
+\end{figure}
+
+
+\begin{figure}[htb]
+   \centering
+   \includegraphics[trim=10 10  10 10, clip]{~/Documents/GitHub/bEuclideanGeo/ch2/figureGroup81.11}
+   \caption{ $P4mm$, 正方形, $D_4$, 万華鏡 }\label{}
+\end{figure}
+
+\begin{figure}[htb]
+   \centering
+   \includegraphics[trim=10 20  20 20, clip]{~/Documents/GitHub/bEuclideanGeo/ch2/figureGroup81.12}
+   \caption{ $P4gm$, 正方形, $D_4$ }\label{}
+\end{figure}
+
+\begin{figure}[h]
+   \centering
+   \includegraphics[trim=30 40  30 145, clip]{~/Documents/GitHub/bEuclideanGeo/ch2/figureGroup81.13}
+   \caption{ $P3$ ($M_3$), 正六角形, $C_3$ }\label{}
+\end{figure}
+
+
+\begin{figure}[h]
+   \centering
+   \includegraphics[trim=40 65  40 100, clip]{~/Documents/GitHub/bEuclideanGeo/ch2/figureGroup81.14}
+   \caption{$P3m1$($P3mm$,), 正六角形, $D_3$, 万華鏡 }\label{}
+\end{figure}
+
+\begin{figure}[h]
+   \centering
+   \includegraphics[trim=29 100  4 100, clip]{~/Documents/GitHub/bEuclideanGeo/ch2/figureGroup81.15}%
+   \caption{$P31m$, 正六角形, $D_3$ }\label{}
+\end{figure}
+
+
+
+\begin{figure}[h]
+   \centering
+   \includegraphics[trim=20 80 30 100, clip]{~/Documents/GitHub/bEuclideanGeo/ch2/figureGroup81.16}
+   \caption{$P6$（$M5$）, 正六角形, $C_6$ }\label{}
+\end{figure}
+
+
+\begin{figure}[h]
+   \centering
+   \includegraphics[trim=30 80  30 90, clip]{~/Documents/GitHub/bEuclideanGeo/ch2/figureGroup81.17}
+   \caption{$P6mm$, 正六角形, $D_6$, 万華鏡 }\label{P6mm}
+\end{figure}
+
+
+
+\begin{figure}[h]
+   \centering
+   \begin{minipage}{0.4\columnwidth}
+      \centering
+      \includegraphics[trim=0 0  0 10, clip]{~/Documents/GitHub/bEuclideanGeo/ch2/figureGroup81.21}
+      \caption{ $P1$, $\mathbf Z$, $C_1$}\label{F1}
+      \end{minipage} 
+   \begin{minipage}{0.4\columnwidth}
+      \centering
+      \includegraphics{~/Documents/GitHub/bEuclideanGeo/ch2/figureGroup81.22}
+      \caption{ $P2$, $\mathbf Z$, $C_2$}\label{}
+      \end{minipage} 
+\end{figure}
+
+\begin{figure}[h]
+   \centering
+   \begin{minipage}{0.4\columnwidth}
+      \centering
+      \includegraphics[trim=0 20 25 0, clip]{~/Documents/GitHub/bEuclideanGeo/ch2/figureGroup81.24}
+      \caption{ $P1m1$, $\mathbf Z$, $D_1$}\label{}
+   \end{minipage} 
+   \begin{minipage}{0.4\columnwidth}
+      \centering
+      \includegraphics[trim=0 20 0 -40, clip]{~/Documents/GitHub/bEuclideanGeo/ch2/figureGroup81.27}
+      \caption{$P11g$, $\mathbf Z$, $D_1$ }\label{}
+   \end{minipage} 
+\end{figure}
+
+
+\begin{figure}[h]
+   \centering
+   \includegraphics[trim=0 30 20 20, clip]{~/Documents/GitHub/bEuclideanGeo/ch2/figureGroup81.23}
+   \caption{ $P11m$, $\mathbf Z$, $D_1$, 万華鏡}\label{}
+\end{figure}
+
+
+\begin{figure}[h]
+   \centering
+   \begin{minipage}{0.4\columnwidth}
+      \centering
+      \includegraphics[trim=0 5 25 -10, clip]{~/Documents/GitHub/bEuclideanGeo/ch2/figureGroup81.26}
+      \caption{ $P2mm$, $\mathbf Z$, $D_2$, 万華鏡}\label{}
+   \end{minipage} 
+   \begin{minipage}{0.4\columnwidth}
+      \centering
+      \includegraphics[trim=5 20 0 -10, clip]{~/Documents/GitHub/bEuclideanGeo/ch2/figureGroup81.25}
+      \caption{ $P2mg$, $\mathbf Z$, $D_2$}\label{F5}
+   \end{minipage} 
+\end{figure}
+
+\begin{figure}[t]
+   \centering
+   \begin{minipage}{0.4\columnwidth}
+      \centering
+      \includegraphics{~/Documents/GitHub/bEuclideanGeo/ch2/figureGroup81.31}
+      \caption{ $C_{5}$, $\mathbf 0$, $C_{5}$}\label{C5}
+   \end{minipage} 
+   \begin{minipage}{0.4\columnwidth}
+      \centering
+      \includegraphics{~/Documents/GitHub/bEuclideanGeo/ch2/figureGroup81.32}
+      \caption{ $C_{6}$, $\mathbf 0$, $C_{6}$}\label{C6}
+   \end{minipage} 
+\end{figure}
+
+\begin{figure}[t]
+   \centering
+   \begin{minipage}{0.4\columnwidth}
+      \centering
+      \includegraphics{~/Documents/GitHub/bEuclideanGeo/ch2/figureGroup81.29}
+      \caption{ $D_{5}$, $\mathbf 0$, $D_{5}$, 万華鏡}\label{D5}
+   \end{minipage} 
+   \begin{minipage}{0.4\columnwidth}
+      \centering
+      \includegraphics{~/Documents/GitHub/bEuclideanGeo/ch2/figureGroup81.30}
+      \caption{ $D_{6}$, $\mathbf 0$, $D_{6}$, 万華鏡}\label{D6}
+   \end{minipage} 
+\end{figure}
+\clearpage
+
+\newpage
+
+
+\subsection{2次平坦多様体の分類}
+$G$を$\Is(\mathbf R^2)$の離散部分群とする．
+$G$が\term[]{自由に作用}するとは
+\[
+	\exists \mathbf x_0\in \mathbf R^2, F\in G\quad \text{ such that }
+	F(\mathbf x_0)=\mathbf x_0 \Rightarrow F=\id
+\]
+がなる立つこと．最初の条件$F(\mathbf x_0)=\mathbf x_0$は固定点を持つという条件で，
+%\term[]{作用が自由}とは固定点を持たないことである．
+$G$が自由に作用するとは，固定点を持つのは自明な作用$\id$に限るということである(英語では fixed point free )．
+\emptyline
+
+$\Is(\mathbf R^2)$の離散部分群$G$が自由に作用するとする．
+定義から，任意の$\mathbf x\in \mathbf R^2$ と $S\neq \id \in G$に対して
+\[
+	S\mathbf x\neq \mathbf x
+\]
+$G$は離散，
+つまり
+\[
+	\forall \mathbf x\in \mathbf R^2, 
+	\exists \varepsilon>0 \text{ such that }
+	B(\mathbf x, \varepsilon)\cap G\mathbf x
+	=\{\mathbf x\}
+\]
+である．
+\begin{figure}[htb]
+   \centering
+   \begin{minipage}{0.4\columnwidth}
+      \centering
+      \includegraphics{~/Documents/GitHub/bEuclideanGeo/ch2/figureGroup9.1}
+      \caption{平行移動}
+   \end{minipage} 
+   \begin{minipage}{0.4\columnwidth}
+      \centering
+      \includegraphics{~/Documents/GitHub/bEuclideanGeo/ch2/figureGroup9.2}
+      \caption{回転}
+   \end{minipage} 
+\end{figure}
+
+\begin{figure}[htb]
+   \centering
+   \begin{minipage}{0.4\columnwidth}
+      \centering
+      \includegraphics{~/Documents/GitHub/bEuclideanGeo/ch2/figureGroup9.3}
+      \caption{並進鏡映}\label{ref3}
+   \end{minipage} 
+   \begin{minipage}{0.4\columnwidth}
+      \centering
+      \includegraphics{~/Documents/GitHub/bEuclideanGeo/ch2/figureGroup9.4}
+      \caption{鏡映}
+   \end{minipage} 
+\end{figure}
+
+$\Is(\mathbf R^2)$の離散部分群$G$が自由に作用するとする．
+平行移動でない回転と鏡映は明らかに固定点を持つので$G$に含まれない．
+$\id$でない平行移動と鏡映でない並進鏡映は固定点がないので$G$に含まれる可能性がある．
+よってある$r>0$が存在して
+\[
+	r=
+	\min_{S\neq \id \in G, \mathbf x\in  \mathbf R^2}
+		\|S\mathbf x- \mathbf x\|>0
+\]
+
+関係を
+\[
+	\mathbf x\sim \mathbf y
+	\Leftrightarrow
+	\exists S \in G\text{ such that } \mathbf y=S \mathbf x
+\]
+で定めると，これは同値関係なので商空間$\mathbf R^2/G$が定まる．
+$\mathbf x$の同値類を$ [\mathbf x]$と表し，自然な射影
+\[
+	\pi: \mathbf R^2\ni \mathbf x \mapsto [\mathbf x]
+	\in\mathbf R^2/G
+\]
+を考える．$\pi$を$B(\mathbf x,r)$に制限すると同相となり，多様体\footnote{多様体とはユークリッド空間の開集合と同相な開集合で被覆されるハウスドルフ空間のことである．これらの同相を座標近傍といい，任意の二つの同相の作るユークリッド空間の開集合の間の変換が全て$C^\infty$写像のとき，それらを$C^\infty$級微分構造と喚び，そのような空間を$C^\infty$級多様体という．}の構造が入る．
+さらに内積をリーマン計量と考えると，$\mathbf R^2/G$は完備
+な平坦リーマン多様体になる．ただし，\term[]{平坦}とはガウス曲率$K$が$= 0$のことで，\footnote{これは測地線がいくらでも伸ばせるという意味での測地線完備と，リーマン多様体が距離空間として完備, つまり，任意のコーシー列が収束することと同値である}{\term[]{完備}}とは全ての測地線をどこまでも伸ばせることである．
+ただし，測地線は局所的に最短線であるのでこの場合は局所的には
+直線となっている．
+$\mathbf R^2$の直線を$\pi$で射影したものが
+$\mathbf R^2/G$の測地線であり，完備であることが分かる．
+角度も普通に内積を使ったものである．
+$B(\mathbf x,r)$内の最短線からなる測地三角形$\triangle ABC$を考えると，
+よく知っているように
+\[
+	\angle A+\angle B+\angle C=\pi
+\]
+がなりたつが，これを境界が測地線の場合のガウスボンネの公式
+\[
+\begin{split}
+	\int_{\triangle ABC}Kd\vol 
+	&= 2\pi - (\pi-\angle A)-(\pi-\angle B)-(\pi-\angle C)\\
+	&=\angle A+\angle B+\angle C-\pi%=0
+\end{split}
+\]
+と較べるとガウス曲率$K$が$=0$であることが分かる．ただし，
+$d\vol$は面積要素．
+
+$\mathbf R^2$は単連結で，$\pi$は普遍被覆空間，
+$G$は空間$\mathbf R^2/G$の基本群（または，デッキ変換群）となっているので，逆も言えて
+\begin{Q}
+$2$次元完備平坦リーマン多様体の分類
+
+$\Leftrightarrow$
+
+$\mathbf R^2$に自由に作用する$\Is(\mathbf R^2)$の離散部分群の分類．
+\end{Q}
+以下この方針で$2$次元完備平坦リーマン多様体の分類を与える．
+
+$\Is(\mathbf R^2)$の離散部分群$G$が自由に作用するとする．
+上で指摘したように回転と鏡映は明らかに固定点を持つので$G$に含まれない．つまり$G$の点群は回転を含まない．
+$\id$でない平行移動と鏡映でない並進鏡映は固定点がないので$G$に含まれる可能性があるが，$r(G)$が鏡映を含んでもそれは並進鏡映から得られたものであり，
+鏡映と鏡映の合成は回転なので，並進鏡映は含んでも同じ直線に沿ったものだけである．
+以上から
+
+\begin{Prop}
+$\Is(\mathbf R^2)$の自由な作用の離散部分群の点群は
+$C_1$, $D_1$のみ．
+\end{Prop}
+
+$G$を自由な作用のみからなる$\Is(\mathbf R^2)$の離散部分群とする．
+\emptyline
+
+case 0)
+$G^*$が$0$次元．もし，点群が$D_1$で並進鏡映を含めば，
+その合成が平行移動となるのでそのようなことはおこらない．
+鏡映もふくまないので点群は$C_1=\{E\}$のみ．
+\[
+	0\to 0\to G \overset{\simeq }{\to}0\to 0
+\]
+つまり，$G$は自明な群である．商空間は$\mathbf R^2$全体である．
+\emptyline
+
+case 1)
+$G^*$が$1$次元のとき，$\mathbf a\neq\mathbf 0$が存在して
+$G^*=\{n\mathbf a\mid n\in \mathbf Z\}$．
+
+点群が$C_1=\{E\}$だと$G^*=\{T_{n\mathbf a}\mid n\in \mathbf Z\}$となり，
+\[
+	0\to G^* \overset{\simeq }{\to} G \to 0\to 0
+\]
+なので，$G\simeq G^*$は$F_1$となる．商空間は円柱になる．
+
+\begin{figure}[htb]
+\centering
+   \begin{minipage}{0.4\columnwidth}
+      \centering
+      \includegraphics{~/Documents/GitHub/bEuclideanGeo/ch2/figureGroup9.5}
+      \caption{$F_1$}\label{F_1}
+   \end{minipage} 
+   \begin{minipage}{0.4\columnwidth}
+      \centering
+      \includegraphics{~/Documents/GitHub/bEuclideanGeo/ch2/figureGroup9.6}
+      \caption{$\mathbf R^3$の円柱}\label{cylinder}
+   \end{minipage} 
+\end{figure}
+
+\begin{figure}[htb]
+   \centering
+   \begin{minipage}{0.4\columnwidth}
+      \centering
+      \includegraphics{~/Documents/GitHub/bEuclideanGeo/ch2/figureGroup9.7}
+      \caption{$F_2$}\label{F_2}
+   \end{minipage} 
+   \begin{minipage}{0.4\columnwidth}
+      \centering
+      \includegraphics{~/Documents/GitHub/bEuclideanGeo/ch2/figureGroup9.8}
+      \caption{$\mathbf R^3$のメビウスの帯}\label{Mobius}
+   \end{minipage} 
+\end{figure}
+
+
+点群が$D_1$で並進鏡映を含めば，並進鏡映の合成は平行移動なので
+並進鏡映$S$の軸は$\mathbf a$に平行な直線$\ell$で
+$\mathbf a/2 $ 進んで$\ell$で反転するものから生成されるとして良い．
+点群は$D_1$なので他の並進鏡映は含めない．
+商空間はメビウスの帯になる(図~\ref{Mobius} ただし，$\mathbf R^3$に等長に全体を埋め込ことはできない)．
+\emptyline
+
+case 2)
+$G^*$が$2$次元の場合：
+点群が$C_1$のときは$G^*$は一般格子で
+$G$はそれに同形で$M_1$となり，商空間はトーラスになる
+(図~\ref{Tours} ただし，埋め込みはリーマン多様体としての等長なものではない)．
+
+\emptyline
+
+\begin{figure}[htb]
+   \centering
+   \begin{minipage}{0.4\columnwidth}
+      \centering
+      \includegraphics{~/Documents/GitHub/bEuclideanGeo/ch2/figureGroup9.9}
+      \caption{$M_1$}\label{M_1}
+      \end{minipage} 
+   \begin{minipage}{0.4\columnwidth}
+      \centering
+      \includegraphics{~/Documents/GitHub/bEuclideanGeo/ch2/figureGroup9.10}
+      \caption{$\mathbf R^3$のトーラス}\label{Tours}
+   \end{minipage} 
+\end{figure}
+
+\begin{figure}[htb]
+   \centering
+   \begin{minipage}{0.4\columnwidth}
+      \centering
+      \includegraphics{~/Documents/GitHub/bEuclideanGeo/ch2/figureGroup9.11}
+      \caption{長方形格子}\label{}
+   \end{minipage} 
+   \begin{minipage}{0.4\columnwidth}
+      \centering
+      \includegraphics{~/Documents/GitHub/bEuclideanGeo/ch2/figureGroup9.12}
+      \caption{菱形格子}\label{rombic}
+   \end{minipage} 
+\end{figure}
+
+
+
+点群が$D_1$のときは点群と格子の分類(表 \ref{classification})より，
+$G^*$は長方形格子か，菱形格子しかない．
+以下で菱形格子は表れないことを示す：
+$\mathbf a$, $\mathbf b$を菱形格子の基本ベクトルとする．
+並進鏡映を一種類しか含めず，同じ並進鏡映の合成は
+平行移動なので，その並進鏡映を$S$置くと
+\[
+	SS=T_{\mathbf a}, \quad SS=T_{\mathbf b}
+\]
+の何れかと仮定して良い．
+
+
+\begin{figure}[htb]
+   \begin{minipage}{0.4\columnwidth}
+      \centering
+      \includegraphics{~/Documents/GitHub/bEuclideanGeo/ch2/figureGroup9.13}
+      \caption{$T_{-\mathbf b}S$は鏡映}\label{ref}
+      \end{minipage} 
+   \begin{minipage}{0.4\columnwidth}
+      \centering
+      \includegraphics{~/Documents/GitHub/bEuclideanGeo/ch2/figureGroup9.14}
+      \caption{}\label{proof}
+   \end{minipage} 
+\end{figure}
+
+最初の場合$S$は$\mathbf a$に平行な直線$\ell$ に沿った
+$\mathbf a/2$の並進鏡映なので
+$T_{-\mathbf b}$と合成すると
+$\ell$を$-\mathbf b/2$だけ平行移動した
+直線$\ell'$についての鏡映(図~\ref{ref})になり矛盾する．
+
+次の場合$S$は$\mathbf b$に平行な直線$\ell$ に沿った
+$\mathbf b/2$の並進鏡映として良いいので
+$S\mathbf x=R\mathbf x +\mathbf b/2$と置く．
+$r(G)$は$G^*$に線形に作用しているので
+$R\mathbf a$は格子点でないといけないが，
+$\|\mathbf a\|=\|\mathbf b\|$, つまり, 
+$\mathbf 0$と$\mathbf a$と$\mathbf b$が正三角形の時を除いて一致しない(図~\ref{proof})．しかし，この時は$\mathbf a$が$\mathbf b/2$の真上にあるので，
+最初と同じ配置になっていてやはり起こりえない．
+
+点群が$D_1$のときは$G^*$は長方形格子で$G^*$は
+直交する$\mathbf a$, $\mathbf b$で生成され（大小関係はここでは無視し）$\mathbf a$に平行な直線に沿った
+$\mathbf a/2$の並進鏡映$S$を使って
+\[
+	G =\langle S, T_{\mathbf b}\rangle
+\]
+となり，商空間はクラインの壺になる（ 図~\ref{klein1}, \ref{klein2} ただし，この場合も多様体として$\mathbf R^3$に埋め込むことは出来ない）．
+
+
+\begin{figure}[htb]
+   \begin{minipage}{0.4\columnwidth}
+      \centering
+      \includegraphics{~/Documents/GitHub/bEuclideanGeo/ch2/figureGroup9.15}
+      \caption{平坦クラインの壺}\label{klein1}
+   \end{minipage} 
+   \begin{minipage}{0.4\columnwidth}
+      \centering
+      \includegraphics{~/Documents/GitHub/bEuclideanGeo/ch2/figureGroup9.16}
+      \caption{$\mathbf R^3$のクラインの壺}\label{klein2}
+   \end{minipage} 
+\end{figure}
+
+纏めると
+\begin{Thm}
+$2$次元の完備平坦なリーマン多様体は次のいずれか：
+\[
+	\text{平面}\mathbf R^2, \quad
+	\text{円柱}, \quad
+	\text{メビウスの帯}, \quad
+	\text{トーラス}, \quad
+	\text{クラインの壺}
+\]
+ただし，メビウスの帯とクラインの壺は向き付け不可能%\footnote{任意の座標変換のヤコビアンが正になるような微分構造をもつ多様体が向き付け可能多様体で，そうできない多様体を向き付け不可能多様体という．}
+である．
+\end{Thm}
+
+\section{結晶群の分類の歴史と発展}
+この\S~\ref{class_2dim}で述べた$n=2$の装飾群の分類については
+結果自体は群論が始まる19世紀よりはるか前から知られており，
+14世紀に建てられたAlhambra宮殿の壁面の紋様に全て現れているそうである(\cite{NS} p154, ただし，
+一般格子のP1の対称性しか持たない模様は発見されていないようなので
+「ほとんど全て」が正しい表現であろう)．
+
+$n= 3$の場合の分類：
+19世紀の終わりにフョードロフ，シェンフリース，
+バーローの3人によって互いに独立に，
+格子群が14個，結晶群が
+219個(向きを区別すると230個)あることが示された．
+これらは現実の結晶の構造と関係していて，
+20世紀になり結晶のX線回折(図~\ref{Xray})や場の量子論に応用された(\cite{I}の$125$.結晶群の部分に数学的にもう少し詳しい解説がある,
+\cite{IT}も参照)．
+$n=4$の時は結晶群の個数が$4783$個であることも示されている．
+
+
+\begin{figure}[htb]
+	\centering
+	\includegraphics[width=8cm]{~/Documents/GitHub/bEuclideanGeo/ch2/Poederxrd.JPG}
+	\caption{\href{https://commons.wikimedia.org/wiki/File:Poederxrd.JPG} Sokpopje at Dutch Wikipedia, CC BY-SA 3.0
+	\href{ http://creativecommons.org/licenses/by-sa/3.0/}{\ccbysa}}\label{Xray}
+\end{figure}
+
+一般$n\ge 5$次元の場合：
+$\mathbf R^n$の結晶群は有限個かというのが
+ヒルベルトの第18問題と呼ばれる問題(の一つ)であり，
+1910年ビーベルバッハにより肯定的に解決された．
+この場合も完全系列
+\[
+	0\to G^*\overset{i}{\to} G \overset{r}{\to} r(G)\to 0
+\]
+の考察が重要であった．ただし$r(G)$は$O(n)$の有限部分群になり，$G^*=G\cap T(\mathbf R^n)$は格子群で$r(G)$が作用している\thetag{\cite{H}, \cite{Ch}}．
+
+\begin{Quiz}
+シャールの定理により $\mathbf R^2$ の等長変換は分類された．
+そこで，$\mathbf R^3$ の等長変換はどのように分類されるかを示し，証明を与えよ\thetag{\cite{NS}, \cite{Y}}．
+\end{Quiz}
+
+\begin{Quiz}
+$\mathbf R^3$ を張る格子の
+点群（つまり，その格子を不変にする$O(3)$ の有限群、$32$個）の分類を与えよ\thetag{\cite{B}, \cite{Y}}．
+
+ヒント：$O(3)$ の有限群の分類のなかで， 結晶条件を満たすものを全て見つけよ．
+\end{Quiz}
+
+\begin{Quiz}
+それらの点群で不変となる（$14$個の）格子を分類せよ\thetag{\cite{B}, \cite{Y}}.
+\end{Quiz}
+
+\begin{Quiz}
+$3$ 次元コンパクト平坦多様体（$10$個）の分類を与えよ\thetag{\cite{NS}}.
+\end{Quiz}
+
+%\begin{thebibliography}{99}
+%\bibitem{B}
+%Buerger,
+%\newblock {\em Intorduction to crystal geometry}.
+%\newblock  McGraw-Hill, 1974.
+%
+%
+%\bibitem{C}
+%L.~Charlap, 
+%\newblock {\em Bieberbach groups and flat manifolds}.
+%\newblock  Springer,
+%\newblock 1986, 
+%\href{https://link.springer.com/}{ここからダウンロード可能}
+%
+%\bibitem{H} 
+%AMS,
+%\newblock  {\em Mathematical developments arising from Hilbert Problems, part 2}, 
+%\newblock 1974
+%\bibitem{I} 
+%日本数学会監修, 
+%\newblock 岩波数学辞典 第四版, 
+%\newblock 岩波書店, 
+%\newblock 2007
+%
+%\bibitem{IT}
+%\newblock {\em International Tables for Crystallography: vol. A, Space-Group Symmetry, new edition},
+%\newblock Springer, 
+%\newblock 2017.
+%
+%\bibitem{NS}
+%Viacheslav V. Nikulin, Igor R. Shafarevich, \textit{Geometries and Groups}, UTX, 1996, Springer, 
+%\href{https://link.springer.com/}{ここからダウンロード可能}
+%
+%\bibitem{Y}
+%P.~Yale,
+%\newblock \textit{Geometry and symmetry}.
+%\newblock  Dover.
+%
+%\bibitem{K}
+%スピーロ ; 青木 薫 訳,
+%\newblock {ケプラー予想 〜四百年の難問が解けるまで〜}
+%\newblock  新潮社.
+%\end{thebibliography}
+
+ 
+
+
+

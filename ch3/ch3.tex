@@ -1,0 +1,3665 @@
+%\documentclass[a4paper,12pt]{amsart}
+%\usepackage[dvipdfmx]{graphicx,xcolor,hyperref}%graphics
+%\usepackage{float}
+%\usepackage{amsmath}
+%\usepackage{verbatim}
+%\usepackage{latexsym}
+%\usepackage{amssymb}
+%\usepackage{ccicons}
+%%\usepackage{emath}
+%%\usepackage{maplestd2e}
+%%\usepackage{fancybox}%enclose by box
+%\hypersetup{% hyperrefオプションリスト
+%setpagesize=false,
+% bookmarksnumbered=true,
+% bookmarksopen=true,
+% colorlinks=true,
+%linkcolor=red,
+%citecolor=blue,
+%} 
+%
+%\renewcommand{\figurename}{図}
+%\renewcommand{\proofname}{証明}
+%\renewcommand{\tablename}{表}
+%\newtheorem*{PP}{授業の目標}
+%\newtheorem*{Thm}{定理}
+%\newtheorem*{Prop}{命題}
+%\newtheorem*{Q}{考えたい課題}
+%\newtheorem*{Quiz}{問題}
+%
+%\theoremstyle{definition}
+%\newtheorem*{Def}{定義}
+%
+%\theoremstyle{remark}
+%\newtheorem*{ex}{例}
+%\newtheorem*{exQ}{例題}
+%
+%\def\emptyline{\vspace{12pt}}
+%\DeclareMathOperator{\const}{const}
+%\DeclareMathOperator{\Ker}{Ker}
+%\DeclareMathOperator{\Image}{Im}
+%\DeclareMathOperator{\id}{id}
+%\DeclareMathOperator{\Is}{Is}
+%\DeclareMathOperator{\stab}{stab}
+%\DeclareMathOperator{\tr}{tr}
+%\DeclareMathOperator{\vol}{vol}
+%
+%\begin{document}
+%%\pagestyle{empty}
+%\begin{flushright}
+%
+%2024年12月16日
+%
+%九大・数理 大津幸男
+%\end{flushright}
+%
+%\begin{center}
+%\large{微分幾何学大意・数学特論4\small{
+%\href{https://creativecommons.org/licenses/by-nc-nd/4.0/}{\ccbyncnd}}\par ---遠近法と3DCGと射影幾何学1---}
+%\end{center}
+%
+
+\chapter{ユークリッド幾何学から生まれた様々な幾何学}
+\section{透視投影と3DCGと線形代数}
+3次元コンピューターグラフィックス(以下3DCG)の数学的側面とプログラミング的側面が線型代数や行列の計算に関連していること，更にそれが射影幾何学や射影空間に関係していることを説明したい．
+
+\subsection{3DCGと遠近法}
+3DCGは現実の見え方をシュミレートしたものである．
+ここではピラミッドの写真(図\ref{pyramid})を使って3DCGの原理を図示する(図\ref{model})．
+\begin{figure}[htb]
+   \centering
+   \includegraphics[width=7.5cm]{~/Documents/GitHub/bEuclideanGeo/ch3/2428333990_d3c913b2b0_c.jpg}
+   \caption{\href{https://www.flickr.com/photos/girolame/2428333990/in/photolist-4GvJhV-4GzR6q-68Y3JE-4GzTym-5DUvzA-4Gvzcg-5UXT1K-tAvViv-dmRS35-6j7Tdf-65175S-7hkV8W-7ZP8Wc-f7stxJ-6kADQr-92FxE-9MpvoF-7DWyqL-7DWzkj-7trRb8-7kV2Kh-74NeWm-6fnJRK-gBqRa-A4k2s-5DLk1m-A4jWP-6JPcdB-erLBS-7KLGJq-fWSgy-7bxjK9-5DRPd1-dduMZ-5DUGgw-6iWpt7-oueimu-oeLdfu-6GS2bv-6JCrjr-5Phx2c-7KGHVB-29jwn5-6JQBeo-oeDc4c-5DUBKb-dvw1V-5UXWtP-ouBgy3-gBn4K}{Giza Pyramids} by Jerome BonFollow 
+   \href{https://creativecommons.org/licenses/by/2.0/?ref=openverse}{\ccby}}\label{pyramid}
+\end{figure}
+カメラでは像はレンズの後の壁にあり，しかも180°回転しているためイラストを作図しづらいので（他にもレンズがあると被写界深度が問題になることや，人間の目の構造上網膜が平坦でないことによるカメラや遠近法とのずれなど微妙な違いが有る．詳しくは図~\ref{pinCamera}, \ref{camera}, \ref{eye}を参考にしてほしい )，以下では遠近法を用いた作図をつかい，画家の視点から(透明な)キャンバス面への被写体を投影したものを考える．
+\begin{figure}[htb]
+   \centering
+   \begin{minipage}{0.4\columnwidth}
+      \centering
+      \includegraphics{~/Documents/GitHub/bEuclideanGeo/ch3/figure.14}
+      \caption{カメラ・オブスキュラ%フェスメール？
+      }\label{pinCamera}
+   \end{minipage} 
+   \begin{minipage}{0.4\columnwidth}
+      \centering
+      \includegraphics{~/Documents/GitHub/bEuclideanGeo/ch3/figure.15}
+      \caption{カメラ}\label{camera}
+   \end{minipage} 
+\end{figure}
+\begin{figure}[htb]
+   \centering
+   \includegraphics{~/Documents/GitHub/bEuclideanGeo/ch3/figure.18}
+   \caption{目---カメラとの微妙な違い}\label{eye}
+\end{figure}
+
+光は直進するので，視点と被写体上の点を結ぶ直線(視線)とキャンバスの平面との交わりを求めることが遠近法になる．
+%これは連立一次方程式を解くことにあたる．
+%特に，空間内の直線と視点を結ぶ直線全体は空間内の平面であるので，キャンバスとの交わりはキャンバス上の直線に投影される．
+
+\begin{figure}[htb]
+   \centering
+   \includegraphics{~/Documents/GitHub/bEuclideanGeo/ch3/figure.2}
+\caption{遠近法(透視投影)}\label{model}
+\end{figure}
+
+\subsection{(透視)投影}
+\term[]{遠近法(perspective)}でどのように直線が描かれるかを説明したい：
+原点$\mathbf 0$に視点があるとする．
+$(x,y,z) \in \mathbf R^3$  ($x\neq 0$ )とし，
+ここでは，$x$軸の正の方向に視線を向け，
+$x=1$ にキャンバスがある場合を考える．
+$U=\{(x,y,z)\in \mathbf R^3\mid x\neq 0\}$として各点$(x,y,z)$と原点$\mathbf 0$を結ぶ直線と$x=1$の面の交点を求める，つまり，連立一次方程式を解くと$(1,\frac yx,\frac zx)$がわかる(図\ref{perspective})．その結果を与える写像
+\[
+   P(x,y,z)=\biggl(\frac yx,\frac zx\biggr)\qquad (x,y,z)\in U
+   \tag{*}\label{projection}
+\]
+$P:U\to \mathbf R^2$が(透視)\term[]{投影}(あるいは，\term[]{射影})である．
+この$ \mathbf R^2$, あるいは，$ \mathbf R^2$を $\mathbf R^3$の$x=1$の面とみたものを\term[]{投影面}と言う(図\ref{model})．
+
+\begin{figure}[htb]
+   \centering
+   \begin{minipage}{0.4\columnwidth}
+      \centering
+      \includegraphics{~/Documents/GitHub/bEuclideanGeo/ch3/figure.5}
+      \caption{透視投影}\label{perspective}
+   \end{minipage} 
+   \begin{minipage}{0.4\columnwidth}
+      \centering
+      \includegraphics{~/Documents/GitHub/bEuclideanGeo/ch3/figure.17}
+      \caption{直線の射影}\label{perspective2}
+   \end{minipage} 
+\end{figure}
+
+定義域が$U\neq \mathbf R^3$なので線形写像にならないことは明らかだが
+\[
+   P(ax,ay,az)=P(x,y,z) \quad a\neq0
+\]
+という性質がある．
+\eqref{projection}は$y$, $z$については線形写像で，線形写像を少しひねっただけの簡単なものである．
+
+$ \mathbf R^3$で点$(x,y,z)$から向き$(u,v,w)$に向かう直線は
+\[
+   (x,y,z)+t(u,v,w)
+\]
+と表せるので
+\[
+   P(x+ut,y+vt ,z+wt)=\biggl(\frac{y+vt}{x+ut},\frac{z+wt}{x+ut}\biggr)\tag{!}
+\]
+これは$t=0$で$(\frac yx,\frac zx)$を通り，$u\neq 0$のとき$t\to \infty$で$(\frac{v}{u},\frac{w}{u})$に収束する．この$(\frac{v}{u},\frac{w}{u})$を\term[]{消失点(vanishing point)}という．
+差をみると
+\[
+   \biggl(\frac{y+vt}{x+ut},\frac{z+wt}{x+ut}\biggr)
+   =
+   \biggl(\frac{v}{u},\frac{w}{u}\biggr)
+   +
+   \frac{1}{x+ut}\biggl(y-x\frac{v}{u},z-x\frac{w}{u}\biggr)
+\]
+となり，最後の項は定数ベクトルを$\tfrac{1}{x+ut}$倍したものなので，投影面内で$(\frac yx,\frac zx)$を通る直線で消失点へ至るものであることが分かる(図\ref{perspective2}に初等幾何学的な証明をあげた)．
+線形写像は直線を直線に写すが，投影は直線を直線の一部(半直線)に写すことがわかった．
+また，平行な直線は同じ消失点に収束することも分かる．
+さらに，$u=0$のとき
+$(\frac{y+vt}{x},\frac{z+wt}{x})$となり，等速の直線運動になる．
+
+
+遠近法の数学と直接関係ないが，地面や海面を表す平面が絵を描く（写真をとる）場合には大切になる．
+地面で画家やカメラマンがたっている点を立点，その真上に視点をとり立点と視点を通る軸を$z$軸とする．地面は通常$z=\const$に取る．（これは必ずしも必要でないが）地面に平行などちらかへの視線向きを$x$軸，それに直交する（右手系になる）軸を$y$軸ととると上で考えた座標系と一致する．
+地面$z=\const$の消失点全体が地平線をなす．
+遠近法の基本的な手段は地平線上の
+いくつかの消失点とそこに収束する平行直線群を見いだし，それを元に描画することである(図~\ref{1VanishingPoint}, \ref{2VanishingPoint})．もちろん，地面に垂直な線は$z$軸に平行に描かれる．
+
+\begin{figure}[htb]
+   \centering
+   \includegraphics{~/Documents/GitHub/bEuclideanGeo/ch3/figure.7}
+   \caption{1消失点の平行直線群}\label{1VanishingPoint}
+\end{figure}
+
+\begin{figure}[htb]
+   \centering
+   \includegraphics{~/Documents/GitHub/bEuclideanGeo/ch3/figure.16}
+   \caption{平行直線群の作成}\label{parallelLines}
+\end{figure}
+
+\begin{figure}[htb]
+   \centering
+   \includegraphics[trim=13  0 305 0 , clip]{~/Documents/GitHub/bEuclideanGeo/ch3/figure.8}%
+   \caption{2消失点の平行直線群}\label{2VanishingPoint}
+\end{figure}
+
+よく見られる一消失点と平行直線群($u\neq0$, $v=w=0$ に対応)と直交する交わらない平行直線群($v\neq0$, $u=w=0$ に対応)をどう作図するかを説明する：
+平面を$z=-1$に固定する．この平面とカンバスの最底辺$\ell_1$を固定する．その平面上の$\mathbf R^3$の中での直交する平行直線は
+\[
+    (0,y_0,-1)+s(1,0,0),\quad (x_1,y_1,-1)+t(0,1,0),
+\]
+なので射影面では
+\[
+   \biggl(\frac{y_0}{s},\frac{-1}{s}\biggr),\quad 
+   \biggl(\frac{y_1+t}{x_1},\frac{-1}{x_1}\biggr)
+\]
+と表せる．
+まず，直線群は幅$a$, $b$に並んでいるとし，
+\[
+   y_0 = am,\quad
+   x_1 = bn\quad  m\in \mathbf Z, n\in \mathbf N
+\]
+と取り
+\[
+   {\ell'}_m:\biggl(\frac{am}{s},\frac{-1}{s}\biggr)\quad
+    (s\ge b),\quad
+   \ell_n: \biggl(\frac{y_1+tv}{bn},\frac{-1}{bn}\biggr)
+\]
+と置く．${\ell'}_n$の作図はカンバスの最底辺を表す直線$\ell_1$の$0$を通る等分点と消失点を結べば良い．カンバスの外については後にコメントする．
+
+${\ell'}_m$と$\ell_n$の交点は
+\[
+   s=bn
+\]
+であり，
+$n$, $m$はインデックスに過ぎないので，${\ell'}_n$では
+\[
+   s=b n\quad 
+   \Rightarrow \quad
+   \frac{an}{s} = \frac{a}{b}
+\]
+なので射影面上で$y= \frac{a}{b} $と${\ell'}_n$, $y=- \frac{a}{b} $と${\ell'}_{-n}$の交点を求め，それを通る直線として${\ell}_n$を作図できる．$\ell_1$を$\ell_2$に替え，
+その上で得られた等分点を拡張することで，画面内でどこまでも続けられる．
+
+1消失点を使った構図(図~\ref{1VanishingPoint}), 
+2消失点を使った構図(図~\ref{2VanishingPoint})，3消失点使った構図(図~\ref{3VanishingPoint})とその写真例を挙げる(図~\ref{ex1}, \ref{ex2}, \ref{ex3})
+
+\begin{figure}[htb]
+   \centering
+   \includegraphics[width=7.5cm]{~/Documents/GitHub/bEuclideanGeo/ch3/8367600279_ac56e7454d_b.jpg}
+   \caption{写真例 \href{https://www.flickr.com/photos/31583394@N04/8367600279}{Vanishing Storm} by David Kingham\href{https://creativecommons.org/licenses/by-nd-nc/2.0/jp/?ref=openverse.}{\ccbyncnd}}\label{ex1}
+\end{figure}
+\begin{figure}[h]
+   \centering
+   \includegraphics[width=8cm]{~/Documents/GitHub/bEuclideanGeo/ch3/9110846773_dad72ed427_k.jpg}
+   \caption{写真例 \href{https://www.flickr.com/photos/30996501@N07/9110846773}{MEZQUITA CATEDRAL DE CORDOBA 6378} by Jose Javier Martin Espartosa \href{https://creativecommons.org/licenses/by-nd-nc/2.0/jp/?ref=openverse.}{\ccbyncsa}}\label{ex2}
+\end{figure}
+
+\begin{figure}[htb]
+   \begin{minipage}{0.5\columnwidth}
+      \centering
+      \includegraphics{~/Documents/GitHub/bEuclideanGeo/ch3/figure.9}
+      \caption{3消失点を使った直方体の作図}\label{3VanishingPoint}
+   \end{minipage} 
+   \begin{minipage}{0.4\columnwidth}
+      \centering
+      \includegraphics[width=4cm]{~/Documents/GitHub/bEuclideanGeo/ch3/145347226_76283ffb36_c.jpg}
+      \caption{写真例 \href{https://www.flickr.com/photos/46965656@N00/145347226}{Barcelona - Gaudi building} by Erick \href{https://creativecommons.org/licenses/by-nd-nc/2.0/jp/?ref=openverse.}{\ccbyncnd}}\label{ex3}
+   \end{minipage} 
+\end{figure}
+
+\begin{figure}[htb]
+   \centering
+   \begin{minipage}{0.4\columnwidth}
+      \centering
+      \includegraphics[width=5.8cm]{~/Documents/GitHub/bEuclideanGeo/ch3/figure.10}
+      \caption{透視投影と平行投影}\label{paraPerspective1}
+   \end{minipage} 
+   \begin{minipage}{0.4\columnwidth}
+      \centering
+      \includegraphics[width=4.7cm]{~/Documents/GitHub/bEuclideanGeo/ch3/figure.11}
+      \caption{平行投影}\label{paraPerspective2}
+   \end{minipage} 
+\end{figure}
+
+
+投影面を$x=0$に止めて，あらためて視点を$(-a,0,0)$にとり，$a\to \infty$として無限遠まで動かしたとき得られる投影を\term[]{平行投影}という．このとき透視投影の極限として
+\[
+   \biggl(\frac{ a}{x+a}y,\frac{ a}{x+a}z\biggr)
+   \to (y,z)\qquad (a\to \infty)
+\]
+となる(図\ref{paraPerspective1}, \ref{paraPerspective2})ので，これは線形写像である．ただし，平行投影は挿絵(この資料の図もそうである)図学等ではよく使われるが，3DCGでは現実感を出すため透視投影が主に使われる．
+
+\subsection{反射，拡散と影}
+ここから3DCGに関連する話題に移る．
+まず大事なのは光とその反射面の取り扱いである．ここでは屋外なので光源として太陽を考えている．
+スタジオ撮影では多数のライトを用い，光の強度は距離の二乗に反比例することも考慮する必要がある．逆に太陽の場合は無限の彼方にあると考え，距離に依らない強度を持つとする．
+光源から出た光は直進し
+被写体の面で反射して，また直進してキャンバスと視点に到達するので，
+光の平面での\term[]{鏡面反射}を計算する必要がある．
+これは与えられた平面での光源の鏡映を求め，その点と視点を結ぶ直線と平面の交点を求めることで求まる(図12)．与えられた平面が$z=0$とすると，点$(x,y,z)$のこの平面での鏡映は行列を用いて
+\[
+   \begin{pmatrix}
+      1&0&0\\
+      0&1&0\\
+      0&0&-1\\
+   \end{pmatrix}
+   \begin{pmatrix}
+      x\\
+      y\\
+      z\\
+   \end{pmatrix}
+   =
+   \begin{pmatrix}
+      x\\
+      y\\
+      -z\\
+   \end{pmatrix}
+\]
+
+
+\begin{figure}[htb]
+   \centering
+   \includegraphics{~/Documents/GitHub/bEuclideanGeo/ch3/figure.3}
+   \caption{鏡映と鏡面反射, 拡散}\label{ref}
+\end{figure}
+
+\noindent
+と表せる．
+光源の位置を$(x,y,z)$とし，視点の位置を$(x_0,y_0,z_0)$
+とすると途中の点は
+\[
+   \begin{split}
+      &t(x, y, -z)+(1-t)(x_0, y_0, z_0)\\
+      =&
+      (tx+(1-t)x_0, ty+(1-t)y_0,-tz+(1-t)z_0)
+   \end{split}
+\]
+と表される．反射する点では$-tz+(1-t)z_0=0$なので，連立一次方程式を解くと
+\[
+   \biggl(\frac{zx_0+z_0x}{z+z_0},\frac{zy_0+z_0y}{z+z_0},0 \biggr)
+\]
+のように反射点が求まる(図 \ref{ref})．
+さらには，物理特性である面の色・材質による拡散も計算する必要がある．
+
+\begin{figure}[htb]
+   \centering
+   \includegraphics{~/Documents/GitHub/bEuclideanGeo/ch3/figure.20}
+   \caption{隠面消去・シェーディング・影付け}\label{shadow}
+\end{figure}
+
+また，一つの物体の見えない部分や，二つの物体の重なりを計算し遠くの物体の隠れた部分を消す\term[]{隠面消去}や，
+光源によって照らされた部分の明るさや色を求める
+\term[]{シェーディング}, 
+影をシュミレートする\term[]{影付け}も必要になる(図 \ref{shadow})．
+
+なお，遠近法には\term[]{空気遠近法}という，遠くのものを
+薄く描いて遠近感を出す方法も知られている．今回は詳しい説明は与えないが，図 \ref{1VanishingPoint}, \ref{2VanishingPoint} はその原理に
+基づいて作図されている．
+
+\subsection{アファイン変換}
+$3$次元の\term[]{アファイン変換}とは
+\[
+   \begin{split}
+      \begin{pmatrix}
+         c_1\\
+         c_2\\
+         c_3\\
+      \end{pmatrix}
+      +
+      \begin{pmatrix}
+         a_{11}&a_{12}&a_{13}\\
+         a_{21}&a_{22}&a_{23}\\
+         a_{31}&a_{32}&a_{33}\\
+      \end{pmatrix}
+      \begin{pmatrix}
+         x_1\\
+         x_2\\
+         x_3\\
+      \end{pmatrix}
+      &=
+      \begin{pmatrix}
+         c_1 + a_{11}x_1 + a_{12}x_2+ a_{13}x_3\\
+         c_2 + a_{21}x_1 + a_{22}x_2+ a_{23}x_3\\
+         c_3 + a_{31}x_1 + a_{32}x_2+ a_{33}x_3\\
+      \end{pmatrix}\\
+      &=
+      A\mathbf x + \mathbf c
+   \end{split}
+\]
+となる写像で，平行移動と行列の積の合成である．
+通常$A=(a_{ij})
+%\begin{pmatrix}
+%        a_{11}&a_{12}&a_{13}\\
+%        a_{21}&a_{22}&a_{23}\\
+%        a_{31}&a_{32}&a_{33}\\
+% \end{pmatrix}
+$
+は正則行列と仮定する．特に，合同変換はアファイン変換である．
+以後アファイン変換はCGの作成で何度も現れる．
+
+これを直線
+\begin{equation*}
+   \mathbf x = \mathbf a + t \mathbf u
+ \end{equation*}
+に適用すると
+\[
+   A(\mathbf a + t \mathbf u)+\mathbf c
+   =
+   \mathbf c+A\mathbf a+tA\mathbf u\quad A\mathbf u\neq \mathbf 0
+\]
+つまり，アファイン変換は直線全体を直線全体に写し，平行な直線を平行な直線に写す．
+また，直線上の三点の比を同じ比の線分上の点に写すことも分かる．
+
+行列の積で
+\[
+   \begin{pmatrix}
+      1&0&0&0\\
+      c_1&a_{11}&a_{12}&a_{13}\\
+      c_2&a_{21}&a_{22}&a_{23}\\
+      c_3&a_{31}&a_{32}&a_{33}\\
+   \end{pmatrix}
+   \begin{pmatrix}
+      1\\
+      x_1\\
+      x_2\\
+      x_3\\
+   \end{pmatrix}
+   =
+   \begin{pmatrix}
+      1\\
+      c_1 + a_{11}x_1 + a_{12}x_2+ a_{13}x_3\\
+      c_2 + a_{21}x_1 + a_{22}x_2+ a_{23}x_3\\
+      c_3 + a_{31}x_1 + a_{32}x_2+ a_{33}x_3\\
+   \end{pmatrix}
+\]
+となるので，その第2第3第4成分がアファイン変換に対応している．
+これはアファイン変換の行列の積を使った表現であり，
+その意味でアファイン変換は線形変換に近いと言えるが，第1成分が$1$に固定されているので，これは線形写像ではない．このような座標系を\term[]{非同次座標系}という．これは行列の計算なのでコンピュータでの組織的な計算に適している．
+
+\subsection{モデリング，ビューイングパイプライン}
+\begin{figure}[htb]
+   \centering
+   \includegraphics{~/Documents/GitHub/bEuclideanGeo/ch3/figure.4}
+   \caption{ビューイングパイプライン}\label{viewingPipeline}
+\end{figure}
+
+
+コンピュータの中で被写体の曲面の三次元データを作ることを\term[]{モデリング}という．これは\term[]{モデリング座標系}での，ピラミッドのようなポリゴンの頂点とそれらの張る辺，三角形の作る面の幾何学的情報と色や質感等の物理情報の組からなる．
+シュミレートしたい被写体とカメラの位置・向きの指定された三次元(データの)世界を\term[]{ワールド座標系}という．幾つかのモデリングのデータを適当なアファイン変換%(下の補足Aで示すように行列の積で表現される)
+でうつすことで，ワールド座標系にシュミレートしたい被写体のデータを移している(図\ref{viewingPipeline})．
+ここでは，2つのピラミッドを一つのデータから構成している．
+ワールド座標系の中での視点の座標と視線の方向を定めることで，
+その視点から見た座標系が定まるが，
+それはワールド座標系をアファイン変換したものであり\term[]{カメラ座標系}という．
+視点から投影面に（透視投影した）二次元座標系を\term[]{投影座標系}という．
+ただし
+実際は投影座標系の中の最終的な画面出力となる
+\term[]{ウィンドウ}と呼ばれる長方形部分のみを計算すればよい．
+
+ワールド座標系とカメラ座標系のデータ及び，光源，反射，陰影等からウィンドウへの投影を計算し，ウィンドウ内のデジタルデータを作図するのを\term[]{レンダリング}という．
+これらを少しずつ動かしながら繰り返すことでアニメーションが構成できる．
+視点を動かし，カメラワークをシュミレートすることも可能である．
+このような幾つもの操作の流れを\term[]{ビューイングパイプライン}という．
+これらのことから，線型代数が3DCGの中で占める役割の大きさが分かると思う．
+
+
+\emptyline
+CGに興味を持った人には\cite{CG}, 遠近法の歴史については\cite{D},
+具体的な遠近法の絵の描き方については\cite{3DT}, \cite{RS}, \cite{RSII} などをお奨めする．
+
+%   \begin{thebibliography}{9}
+%      \bibitem{CG}
+%         画像情報教育振興協会, コンピューターグラフィックス[改訂新版], 2015.
+%      
+%      \bibitem{D}
+%         下村 耕史訳編, アルブレヒト・デューラー「測定法教則」注解, 中央公論美術出版, 2008.
+%      
+%      \bibitem{3DT}
+%         3DTotal.com, 
+%         デジタルアーティストが知っておくべきアートの原則 改訂版 -色、光、構図、解剖学、遠近法、奥行き 改訂版, 
+%         2021.
+%      
+%      \bibitem{RS}
+%         スコット・ロバートソン, 
+%         スコット・ロバートソンのHow to Draw -オブジェクトに構造を与え、実現可能なモデルとして描く方法, 
+%         2014.
+%         
+%      \bibitem{RSII}
+%         スコット・ロバートソン, 
+%         スコット・ロバートソンのHow to Render：アイデアを明確に伝える 光と影、反射の描き方, 2015.
+%   \end{thebibliography}
+
+%\newpage
+
+\section{射影幾何学と射影空間}
+\subsection{投影を使った定理}
+デザルグは1636年に出版した本で遠近法の幾何学的研究を発表し，射影幾何学の礎を作った．3つの直線が\term[]{共点}とは3つの直線が同じ点を通ることである．3つの点が\term[]{共線}とは3つの点が同じ直線を通ることである．
+
+\begin{Thm}[デザルグの定理]
+平面内の
+二つの三角形$\triangle ABC$, $\triangle A'B'C'$が与えられ，
+三つの直線$AA'$, $BB'$, $CC'$が共点とする．
+直線$AB$と$A'B'$の交点を$P$,
+直線$BC$と$B'C'$の交点を$Q$,
+直線$CA$と$C'A'$の交点を$R$ とすると，
+$P$, $Q$, $R$は共線になる．
+\begin{figure}[hb]
+	\centering
+	\includegraphics{~/Documents/GitHub/bEuclideanGeo/ch3/figureProje2.1}
+	\caption{デザルグの定理}\label{}
+\end{figure}
+\end{Thm}
+\begin{proof}
+以下に投影を使った証明を述べる．
+空間の中に三角形$\triangle ABC$, $\triangle A'B'C'$が与えられ，
+三つの直線$AA'$, $BB'$, $CC'$が同じ点$O$を通るとする．
+$\triangle ABC$を含む平面$H$を取ると
+直線$AB$, $BC$, $CA$はこの平面$H$に含まれる．
+同様に$\triangle A'B'C'$を含む平面$H'$を取ると
+直線$A'B'$, $B'C'$, $C'A'$はこの平面$H'$に含まれる．
+平面$H$と$H'$ 交わりの直線$\ell$は$P$, $Q$, $R$を含んでいる．
+
+この状況を平面$H$と$H'$と異なる平面をとり，
+そこに投影するとデザルグの定理が得られる．
+\end{proof}
+
+\begin{figure}[htb]
+   \centering
+   \begin{minipage}{0.4\columnwidth}
+      \centering
+      \includegraphics{~/Documents/GitHub/bEuclideanGeo/ch3/figureProje2.8}
+      \caption{ジュルゴンヌ点}\label{gerg}
+      \end{minipage} 
+   \begin{minipage}{0.4\columnwidth}
+      \centering
+      \includegraphics{~/Documents/GitHub/bEuclideanGeo/ch3/figureProje2.9}
+      \caption{内接円}\label{cont}
+   \end{minipage} 
+\end{figure}
+
+\begin{Thm}[ジュルゴンヌ]
+   三角形$\triangle ABC$に楕円が内接し，それらの内接点を
+   図~\ref{gerg}のように$P$, $Q$, $R$と置くと直線$AP$, $BQ$, $CR$は共点である．
+\end{Thm}
+\begin{proof}
+   図~\ref{gerg}のような平面上の三角形と楕円が与えられたとする．
+   視点を適当に動かして，視点が楕円が円に見える位置に置かれたとする．
+   視点から出る視線がその円の中心を通るとし，
+   視線に直交する平面を与えられた図形より遠くに取る．
+   その平面上に楕円を射影した円は三角形$\triangle ABC$を射影した三角形$\triangle A'B'C'$に内接している．
+   それらの内接点を
+   図~\ref{cont}のように$P'$, $Q'$, $R'$と置くと
+   $A'P'$, $B'Q'$, $C'R'$は内接している円の中心を通るので共点である．
+   この円の中心と視点を結ぶ直線と元の平面の交わりは
+   直線$AP$, $BQ$, $CR$の全てを通るので共点であることが分かる．
+   %チェバの定理より
+   %\[
+   %	\frac{A'R'}{R'B'}\frac{B'P'}{P'C'}\frac{C'Q'}{Q'A'} =1
+   %\]
+   %と$A'P'$, $B'Q'$, $C'R'$は共点であることは同値であるが，
+   %この関係は円が三角形に内接することが
+   %\[
+   %	A'R'=A'Q',\quad B'R'=B'P', \quad C'P'=C'Q'
+   %\]
+   %を意味することから分かる．
+\end{proof}
+
+\subsection{遠近法の無限遠点}
+直線の投影を振り返る：
+\begin{figure}[htb]
+   \centering
+   \begin{minipage}{0.4\columnwidth}
+      \centering
+      \includegraphics{~/Documents/GitHub/bEuclideanGeo/ch3/figureProje2.15}
+      \caption{透視投影}\label{perspective}
+   \end{minipage} 
+   \begin{minipage}{0.4\columnwidth}
+      \centering
+      \includegraphics{~/Documents/GitHub/bEuclideanGeo/ch3/figureProje2.16}
+      \caption{}\label{perspective2}
+   \end{minipage} 
+\end{figure}
+原点$\mathbf 0$に視点があるとする．
+$(x,y,z) \in \mathbf R^3$  ($x\neq 0$ )とし，
+ここでは，$x$軸の正の方向に視線を向け，
+$x=1$ にキャンバスがある場合を考える．
+$U=\{(x,y,z)\in \mathbf R^3\mid x\neq 0\}$として各点$(x,y,z)$と原点$\mathbf 0$を結ぶ直線と$x=1$の面の交点を求めると$(1,\frac yx,\frac zx)$がわかる．その結果を与える写像
+\[
+	P(x,y,z)=\biggl(\frac yx,\frac zx\biggr)\qquad (x,y,z)\in U
+	\tag{*}\label{projection}
+\]
+$P:U\to \mathbf R^2$が\term[]{投影}(あるいは，\term[]{射影})である．
+\[
+	P(ax,ay,az)=P(x,y,z) \qquad a\neq0
+\]
+という性質がある．$ \mathbf R^3$で$z=-1$上の点から向き$(u,v,0)$  に向かう直線$\ell$は
+\[
+	(x,y,-1)+t(u,v,0)
+\]
+と表せる．まず $u > 0$と仮定する．
+\[
+	P(x+tu,y+tv ,-1)=\biggl(\frac{y+tv}{x+tu},\frac{-1}{x+tu}\biggr)\tag{!}
+\]
+これは$t=0$で$(\frac yx,\frac {-1}x)$を通り，$t\to \infty$で\term[]{消失点}$(\frac{v}{u},0)$に収束する．消失点は$t\to \infty$で表れるので\term[]{無限遠点}ということもある．
+
+\begin{figure}[thb]
+   \centering
+   \includegraphics{~/Documents/GitHub/bEuclideanGeo/ch3/figureProje2.3}
+   \caption{後ろからの透視投影}\label{backProj}
+\end{figure}
+
+$t\to -\infty$の場合の無限遠点を検討しよう．
+まず$t> \frac{-x}{u}$で消失点からの投影面上の半直線に沿って進み，
+$t= \frac{-x}{u}$で投影面$x=1$上に対応する点がなくなるが，
+$z=-1$上では$x=0$という平面と直線$\ell$の交点であることに注意する．
+空間の直線$\ell$自身は平面$x=0$を越えると，その上の点から視点を通る直線が$x=1$に至る点が表れる．その点は直線$\ell$の
+$t<\frac{-x}{u}$の部分に対応する$x=1$上の逆側の無限遠から消失点に伸びる半直線に沿って進み，
+$t\to -\infty$で消失点に（同じ角度で）交わることが図 \ref{backProj} からも数式からも分かる．
+\emptyline
+
+\begin{figure}[htb]
+   \centering
+   \includegraphics{~/Documents/GitHub/bEuclideanGeo/ch3/figureProje2.17}
+   \caption{カメラ・オブスキュラと遠近法の融合}\label{pinCamera}
+\end{figure}
+
+\emptyline
+\noindent
+遠近法で視点の後ろの点を射影面に投影するのは不思議に思えるかもしれないが，図 \ref{pinCamera}のようなカメラ・オブスキュラ（ピンホールカメラ）と遠近法を融合したような道具を考えれば実現できるであろう．
+この立場からは空間の直線は射影面の直線（全体）に写っていて，
+平行な直線は無限遠点で二つの直線として交叉する（図 \ref{paraAtVanishingPoint}）ことも分かる．
+これは原点と直線$\ell$から定まる平面と$x=1$の交わりの上にあることからも確認できる．
+つまり，$z=-1$に対応する点がない（無限遠）点は
+$x=1$では$z=0$という直線上の点になる．
+\begin{figure}[htb]
+   \centering
+   \begin{minipage}{0.4\columnwidth}
+      \centering
+      \includegraphics{~/Documents/GitHub/bEuclideanGeo/ch3/figureProje2.12}
+      \caption{平行線の配置}\label{paraAtVanishingPoint}
+      \end{minipage} 
+   \begin{minipage}{0.4\columnwidth}
+      \centering
+      \includegraphics{~/Documents/GitHub/bEuclideanGeo/ch3/figureProje2.13}
+      \caption{放物線と水平線}\label{}
+   \end{minipage} 
+\end{figure}
+
+このような考察により， $u < 0$ ( $x<0$ )の場合も同様に扱えることが分かる．
+$u=0$の場合も$y=1$への投影を考察すれば良く，$(u,v)\neq\mathbf 0$の条件で十分であることが分かる．さらに，$(u,v,w)\neq\mathbf 0$とすれば任意の直線を考察できることも分かる．
+
+
+まとめると，平面$z=-1$の無限遠点は平面$x=1$での通常の点とみることが出来き，平行な直線はこの点で交わっている．
+一つの平面で無限遠点でも別の平行でない平面では通常点になることが分かる．
+我々に必要なのは最低 $x=\const\neq 0$, $y=\const\neq 0$, $z=\const\neq 0$の三っつの平面であることも理解できると思う．
+\emptyline
+
+また，$z=-1$上の放物線
+$
+	x = y^2+1
+$
+の$x=1$への投影
+\[
+	s=\frac yx=\frac{y}{y^2+1},\quad
+	t=\frac zx=\frac{-1}{y^2+1}
+\]
+を考えると
+\[
+	(s,t)
+	=
+	\begin{cases}
+		(0,-1)& y=0\\
+		(0,0)& y\to \pm \infty
+	\end{cases}
+\]
+で，
+\[
+\begin{split}
+	s^2 + \biggl(t+\frac12\biggr)^2
+	&=\frac{y^2}{(y^2+1)^2} + \frac{(-2 +y^2+1)^2}{4(y^2+1)^2}\\
+	&= \frac{1}{4(y^2+1)^2}(4y^2 + (y^2-1)^2)
+	=\frac{1}{4}
+\end{split}
+\]
+となり，水平線$t=0$に接する円に見えることが分かる．
+3つの円錐曲線が射影幾何学で同一視されることの一端がここに表れている．
+
+
+\begin{Quiz}$16$
+$z=-1$上の放物線
+$
+	x = y^2
+$
+の$x=1$への投影を求めよ．このときそれぞれの無限遠点の対応を調べよ．
+\end{Quiz}
+
+\begin{Quiz}$17$
+$z=-1$上の双曲線
+$
+	x^2- y^2=1
+$
+の$x=1$への投影を求めよ．このとき双曲線二つの成分の投影と漸近線の消失点の関係を調べよ．
+\end{Quiz}
+
+
+\subsection{同次座標，実射影平面}
+ポンスレーは1812年ナポレオンのロシアへの遠征に従軍し捕虜となり，その捕らわれの間に射影幾何学を発見した．射影幾何学とは射影変換(\S \ref{projTransf}を参照)で不変な性質を研究する幾何学である．その研究の進展に伴い
+メビウス，プリュッカーにより同次座標や射影空間が導入された．
+
+
+$(x_0,x_1,x_2), (x'_0,x'_1,x'_2)\neq(0,0,0)$にたいして
+\[
+\begin{split}
+	&(x_0,x_1,x_2)\sim (x'_0,x'_1,x'_2)\\
+	\Leftrightarrow \quad
+	&\text{ある }\lambda\neq 0\text{ が存在して }
+	 (x'_0,x'_1,x'_2) = \lambda (x_0,x_1,x_2)
+\end{split}
+\]
+で関係を入れると，同値関係になる．$(x_0,x_1,x_2)$の同値類を
+$[x_0:x_1:x_2]$と表し，\term[]{同次座標}という．
+$\mathbf P^2=\{[x_0:x_1:x_2]\mid (x_0,x_1,x_2)\neq \mathbf 0\}$
+を\term[]{実射影平面}
+という．
+位相は$\mathbf R^3\setminus \{\mathbf 0\}$の商位相，つまり，
+\[
+	\mu:\mathbf R^3\setminus \{\mathbf 0\} 
+	\ni(x_0,x_1,x_2)\mapsto  [x_0:x_1:x_2]\in\mathbf P^2
+\]
+として，$O\subset \mathbf P^2$が開集合であるとは
+$\mu^{-1}(O)\subset\mathbf R^3\setminus \{\mathbf 0\} $が開集合であることとする．
+この位相は
+$[x_0:x_1:x_2]$, $[x_0':x_1':x_2']\in \mathbf P^2$から定まる
+二つの直線$\{t(x_0,x_1,x_2)\in\mathbf R^3\mid t\in \mathbf R\}$と
+$\{t(x_0',x_1',x_2')\in\mathbf R^3\mid t\in \mathbf R\}$のなす角（の小さいもの）
+を距離とする距離空間の位相と見なせるので，
+$\mathbf P^2$ はハウスドルフ空間である．
+球面
+$S^2(1)=\{(x_0,x_1,x_2)\in\mathbf R^3\mid x^2_0 +x^2_1 +x^2_2 =1\}$
+はコンパクトなので$ S^2(1)/\sim$もコンパクトである．
+写像
+\[
+	\pi:S^2(1)/\sim \ni 
+	[x_0,x_1,x_2]\mapsto [x_0:x_1:x_2]\in \mathbf P^2
+\]
+は連続な全単射であり，$S^2(1)/\sim$はコンパクトで$\mathbf P^2$ はハウスドルフなので$\pi$は閉写像でもある．
+\[
+   \xymatrix{
+      S^2(1) \ar[d]_{\mu'} \ar[r]& \mathbf R^3\setminus \{\mathbf 0\}  \ar[d]^{\mu} \\
+     S^2(1)/ \sim  \ar[r]_{\pi} & \mathbf P^2 
+   }
+\]
+このことから実射影平面は$S^2(1)/ \sim$ ( 図~\ref{projSpace} ) と同相であることが分かる(図~\ref{projSpace})．
+また，半球の境界を図~\ref{projSpaceMebius}のように同一視したとき表れるメビウスの帯の境界に半球を貼り付けた空間でもある．
+このことから$\mathbf P^2$は向き付け不可能であることもわかる．
+\begin{figure}[htb]
+\centering
+   \begin{minipage}{0.4\columnwidth}
+      \centering
+      \includegraphics{~/Documents/GitHub/bEuclideanGeo/ch3/figureProje2.4}
+      \caption{実射影平面$\mathbf P^2$}\label{projSpace}
+   \end{minipage} 
+   \begin{minipage}{0.4\columnwidth}
+      \centering
+      \includegraphics{~/Documents/GitHub/bEuclideanGeo/ch3/figureProje2.7}
+      \caption{$\mathbf P^2$とメビウスの帯}\label{projSpaceMebius}\label{projSpace2}
+   \end{minipage} 
+\end{figure}
+
+$U_0=\{[x_0:x_1:x_2]\mid x_0\neq 0\}$に対して
+\[
+	\varphi_0:U_0\ni [x_0:x_1:x_2]
+	\mapsto \biggl(\frac{x_1}{x_0},\frac{x_2}{x_0}\biggr)
+	\in \mathbf R^2
+\]
+と置くとwell-defined な同相写像で，透視投影$P$%\eqref{projection}
+と同じ表示になっている．このような座標を（第1成分に$1$を付け加え，同次座標に対して）非同次座標ということがある．
+
+同様に，$(x_1,x_2)$, $ (x'_1,x'_2)\neq (0,0)$に対して
+\[
+\begin{split}
+	&(x_1,x_2)\sim (x'_1,x'_2)\\
+	\Leftrightarrow \quad
+	&\text{ある }\lambda\neq 0\text{ が存在して }
+	 (x'_1,x'_2) = \lambda (x_1,x_2)
+\end{split}
+\]
+は同値関係で，
+$(x_1,x_2)$の同値類を
+$[x_1:x_2]$と表し，商空間
+$\mathbf P^1=\{[x_1:x_2]\mid (x_1,x_2)\neq \mathbf 0\}$
+を\term[]{実射影直線}という．このとき
+\[
+\begin{split}
+	\mathbf P^2
+	&=\{[x_0:x_1:x_2]\in \mathbf P^2\mid x_0\neq 0\}
+	\cup 
+	\{[0:x_1:x_2]\in \mathbf P^2\}\\
+	&\simeq U_0 \cup \mathbf P^1
+	\simeq  \mathbf R^2 \cup \mathbf P^1
+\end{split}
+\]
+$V_i=\{[x_1:x_2]\mid x_i\neq 0\}$と置くと
+\[
+	\psi_1:V_1\ni [x_1:x_2]
+	\mapsto \frac{x_2}{x_1}
+	\in \mathbf R,\quad
+	\psi_2:V_2\ni [x_1:x_2]
+	\mapsto \frac{x_1}{x_2}
+	\in \mathbf R
+\]
+は同相で，上と同様に(図~\ref{proj1})
+\[
+\begin{split}
+	\mathbf P^1
+	&=\{[x_1:x_2]\in \mathbf P^1\mid x_1\neq 0\}
+	\cup 
+	\{[0:x_2]\in \mathbf P^1\}\\
+	&= V_1 \cup \{[0:1]\}
+	\simeq\mathbf R\cup \{[0:1]\}
+	\simeq S^1
+\end{split}
+\]
+\begin{figure}[htb]
+\centering
+   \begin{minipage}{0.4\columnwidth}
+      \centering
+      \includegraphics{~/Documents/GitHub/bEuclideanGeo/ch3/figureProje2.11}
+      \caption{$\mathbf P^1$と$S^1$}\label{proj1}
+      \end{minipage} 
+   \begin{minipage}{0.4\columnwidth}
+      \centering
+      \includegraphics{~/Documents/GitHub/bEuclideanGeo/ch3/figureProje2.5}
+      \caption{$\mathbf P^2$と$\mathbf P^1_0$, $\mathbf P^1_1$, $\mathbf P^1_0$}\label{proj2}
+   \end{minipage} 
+\end{figure}
+
+
+ここまでは$x_0$方向を中心に考えてきたが，
+$U_1=\{[x_0:x_1:x_2]\mid x_1\neq 0\}$, $U_2=\{[x_0:x_1:x_2]\mid x_2\neq 0\}$ に対しても同様の写像
+\[
+\begin{split}
+	&\varphi_1:U_1\ni [x_0:x_1:x_2]
+	\mapsto 
+	\biggl(\frac{x_0}{x_1},\frac{x_2}{x_1}\biggr)\in \mathbf R^2,\\
+	&\varphi_2:U_2\ni [x_0:x_1:x_2]
+	\mapsto 
+	\biggl(\frac{x_0}{x_2},\frac{x_1}{x_2}\biggr)\in \mathbf R^2
+\end{split}
+\]
+が定まり，$(x_0,x_1,x_2)\neq \mathbf 0$は $x_i$の少なくとも一つは$0$でないことを意味するので$\{U_0, U_1, U_2\}$は射影平面を覆う．
+また，例えば$U_0\cap U_2$では$x_0$, $x_2\neq 0$なので，
+ $u=\frac{x_1}{x_0}$, $v=\frac{x_2}{x_0}\neq 0$ と置くと
+\[
+	\varphi_2\circ\varphi_0^{-1}(u,v)
+	=
+	\biggl(\frac{1}{v},\frac{u}{v}\biggr)
+\]
+のように変換され，微分可能であることがわかる．
+このようなもの（でハウスドルフなもの）が$C^\infty$多様体であった．
+$\mathbf P^1_i=\mathbf P^2\setminus U_i$ $(i=0,1,2)$は射影直線とみなせるので，これらを直線で表し，それぞれ2つが1点で交叉しているので図~\ref{proj2}のように表すことがある．
+\emptyline
+
+・二つの直線は射影平面上一点で必ず交わる．
+
+∵）平行でない直線は平面上で必ず交わるが，平行な直線は，上で見たように無限遠点で必ず交わるから．
+
+\subsection{射影変換}\label{projTransf}
+正則行列
+$A=\begin{pmatrix}
+    	    	a&b&c\\
+    		d&e&f\\
+    		g&h&i\\
+ 	\end{pmatrix}$を使って
+\[
+	\begin{pmatrix}
+    	    	a&b&c\\
+    		d&e&f\\
+    		g&h&i\\
+ 	\end{pmatrix}
+	\begin{pmatrix}
+    	    	 x_0\\
+    		 x_1\\
+    		 x_2\\
+ 	\end{pmatrix}
+	=
+	\begin{pmatrix}
+    	    	 ax_0+bx_1+cx_2\\
+    		 dx_0+ex_1+fx_2\\
+    		 gx_0+hx_1+ix_2\\
+ 	\end{pmatrix}
+\]
+を考えると，$A(\lambda\mathbf x)=\lambda A\mathbf x$ で
+$A\mathbf x=\mathbf 0$となるのは$\mathbf x=\mathbf 0$なので
+$[x_0:x_1:x_2]\in \mathbf P^2$の代表元の取り方に依らず，写像
+\[
+\begin{split}
+	\rho_A:&\mathbf P^2\ni [x_0:x_1:x_2]\mapsto\\
+	&[ax_0+bx_1+cx_2:dx_0+ex_1+fx_2:gx_0+hx_1+ix_2]\in \mathbf P^2
+\end{split}
+\]
+が定まる．この写像$\rho_A$，あるいは元の写像をこのように解釈し\term[]{射影変換}という．
+\emptyline
+
+・射影変換の合成は射影変換で，射影変換全体は群を成す．
+
+∵）$\rho_B\circ\rho_A=\rho_{BA}$,  $\rho_E =\id$, 
+$(\rho_A)^{-1}=\rho_{A^{-1}}$を見れば良いがこれは簡単．
+
+\emptyline
+
+・射影平面の任意の二点は射影変換で移り合う．
+
+∵）$[a:b:c]\in \mathbf P^2$を$[1:0:0]$に写す射影変換を見つければいいが，$\mathbf u={}^t(a,b,c)\neq \mathbf 0$を含む$\mathbf R^3$の基底$\{\mathbf u,\mathbf v, \mathbf w\}$を作り
+$A=	
+\begin{pmatrix}
+	\mathbf u&\mathbf v&\mathbf w
+\end{pmatrix}
+$と置くと，これは正則で$\mathbf u=A\mathbf e_1$なので
+$\rho_{A^{-1}}$が求めるもの．
+
+\emptyline
+
+・射影平面の任意の二直線は射影変換で移り合う．
+
+∵）射影平面の直線は$(a,b,c)\neq \mathbf 0$を使って$ax_0+bx_1+cx_2=0$と表せる．この平面が$x_0=0$(つまり，$\mathbf P^1_0$)に写せることを示す．
+$\mathbf a =(a,b,c)$と置き，$\mathbf y = B \mathbf x$と変換すると
+\[
+ 	0= \mathbf a\mathbf x =  \mathbf a B^{-1}\mathbf y
+\]
+なので
+\[
+	\mathbf a B^{-1} = (1,0,0)\quad \Leftrightarrow \quad
+	{}^tB\mathbf e_1={}^t\mathbf a=\mathbf u
+\]
+となり，上と同じ方程式なので解ける．
+
+\emptyline
+また， 前回見たアファイン変換
+\[
+	\begin{pmatrix}
+    	    1&0&0\\
+    		a&c&d\\
+    		b&e&f\\
+ 	\end{pmatrix}
+	\begin{pmatrix}
+    	    x_0\\
+    		x_1\\
+    		x_2\\
+ 	\end{pmatrix}
+	=
+	\begin{pmatrix}
+    		x_0\\
+    	    ax_0 + cx_1 +dx_2\\
+    		bx_0+ex_1+ fx_2\\
+ 	\end{pmatrix}
+\]
+も射影変換の一つである．
+アファイン変換は$\mathbf P^1_0$を$\mathbf P^1_0$に写している．
+
+\subsection{二次曲線}
+$
+	B=\begin{pmatrix}
+    	    	b_{00}&b_{01}&b_{02}\\
+    		b_{01}&b_{11}&b_{12}\\
+    		b_{02}&b_{12}&b_{22}\\
+ 	\end{pmatrix}$
+は零行列でない実対称行列として
+\[
+\begin{split}
+	&b_{00}x_0^2+b_{11}x_1^2+b_{22}x_2^2 
+	+ 2b_{01}x_0x_1+2b_{12}x_1x_2 +2b_{02}x_0x_2
+	=
+	{}^t\mathbf x B\mathbf x\\
+\end{split}
+\]
+を考える．
+\[
+	{}^t(\lambda\mathbf x) B(\lambda\mathbf x)
+	=
+	\lambda^2\, {}^t\mathbf x B\mathbf x
+\]
+なので${}^t\mathbf x B\mathbf x=0$は$\mathbf P^2$の部分空間を定め，これらを\term[]{二次曲線}(conic)という．
+ただし，${}^t\mathbf x B\mathbf x=0$が一点の場合は(次元の関係から)除くこととする．
+
+\begin{Thm}
+$\mathbf P^2$の二次曲線は射影変換で次の何れかに写すことが出来る．
+\[
+	(\mathrm{i})\quad x^2 + y^2= z^2,\quad
+	(\mathrm{ii})\quad  xy=0,\quad
+	(\mathrm{iii})\quad  x^2=0
+\]
+\begin{figure}[htb]
+	\centering
+	\includegraphics{~/Documents/GitHub/bEuclideanGeo/ch3/figureProje2.14}
+	\caption{$\mathbf P^2$の二次曲線}\label{}
+\end{figure}
+\end{Thm}
+\begin{proof}
+実対称行列$B$の固有値を$\lambda_{0}$, $\lambda_{1}$, $\lambda_{2}$とする．これらは（全てが$0$となることはない）実数である．$B$を対角化する直交行列を$S$とすると
+\[
+	{}^tS B S
+	=
+	\begin{pmatrix}
+    	    	\lambda_{0}&0&0\\
+    		0&\lambda_{1}&0\\
+    		0&0&\lambda_{2}\\
+ 	\end{pmatrix}
+\]
+なので
+\[
+	c_{i}=
+	\begin{cases}
+		\frac{1}{\sqrt{|\lambda_{i}|}}& \lambda_{i}\neq 0\\
+		1&\lambda_{i}= 0\\
+	\end{cases},\quad
+	C=(c_{i}\delta_{ij})
+\]
+と置くと$C$は正則となり，$SC$も正則で
+\[
+	{}^t(SC) B (SC)
+	=
+	{}^tC{}^tS B SC
+	=
+	\begin{pmatrix}
+    	    	\varepsilon_{0}&0&0\\
+    		0&\varepsilon_{1}&0\\
+    		0&0&\varepsilon_{2}\\
+ 	\end{pmatrix}
+\]
+ただし，$\varepsilon_{i}$は$1$, $0$, $-1$のいずれか．
+
+順番を入れ換えたり，$-1$倍することで任意の二次曲線は
+\begin{align}
+	&x_{0}^2 = 0\\
+	&x_{0}^2 +x_{1}^2=0\\
+	&x_{0}^2 +x_{1}^2+x_{2}^2=0\\
+	&x_{0}^2 -x_{1}^2=0\\
+	&x_{0}^2 +x_{1}^2-x_{2}^2=0
+\end{align}
+に何れかに写すことが出来る．(3)は空集合で，(2) は一点になり，この場合は2次曲線でないので除けるので，
+(1), (4), (5) の何れか．
+(1)は$(\mathrm{iii})$, (4)は$(\mathrm{ii})$, (5)は$(\mathrm{i})$である．
+\end{proof}
+$(\mathrm{i})$は楕円，放物線，双曲線の円錐曲線が直円錐から得られることに対応している．$(\mathrm{ii})$は二つの直線，$(\mathrm{iii})$は重直線の場合に対応している．
+
+%\begin{Thm}[パスカルの定理]
+%
+%\end{Thm}
+%\begin{Thm}[パップスの定理]
+%
+%\end{Thm}
+%\section{一般化}
+%$K$を体として
+%上と同様の構成を行い$K\mathbf P^1$, $K\mathbf P^2$を定義することが出来る．
+%特に$K$を複素数体$\mathbf C$にすると複素射影直線$\mathbf C\mathbf P^1$が次のように構成される：
+%$(z_1,z_2)$, $ (z'_1,z'_2)\neq (0,0)\in \mathbf C^2$に対して
+%\[
+%\begin{split}
+%	&(z_1,z_2)\sim (z'_1,z'_2)\\
+%	\Leftrightarrow \quad
+%	&\text{ある }\lambda\neq 0\text{ が存在して }
+%	 (z'_1,z'_2) = \lambda (z_1,z_2)
+%\end{split}
+%\]
+%は同値関係で，
+%$(z_1,z_2)$の同値類を
+%$[z_1:z_2]$と表し，商空間
+%$\mathbf C\mathbf P^1=\{[z_1:z_2]\mid (z_1,z_2)\neq \mathbf 0\}$
+%を\term[]{複素射影直線}という．関数論では\term[]{リーマン球面}といった．
+%$\infty=[0:1]$と表し，
+%$\hat{\mathbf C}= \mathbf C\cup \infty$と記すことも多い．
+%
+%$V_i=\{[z_1:z_2]\mid z_i\neq 0\}$ ($i=1,2$)と置くと
+%\[
+%	\psi_1:V_1\ni [z_1:z_2]
+%	\mapsto \frac{z_2}{z_1}=z
+%	\in \mathbf C,\quad
+%	\psi_2:V_2\ni [z_1:z_2]
+%	\mapsto \frac{z_1}{z_2}=w
+%	\in \mathbf C
+%\]
+%は同相で，
+%\[
+%\begin{split}
+%	\psi_1(V_1\cap V_2)\ni z \mapsto 
+%	\frac1z=w\in \psi_2(V_1\cap V_2)
+%\end{split}
+%\]
+%は正則写像である．
+%これが位相的には球面であることが以下のように分かる：
+%$z=x+iy\in \mathbf C$と$\mathbf R^3$の$xy$-平面内の点$(x,y,0)$ と同一視する．$S^2(1)$の元$(0,0,1)$を$\infty$と置き，
+%$\infty$と$(x,y,0)$を結ぶ直線と$S^2(1)$の交点を求めると
+%連続写像$\varphi:\mathbf C\to S^2(1)\setminus\{\infty\}$が
+%\[
+%	\varphi(x+iy)=
+%	\biggl(\frac{2x}{x^2 + y^2+1},\frac{2y}{x^2 + y^2+1},
+%	\frac{x^2 + y^2-1}{x^2 + y^2+1}
+%	\biggr)
+%\]
+%により, $\varphi^{-1}: S^2(1)\setminus\{\infty\}\to \mathbf C$が
+%\[
+%	\varphi^{-1}(x_1,x_2,x_3)
+%	=\frac{x_1+i x_2}{1-x_3}
+%\]
+%により定まり，
+%\[
+%	\mathbf C\mathbf P^1\simeq\mathbf C\cup \{\infty\}
+%	\simeq S^2
+%\]
+%\begin{figure}[htb]
+%	\centering
+%	\includegraphics{../texProjective3/~/Documents/GitHub/bEuclideanGeo/ch3/~/Documents/GitHub/bEuclideanGeo/ch3/figureSphere.7}
+%	\caption{リーマン球面}
+%\end{figure}
+%同様に複素射影平面$\mathbf C\mathbf P^2$が得られ，
+%\[
+%	\mathbf C\mathbf P^2
+%	\simeq  \mathbf C^2 \cup \mathbf C\mathbf P^1
+%\]
+%更に$n\in \mathbf Z_{\ge 0}$に対して$n$次射影空間$\mathbf C\mathbf P^n$が定まり，
+%その(幾つかの同次多項式の零点全体の)既約射影代数多様体が代数幾何の展開される空間である．
+
+\begin{figure}[htb]
+\centering
+\begin{minipage}{0.4\columnwidth}
+	\centering
+	\includegraphics{~/Documents/GitHub/bEuclideanGeo/ch3/figureProje2.10}
+	\caption{パスカルの定理}\label{Pascal}
+\end{minipage} 
+\begin{minipage}{0.4\columnwidth}
+	\centering
+	\includegraphics{~/Documents/GitHub/bEuclideanGeo/ch3/figureProje2.2}
+	\caption{パップスの定理}\label{Pappus}
+\end{minipage} 
+\end{figure}
+
+説明は省くが，パスカルの定理(1640, 図 \ref{Pascal})，パップスの定理(図 \ref{Pappus})
+も射影幾何学に属すものである．
+代数幾何の教科書にもその歴史の片鱗を見つけることが出来る(\cite{F}~p62, \cite{U}~p281, なお，\cite{F}はよく知られた代数幾何の入門書で，
+フリーのpdf が
+\href{https://dept.math.lsa.umich.edu/~wfulton/CurveBook.pdf}{ここからダウンロード}可能)．射影幾何学に興味を持った人には\cite{N}をお奨めする．また，ここで述べた歴史に興味をもった人は\cite{Kl}をお奨めする．
+
+\begin{Quiz}
+パスカルの定理の命題を調べ，射影変換を使って分かり易い形に変更して示せ\thetag{\cite{N}}．
+\end{Quiz}
+
+\begin{Quiz}
+パップスの定理の命題を調べ，射影変換を使って分かり易い形に変更して示せ\thetag{\cite{N}}．
+\end{Quiz}
+
+%
+%\begin{thebibliography}{9}
+%\bibitem{N}西山 享, 射影幾何学の考え方 (数学のかんどころ 19), 2013 
+%
+%\bibitem{K}F.~Kline, クライン:19世紀の数学, 彌永 昌吉監修, 1995
+%
+%\bibitem{F}
+%W.~Fulton, 
+%ALGEBRAIC CURVES---An Introduction to Algebraic Geometry (3rd edition), 2008
+%
+%\bibitem{U} 上野健爾, 代数幾何, 岩波書店, 2005
+%
+%\end{thebibliography}
+
+\section{リーマン球面と一次分数変換}
+\subsection{$\mathbf C\mathbf P^1$}
+複素数体$\mathbf C$で
+射影直線の構成を行う：
+$(z_1,z_2)$, $ (z'_1,z'_2)\in \mathbf C^2\setminus\{(0,0)\}$に対して
+\[
+\begin{split}
+	&(z_1,z_2)\sim (z'_1,z'_2)
+	\Leftrightarrow \quad
+	\text{ある }\lambda\neq 0\in  \mathbf C\text{ が存在して }
+	 (z'_1,z'_2) = \lambda (z_1,z_2)
+\end{split}
+\]
+と置くとこれは同値関係で，
+$(z_1,z_2)$の同値類を
+$[z_1:z_2]$と表す．商空間
+$\mathbf C\mathbf P^1=\{[z_1:z_2]\mid (z_1,z_2)\neq \mathbf 0\in \mathbf C^2\}$
+を\textcolor{red}{複素射影直線}という．
+
+$p:\mathbf C^2\setminus (0,0)\to \mathbf C\mathbf P^1$を自然な射影とする．
+$V_i=\{[z_1:z_2]\mid z_i\neq 0\}$ ($i=1,2$)と置くと
+\[
+   \hat V_i:=p^{-1}(V_i)
+   =\{(z_1,z_2)\in \mathbf C^2\setminus (0,0)\mid z_i\neq 0\}
+\]
+は開集合なので$V_i$は$\mathbf C\mathbf P^1$の開集合であり，$[z_1:z_2]\in  \mathbf C\mathbf P^1$は$z_1\neq 0$あるいは$z_2\neq 0$を意味するので$\mathbf C\mathbf P^1=V_1\cup V_2$が分かる．
+\[
+	\psi_1:V_1\ni [z_1:z_2]
+	\mapsto \frac{z_2}{z_1}=z
+	\in \mathbf C
+\]
+は同相写像であることが以下のように分かる．
+$\hat \psi_1:\hat V_1\to \mathbf C$を
+$\hat \psi_1(z_1,z_2)=z_2/z_1$で定義すると明らかに連続で
+左の可換図式
+\[
+   \xymatrix{
+      \hat V_1\ar[d]_{p} \ar[dr]^{\hat \psi_1}& \\
+      V_1  \ar[r]_{\psi_1} & \mathbf C
+   }\qquad\qquad
+   \xymatrix{
+      \mathbf C\ar[d]_{\id} \ar[r]^{\iota}& \ar[d]^{p}  \hat V_1\\
+      \mathbf C & \ar[l]^{\psi_1}   V_1
+   }
+\]
+を見ると$\psi_1$の連続性が分かる．
+$\psi_1$が全単射も明らか．
+$\iota(z)=(1,z)$と置くと
+$\iota:\mathbf C\to \hat V_1$は連続で
+右の可換図式より$\psi_1^{-1}=p\circ \iota$が分かり，$\psi_1^{-1}$の連続性も言える．
+よって$\psi_1$は同相写像で，同様に
+\[
+	\psi_2:V_2\ni [z_1:z_2]
+	\mapsto \frac{z_1}{z_2}=w
+	\in \mathbf C
+\]
+も同相写像である．
+%$\{ (V_1,\psi_1), (V_2,\psi_2)\}$が微分構造であることを示す．
+これらの座標変換を(複素変数で)求めると
+\[
+\begin{split}
+	\psi_1(V_1\cap V_2)\ni z \mapsto 
+	\frac1z=w\in \psi_2(V_1\cap V_2)
+\end{split}
+\]
+で$\psi_1(V_1\cap V_2)=\mathbf C\setminus \{0\}$で正則写像である．
+複素多様体のことは知らないとして実数変数で表してみる．
+$z=x + iy$, $w=u + iv$と置き$ \mathbf C= \mathbf R^2$と同一視すると
+$w=\frac{1}{z }=\frac{\bar z}{z\bar z}$なので
+\[
+\begin{split}
+	&u = \frac{x}{x^2 + y^2},\quad v = \frac{-y}{x^2 + y^2},\\
+	&x = \frac{u}{u^2 + v^2},\quad y = \frac{-v}{u^2 + v^2}
+\end{split}
+\]
+となり$\varphi_i(V_1\cap V_2)=\mathbf R^2\setminus \{(0,0)\}$上
+ $C^{\infty}$級であることが分かり，$C^{\infty}$級多様体であることが分かった．
+ \[
+\begin{split}
+	\frac{\partial u}{\partial x}=\frac{y^2-x^2}{(x^2 + y^2)^2}=v^2-u^2,
+	\quad &\quad
+	\frac{\partial u}{\partial y}=\frac{-2xy}{(x^2 + y^2)^2}=2uv,\\
+	\frac{\partial v}{\partial x}=\frac{2xy}{(x^2 + y^2)^2}=-2uv,
+	\quad &\quad
+	\frac{\partial v}{\partial y}=\frac{y^2-x^2}{(x^2 + y^2)^2}=v^2-u^2
+\end{split}	
+\]
+なので，
+そのヤコビアンは
+\[
+	\frac{\partial (u,v)}{\partial (x,y)}
+	%=(v^2-u^2)^2+(2uv)^2
+	=(v^2+u^2)^2>0,\quad
+	\frac{\partial (x,y)}{\partial (u,v)}=(x^2+y^2)^2>0
+\]
+となる．このように任意の座標変換のヤコビアンが正になるような微分構造をもつ多様体を向き付けられた多様体という．普通の立体射影では
+$v =\frac{y}{x^2 + y^2}$であったが，この場合ヤコビアンの符号は$-$となり向き付けられていない．
+$\mathbf C\mathbf P^1$は複素多様体と喚ばれる多様体になっている．
+一般に複素多様体は向き付けられた多様体である．
+
+$\mathbf C\mathbf P^1$が位相的には球面であることが以下のようにして分かる：\newline 
+$[0:1]\in \mathbf C\mathbf P^1$で
+\[
+	\mathbf C\mathbf P^1\setminus\{ [0:1]\}=V_1
+\]
+であり，上で示したように$\psi_1:V_1\to \mathbf C$は同相であった．\linebreak
+$[0:1]\in \mathbf C\mathbf P^1$の近傍での位相は
+$\psi_2:V_2\to \mathbf C$が同相になるように入っている．
+つまり，$w=0$を中心とした任意半径の円板が$[0:1]$の基本近傍系を成している．特に$\mathbf C\mathbf P^1$はハウスドルフであることも分かる．
+$z=x+iy\in \mathbf C$と$\mathbf R^3$の$xy$-平面内の点$(x,y,0)$ と同一視する．$S^2(1)$の元$(0,0,1)$を$\infty$と置き，以下$[0:1]\in \mathbf C\mathbf P^1$と同一視されることを示す．
+$\infty$と$(x,y,0)$を結ぶ直線と$S^2(1)$の交点を求めると
+連続写像$\psi:\mathbf C\to S^2(1)\setminus\{\infty\}$が
+\begin{equation}\label{stereoProj}
+	\psi(x,y)=
+	\biggl(\frac{2x}{x^2 + y^2+1},\frac{2y}{x^2 + y^2+1},
+	\frac{x^2 + y^2-1}{x^2 + y^2+1}
+	\biggr)
+\end{equation}
+により, 連続な逆写像$\varphi^{-1}: S^2(1)\setminus\{\infty\}\to \mathbf C$が
+\[
+	\varphi^{-1}(x_1,x_2,x_3)
+	=\frac{x_1+i x_2}{1-x_3}
+\]
+により定まり同相になる．
+$\psi(x,y)$と$\infty$の距離の2乗は
+\[
+\begin{split}
+	&\biggl(\frac{2x}{x^2 + y^2+1}\biggr)^2
+	+\biggl(\frac{2y}{x^2 + y^2+1}\biggr)^2
+	+\biggl(\frac{x^2 + y^2-1}{x^2 + y^2+1}-1\biggr)^2\\
+	&=\frac{4}{x^2 + y^2+1}=\frac{4|w|^2}{1+|w|^2}
+\end{split}
+\]
+となる．最後の変形で$|w|=\frac{1}{|z|}$を使った．上の注意より$\psi$を\newline
+$\bar\psi([0:1])=\infty$と拡張すると
+$\bar\psi:\mathbf C\mathbf P^1\to S^2(1)$
+は同相になる．
+つまり，$\mathbf C\mathbf P^1$は$\mathbf C$の一点コンパクト化である．
+関数論では$\mathbf C\mathbf P^1$のことを\textcolor{red}{リーマン球面}といった．
+$\infty=[0:1]$と表したり$\mathbf C\mathbf P^1$を$\hat{\mathbf C}= \mathbf C\cup \infty$と表したりすることも多い．
+
+\begin{figure}[htb]
+   \centering
+   \begin{minipage}{0.45\columnwidth}
+      \centering
+      \includegraphics{~/Documents/GitHub/bEuclideanGeo/ch3/figureSphere.7}
+      \caption{リーマン球面}
+   \end{minipage} 
+   \begin{minipage}{0.45\columnwidth}
+      \centering
+      \includegraphics{~/Documents/GitHub/bEuclideanGeo/ch3/figureSphere.8}
+      \caption{円周角}\label{argP}
+   \end{minipage} 
+\end{figure}
+
+$\mathbf C\mathbf P^1$と
+同様に複素射影平面$\mathbf C\mathbf P^2$が得られ，$\mathbf P^2$と同様に
+\[
+	\mathbf C\mathbf P^2
+	\simeq  \mathbf C^2 \cup \mathbf C\mathbf P^1
+\]
+が成り立つ．
+更に$n\in \mathbf Z_{\ge 0}$に対して$n$次射影空間$\mathbf C\mathbf P^n$が定まり，
+その(幾つかの同次多項式の零点全体のなす)既約射影代数多様体が代数幾何の展開される空間である．
+
+\subsection{一次変換}
+前回は実変数の射影変換を考えたが，ここでは
+複素正則行列
+$A=\begin{pmatrix}
+    	    	a&b\\
+    		c&d\\
+ 	\end{pmatrix}$の定める
+$ \mathbf C\mathbf P^1$の射影変換
+\[
+	\rho_A:\mathbf C\mathbf P^1\ni [z_1:z_2]\mapsto
+	[az_1+bz_2:c z_1+d z_2]\in \mathbf C\mathbf P^1
+\]
+を考える．ただし $ad-bc\neq 0, a,b,c,d \in \mathbf C$. 
+$\mathbf C^2\setminus\{\mathbf 0\}\ni (z_1,z_2)\to 
+(az_1+bz_2, c z_1+d z_2)\in \mathbf C^2\setminus\{\mathbf 0\}$ は連続なので
+$\rho_A$も連続である．
+$z=z_1/z_2\in \psi_2(V_2)$,
+$(az_1+bz_2)/(c z_1+d z_2)\in \psi_2(V_2)$のとき
+\begin{equation}\label{linearTrans}
+	Sz =\rho_A(z)  = \frac{a z +b}{c z +d}
+\end{equation}
+となるので，\textcolor{red}{一次(分数)変換}（リーマン球面の双正則写像とみるとき\textcolor{red}{メービウス変換}ともいう）
+であることが分かる．
+一次変換と一次変換の合成も（前回の議論から直ぐに分かるが，具体的な計算で示すと）
+\[
+	 \frac{a'  \frac{a z +b}{c z +d} +b'}{c ' \frac{a z +b}{c z +d} +d'} 
+	 =
+	 \frac{a'  (a z +b)+b'(c z +d)}{c '  (a z +b) +d'(c z +d)} 
+	 =
+	 \frac{(a' a+ b' c)z +a'b+b' d}{(c ' a+ d'c)z +c 'b +d'd} 
+\]
+なので一次変換で，合成の法則は行列の積
+\[
+	\begin{pmatrix}
+		a' & b'\\
+		c' & d'
+	\end{pmatrix}
+	\begin{pmatrix}
+		a & b\\
+		c & d
+	\end{pmatrix}
+	=
+	\begin{pmatrix}
+		a'a +b'c & a'b+b'd\\
+		c'a+d'c & c'b+d'd
+	\end{pmatrix}
+\]
+と同じである．
+このことから( $A^{-1}$ではすべての成分を同じ$ad-bc\neq 0$で割っているので）
+\[
+	S^{-1} z =\rho_{A^{-1}}(z)  = \frac{d z -b}{-c z +a}
+\]
+となり，$S$は$\mathbf C\mathbf P^1$から$\mathbf C\mathbf P^1$への全単射であることがわかる．
+$S:\mathbf C\mathbf P^1\to\mathbf C\mathbf P^1$は連続写像であり，
+$S^{-1}$も一次変換なので$S$は同相写像であることが分かる．
+更に一次変換全体が群であることも分かる．これを$\PSL(2,\mathbf C)$と表す．
+
+$z$ に関する複素微分は
+\[
+	S'(z)=\frac{ad-bc}{(c z +d)^2}
+\]
+であるので，$c=0$ならば定数となり等角写像である．
+$c\neq0$のとき$z\neq \frac{-d}{c}$ならば等角写像であるが$z=\frac{-d}{c}$では微分が定義されていないので等角性については何も言っていない．
+$w=\frac{c}{cz+d}$を$\frac{-d}{c}$の近傍での新しい座標系とすると
+\[
+	S(w)=-(ad-bc)w+\frac{a}{c}
+\]
+となり，この座標系では微分は定数であるので，任意の点で等角写像であることが分かる．更に
+$S:\mathbf C\mathbf P^1\to\mathbf C\mathbf P^1$は双正則写像であることも分かった．
+
+$c\neq0$の時は
+\[
+	\frac{a z +b}{c z +d} 
+	=- \frac{ad-bc}{c}\frac{1}{c z +d}  +  \frac{a}{c}
+\]
+で，$c=0$のときは$\frac{a}{d} z +\frac{b}{d}$なので一般の一次変換は
+\[
+	z + c,\quad kz,\quad  \frac{1}{z}
+\]
+の合成により生成されている．
+
+一次変換$Tz= \frac{a z +b}{c z +d}$が$1$, $0$, $\infty$を固定すると
+\[
+\begin{split}
+	&1=T1= \frac{a +b}{c +d},\quad 0=T0=\frac{b}{d},\quad 
+	\infty=T\infty=\frac{a}{c}\\
+	&\Rightarrow \quad
+	b=0,\quad c=0, \quad a=d
+\end{split}
+\]
+となり$T=\id$がわかる．このことから，
+二つの一次変換$Sz= \frac{a z +b}{c z +d}$,
+一次変換$Tz= \frac{a' z +b'}{c' z +d'}$同じ変換を定義するとすると，
+ある$e\neq 0$が存在して
+\[
+	\begin{pmatrix}
+		a' & b'\\
+		c' & d'
+	\end{pmatrix}
+	=e
+	\begin{pmatrix}
+		a & b\\
+		c & d
+	\end{pmatrix}
+\]
+したがって$ad-bc=1$となるように選ぶことが出来る．
+それでも$e=\pm 1$の不確定性は残るので．
+一次変換全体は群$\PSL(2,\mathbf C)= \SL(2,\mathbf C)/\{\pm E\}$を成す．
+まとめると
+\[
+   f:
+   \SL(2,\mathbf C)
+   \ni \begin{pmatrix}
+      a & b\\
+      c & d
+   \end{pmatrix}
+   \mapsto
+   \frac{az+b}{ca+d}
+   \in \PSL(2,\mathbf C)
+\]
+は全射準同形で$\Ker f=\{\pm E\}$.
+
+以下$\mathbf C\mathbf P^1$の代わりに$\hat{\mathbf C}= \mathbf C\cup \infty$を用いるが，
+これは$\psi_2:V_2\to \mathbf C$を中心に考察することになり，複素関数論での一般的記法と一致している．
+
+相異なる$z_2$, $z_3$, $z_4\in 
+\hat{\mathbf C}$
+を$1$, $0$, $\infty\in 
+\hat{\mathbf C} $に写す一次変換は
+\[
+	Tz=\frac{z-z_3}{z-z_4}/\frac{z_2-z_3}{z_2-z_4}
+	\quad z\in  \hat{\mathbf C}
+\]
+と一意的に表される．ただし，
+$z_2=\infty$, $z_3=\infty$, $z_4=\infty$のときは
+\[
+	Tz=\frac{z-z_3}{z-z_4}, \quad \frac{z_2-z_4}{z-z_4},\quad
+	\frac{z-z_3}{z_2-z_3}
+\]
+と解釈することにする．
+実際，$Tz_2=1$, $Tz_3=0$,  $Tz_4=\infty$は直ぐに分かる．
+また，$S$を同じ性質をもつ一次変換とすると$S^{-1}T$は
+$1$, $0$, $\infty$を固定する一次変換なので上より$S^{-1}T=\id$
+となり，一意性も分かる．そこで，$z_1\in 
+\hat{\mathbf C}$ に対して
+\begin{equation}\label{crossRatio}
+	(z_1,z_2,z_3,z_4)
+	=
+	\frac{(z_1-z_3)(z_2-z_4)}{(z_2-z_3)(z_1-z_4)}
+\end{equation}
+と置き，
+\textcolor{red}{複比（非調和比）}という．
+\begin{Thm}
+複比は
+任意の一次変換$Tz= \frac{az+b}{cz+d}$ で不変，つまり，
+\[
+	(Tz_1,Tz_2,Tz_3,Tz_4)
+	=
+	(z_1,z_2,z_3,z_4)
+\]
+をみたす．
+\end{Thm}
+\begin{proof}$Sz = (z,z_2,z_3,z_4)$と置くと
+$
+	S z_2 = 1,  Sz_3 = 0,  S z_4 = \infty
+$
+である．$ST^{-1}$も一次変換で
+\[
+	ST^{-1}Tz_2=Sz_2=1,\quad ST^{-1}Tz_3=Sz_3=0,\quad
+	ST^{-1}Tz_4=Sz_4 = \infty. 
+\]
+よって
+\[
+	(z_1, z_2, z_3, z_4)
+	=Sz_1
+	=ST^{-1}Tz_1
+	=(Tz_1,Tz_2,Tz_3,Tz_4)
+\]
+%\[
+%	Sz = (z,z_2,z_3,z_4),\quad Rz = (z,Tz_2,Tz_3,Tz_4)
+%\]
+%と置くと，共に一次変換で，
+%\[
+%\begin{split}
+%	&S z_2 = 1,\quad S z_3 = 0,\quad S z_4 = \infty, \\
+%	&R T z_2 = 1,\quad R T z_3 = 0,\quad R Tz_4 = \infty.
+%\end{split}
+%\]
+%$ST^{-1}$も一次変換で
+%\[
+%	ST^{-1}Tz_2=Sz_2=1,\quad ST^{-1}Tz_3=Sz_3=0,\quad
+%	ST^{-1}Tz_4=Sz_4 = \infty 
+%\]
+%一意性より$R=ST^{-1}$なので
+%\[
+%	(Tz_1,Tz_2,Tz_3,Tz_4)=RTz_1=ST^{-1}Tz_1=Sz_1
+%	=(z_1, z_2, z_3, z_4)
+%\]
+\end{proof}
+
+\begin{Thm}
+   $z_1,z_2,z_3,z_4$が直線または円周上にあることと
+   $(z_1,z_2,z_3,z_4)$が実数であることは同値である．
+\end{Thm}
+\begin{proof}
+$z_1,z_2,z_3,z_4$が円周上にあれば，偏角を$\arg$と表すと
+\[
+	\arg(z_1,z_2,z_3,z_4)
+	=
+	\arg\frac{z_1-z_3}{z_1-z_4}
+	-\arg\frac{z_2-z_3}{z_2-z_4}
+\]
+となり，円周角の定理（とその逆）より明らか(図~\ref{argP})．
+
+$z_1,z_2,z_3,z_4$が直線上にある場合もほぼ自明．
+\end{proof}
+
+以下では，直線または円周のことを単に円周ということにする．上の二つの定理から
+
+\begin{Thm}[円円対応]
+   任意の一次変換は
+   円周を円周に写す．
+\end{Thm}
+
+円$C$上の相異なる三つの$z_2$, $z_3$, $z_4$をとる．
+$z^*\in \hat{\mathbf C}$が円についての$C$の
+$z\in \hat{\mathbf C}$の\textcolor{red}{鏡映}とは
+\[
+	(z^*, z_2,z_3,z_4)=\overline{(z, z_2,z_3,z_4)}\in \hat{\mathbf C}
+\]
+が成り立つことである．一次変換の一意性より$z^*$は一意的に定まる．
+対称点を与える写像を\textcolor{red}{反転}ということがある．
+
+$z\in C$とすると$(z, z_2,z_3,z_4)$は実数なので$z^*=z$，つまり，
+$C$上の点は自分自身と対称である．
+$(z^*)^*=z$も簡単に分かる．
+円$C$が実軸のとき$(z,1, 0,\infty)=z$なので$z^*=\bar z$ となり，反転は鏡映の一般化であることが分かる．
+
+$C$が 円で$|z-a|^2=R^2$と表されるとき
+$
+	|z_i-a|^2=R^2
+$
+($ i =2,3,4$)であり，
+複比は任意の一次変換で不変なので
+\[
+\begin{split}
+	(z^*, z_2,z_3,z_4)
+	=
+	&\overline{(z, z_2,z_3,z_4)}\\
+	=
+	&\overline{(z-a, z_2-a,z_3-a,z_4-a)}\\
+	=
+	&(\overline{ z-  a}, \overline{z_2-a} ,\overline{z_3-a},\overline{z_4-a})\\
+	=
+	&(\bar z- \bar a,\frac{R^2}{z_2-a} ,\frac{R^2}{z_3-a}, \frac{R^2}{z_4-a})\\
+	=
+	&(\frac{\bar z- \bar a}{R^2}, \frac{1}{z_2-a} , \frac{1}{z_3-a}, \frac{1}{z_4-a})\\
+	= 
+	&(\frac{R^2}{\bar z- \bar a},z_2-a ,z_3-a, z_4-a)
+	= 
+	(\frac{R^2}{\bar z- \bar a}+a ,z_2 ,z_3, z_4)
+\end{split}
+\]
+したがって
+\[
+	z^*=\frac{R^2}{\bar z- \bar a}+a \quad \Leftrightarrow \quad
+	z^* -a =\frac{R^2}{| z-  a|^2}(z-a)
+\]
+よって，$z^*$は$a$と$z$を結ぶ直線の$z$方向の半直線$\ell$にあり，
+\[
+	|z-a|: R =R:|z^* -a|
+\]
+なので$z$（あるいは$z^*$）で$\ell$に直交する直線が$C$で交わる点での$C$の接線が$\ell$と交わる点が$z^*$(あるいは$z$)である．
+
+\begin{figure}[htb]
+   \centering
+   \begin{minipage}{0.45\columnwidth}
+      \centering
+      \includegraphics{~/Documents/GitHub/bEuclideanGeo/ch3/figureSphere.11}
+      \caption{反転}
+   \end{minipage} 
+   \begin{minipage}{0.45\columnwidth}
+      \centering
+      \includegraphics{~/Documents/GitHub/bEuclideanGeo/ch3/figureSphere.9}
+      \caption{アポロニウスの円の初等証明}\label{}
+   \end{minipage} 
+\end{figure}
+
+\begin{Thm}[鏡映原理]
+   円$C$を$C'$に写す一次変換は
+   円$C$についての対称な点 $z$, $z^*\in \hat{\mathbf C}$を
+   円$C'$についての対称な点 $w$, $w^*\in \hat{\mathbf C}$に移す．
+\end{Thm}
+\begin{proof}
+円$C$を実軸に移す一次変換は$C$について対称な$z$と$z^*$を実軸について対称な$w$と$\bar w$に写すので明か．
+\end{proof}
+\subsection{一次変換の分類}
+$\alpha\neq \beta$とする．次の形の一次変換
+\begin{equation}\label{st0}
+	w =k \frac{z-\alpha}{z-\beta}
+\end{equation}
+は$\alpha$を$0$に，$\beta$を$\infty$に写す．
+$w$平面で原点$0$から出る直線$C'_0$は$\alpha$と$\beta$を通る円$C_0$になる．また
+$w$平面での$0$を中心とした同心円$C'_1$上のこの一次変換による像$C_1$は円になる．この円は
+\[
+	 \frac{|z-\alpha|}{|z-\beta|} = \frac{|w|}{|k|} =\const
+\]
+を満たすので，$C_1$は$\alpha$と$\beta$を極限点とするアポロニウスの円である．
+このような円全体を\textcolor{red}{Steiner circles}%シュタイナーの円族}
+という．
+\begin{figure}[htb]
+   \centering
+   \begin{minipage}{0.45\columnwidth}
+      \centering
+      \includegraphics{~/Documents/GitHub/bEuclideanGeo/ch3/figureSphere.13}
+      \caption{Steiner circles}
+   \end{minipage} 
+   \begin{minipage}{0.45\columnwidth}
+      \centering
+      \includegraphics{~/Documents/GitHub/bEuclideanGeo/ch3/figureSphere.12}
+      \caption{Steiner circles}\label{}
+   \end{minipage} 
+\end{figure}
+
+$w$平面で$0$以外で$C'_0$と$C'_1$は直交するので
+$\alpha$と$\beta$以外で$C_0$と$C_1$は直交する．
+$w$平面で$0$以外で$C'_0$に関する反転は$C'_1$を自分自身に写し$C'_1$に関する反転は$C'_0$を自分自身に写すので，
+$\alpha$と$\beta$以外で$C_0$に関する反転は$C_1$を自分自身に写し$C_1$に関する反転は$C_0$を自分自身に写す．
+また$w$平面では$C'_1$に関して$0$と$\infty$は対称なので
+$\alpha$と$\beta$は任意の$C_1$に関して対称である．
+
+\begin{figure}[htb]
+   \centering
+   \begin{minipage}{0.45\columnwidth}
+      \centering
+      \includegraphics{~/Documents/GitHub/bEuclideanGeo/ch3/figureSphere.14}
+      \caption{楕円型}\label{elliptic1}
+   \end{minipage} 
+   \begin{minipage}{0.45\columnwidth}
+      \centering
+      \includegraphics{~/Documents/GitHub/bEuclideanGeo/ch3/figureSphere.17}
+      \caption{楕円型}\label{elliptic2}
+   \end{minipage} 
+\end{figure}
+
+
+一次変換$w=Sz$は$\hat{\mathbf C}$から$\hat{\mathbf C}$への全単射を定義しているが，$S\neq\id$の固定点は
+\[
+	S(z)= \frac{a z +b}{c z +d}=z \quad
+	\Rightarrow \quad
+	cz^2 +(d-a)z-b=0
+\]
+をみたすので，必ず存在し高々2個ある．$\alpha\neq \beta$を異なる二つの固定点とする．\eqref{st0}のような変換を介在することで，$k\neq 0\in \mathbf C$が存在して
+\[
+	 \frac{w-\alpha}{w-\beta} =k \frac{z-\alpha}{z-\beta}
+\]
+と書けることが分かる．
+$|k|= 1$のとき\textcolor{red}{楕円型}一次変換といい，$k\neq \pm 1,0\in \mathbf R$のとき\textcolor{red}{双曲型}一次変換という．
+楕円型は$C_1$を同じ$C_1$に写し，双曲型は$C_0$を同じ$C_0$に写している．楕円型と$\SU(2)$との関係は次の分節で説明する．
+\begin{figure}[htb]
+   \centering
+   \begin{minipage}{0.45\columnwidth}
+      \centering
+      \includegraphics{~/Documents/GitHub/bEuclideanGeo/ch3/figureSphere.15}
+      \caption{双曲型}\label{}
+   \end{minipage} 
+   \begin{minipage}{0.45\columnwidth}
+      \centering
+      \includegraphics{~/Documents/GitHub/bEuclideanGeo/ch3/figureSphere.18}
+      \caption{双曲型}\label{}
+   \end{minipage} 
+\end{figure}
+
+\begin{figure}[htb]
+   \centering
+   \begin{minipage}{0.45\columnwidth}
+      \centering
+      \includegraphics{~/Documents/GitHub/bEuclideanGeo/ch3/figureSphere.16}
+      \caption{放物型}\label{}
+   \end{minipage} 
+   \begin{minipage}{0.45\columnwidth}
+      \centering
+      \includegraphics{~/Documents/GitHub/bEuclideanGeo/ch3/figureSphere.19}
+      \caption{放物型}\label{}
+   \end{minipage} 
+\end{figure}
+$z=\alpha$ を重根とするとき，この一次変換を\textcolor{red}{放物型}一次変換という．
+\[
+	w =z+c\quad c\neq 0
+\]
+は$w=z=\infty$を唯一の固定点とする放物型一次変換であり，$w=u+iv$とすると
+$u=\const$は無限遠点を通る平行直線群$C_0'$で無限遠点で全てが接している．$v=\const$も同様に平行直線群$C_1'$を成し，$C_0'$直線と全ての点で直交している．
+$\omega/(z-\alpha)$で写すと，$\alpha$を固定点とする放物型一次変換は
+\[
+	\frac{\omega}{w-\alpha}=\frac{\omega}{z-\alpha}+c
+\]
+をみたしていることが分かる．$C_0'$と$C_1'$をこの変換で写した直線群$C_0$と$C_1$は
+それぞれが$\alpha$で接していて，任意の点で直交している．
+
+その他の一次変換は\textcolor{red}{混合型}と言われるが，これも双曲型にいれられることもある．
+
+与えられた一次変換がどの型なのかを係数のみで判定できる：
+\begin{Thm}
+一次変換
+\[
+	 Sz=\frac{a z +b}{c z +d}
+ \]
+ の係数が$ad-bc=1$と正規化されているとする．このとき
+ \[
+ \begin{split}
+    a+d\in \mathbf R\quad \text{and}\quad-2<a+d<2 \quad &\Leftrightarrow\quad S \text{ 楕円型}\\
+    a+d\in \mathbf R\quad \text{and}\quad |a+d|>2 \quad &\Leftrightarrow\quad S \text{ 双曲型}\\
+    a+d\in \mathbf R\quad \text{and}\quad a+d=\pm 2\quad &\Leftrightarrow\quad S \text{ 放物型}
+ \end{split}
+ \]
+\end{Thm}
+%\begin{proof}
+%$Sz=z$を満たす$z$は
+%\[
+%	cz^2 + (d-a)z -b=0
+%\]
+%を満たすのでその判別式$D$をみると
+%\[
+%	D=(d-a)^2+4bc=(a+d)^2-4(da-bc)=(a+d)^2-4
+%\]
+%放物型と$D=0$は同値で，他の場合，根$\alpha$, $\beta$は
+%\[
+%	\alpha\beta=1\quad \Rightarrow\quad
+%	\beta = 1/\alpha\quad \Rightarrow\quad
+%\]
+%\end{proof}
+
+
+\section{$S^2(1)$と$S^3(1)$の幾何学}
+\subsection{$S^2(1)$の微分幾何}
+$\mathbf R^3=(\mathbf R^3, (,))$を$3$次元ユークリッド空間とする．
+$(,)$は内積で
+$
+	\|\mathbf x\|=\sqrt{(\mathbf x,\mathbf x)}
+$とおく．
+原点を中心とした半径$1>0$の球面を
+\[
+	S^2(1)=\{\mathbf x\in \mathbf R^3\mid \|\mathbf x\|=1\}
+\]
+と表す．単に$S^2$と表すこともある．
+
+$S^2(1)$には$\mathbf R^3$の計量（内積）から導かれるリーマン計量から導かれる距離が入るが，それは
+二点$A$, $B$と原点を結ぶ線分がなす角度と一致する．また最短測地線は$A$, $B$と原点を通る平面と球面$S^2(1)$の交わり（大円）の$A$, $B$に囲まれた円弧に一致する．測地線のパラメータは長さに取る．
+$A$と$B$が対蹠点でなければ最短線は一意的である．$A$と$B$が対蹠点のとき最短測地線は
+$A$と$B$を結ぶ（大円の）半円となり，無限の取り方がある．$A$から出る
+二つの最短線の角度を$A$での接空間での二つの接ベクトルのなす角とし，誤解が無い場合は$\angle A$などと表す．
+
+
+\begin{figure}[htb]
+   \centering
+   \begin{minipage}{0.4\columnwidth}
+      \centering
+      \includegraphics{~/Documents/GitHub/bEuclideanGeo/ch3/figureSphere.1}
+      \caption{最短測地線}
+   \end{minipage} 
+   \begin{minipage}{0.4\columnwidth}
+      \centering
+      \includegraphics{~/Documents/GitHub/bEuclideanGeo/ch3/figureSphere.2}
+      \caption{極座標}
+   \end{minipage} 
+\end{figure}
+
+空間極座標：空間$\mathbf R^3$の点$\mathbf x=(x,y,z)\neq\mathbf 0$と原点との距離を$r>0$，$\mathbf x$と$z$軸とのなす角度を$0\le \theta\le \pi$,
+$\mathbf x$の$xy$平面への射影が$x$軸となす角を $\varphi\in (-\pi,\pi]$
+とすると，
+\[
+	x=r\sin \theta\cos \varphi,\quad 
+	y=r\sin \theta\sin \varphi, \quad 
+	z=r\cos \theta
+\]
+と表せる．$\theta$は緯度，$\varphi$は経度に対応する．
+地理では緯度を赤道を$0$なるように取るが，数学では
+$\theta$を北極からの角度にするのが普通である．
+ヤコビアンを計算すると
+\[
+\begin{split}
+	\frac{\partial(x,y,z)}{\partial(r,\theta,\varphi)}
+	&=\begin{vmatrix}
+	 	\frac{\partial x}{\partial r}&\frac{\partial x}{\partial \theta}&\frac{\partial x}{\partial \varphi}\\
+		\frac{\partial y}{\partial r}&\frac{\partial y}{\partial \theta}
+		&\frac{\partial y}{\partial \varphi}\\
+		\frac{\partial z}{\partial r}&\frac{\partial z}{\partial \theta}
+		&\frac{\partial z}{\partial \varphi}
+	\end{vmatrix}=\begin{vmatrix}
+	 	\sin \theta\cos \varphi&r\cos \theta\cos \varphi&-r\sin \theta\sin\varphi\\
+		\sin \theta\sin \varphi&r\cos \theta\sin \varphi&r\sin \theta\cos \varphi\\
+		\cos \theta&-r\sin \theta&0
+	\end{vmatrix}\\
+	&=
+	(-1)^{3+1}\cos \theta
+	\begin{vmatrix}
+	 	r\cos \theta\cos \varphi&-r\sin \theta\sin\varphi\\
+		r\cos \theta\sin \varphi&r\sin \theta\cos \varphi\\
+	\end{vmatrix}\\
+	&+(-1)^{3+2}(-r\sin \theta)
+	\begin{vmatrix}
+	 	\sin \theta\cos \varphi&-r\sin \theta\sin\varphi\\
+		\sin \theta\sin \varphi&r\sin \theta\cos \varphi\\
+	\end{vmatrix} +0\\
+	&=r^2\cos^2 \theta\sin \theta +r^2\sin^3 \theta
+	=r^2\sin \theta\\
+	\end{split}
+\]
+ただし，3行目にラプラス（余因子）展開を使った．
+よって変数変換の式は
+\begin{equation*}
+\begin{split}
+	&\int_D f(x,y,z)\, dxdydz
+	\\
+	=&\int_{E} 
+		f(r\sin \theta\cos \varphi,
+		r\sin \theta\sin \varphi, 
+		r\cos \theta)\,
+		|r^2\sin \theta|\,  
+	drd\theta d\varphi
+\end{split}
+\end{equation*}
+である．
+$S^2(1)$上の二つの（大円の）半円に囲まれた二角形の面積(図~\ref{biangle})を計算すると
+\begin{equation}\label{areaBiangle}
+	\int_0^\pi d\theta \int_0^{\angle A}d\varphi 
+	\sin \theta
+	=\angle A [-\cos \theta ]_0^\pi=2\angle A
+\end{equation}
+
+\begin{figure}[htb]
+   \centering
+   \begin{minipage}{0.4\columnwidth}
+      \centering
+      \includegraphics{~/Documents/GitHub/bEuclideanGeo/ch3/figureSphere.3}
+      \caption{極座標のヤコビアン}
+   \end{minipage} 
+   \begin{minipage}{0.4\columnwidth}
+      \centering
+      \includegraphics{~/Documents/GitHub/bEuclideanGeo/ch3/figureSphere.4}
+      \caption{球面二角形の面積}\label{biangle}
+   \end{minipage} 
+\end{figure}
+
+球面三角形の面積：$\alpha$を求めたい球面三角形$ABC$の面積とし，
+図~\ref{diagram}のように面積に名前を付け, 見えない面の三角形の面積を$\kappa$と置くと，$8$枚の球面三角形で球面全体が覆われるので
+\[
+	\alpha + \beta+\gamma +\delta+\varepsilon+
+	\eta+\zeta+\kappa 
+	=4\pi
+\]
+対頂角は等しいので，\eqref{areaBiangle}より
+\begin{gather*}
+	\alpha + \beta =2 \angle A,\quad
+	\alpha + \delta =2 \angle B,\quad
+	\alpha + \zeta =2 \angle C,\\
+	\kappa + \varepsilon =2 \angle A,\quad
+	\kappa + \eta =2 \angle B,\quad
+	\kappa + \gamma =2\angle C,
+\end{gather*}
+よって
+\[
+	2\alpha+2\kappa +4\pi= 4(\angle A+\angle B+\angle C)
+\]
+$\alpha=\kappa$なので
+\[
+	\alpha = \angle A+\angle B+\angle C-\pi
+\]
+\begin{figure}[htb]
+   \centering
+   \begin{minipage}{0.4\columnwidth}
+      \centering
+      \includegraphics{~/Documents/GitHub/bEuclideanGeo/ch3/figureSphere.5}
+      \caption{球面三角形}
+   \end{minipage} 
+   \begin{minipage}{0.4\columnwidth}
+      \centering
+      \includegraphics{~/Documents/GitHub/bEuclideanGeo/ch3/figureSphere.6}
+      \caption{模式図}\label{diagram}
+   \end{minipage} 
+\end{figure}
+(このエレガントな証明は Thomas Harriot, 1603 によると言われている, \cite{L}, \cite{S}%\S 17.6 7
+).
+これを境界が測地線の場合のガウスボンネの公式
+\[
+\begin{split}
+	\int_{\triangle ABC}Kd\vol 
+	&= 2\pi - (\pi-\angle A)-(\pi-\angle B)-(\pi-\angle C)\\
+	&=\angle A+\angle B+\angle C-\pi=\alpha
+\end{split}
+\]
+と較べるとガウス曲率$K$が$=1$であることも分かる．
+\emptyline
+
+2回目の授業で示した$3$種類の極と$\alpha_i = |\stab(\mathbf x_i)|$との関係
+\[
+	1+\frac2n 
+	=
+	\frac1{\alpha_1}+\frac1{\alpha_2}+\frac1{\alpha_3}
+\]
+を書き換えると
+\[
+	\frac{\pi}{\alpha_1}+\frac{\pi}{\alpha_2}+\frac{\pi}{\alpha_3}-\pi
+	=	
+	\frac{2\pi}n 
+\]
+であり，これは異なる軌道に属する三つの極の最も近いものを最短線で結んだ測地三角形の面積の公式となっている(表 \ref{classification}参照)．
+\begin{table}[h]
+  \centering
+  \begin{tabular}{l|llllllll} 
+  	\noalign{\hrule height 1pt}
+	 $G$ & $\alpha_1$ &$\alpha_2$&$\alpha_3$& $|G|$ \\ \hline \hline
+	$C_n$ $(n\in \mathbf N)$&$n$&$n$&$1$  & $n$\\ \hline
+	$D_m$ $(m\in \mathbf N)$&$2$&$2$&$m$  &  $2m$\\ \hline
+	$ T$&$2$& $3$ & $3$ &$12$ \\ \hline
+	$W$& $2$&$3$  & $4$ &$24$ \\ \hline
+	$I$&$2$& $3$ & $5$&$60$\\ \hline
+     \noalign{\hrule height 1pt}
+  \end{tabular}
+\caption{$SO(3)$の有限部分群の分類}\label{classification}
+\end{table}
+
+%\begin{figure}[htb]
+%   \centering
+%   \begin{minipage}{0.4\columnwidth}
+%      \centering
+%      \includegraphics{~/Documents/GitHub/bEuclideanGeo/ch3/figureSphere.20}
+%      \caption{回転の合成}
+%   \end{minipage} 
+%   \begin{minipage}{0.4\columnwidth}
+%      \centering
+%      \includegraphics{~/Documents/GitHub/bEuclideanGeo/ch3/figureSphere.23}
+%      \caption{オイラー角}\label{EulerAngle}
+%   \end{minipage} 
+%\end{figure}
+回転の合成と軸の変換：
+向きを保つ$S^2(1)$の等長変換全体が$\SO(3)$となる．
+
+\subsection{$\SU(2)=\Sp(1)=S^3(1)$}
+球面との関係で表れる低次元の古典群の間の関係について述べたい．
+$\mathbf a=\begin{pmatrix}a_1\\a_2\\ \vdots\\a_n\end{pmatrix}$, 
+$\mathbf b=\begin{pmatrix}b_1\\b_2\\ \vdots\\b_n\end{pmatrix}\in \mathbf C^n$
+に対して
+\[
+	\langle\mathbf a, \mathbf b\rangle
+	=\bar a_1b_1+\bar a_2b_2+\cdots +\bar a_nb_n
+\]
+と定めるとエルミート内積となる．これを標準的エルミート内積という．
+複素係数の$ n$次正方行列$A=(a_{ij})$に対して$\bar A=(\bar a_{ij})$とおき ${}^tA$を$A$の転置とするとき
+\[
+	A^*={}^t\bar A
+\]
+とおく．
+複素係数の$n$次正方行列$U$
+が
+\[
+	U^*U=E
+\]
+をみたすとき$n$次\textcolor{red}{ユニタリ行列}という．これは$U^{-1}=U^*$と同値である．これはまた標準的エルミート内積$\langle,\rangle $について
+\[
+	\langle U\mathbf a, U\mathbf b\rangle =\langle\mathbf a, \mathbf b\rangle 
+\]
+が任意の$\mathbf a, \mathbf b\in \mathbf C^n$について成り立つことと同値である．
+
+$n$次の（複素係数の）正則行列全体$\GL(n,\mathbf C)$ が群をなすことは実の場合と同様に分かる．
+$\GL(n,\mathbf C)$は$n$\textcolor{red}{次複素一般線形群}と呼ばれる．
+\[
+	\SL(n,\mathbf C) = \{A\in \GL(n,\mathbf C)\mid\det A = 1 \}
+\]
+は$\GL(n,\mathbf C)$の部分群で$n$\textcolor{red}{次複素特殊線形群}という．
+このセクションの初めにリーマン球面$\mathbf R\mathbf P^1$の一次変換全体
+$\PSL(2,\mathbf C)$が群となることを示した．
+これを，$2$\textcolor{red}{次複素射影特殊線形群}という．
+\[
+	\U(n)= \{A \in \GL(n,\mathbf C)\mid n \text{次ユニタリ行列}\}
+\]
+も$\GL(n,\mathbf C)$の部分群で， $n$\textcolor{red}{次ユニタリ群}という．特に，
+\[
+	\U(1)=\{a\in \mathbf C \mid \bar a a =1\}=S^1(1)
+\]
+である．
+\[
+	\SU(n)= \U(n)\cap \SL(n,\mathbf C)
+\]
+も$U(n)$の部分群で，$n$\textcolor{red}{次特殊ユニタリ群}という．
+
+まず$\SL(2,\mathbf C)$, $\SU(2)$,  $\PSL(2,\mathbf C)$, $\SO(3)$の間の関係を調べる．
+$U\in \SU(2)$ を 
+$U=\begin{pmatrix}
+   a &b\\
+   c& d\\
+\end{pmatrix}$と置くと，$\det U=ad-bc=1$と$U^{-1}=U^{*}$より
+\[
+   \frac{1}{1}
+   \begin{pmatrix}
+      d &-b\\
+      -c& a\\
+   \end{pmatrix}
+   =
+   \begin{pmatrix}
+      \overline{a} & \overline{c}\\
+       \overline{b}&  \overline{d}\\
+   \end{pmatrix}, 
+   \quad
+   ad-bc=1
+\]
+より，
+\[
+   \overline{a} =d, \quad \overline{b}=-c, \quad a\overline{a}+b\overline{b}=1
+\]
+$a=x_0 + x_3i$, $b=-x_2 + x_1i$と置くと
+\begin{equation}\label{quaternion}
+   U
+   =
+   \begin{pmatrix}
+      x_0 + x_3i &-x_2 + x_1i\\
+      x_2 + x_1i& x_0 - x_3i\\
+   \end{pmatrix},
+   \quad
+   x_0^2+x_1^2+x_2^2+x_3^2=1
+\end{equation}
+が分かり
+\begin{Prop}
+写像
+\[
+   \SU(2) \ni  
+   \begin{pmatrix}
+      x_0 + x_3i &-x_2 + x_1i\\
+      x_2 + x_1i& x_0 - x_3i\\
+   \end{pmatrix}
+   \mapsto 
+   ( x_0 , x_1, x_2 ,  x_3)\in  S^3(1)
+\]
+は同相である．
+\end{Prop}
+\noindent
+ことまで分かる．
+
+$\SU(2)$の積構造について調べる．
+\eqref{quaternion}より
+\[
+   \mathbf e_0=E,\quad
+   \mathbf e_1=
+   \begin{pmatrix}
+     0 &i\\
+      i& 0\\
+   \end{pmatrix},\quad
+  \mathbf e_2
+   =
+   \begin{pmatrix}
+     0 &-1\\
+      1& 0\\
+   \end{pmatrix},\quad
+  \mathbf e_3
+   =
+   \begin{pmatrix}
+      i &0\\
+      0& -i\\
+   \end{pmatrix}
+\]
+と置くと任意の$A\in \SU(2)$は
+\[
+   A=
+   x_0 \mathbf e_0+ x_1\mathbf e_1
+   + x_2\mathbf e_2+ x_3\mathbf e_3,\quad
+    x_0^2+x_1^2+x_2^2+x_3^2=1
+\]と表せる．
+$\mathbf e_1$, 
+$\mathbf e_2$, 
+$\mathbf e_3$ の積は
+\begin{gather*}
+	\mathbf e_1\mathbf e_1=\mathbf e_2\mathbf e_2=\mathbf e_3\mathbf e_3=-\mathbf e_0,\\
+	\mathbf e_1\mathbf e_2=-\mathbf e_2\mathbf e_1=\mathbf e_3,\quad 
+	\mathbf e_2\mathbf e_3=-\mathbf e_3\mathbf e_2=\mathbf e_1,\quad
+	\mathbf e_3\mathbf e_1=-\mathbf e_3\mathbf e_1=\mathbf e_2
+\end{gather*}
+をみたし，
+$\mathbf e_0\Rightarrow 1$, 
+$\mathbf e_1\Rightarrow i$,
+ $\mathbf e_2\Rightarrow j $, 
+ $\mathbf e_3\Rightarrow k $
+ としたときの$4$元数体$\mathbf H$と同じ積構造を持っている．
+
+$a=x_0 + x_1i+x_2 j+ x_3k\in \mathbf H$に対して
+$ \overline{a}=
+ x_0 - x_1i-x_2 j-x_3k$と置くと簡単に
+ \[
+    a\overline{a}=x_0^2+x_1^2+x_2^2+x_3^2
+ \]
+ がわかる．また
+ \[
+   \overline{ab}=\overline{b}\overline{a}
+ \]
+ も分かる．$\mathbf H$係数の$ n$次正方行列$A=(a_{ij})$に対して$\bar A=(\bar a_{ij})$とおき ${}^tA$を$A$の転置とするとき
+\[
+   A^*={}^t\bar A
+\]
+とおくと
+\[
+   (AB)^*=B^*A^*
+\]
+が分かる．
+ $\mathbf H$係数の$n$次正方行列$S$が
+\[
+	S^*S=E
+\]
+をみたすとき$n$\textcolor{red}{次シンプレクティック行列}という．
+\[
+	\Sp(n)
+	=\{
+      	S\mid n\text{次シンプレクティック行列}
+	\}
+\]
+と置き$n$\textcolor{red}{次シンプレクティック群}という．
+上で示したことからこれは確かに群をなしている．
+特に
+\[
+   \Sp(1)=\{a\in \mathbf H\mid  \overline{a}a =1\}=S^3(1)
+\]
+なので
+$\rho: \SU(2)\to\Sp(1)$を
+\[
+   \rho
+   \begin{pmatrix}
+      x_0 + x_3i &-x_2 + x_1i\\
+      x_2 + x_1i& x_0 - x_3i\\
+   \end{pmatrix}
+   = 
+   x_0 + x_1i+x_2 j+ x_3k
+\]
+で定めると well-defined で全単射である．
+\begin{Thm}
+写像$\rho: \SU(2)\to\Sp(1)$
+は（積についての群の）同型である．
+\end{Thm}
+\begin{proof}
+$\rho: \SU(2)\to\Sp(1)$は
+\[
+   \rho(\mathbf e_0)=1, \quad
+   \rho(\mathbf e_1)=i, \quad
+   \rho(\mathbf e_2)=j, \quad
+   \rho(\mathbf e_3)=k
+\]
+をみたしている．上の計算より
+\[
+   \rho(\mathbf e_l\mathbf e_m)
+   = \rho(\mathbf e_l) \rho(\mathbf e_m)\in \mathbf H
+\]
+なので
+\[
+   \rho(U'U)=\rho(U')\rho(U)
+\]
+が分かる．
+\end{proof}
+
+\subsection{$SO(3)=\mathbf R\mathbf P^3$}
+$SO(3)$と$S^3(1)$の関係を調べたい．
+$A\in \SO(3)$を固定し，標準基を
+$\{\mathbf e_i=(\delta_{ij})\in \mathbf R^3\}_{i=1,2,3}$とする，
+点$A\mathbf e_3\in S^2(1)$の極座標を
+ $\varphi\in (-\pi,\pi]$, $\theta\in[0,\pi]$とし$A\mathbf e_3$を$\varphi$だけ$z$軸について逆回転$R_{-\varphi}$し, 
+ $xz$平面の$x\ge 0$の部分に写し，
+ $xz$平面で$-\theta$だけ$y$軸について回転$L_{-\theta}$すると
+\[
+	L_{-\theta}R_{-\varphi}A\mathbf e_3=\mathbf e_3
+\]
+となる（図~\ref{EulerAngle1}）．
+これは$\mathbf e_3$を固定する回転なので，
+ある$\psi$が存在して$R_{\psi}$と一致する（図~\ref{EulerAngle2}のように$\mathbf e_1$の動きをみると理解しやすい）．したがって，
+\begin{equation}\label{Euler}
+	A=R_{\varphi}L_{\theta}R_{\psi}
+\end{equation}
+と表せる．
+上の構成から$0\le \varphi<2\pi$, $0\le \theta\le\pi$, $0\le \psi<2\pi$ である．
+これらの角$\varphi$, $\theta$, $\psi$を$A\in \SO(3)$の\textcolor{red}{オイラー角}\footnote{ただし，力学などでは$y$軸での回転の代わりに$x$軸での回転を使っているものも多いが，量子力学では$y$軸回転の方が自然らしい\cite{JJS} \P171--4．どちらを使うかで以下の式は微妙に異なるので注意してほしい．}という．
+\begin{figure}[htb]
+   \centering
+   \begin{minipage}{0.4\columnwidth}
+      \centering
+      \includegraphics{~/Documents/GitHub/bEuclideanGeo/ch3/figureSphere.21}
+      \caption{Euler角:$\mathbf e_3$の動き}\label{EulerAngle1}
+   \end{minipage} 
+   \begin{minipage}{0.4\columnwidth}
+      \centering
+      \includegraphics{~/Documents/GitHub/bEuclideanGeo/ch3/figureSphere.22}
+      \caption{Euler角:$\mathbf e_1$の動き}\label{EulerAngle2}
+   \end{minipage} 
+\end{figure}
+
+\[
+   R_{\psi} = 
+    \begin{pmatrix}
+      \cos \psi& -\sin\psi&0\\
+      \sin\psi& \cos\psi&0\\
+      0&0&1
+   \end{pmatrix},\quad
+   L_{\theta} = 
+   \begin{pmatrix}
+      \cos \theta& 0&\sin \theta\\
+      0&1&0\\
+      -\sin \theta&0& \cos \theta\\
+   \end{pmatrix}
+\]
+なので，上の行列の積を計算すると$A$は
+\[
+   \begin{pmatrix}
+      \cos \theta\cos \varphi\cos\psi - \sin \varphi\sin \psi&
+         -\cos \theta\cos \varphi\sin\psi - \sin \varphi\cos \psi&
+         \sin\theta\cos \varphi\\
+      \cos \theta\sin \varphi\cos\psi + \cos \varphi\sin \psi&
+         -\cos \theta\sin \varphi\sin\psi + \cos \varphi\cos \psi&
+         \sin\theta\sin \varphi\\\
+      -\sin \theta\cos\psi&\sin \theta\sin \psi&\cos \theta
+   \end{pmatrix}
+\]
+と表される．
+$A\mathbf e_3$の表示からその球面極座標は$(\theta, \varphi)$である．
+\[
+\begin{split}
+	&( \mathbf e_1,  \mathbf e_2,  \mathbf e_3)R_{\varphi}
+	=( \mathbf e'_1,  \mathbf e'_2,  \mathbf e'_3)\\
+	&( \mathbf e'_1,  \mathbf e'_2,  \mathbf e'_3)L_{\theta}
+	=( \mathbf e''_1,  \mathbf e''_2,  \mathbf e''_3)\\
+	&( \mathbf e''_1,  \mathbf e''_2,  \mathbf e''_3)R_{\psi}
+	=( \mathbf e'''_1,  \mathbf e'''_2,  \mathbf e'''_3)
+\end{split}
+\]
+と置くと，
+\[
+   A
+   =( \mathbf e_1,  \mathbf e_2,  \mathbf e_3)
+   A
+   =( \mathbf e'''_1,  \mathbf e'''_2,  \mathbf e'''_3)
+\]
+で，$\{\mathbf e_1,  \mathbf e_2,  \mathbf e_3\},\dots, 
+\{\mathbf e'''_1,  \mathbf e'''_2,  \mathbf e'''_3\}$はすべて$\mathbf R^3$の正規直交基である．具体的に計算すると
+\[
+\begin{split}
+   &\mathbf e_1'
+   =\cos\varphi \,\mathbf e_1+ \sin\varphi \,\mathbf e_2,\quad
+   \mathbf e_2'
+   =-\sin\varphi \,\mathbf e_1+ \cos\varphi \,\mathbf e_2,\quad
+   \mathbf e_3'
+   =\mathbf e_3
+   \\
+   &\mathbf e''_1
+   =
+   \cos \theta\,\mathbf e_1'-\sin\theta\,\mathbf e'_3, \quad
+   \mathbf e''_3
+   =
+   \sin \theta\,\mathbf e_1'+\cos\theta\,\mathbf e'_3, \quad
+   \mathbf e''_2
+   =
+   \mathbf e'_2
+   \\
+   &\mathbf e'''_1
+   =\cos\psi\, \mathbf e''_1+ \sin\psi\, \mathbf e''_2,\quad
+   \mathbf e'''_2
+   =-\sin\psi\, \mathbf e''_1+ \cos\psi\, \mathbf e''_2,\quad
+   \mathbf e'''_3
+   =\mathbf e''_3
+\end{split}
+\]
+よって，まず$\{\mathbf e_1,  \mathbf e_2,  \mathbf e_3\}$を$\mathbf e_3$中心に$\varphi$回転したものが$\{\mathbf e'_1,  \mathbf e'_2,  \mathbf e'_3\}$で，それを$\mathbf e'_2$を中心に$\theta$回転したのが$\{\mathbf e''_1,  \mathbf e''_2,  \mathbf e''_3\}$, それを$\mathbf e''_3$を中心に$\psi$回転したのが$\{\mathbf e'''_1,  \mathbf e'''_2,  \mathbf e'''_3\}$である．これが
+オイラー角の幾何学的意味である．
+\begin{figure}[htb]
+   \centering
+   \begin{minipage}{0.4\columnwidth}
+      \centering
+      \includegraphics{~/Documents/GitHub/bEuclideanGeo/ch3/figureSphere.23}
+      \caption{オイラー角 I}\label{EulerAngle1}
+   \end{minipage} 
+   \begin{minipage}{0.4\columnwidth}
+      \centering
+      \includegraphics{~/Documents/GitHub/bEuclideanGeo/ch3/figureSphere.24}
+      \caption{オイラー角 II}\label{EulerAngle2}
+   \end{minipage} 
+\end{figure}
+
+
+\emptyline
+特殊ユニタリ行列
+$
+   U
+   =
+   \begin{pmatrix}
+      a & -\overline{b}\\
+     b&  \overline{a}\\
+   \end{pmatrix}
+   \in \SU(2)
+$ の固有多項式は
+\[
+   \begin{vmatrix}
+      t-a &\overline{b}\\
+     -b& t- \overline{a}\\
+   \end{vmatrix}
+   =( t-a)(t-\overline{a}) + b\overline{b}
+   =t^2 - 2\RE a\, t+1
+\]
+$-1\le \RE a\le 1$より固有値は$\lambda =e^{\theta}$, $e^{-\theta}$.
+$\theta \not\equiv 0 \mod 2\pi$のときは異なる2つの固有値になるが，
+$\theta \equiv 0 \mod 2\pi$のとき$\lambda =1$は重根で，この場合
+$\RE a=1$つまり$a=1$が分かり$b=0$もわかるので$U=E$となる．
+よって対角化が出来てユニタリ行列$V\in \U(2)$が存在して
+\[
+   V^{*}UV
+   =
+   \begin{pmatrix}
+      e^{i\theta} &0\\
+     0& e^{-i\theta}\\
+   \end{pmatrix}
+\]
+となる．
+$V = 
+   \begin{pmatrix}
+      \alpha & -\overline{\beta}\\
+     \beta&  \overline{\alpha}\\
+   \end{pmatrix}
+$
+とおくと，固有ベクトルとして
+\[
+   \mathbf e_1
+   =
+   \begin{pmatrix}
+      \alpha \\
+      \beta\\
+   \end{pmatrix},\quad
+   \mathbf e_2
+   =\begin{pmatrix}
+      -\overline{\beta}\\
+      \overline{\alpha}\\
+   \end{pmatrix}
+\]
+が取れて
+\[
+	U\mathbf e_1=e^{i\theta}\mathbf e_1,\quad
+	U\mathbf e_2=e^{-i\theta}\mathbf e_2.
+\]
+$U$のリーマン球面$\mathbf C\mathbf P^1$への一次分数変換としての作用をみると，
+同次座標を考えることで
+\[
+	U[\alpha : \beta]=[\alpha : \beta],\quad
+	U[-\overline{\beta}:\overline{\alpha} ]
+	=[-\overline{\beta}:\overline{\alpha} ]
+\]
+つまり，
+$[\alpha : \beta]$
+と
+$[-\overline{\beta}:\overline{\alpha} ]\in \mathbf C\mathbf P^1$
+は一次分数変換$U$の固定点である．
+\begin{figure}[htb]
+   \centering
+   \begin{minipage}{0.4\columnwidth}
+      \centering
+      \includegraphics[trim=6 6 6 6, clip]{~/Documents/GitHub/bEuclideanGeo/ch3/figureSphere.17}
+       \caption{図~\ref{elliptic2}再掲}\label{elliptic2'}
+   \end{minipage} 
+   \begin{minipage}{0.4\columnwidth}
+      \centering
+      \includegraphics{~/Documents/GitHub/bEuclideanGeo/ch3/figureSphere.26}
+      \caption{$\SU(2)$の元の$\mathbf C\mathbf P^1$への作用}
+   \end{minipage} 
+\end{figure}
+
+$\alpha\ne 0$ と仮定して一般性を失わないのでそう仮定する．
+もし，$\beta=0$ならば$[1:0]=0$と$[0:1]=\infty$が固定点で
+$V=E$と考えてよく，このとき一次変換は
+\[
+	\frac{e^{i\theta}z+0}{0z+e^{-i\theta}}
+	=e^{2i\theta}z
+\]
+となる．つまり$0$と$\infty$を固定をする楕円型の一次変換であるが，
+これは図~\ref{elliptic2'}のように$\mathbf C$の原点中心とした回転で，
+立体射影で写すと$S^2$の対蹠点$0$と$\infty$を中心とする
+$S^2\subset \mathbf R^3$の回転で，
+$\mathbf R^3$の$z$軸を軸とする回転に拡張される．
+対応する$\SO(3)$の元は
+\[
+   \begin{pmatrix}
+      \cos 2\theta& -\sin 2\theta&0\\
+      \sin 2\theta& \cos 2\theta&0\\
+      0&0&1
+   \end{pmatrix}
+\]
+
+\begin{figure}[htb]
+   \centering
+   \begin{minipage}{0.4\columnwidth}
+      \centering
+      \includegraphics[trim=6 6 6 6, clip]{~/Documents/GitHub/bEuclideanGeo/ch3/figureSphere.14}
+       \caption{図~\ref{elliptic1}再掲}\label{elliptic1'}
+   \end{minipage} 
+   \begin{minipage}{0.4\columnwidth}
+      \centering
+      \includegraphics{~/Documents/GitHub/bEuclideanGeo/ch3/figureSphere.27}
+      \caption{$\SU(2)$の元の$\mathbf C\mathbf P^1$への作用}
+   \end{minipage} 
+\end{figure}
+
+$\beta\neq0$とすると，$u=\frac{\beta}{\alpha}$と
+\[
+   \frac{-\overline{\alpha}}{\overline{\beta}}=-\frac{1}{\overline{u}}=-\frac{u}{|u|^2}
+\]
+が固定点であることが分かるが，\eqref{stereoProj}より
+\[
+	\varphi(u)=(\frac{2u}{|u|^2+1}, \frac{|u|^2-1}{|u|^2+1}),\quad
+	\varphi(-\frac{1}{\overline{u}})=-(\frac{2u}{|u|^2+1}, \frac{|u|^2-1}{|u|^2+1})
+\]
+となり，やはり$S^2(1)$の対蹠点である．一次変換で
+\[
+   z'=\frac{z-u}{z+\frac{1}{\overline{u}}},\quad
+   w'=\frac{w-u}{w+\frac{1}{\overline{u}}}
+\]
+変換することで，楕円型の一次変換
+\[
+   \frac{w-u}{w+\frac{1}{\overline{u}}}
+   = e^{2i\theta}\frac{z-u}{z+\frac{1}{\overline{u}}},
+\]
+になることが分かり，
+$\varphi^{-1}(u)$を含む直線を軸とする$\mathbf R^3$の回転になることが分かる．
+特に$u=i$と$\frac{-1}{\overline{u}}=-i\in \mathbf C$を固定すると
+$
+   \frac{1}{\sqrt2}
+   \begin{pmatrix}
+      1\\
+      i\\
+   \end{pmatrix}
+$, 
+$
+   \frac{1}{\sqrt2}
+   \begin{pmatrix}
+      1\\
+      -i\\
+   \end{pmatrix}
+$
+が標準エルミート内積について$\mathbf C^2$の正規直交基底となるので
+\[
+   \frac{1}{\sqrt2}
+   \begin{pmatrix}
+      1&1\\
+      i&-i\\
+   \end{pmatrix}
+   \begin{pmatrix}
+      e^{i\theta} &0\\
+     0& e^{-i\theta}\\
+   \end{pmatrix}
+   \frac{1}{\sqrt2}
+   \begin{pmatrix}
+      1&-i\\
+      1&i\\
+   \end{pmatrix}
+   =
+   \begin{pmatrix}
+      \cos{\theta} &-\sin \theta\\
+     \sin \theta& \cos{\theta}\\
+   \end{pmatrix}
+\]
+が対応する$\SU(2)$の元で，$\mathbf R^3$の$y$軸を中心とする右手系の回転は$z$軸を$x$軸の方向に回転するので，$\SO(3)$の作用で表すと
+\[
+   \begin{pmatrix}
+      \cos 2\theta& 0&\sin 2\theta\\
+      0&1&0\\
+      -\sin 2\theta&0& \cos 2\theta\\
+   \end{pmatrix}
+\]
+となる．
+
+
+$\SU(2)\subset \SL(2,\mathbf C)$ は部分群であることは定義から明らか．上で示したように $f:\SL(2,\mathbf C)\to\PSL(2,\mathbf C)$は全射準同形である．よって
+$f|_{\SU(2)}:\SU(2)\to\PSL(2,\mathbf C)$は準同形であり，
+上の考察から準同形$f|_{\SU(2)}:\SU(2)\to\SO(3)$が定まる．
+オイラー角を使うと$\SO(3)$は$z$軸の回転と$y$軸の回転から生成されることが分かるので$f|_{\SU(2)}$は全射である．
+\[
+   \xymatrix{
+      \SU(2) \ar[d] \ar[r]^{f|_{ \SU(2)}}&\SO(3)\ar[d]&\\
+      \SL(2,\mathbf C)\ar[r]^{f}&\PSL(2,\mathbf C) &\curvearrowright 
+      \mathbf C\mathbf P^1=S^2(1)\\
+   }
+\]
+$\SU(2)=\Sp(1)= S^3(1)$であり，$\Ker f|_{ \SU(2)}=\{\pm 1\}$なので
+\[
+	\SO(3) = S^3(1)/\{\pm 1\}=\mathbf R\mathbf P^3
+\]
+まで分かった．
+
+最後に，同型$\mathbf H\to \mathbf C^2$は$0\in \mathbf H$を$(0,0)$に写すので射影
+\[
+   \Sp(1)\to \mathbf C\mathbf P^1,\quad
+   \SO(3) \to \mathbf C\mathbf P^1
+\]
+を引き起こす．これらはファイバー束である．
+\emptyline
+
+固有ローレンツ群と$\SL(2,\mathbf C) $の関係や,
+$\SU(2)$と$\SL(2,\mathbf C) $の表現論も物理との関係からも興味深く，スピンとDirac 作用素との関係も面白いので独習されることをお奨めしたい．
+
+
+\section{Coxetor グラフ}
+ $\mathbf R^n$の有限個の(線形)鏡映から生成される有限群を
+ 有限鏡映群という．
+ 有限個の(線形でない合同変換の)鏡映が生成する離散群を
+ アファイン鏡映群という．これらはCoxetor群の仲間であり，
+ 万華鏡の数学的記述である．
+ 
+ これまでの議論で幾つか例が出てきたので，簡単に説明したい．
+ 
+ まずCoxetor グラフについて解説する．まず$\mathbf R^n$で
+$R=R_{\mathbf u}$を
+ $\mathbf u\neq \mathbf 0$に直交する平面に付いての鏡映とする．
+$\alpha\neq0$について $R_{\alpha\mathbf u}=R_{\mathbf u}$である．$\{R_{\mathbf u_i}\}$が有限(あるいは離散)群$W$を生成するとする．
+
+$R$をルート系という．
+ポジティブルート，
+シンプルルート
+
+ Coxetor グラフの分類：
+ まず例を挙げる．$A_n$, $B_n$, $D_n$
+ 
+ $D_3$は$A_2$ ,  $T$は$A_3$である．
+ 
+ $D_4$は$B_2$ , $I^*$ は$B_3$, 
+ 
+  結晶群の中のアファイン鏡映群
+\[
+   2\dim\quad
+   \dynkin [extended,Coxeter]A2, %\dynkin [extended,Coxeter]F3,
+    %\dynkin [extended,Coxeter]G2
+\]
+ 
+ $\Ot(2)$ の有限群の中の鏡映群
+ $D_n$ は$I_n$ 
+ $\Ot(3)$ の有限群の中の鏡映群
+\[
+   3\dim\quad
+   \dynkin [Coxeter]B3, \dynkin [Coxeter]A3, \dynkin [Coxeter]H3
+\]
+
+
+
+ \begin{figure}[htb]
+   \centering
+   \begin{minipage}{0.4\columnwidth}
+      \centering
+      \includegraphics{~/Documents/GitHub/bEuclideanGeo/ch3/figurecoxetor.1}
+      \caption{ シンプルルート$\dynkin [Coxeter]B3$}\label{}
+   \end{minipage} 
+   \begin{minipage}{0.4\columnwidth}
+      \centering
+      \includegraphics{~/Documents/GitHub/bEuclideanGeo/ch3/figurecoxetor.2}
+      \caption{立方体の分割}\label{}
+   \end{minipage} 
+\end{figure}
+
+ 
+\begin{figure}[htb]
+   \centering
+   \begin{minipage}{0.4\columnwidth}
+      \centering
+      \includegraphics{~/Documents/GitHub/bEuclideanGeo/ch3/figurecoxetor.3}
+      \caption{ シンプルルート$\dynkin [Coxeter]A3$}\label{}
+   \end{minipage} 
+   \begin{minipage}{0.4\columnwidth}
+      \centering
+      \includegraphics{~/Documents/GitHub/bEuclideanGeo/ch3/figurecoxetor.4}
+      \caption{立方体の分割}\label{}
+   \end{minipage} 
+\end{figure}
+\begin{figure}[h]
+   \centering
+   \begin{minipage}{0.4\columnwidth}
+      \centering
+      \includegraphics{~/Documents/GitHub/bEuclideanGeo/ch3/figurecoxetor.5}
+      \caption{ シンプルルート$\dynkin [Coxeter]H3$}\label{}
+   \end{minipage} 
+   \begin{minipage}{0.4\columnwidth}
+      \centering
+      \includegraphics{~/Documents/GitHub/bEuclideanGeo/ch3/figurecoxetor.6}
+      \caption{正12面体の分割の一部}\label{}
+   \end{minipage} 
+\end{figure}
+
+
+ リー群の中のルート系
+
+
+\clearpage
+
+\section{楕円曲線と双曲幾何 }
+\subsection{一般格子のなす空間の幾何学}
+以下の議論では追々明らかになるように平面$\mathbf R^2$を複素平面$\mathbf C$ と見なすのが自然であるのでそう見なすことにする．
+$+$に関して$\mathbf C$は可換群である．
+$\omega_1$, $\omega_2\in \mathbf C$が $\mathbf R$上一次
+独立，つまり，$\IM(\frac{\omega_1}{\omega_2})\neq 0$とする．
+\[
+	\Gamma= \Gamma_{\omega_1,\omega_2}
+	=\{
+		m\omega_1+n\omega_2\mid m,n\in \mathbf Z
+	\}
+\]
+が（一般）格子であり，$\mathbf C$の($\mathbf Z$加群として)の可換部分群である．よって剰余群（更に，商空間，商多様体，Lie 群として）
+\[
+	T=T_{\omega_1,\omega_2} 
+	= \mathbf C/ \Gamma_{\omega_1,\omega_2}
+\]
+が定まり，トーラスになる．とくに$T$はコンパクトな可換群である．
+図~\ref{GammaFD} に一つの基本領域を示した．
+
+\begin{figure}[htb]
+   \centering
+   \begin{minipage}{0.4\columnwidth}
+      \centering
+      \includegraphics{~/Documents/GitHub/bEuclideanGeo/ch3/figureHyperbolic.1}
+      \caption{$\Gamma_{\omega_1,\omega_2}$}\label{GammaFD}
+   \end{minipage} 
+   \begin{minipage}{0.4\columnwidth}
+      \centering
+      \includegraphics{~/Documents/GitHub/bEuclideanGeo/ch3/figureHyperbolic.2}
+      \caption{トーラス}\label{Tours}
+   \end{minipage} 
+\end{figure}
+
+例へば$\omega_1=1$, $\omega_2=i$ とし，
+$\omega'_1=2+i$, $\omega'_2=3+2i$ とすると
+\[
+	\begin{cases}
+		\omega'_1=2\omega_1+\omega_2\\
+		\omega'_2=3\omega_1+2\omega_2
+	\end{cases},
+	\quad
+	\begin{cases}
+		\omega_1=2\omega'_1-\omega'_2\\
+		\omega_2=-3\omega'_1+2\omega'_2
+	\end{cases}
+\]
+なので，部分群として$\Gamma_{\omega_1,\omega_2}=\Gamma_{\omega'_1,\omega'_2}$となり，$T_{\omega_1,\omega_2}=T_{\omega'_1,\omega'_2}$
+となる．そこで，
+
+\begin{Q}
+$\omega_1$, $\omega_2$と$\omega'_1$, $\omega'_2$とする
+とき，
+$
+	T_{\omega_1,\omega_2}=T_{\omega'_1,\omega'_2}
+$
+となるための条件？
+\end{Q}
+\[
+	T_{\omega_1,\omega_2}=T_{\omega'_1,\omega'_2}\quad
+	\Leftrightarrow\quad
+	\Gamma_{\omega_1,\omega_2}= 
+	\Gamma_{\omega'_1,\omega'_2}
+\]
+なので，この条件は$\alpha$, $\beta$, $\gamma$, $\delta\in\mathbf Z$と$\alpha'$, $\beta'$, $\gamma'$, $\delta'\in\mathbf Z$が存在して
+\begin{equation}\label{moduler}
+	\begin{cases}
+		\omega'_1=\alpha\omega_1+\beta\omega_2\\
+		\omega'_2=\gamma\omega_1+\delta\omega_2
+	\end{cases}, 
+	\quad
+	\begin{cases}
+		\omega_1=\alpha'\omega'_1+\beta'\omega'_2\\
+		\omega_2=\gamma'\omega'_1+\delta'\omega'_2
+	\end{cases}. 
+\end{equation}
+行列で表すと
+\[
+	\begin{pmatrix}
+		\omega'_1\\
+		\omega'_2
+	\end{pmatrix}
+	=
+	\begin{pmatrix}
+		\alpha&\beta\\
+		\gamma&\delta
+	\end{pmatrix}
+	\begin{pmatrix}
+		\omega_1\\
+		\omega_2
+	\end{pmatrix}, 
+	\quad
+	\begin{pmatrix}
+		\omega_1\\
+		\omega_2
+	\end{pmatrix}
+	=
+	\begin{pmatrix}
+		\alpha'&\beta'\\
+		\gamma'&\delta'
+	\end{pmatrix}
+	\begin{pmatrix}
+		\omega'_1\\
+		\omega'_2
+	\end{pmatrix}
+\]
+で, $\omega_1$, $\omega_2$が $\mathbf R$上一次
+独立なので
+\[
+	\begin{pmatrix}
+		\alpha'&\beta'\\
+		\gamma'&\delta'
+	\end{pmatrix}
+	\begin{pmatrix}
+		\alpha&\beta\\
+		\gamma&\delta
+	\end{pmatrix}
+	=
+	\begin{pmatrix}
+		1&0\\
+		0&1
+	\end{pmatrix}.
+\]
+行列式を取ると
+\[
+	(\alpha'\delta' -\beta'\gamma')
+	(\alpha\delta -\beta\gamma)
+	=1.
+\]
+$\alpha$, $\beta$, $\gamma$, $\delta$, $\alpha'$, $\beta'$, $\gamma'$, $\delta'\in\mathbf Z$なので
+\begin{equation}\label{unimoduler}
+	\alpha\delta -\beta\gamma
+	=\pm 1
+\end{equation}
+がわかる．逆に，この条件がみたされるとすると
+\[
+	\begin{pmatrix}
+		\alpha'&\beta'\\
+		\gamma'&\delta'
+	\end{pmatrix}
+	=
+	\begin{pmatrix}
+		\alpha&\beta\\
+		\gamma&\delta
+	\end{pmatrix}^{-1}
+	=
+	\frac1{\pm 1}
+	\begin{pmatrix}
+		\delta&-\beta\\
+		-\gamma&\alpha
+	\end{pmatrix}
+\]
+となり，$\Gamma_{\omega_1,\omega_2}= 
+	\Gamma_{\omega'_1,\omega'_2}
+$が分かる．
+このような変換を\term[]{ユニモジュラー変換}という．
+ユニモジュラー変換は群をなすことも簡単に分かる．
+
+\begin{Thm}
+$\tau=\frac{\omega_1}{\omega_2}$が次をみたす基底$\omega_1$,$\omega_2$ が存在する．
+\[
+\begin{split}
+	&(1) \quad \IM \tau >0\qquad
+	(2) \quad -\frac12<\RE \tau \le \frac12\\
+	&(3) \quad |\tau |\ge 1\qquad
+	(4) \quad |\tau |=1 \text{ のとき } \RE\tau \ge 0 \qquad
+\end{split}
+\]
+\end{Thm}
+\begin{proof}
+以前(第6回)行った平面の基本ベクトルの分類とほぼ同じ．
+\end{proof}
+\begin{figure}[htb]
+   \centering
+   \begin{minipage}{0.4\columnwidth}
+      \centering
+      \includegraphics{~/Documents/GitHub/bEuclideanGeo/ch3/figureHyperbolic.3}
+      \caption{基本領域}\label{fundmentalDomain}
+   \end{minipage} 
+   \begin{minipage}{0.4\columnwidth}
+      \centering
+      \includegraphics{~/Documents/GitHub/bEuclideanGeo/ch3/figureHyperbolic.4}
+      \caption{$\mathbf H^{+}$と曲線}\label{}
+   \end{minipage} 
+\end{figure}
+
+定理の条件をみたす$\omega_1$, $\omega_2$を\term[]{基本ベクトル}という．
+
+$\omega_1$, $\omega_2$と$\omega'_1$, $\omega'_2$ に
+\eqref{moduler}の関係があると$\tau$と$\tau'=\frac{\omega'_1}{\omega'_2}$の間に
+\begin{equation}
+	\tau'
+	=\frac{\alpha\omega_1+\beta\omega_2}
+		{\gamma\omega_1+\delta\omega_2}
+	=\frac{\alpha\tau+\beta}
+		{\gamma\tau+\delta}
+\end{equation}
+という\term[]{一次(分数)変換}が表れる．
+\[
+\begin{split}
+	\tau'-\bar\tau'
+	&=
+	\frac{\alpha\tau+\beta}{\gamma\tau+\delta}
+	-
+	\frac{\alpha\bar\tau+\beta}{\gamma\bar\tau+\delta}\\
+	&=
+	\frac{(\alpha\tau+\beta)(\gamma\bar\tau+\delta)-
+	(\alpha\bar\tau+\beta)(\gamma\tau+\delta)}{|\gamma\bar\tau+\delta|^2}\\
+	&=\frac{(\alpha\delta -\beta\gamma)(\tau-\bar\tau)}{|\gamma\bar\tau+\delta|^2}
+\end{split}
+\]
+$\tau-\bar\tau=2i\IM \tau$などから
+\[
+	\IM \tau' =\frac{\pm \IM\tau}{|\gamma\bar\tau+\delta|^2}
+\]
+特に，$\alpha\delta -\beta\gamma=1$のときは
+\begin{equation}\label{transformation}
+	\IM \tau' =\frac{\IM\tau}{|\gamma\bar\tau+\delta|^2}
+\end{equation}
+となる．
+\[
+\begin{split}
+	SL(2,\mathbf Z)
+	&=
+	\{
+		\begin{pmatrix}
+			\alpha&\beta\\
+			\gamma&\delta
+		\end{pmatrix}
+		\mid
+		\alpha, \beta,\gamma,\delta \in \mathbf Z,
+		\alpha\delta -\beta\gamma=1
+	\},\\
+	SL(2,\mathbf R)
+	&=
+	\{
+		\begin{pmatrix}
+			a&b\\
+			c&d
+		\end{pmatrix}
+		\mid
+		a,b,c,d \in \mathbf R,
+		ad-bc=1
+	\}\\
+\end{split}
+\]
+と置く．
+$SL(2,\mathbf R)$を\term[]{二次元実特殊線形群}という．
+これは古典群であり，
+$SL(2,\mathbf Z)$は$SL(2,\mathbf R)$の(離散)部分群である．
+
+$\mathbf H^{+}=\{z \in \mathbf C\mid \IM z  >0\}$と置き，\term[]{上半平面}という．$A\in SL(2,\mathbf R)$, $z\in \mathbf H^{+}$に対して
+\begin{equation}\label{transformation1}
+	\rho z  =\rho_{A}z = \frac{a z +b}{c z +d}, \quad
+	\rho^{-1}_{A} z  = \frac{d z -b}{-c z +a}
+\end{equation}
+と置くと
+\eqref{transformation}では係数が整数ということは使っていないので
+同じ式が成り立つ．
+$|c z +d|^2=0$ は$c=d=0$を意味し\eqref{unimoduler}に反するので$|c z +d|^2>0$であり
+\[
+	\IM \rho z  =\frac{ \IM z }{|c z +d|^2}>0
+\]
+となり，$\rho_{A} z \in \mathbf H^{+}$．同様に$\rho_{A}^{-1} z \in \mathbf H^{+}$で，これは$\rho_{A}$の逆変換なので，
+$SL(2,\mathbf R)$は$\mathbf H^{+}$に作用することが分かる．
+全ての$z\in \mathbf H^{+}$ に対して$z= \rho_{A} z$とすると
+\[
+\begin{split}
+	&z= \rho_{A} z =\frac{a z +b}{c z +d} \quad\Rightarrow\quad
+	cz^2 + (d-a)z  - b =0\\
+	&\Rightarrow\quad
+	c=b=0 , d=a
+	\quad\Rightarrow\quad
+	c=b=0 , d=a=\pm 1
+\end{split}
+\]
+最後に$ad-bc=1$を使った．よって
+\[
+	\rho_{A} z=\rho_{B} z\quad\Rightarrow\quad
+	A =\pm B
+\]
+であり，
+\[
+	PSL(2,\mathbf Z)
+	=
+	SL(2,\mathbf Z)/\pm 1,\quad
+	PSL(2,\mathbf R)
+	=
+	SL(2,\mathbf R)/\pm 1
+\]
+と置くと，この作用は効果的\footnote{全ての点を止める作用は単位元のもののみと云うこと．因みに，自由な作用とはある点を止める作用は単位元のものに限ると云うことである．}で，
+$PSL(2,\mathbf Z)$の$\mathbf H^{+}$への作用の基本領域が図~\ref{fundmentalDomain}である．
+
+
+
+\subsection{Poincareモデルと非ユークリッド幾何}
+$z = x + i y$と実変数に分解し
+\[
+	dz = dx + idy,\quad d\bar z = dx - idy
+\]
+の($d$は上の一次変換の$d$ではなく微分形式を表す$d$)ように計算できるとすると，対称テンソルとして
+\[
+\begin{split}
+	dz d\bar z&=(dx + idy)( dx - idy)\\
+	&=dx^2 -idxdy + idydx + dy^2
+	=dx^2+dy^2
+\end{split}
+\]
+$w= \frac{az+b}{cz+d}$を微分すると
+\[
+	dw = \frac{a(cz+d)-c(az+b)}{(cz+d)^2}dz
+	=\frac{ad-bc}{(cz+d)^2}dz=\frac{1}{(cz+d)^2}dz
+\]
+なので
+\[
+	dw d\bar w
+	=\frac{1}{|cz+d|^4}dz d\bar z
+\]
+\eqref{transformation}より
+\[
+	\frac{dw d\bar w}{|\IM w|^2}
+	=\frac{1}{\frac{ |\IM z|^2}{|cz+d|^4}}
+	\frac{1}{|cz+d|^4} dz d\bar z
+	=\frac{dz d\bar z}{ |\IM z|^2}
+\]
+となるので$ds^2=\frac{dx^2+dy^2}{y^2}$は$SL(2,\mathbf R)$で不変な$\mathbf H^{+}$のリーマン計量である．
+\emptyline
+
+この計量に関する$\mathbf H^{+}$の測地線を求めたい．普通は測地線の方程式を解けば良いが，ここでは
+図~\ref{fundmentalDomain} の境界に表れた半直線と半円が測地線であろう推測して以下のように議論する．
+まず，$0$から出る虚軸を半直線$\ell$と見なす．
+$0<y_1\le y_2$とおき，$c(t)=(x(t),y(t))$ ($t_1\le t\le t_2$)を$(0,y_1)$と
+$(0,y_2)$を結ぶ任意の$\mathbf H^{+}$内の曲線とする．
+\[
+\begin{split}
+	L(c)
+	&=
+	\int_{t_1}^{t_2} \frac {\sqrt{x'(t)^2 +y'(t)^2}}{|y(t)|}dt
+	\ge \int_{t_1}^{t_2} \frac {|y'(t)|}{|y(t)|}dt\\
+	&\ge \biggl|\int_{t_1}^{t_2} \frac {y'(t)}{y(t)}dt\biggr|
+	=\bigl|\bigl[\log y(t) \bigr]_{t_1}^{t_2} \bigr|
+	=\bigl|\log \frac{ y_2}{ y_1}\bigr|
+\end{split}
+\]
+実際，$y(t)$を単調な関数に取り替えた$\ell$上の道をとるとその値が得られる．
+つまり
+\[
+	d(iy_1,iy_2)=\bigl|\log \frac{ y_2}{ y_1}\bigr|
+\]
+測地線は$\ell$上にあり，
+\[
+	d(iy_1,iy_2)=d(iy_2,iy_1),\quad
+	d(iy_1,iy_2)=0 \Leftrightarrow y_1=y_2
+\]
+であること，
+$y_1\to +0$や$y_2\to \infty$のとき距離が無限に近づくことが分かる．
+
+$\ell$を一次分数変換\eqref{transformation1}で写すと
+%$\tilde\ell$を$\ell$を含む直線とすると
+\[
+\begin{split}
+	&z_1=\rho(iy_1)\in \mathbf H^{+},\quad z_2=\rho(iy_2)\in \mathbf H^{+},\\
+	&x_1=\rho (0)=\frac{b}{d}\in \mathbf R,\quad
+	x_2=\lim_{t\to \infty}\rho (it)=\frac{a}{c}\in \mathbf R
+\end{split}
+\]
+であり，
+$
+	x_0=\frac12(x_1+x_2)
+$と置くと，一次変換で直線は円に写り，等角なので，測地線は実軸に直交する$x_0$を中心とする半円になる．これを計算で確かめてみる：
+\[
+\begin{split}
+	&x_1-x_0
+	=\frac{b}{d}-\frac12(\frac ac+\frac bd)
+	=\frac12(\frac bd-\frac ac)
+	= \frac{-1}{2cd},\\
+	&x_2-x_0
+	=\frac{a}{c}-\frac12(\frac ac+\frac bd)
+	=\frac12(\frac ac-\frac bd)
+	= \frac1{2cd}.
+\end{split}
+\]
+$\ell$上の点は$t\mapsto ti $と書けるので
+\[
+\begin{split}
+	&\frac{ati +b}{cti +d} -x_0
+	=\frac{ati +b}{cti +d} -\frac12(\frac ac+\frac bd)\\
+	&=
+	\frac{2cd(ati +b)-(ad+bc)(cti +d)}{2cd(cti +d)}\\
+	&=
+	\frac{2cd(ati +b)-(1+2bc)(cti +d)}{2cd(cti +d)}\\
+	&=
+	\frac{2cdati -(1+2bc)cti -d}{2cd(cti +d)}
+	=
+	\frac{cti - d}{2cd(cti +d)}.
+\end{split}
+\]
+よって
+\[
+	|g(ti)-x_0| = \tfrac1{2cd}
+\]
+となり，$x_0$を中心とした半円であることが確かめられた．
+\emptyline
+
+距離$d$を$z_1$, $z_2$, $x_1$, $x_2$で表したいが，そのために前回紹介した
+\term[]{複比}
+\begin{equation}\label{crossRatio}
+	(z_1,z_2,z_3,z_4)
+	=
+	\frac{(z_1-z_3)(z_2-z_4)}{(z_2-z_3)(z_1-z_4)}
+\end{equation}
+($z_1$, $z_2$, $z_3$, $z_4\in 
+\hat{\mathbf C} =\mathbf C\mathbf  P^1$)
+を思い出そう．複比の大事な性質は任意の一次分数変換$\rho z= \frac{az+b}{cz+d}$ ($a,b,c,d\in \mathbf C$, $ad-bc\neq0$) で不変なこと，つまり，
+\[
+	(\rho z_1,\rho z_2,\rho z_3,\rho z_4)
+	=
+	(z_1,z_2,z_3,z_4)
+\]
+をみたすことであった．すると，
+\[
+\begin{split}
+	(z_1,z_2,x_1,x_2)
+	&=
+	(\rho ^{-1}z_1,\rho ^{-1}z_2,\rho ^{-1}x_1,\rho ^{-1}x_2)\\
+	&=	
+	(y_1,y_2,0,\infty)
+	=
+	\frac{y_1}{y_2}>0\quad	
+\end{split}
+\]
+したがって，距離$d(z_1,z_2)$ は($SL(2,\mathbf R)$不変であり)
+\[
+	d(z_1,z_2) = \bigl|\log (z_1,z_2,x_1,x_2)\bigr|
+\]
+で定まる．
+
+
+\begin{figure}[htb]
+   \centering
+   \begin{minipage}{0.4\columnwidth}
+      \centering
+      \includegraphics{~/Documents/GitHub/bEuclideanGeo/ch3/figureHyperbolic.5}
+      \caption{ $\mathbf H^{+}$の測地線}\label{}
+   \end{minipage} 
+   \begin{minipage}{0.4\columnwidth}
+      \centering
+      \includegraphics{~/Documents/GitHub/bEuclideanGeo/ch3/figureHyperbolic.6}
+      \caption{$\mathbf H^{+}$での直線の様子}\label{failure5}
+   \end{minipage} 
+\end{figure}
+
+逆に$z_1\neq z_2\in \mathbf H^{+}$に対し，($z_1$と$z_2$が虚軸と平行な半直線上にないとき)線分$z_1 z_2$の二等分線と実軸との交わりを中心とし，$z_1$と$z_2$を通る半円を書けば
+無限遠点$x_1$, $x_2$が見つかる．
+\eqref{crossRatio} で$z_1$を$z$に取り直すことで$\rho^{-1}$がもとまり，
+任意の二点を結ぶ最短線が一意的に定まることが分かる．
+$z_1$と$z_2$が虚軸と平行な半直線上にあるとき，(その実軸との交わりと$\infty$を無限遠点とすれば)最初の公式で距離が定まる．
+$\mathbf H^{+}$への作用は推移的であることも分かる．
+
+三角不等式が成り立つことも，円が存在することも分かる．
+$(\mathbf H^{+},ds^2)$を(ベルトラミモデルの方が正しいらしい\cite{S}, \cite{S2} が）\term[]{ポアンカレモデル}という．
+以上から$(\mathbf H^{+},ds^2)$では
+\begin{itemize}
+   \item 任意の二点を結ぶ線分が存在して一意的．
+   \item 任意の線分はどの方向にもどこまでも伸ばすことが出来る．
+   \item 任意の点を中心にして別の任意の点を通る円が存在して一意的．
+   \item 任意の直角は全て等しい．
+\end{itemize}
+という，ユークリッド幾何の四つの公準をみたすことが分かるが，
+\emptyline
+
+\emph{平行線の公準}：ある二つの直線が直線と交わり，内角の和が2直角より小さいならば二つの直線は必ず交わる．
+
+\emptyline
+\noindent
+をみた\textcolor{red}{さない}ことも分かる(図~\ref{failure5})．つまり，非ユークリッド幾何のモデルとなっている．
+これはユークリッド幾何に矛盾がなければ非ユークリッド幾何にも矛盾がないことを意味している．
+また，$\mathbf H^{+}$は単連結な負の定曲率空間でもあり，\term[]{双曲空間}と呼ばれることもある．
+
+%更に，$PSL(2,\mathbf Z)$は$PSL(2,\mathbf R)$の離散部分群であり，
+%トーラスの同形類の空間が商空間
+%$\mathbf H^{+}/PSL(2,\mathbf Z)$である(図~\ref{fundmentalDomain})．
+
+\begin{Quiz}
+$\mathbf H^{+}$を円板$D=\{z\in \mathbf C\mid |z|<1\}$に写す一次変換を求め，$(\mathbf H^{+},ds^2)$と等長となるような$D$上のリーマン計量を求めよ．
+\end{Quiz}
+
+%\begin{thebibliography}{99}
+%   \bibitem{A} Ahlfors, Complex analysis 3rd edition, McGraw-Hill, 1979.
+%   
+%   \bibitem{K} 小林昭七, ユークリッド幾何から現代幾何へ, 日本評論社, 1990.
+%   
+%   \bibitem{S1}J.  Stillwell, Mathematics and Its History  3rd ed, UTM, Springer, 2010.
+%   
+%   \bibitem{S2}J. Stillwell, 
+%      Sources of Hyperbolic Geometry, History of math.10, AMS. 1996.
+%\end{thebibliography}
+%
+
+\subsection{楕円関数}
+$\omega_1$, $\omega_2\in \mathbf C$が $\mathbf R$上一次
+独立，つまり，$\IM(\frac{\omega_1}{\omega_2})\neq 0$とする．
+\[
+	\Gamma= \Gamma_{\omega_1,\omega_2}
+	=\{
+		m\omega_1+n\omega_2\mid m,n\in \mathbf Z
+	\}
+\]
+とすると，剰余群%（更に，商空間，商多様体，Lie 群として）
+\[
+	T=T_{\omega_1,\omega_2} 
+	= \mathbf C/ \Gamma_{\omega_1,\omega_2}
+\]
+が定まり，トーラスになる．$a\in \mathbf C$にたいし
+\[
+	D=D_a =
+	\{
+		a+s\,\omega_1+t\,\omega_2\in \mathbf C
+		\mid
+		0 <s,t<1
+	\}
+\]
+と置き，\term[]{基本周期平行四辺形}という
+%（これは$\Gamma$ の Dirichlet 領域とは異なるが，これらは互いに双対になっている）
+．これを使うと
+$T$が一次元複素多様体であることが直ぐに分かる．
+
+\begin{figure}[htb]
+   \centering
+   \begin{minipage}{0.4\columnwidth}
+      \centering
+      \includegraphics{~/Documents/GitHub/bEuclideanGeo/ch3/figureHyperbolic2.1}
+      \caption{$D_a$}\label{Gamma}
+   \end{minipage} 
+   \begin{minipage}{0.4\columnwidth}
+      \centering
+      \includegraphics{~/Documents/GitHub/bEuclideanGeo/ch3/figureHyperbolic2.2}
+      \caption{トーラス}\label{Tours}
+   \end{minipage} 
+\end{figure}
+
+
+簡単に関数論の復習：$\mathbf C$の領域$\Omega$
+の有理型関数$f:\Omega\to \mathbf C$
+の$a\in \Omega$が$f$の極であるとは
+\[
+	f(z) = \frac{A_{-m}}{(z-a)^m}+\cdots +\frac{A_{-1}}{z-a}
+	+ A_0+A_1(z-a) +\cdots 
+\]
+とローラン展開出来ることであり，$A_{-1}$をその留数といい$\Res(f,a)$と表した．有理型とは$f$の特異点が極のみでそれらが集積していないことをいう．
+$\mathbf C$の領域$\Omega$が有界で，
+その境界のなす閉路$C$が区分的滑らかとし，$\Omega$を左に見て進む向きをとる．
+$f$の$\Omega$内の極を$a_1, \cdots, a_m$とし，
+$C$は極を通らないとするとき，留数定理は
+\[
+	\frac1{2\pi i}\int_C f(z)dz = \sum_{i=1}^m\Res(f,a_i)
+\]
+を意味した．
+
+$f:\mathbf C\to\mathbf C $が有理型関数で
+2重周期, つまり，
+$\mathbf R$上の基$\omega_1$, $\omega_2\in \mathbf C$が存在して
+\begin{equation}\label{period}
+	f(z+\omega_1)=f(z+\omega_2)=f(z)
+\end{equation}
+であるのとき\term[]{楕円関数}という．楕円関数は
+$T_{\omega_1,\omega_2} $上の有理型関数を定める．
+以下，$f$は楕円関数とし，$\bar D$上の関数と見たり，$T$上の関数と見たりするなど問題に応じ便利な見方をとる．
+
+\begin{Prop}\label{const}
+楕円関数が極を持たなければ定数関数になる．
+\end{Prop}
+\begin{proof}
+極がなければ$\mathbf C$上の有界な正則関数となり，リュービルの定理より定数関数になる．
+\end{proof}
+
+
+\begin{Prop}\label{sumofRes}
+楕円関数の留数の和は$0$である．
+\end{Prop}
+\begin{proof}
+$f$を楕円関数とする．
+適当にずらすことで$D$の境界上に極がないとして良い．
+図~\ref{path}のように名付けると
+\[
+	\partial D=\gamma_1+\gamma_2+\gamma_3+\gamma_4,\quad
+	\gamma_1=-\gamma_3,\quad \gamma_2=-\gamma_4
+\]
+これらの関係と留数定理より
+\[
+\begin{split}
+	&2\pi i\sum_{i=1}^m\Res(f,a_i)
+	=\int_{\partial D} f(z)dz \\
+	&= \int_{\gamma_1} f(z)dz
+	-\int_{\gamma_1} f(z)dz
+	+\int_{\gamma_2} f(z)dz-\int_{\gamma_2}f(z)dz=0
+\end{split}
+\]
+
+\end{proof}
+
+\begin{Prop}
+楕円関数が一位の極を一つしかもたないと定数関数になる．
+\end{Prop}
+\begin{proof}
+背理法．
+$a\in D$を$f$の唯一の一位の極とすると
+\[
+	f(z)=\frac{A_{-1}}{z-a}
+	+ g(z)\quad g(z)\text{：正則}
+\]
+$\Res(f,a)=A_{-1}$で上の命題\ref{sumofRes}より$A_{-1}=0$.
+つまり，$f(z)=g(z)$で正則となり$a$は極でなくなり矛盾．
+\end{proof}
+
+
+\begin{figure}[htb]
+   \centering
+   \begin{minipage}{0.4\columnwidth}
+      \centering
+      \includegraphics{~/Documents/GitHub/bEuclideanGeo/ch3/figureHyperbolic2.3}
+      \caption{積分路}\label{path}
+   \end{minipage} 
+   \begin{minipage}{0.4\columnwidth}
+      \centering
+      \includegraphics{~/Documents/GitHub/bEuclideanGeo/ch3/figureHyperbolic2.4}
+      \caption{$\wp'$の零点}\label{zero}
+   \end{minipage} 
+\end{figure}
+
+\begin{Prop}\label{arg}
+定数でない楕円関数は，重複度込みで同数の極と零点を持つ．
+\end{Prop}
+\begin{proof}
+$f(z)$を楕円関数とすると，$f'(z)$も$f'(z)/f(z)$も同じ周期の楕円関数で
+\[
+	\Res(f'(z)/f(z),a)
+	=
+	\begin{cases}
+		\text{零点の位数}& >0\\
+		-1\times\text{極の位数}& <0\\
+	\end{cases}
+\]
+∵）$f(z)=(z-a)^kg(z)$, $g(a)\neq0$とすると
+\[
+	f'(z)=k(z-a)^{k-1}g(z)+(z-a)^kg'(z)
+\]
+なので
+\[
+	\frac{f'(z)}{f(z)}=\frac{k}{z-a}+\frac{g'(z)}{g(z)}
+\]
+\emptyline
+
+$N$を重複度を含めた零点の個数，$P$重複度を含めた極の個数とすると，命題~\ref{sumofRes}より
+\[
+	0 = 
+	\frac1{2\pi i}\int_C \frac{f'(z)}{f(z)}dz = N- P\quad\text{(偏極の原理)}
+\]
+\end{proof}
+
+\begin{Prop}\label{numSol}
+任意の$c\in \mathbf C$に対して$f(z)=c$となる$z\in \bar D$の個数は一定．
+\end{Prop}
+\begin{proof}
+$f(z)$を楕円関数とすると，$f(z)-c$も同じ極を持つ楕円関数．
+命題~\ref{arg}
+$f(z)-c$の零点の個数はその極の個数と一致する．
+\end{proof}
+
+$N$個の零点（極）を持つ楕円関数を\term[]{$N$位}の楕円関数という．
+
+$f(z)$を2次の極をただ一つだけ持つ楕円関数とする．適当に平行移動して$z=0$がその極とする．定数倍することで
+\[
+	f(z) = \frac{1}{z^2}+\frac{A_{-1}}{z}
+	+ g(z) \quad g(z)\text{：正則}
+\]
+上の命題~\ref{sumofRes} より$A_{-1}=0$.
+
+\begin{Prop}\label{even}
+この$f(z)$は偶関数．
+\end{Prop}
+\begin{proof}
+$f(z)-f(-z)$も楕円関数だが，
+\[
+	f(z)-f(-z) = \frac{1}{z^2} +g(z)-  \frac{1}{(-z)^2} -g(-z)
+	=g(z)-g(-z)
+\]
+となり，命題~\ref{const}よりこれは定数関数．つまり，ある$C$が存在して
+$f(z)-f(-z)=C$．
+ところが
+\[
+	C = f(\omega_i/2)-f(-\omega_i/2) 
+	= f(\omega_i/2)-f(\omega_i/2) =0
+\]
+なので偶関数．
+\end{proof}
+
+偶関数の奇数次の巾は$0$であり，定数を足しても楕円関数であることは変わらないので定数項を引いて
+\begin{equation}\label{wp}
+	\wp(z)
+	=
+	 \frac{1}{z^2}
+	+ a_1z^2 + a_2z^4 + \cdots 
+\end{equation}
+を考えればいい(ワイエルシュトラウスの\term[]{ペー関数}と呼ばれる)．
+\[
+\begin{split}
+	\wp'(z)
+	&=
+	 \frac{-2}{z^3}
+	+ 2a_1z + 4a_2z^3 + \cdots \\
+	\wp'(z)^2
+	&=
+	\frac{4}{z^6}-8\frac{a_1}{z^2}-16a_2+\cdots \\
+	\wp(z)
+	&=
+	 \frac{1}{z^2}
+	+ a_1z^2 + a_2z^4 + \cdots \\
+	\wp(z)^2
+	&=
+	 \frac{1}{z^4}
+	+ 2a_1 + 2a_2z^2 + \cdots \\
+	\wp(z)^3
+	&=
+	 \frac{1}{z^6}
+	+ \frac{3a_1}{z^2} + 3a_2 + \cdots \\
+	4\wp(z)^3
+	&=
+	 \frac{4}{z^6}
+	+ \frac{12a_1}{z^2} + 12a_2 + \cdots \\
+	20\wp(z)
+	&=
+	 \frac{20}{z^2}
+	+ 20a_1z^2 + 20a_2z^4 + \cdots \\
+\end{split}
+\]
+なので
+\[
+	\wp'(z)^2-4\wp(z)^3+20a_1\wp(z)
+	=-28a_2 + h(z)
+	=-28a_2
+\]
+最後に，$h(z)$は定数部分を含まない正則な楕円関数となり，命題~\ref{const}より $0$となることを使った．
+$g_2=20a_1$, $g_3=28a_2$と置くと
+\begin{equation}\label{dEqWp}
+	\wp'(z)^2=4\wp(z)^3-g_2 \wp(z)-g_3
+\end{equation}
+
+$e_1$, $e_2$, $e_3$を$4w^3-g_2 w-g_3$の重複度を込めた根とする．
+命題~\ref{even}と\eqref{period}より
+\[
+	\wp(z)=\wp(-z)=\wp(\omega -z)\quad \omega\in\Gamma
+\]
+なので
+\[
+	\wp'(z)=-\wp'(\omega -z)
+\]
+$z=\omega/2$を代入すると
+\[
+	\wp'(\omega/2)=-\wp'(\omega -\omega/2)=-\wp'(\omega/2)
+\]
+なので$\wp'(\omega/2)=0$. よって
+\begin{equation}\label{zeroWp'}
+	\wp'(\omega_1/2)=0,\quad
+	\wp'(\omega_2/2)=0,\quad
+	\wp'((\omega_1+\omega_2)/2)=0
+\end{equation}
+$\wp'(z)$は3位の楕円関数で
+\[
+	\omega_1/2\neq \omega_2/2
+	\neq (\omega_1+\omega_2)/2\neq\omega_1/2
+\]
+は位数$1$の$\wp'$の零点である(図~\ref{zero})．
+
+\begin{Prop}\label{}
+\[
+	\wp(\omega_1/2)=e_1,\quad
+	\wp(\omega_2/2)=e_2,\quad
+	\wp((\omega_1+\omega_2)/2)=e_3
+\]
+と置くと，
+$e_1\neq e_2\neq e_3\neq e_1$となるように取れる．特に$4w^3-g_2 w-g_3$は重根を持たない，言い換えると，\eqref{dEqWp}の右辺の$3$次式の
+判別式は $g_2^3 -27g_3^2\neq 0$．
+\end{Prop}
+\begin{proof}\eqref{dEqWp}を書き直すと
+\[
+	\wp'(z)^2=4(\wp(z)-e_1)(\wp(z)-e_2)(\wp(z)-e_3)
+\]
+\eqref{zeroWp'}なので$\wp(\omega_1/2)=e_1$として良い．
+\[
+	\wp'(z)=(z - \omega_1/2)f(z)\quad f( \omega_1/2)\neq 0
+\]
+
+\begin{equation}\label{branchWp}
+	\wp(z)-e_1=(z - \omega_1/2)^2g(z)\quad g( \omega_1/2)\neq 0
+\end{equation}
+∵）$\wp(z)-e_1$は$2$位の楕円関数なのでこれが正しくなければ
+\[
+	\wp(z)-e_1=(z - \omega_1/2)k(z)\quad k( \omega_1/2)\neq 0
+\]
+だが
+\[
+\begin{split}
+	&\wp'(z)=k(z)+(z - \omega_1/2)k'(z)\\
+	\Rightarrow\quad
+	&\wp'(\omega_1/2)=k(\omega_1/2)+0\neq 0
+	\quad\text{：\eqref{zeroWp'}に矛盾}
+\end{split}
+\]
+
+$\wp(\omega_1/2)=e_1=e_2=\wp(\omega_2/2)$とすると$\omega_1\neq\omega_2$より
+\[
+	\wp(z)-e_1=(z - \omega_1/2)^2(z - \omega_2/2)^2h(z)\quad
+	 g( \omega_1/2)\neq 0
+\]
+$\wp(z)-e_1$は位数$4$の零点となり矛盾．$e_2\neq e_3\neq e_1$も同様．
+\end{proof}
+
+
+%\subsection{楕円曲線・双曲幾何に関連した話題}
+\emptyline
+正則写像$\Phi:T\to\mathbf CP^2$が存在して，$T$は代数多様体になる：
+%(その像が$\mathbf CP^2$の射影代数多様体)
+\[
+	\Phi(z)=[1:\wp(z):\wp'(z)]\in\mathbf CP^2
+\]
+と置くと(特異でない，つまり，ヤコビ行列が常にフルランクの)正則写像であり，$T$の極$z=0$の近傍では
+\[
+	[z^3:z^3\wp(z):z^3\wp'(z)]
+	=[z^3:z+a_1z^5+\cdots:-2+2a_1z^4+\cdots]
+%	\to [0:0:1]=O\in \mathbf CP^2
+\]
+$z=0$で$O=[0:0:1]$であり，$U_2=\{[x_0:x_1:x_2]\mid x_2\neq 0\}$ で考えると
+$z=0$でも正則であることも分かる．$T$は
+\[
+	\{[x_0:x_1:x_2]\in \mathbf CP^2\mid
+		x_0x_2^2-4x_1^3+g_2 x_0^2x_1+g_3x_0^3=0
+	\}
+\]
+と同一視される代数多様体である．$T$は$O$を零元とするアーベル群となる．
+これは$z$座標では明らかだが，非同次座標$(\wp(z),\wp'(z))$では図~\ref{addition}, ~\ref{minus}のように定まる演算
+\[
+	P + Q + R =O, \quad P + P'=O
+\]
+の群であり\term[]{楕円曲線}と呼ばれる．
+
+\begin{figure}[htb]
+   \centering
+   \begin{minipage}{0.4\columnwidth}
+      \centering
+      \includegraphics[width=5cm]{~/Documents/GitHub/bEuclideanGeo/ch3/impliciteFun1plot2d4.png}
+      \caption{虚軸に平行でない直線との交点$P + Q + R =O$}\label{addition}
+   \end{minipage} 
+   \begin{minipage}{0.4\columnwidth}
+      \centering
+      \includegraphics[width=5cm]{~/Documents/GitHub/bEuclideanGeo/ch3/impliciteFun1plot2d5.png}
+      \caption{虚軸に平行な直線との交点$P + P'=O$}\label{minus}
+   \end{minipage} 
+\end{figure}
+\emptyline
+
+$\wp(z)$には明示的な表示がある：
+\[
+	\wp(z)=
+	\frac1{z^2}+ 
+	\sum_{\omega\neq 0\in \Gamma}
+	\biggl(
+		\frac{1}{(z-\omega)^2}-\frac{1}{\omega^2}
+	\biggr)
+\]
+ただし，$\omega\neq 0 \in \Gamma$についての総和．
+\[
+	G_k=\sum_{\omega\neq 0\in\Gamma}\frac{1}{\omega^{2k}}
+	\quad\text{：アイゼンシュタイン級数}
+\]
+と置くと，\eqref{dEqWp}の係数は
+$g_2=60G_2$, $g_3=140G_3$と表される．また，
+\[
+	\wp(z)=
+	\frac1{z^2}+ 
+	\sum_{k=2}^\infty (2k-1)G_kz^{2k-2}
+\]
+
+
+%\emptyline
+
+\begin{figure}[htb]
+	\centering
+	\includegraphics{~/Documents/GitHub/bEuclideanGeo/ch3/figureHyperbolic2.7}
+	\caption{$P:T\to \mathbf CP^1\simeq S^2$}\label{}
+\end{figure}
+$P:T\to \mathbf CP^1\simeq\mathbf C\cup \infty
+	\simeq S^2$を
+\[
+	P(z)=[1:\wp(z)]\in\mathbf CP^1
+\]
+で定めると，命題~\ref{numSol}より$w\neq e_1$, $e_2$, $e_3\in \mathbf C$とすると($4w^3-g_2 w-g_3\neq 0$のとき\eqref{dEqWp}の$\wp'$の二つの根は異なるので)二つの根は異なる．
+\eqref{branchWp}より$e_1$, $e_2$, $e_3\in \mathbf C$ で$\wp'^2=0$の重根になり二重に分岐している．\eqref{dEqWp}は$z=0$の近傍で
+\[
+	[z^2:z^2\wp(z)]= [z^2:1+ a_1z^4 + a_2z^6 + \cdots]
+\]
+となり，$z=0$のとき$\wp(z)=[0:1]=\infty$ なので$\infty$で二重に分岐している．つまり，$T$は$S^2$の四点で二重に分岐する被覆となっている．
+\emptyline
+
+その代数的な解釈は以下のようである：
+$2$変数多項式環$ \mathbf C[X,Y]$の単項イデアル$(4X^3-g_2 X-g_3-Y^2)$は素イデアルで，それによる剰余環
+\[
+	  \mathbf C[X,Y]/(4X^3-g_2 X-g_3-Y^2)
+\]
+は整域となるので，その商体$K$を考える．
+$1$変数多項式環$ \mathbf C[X]$の商体$\mathbf C(X)$の埋め込み
+\[
+	  \mathbf C(X)\ni h(X)\mapsto h(X)\in K
+\]
+は$X^3-g_2 X-g_3-Y^2$による代数拡大(有限次拡大)となり，
+体$\mathbf C$の超越次数$1$の拡大体である．これが$P:T\to \mathbf CP^1$の体による解釈である．
+\emptyline
+
+上で図~\ref{addition}, ~\ref{minus}のように定まる演算のことをコメントしたが，$\mathbf C$を $\mathbf Q$や有限体$\mathbf F_{q}$($q=p^n$)などに変えても類似のことが成り立つ． 
+$\mathbf Q$や有限体の場合は（モーデルの定理やヴェイユ予想など）数論との関係で重要であり，有限体の楕円曲線が楕円曲線暗号の基礎となっている．
+\emptyline
+
+
+\eqref{dEqWp}を
+\[
+	\frac{dw}{dz}=\sqrt{4w^3-g_2 w-g_3}
+\]
+と書くと微分方程式であり，変数分離で解くと
+\[
+	z-z_0=\int^{w}_{w_0} \frac{dw}{\sqrt{4w^3-g_2 w-g_3}}
+\]
+で分母の平方根の中身$4w^3-g_2 w-g_3$は重根を持たないので，
+これは楕円積分である．つまり，楕円積分の逆関数として楕円関数が定まることが分かる．
+\begin{figure}[htb]
+	\centering
+	\includegraphics{~/Documents/GitHub/bEuclideanGeo/ch3/figureHyperbolic2.6}
+	\caption{lemniscate}\label{lemniscate}
+\end{figure}
+
+
+歴史を振り返ってみる：ガウスは
+$\arcSin x=\int_0^x\frac{1}{\sqrt{1-x^{2}}} dx$との類似から，三角関数の拡張を探していた．
+$(r,\theta)$を極座標とし，曲線$C$が$r=f(\theta)$で表されるとき，$C$  の$\alpha\le \theta \le \beta$での長さは
+\[
+	\ell(C)=\int_\alpha^\beta \sqrt{f(\theta)^2+f'(\theta)^2}d\theta
+\]
+で表されることは知っていると思う．
+レムニスケート( 図 \ref{lemniscate} )は%lemniscate
+\[
+	r^2 = \cos 2\theta
+\]
+と表せるので，
+\[
+\begin{split}
+	2r\frac{dr}{d\theta}=-2 \sin 2\theta
+	\quad&\Rightarrow\quad
+	 r^2\biggl(\frac{dr}{d\theta}\biggr)^2 = \sin^2 2\theta
+	 \\&\Rightarrow\quad
+	 \biggl(\frac{dr}{d\theta}\biggr)^2=\frac{\sin^2 2\theta}{ \cos 2\theta}
+\end{split}
+\]
+である．
+ $\theta$から$\pi/4$までの弧の長さを計算し，半径が$r$から$0$になるように変数変換すると
+\[
+	\int_{\theta}^{\pi/4}\frac{1}{\sqrt{\cos 2\theta}}d\theta
+	=
+	\int_r^0 \frac{1}{\sqrt{\cos 2\theta}}\frac{-rdr}{\sin 2\theta}
+	=
+	\int_0^r\frac{dr}{\sin 2\theta}
+	=
+	\int_0^{r}\frac{dr}{\sqrt{1-r^4}}
+\]
+となる．$r^4-1$は重根が無いのでこれは楕円積分となる．1797年にガウスはこの積分(関数)の逆関数として楕円関数を発見した．
+\emptyline
+
+楕円関数の関数論に興味のわいたひとは\cite{A},  \cite{Si}などを参考にしてほしい．
+代数幾何との関連は\cite{F}，数論や保型形式に興味のある人には\cite{Se}, \cite{KKS}, 暗号理論に興味のある人には\cite{Ko}, \cite{ST}, 
+数学史に興味のある人には\cite{T}, \cite{Kl}などをお勧めする．
+
+
+\subsection{Modular 関数}%とKlien群
+$\tau=\frac{\omega_1}{\omega_2}$に対して$\lambda$\term[]{不変量}を
+\[
+	\lambda(\tau)
+	=
+	\frac{e_3-e_2}{e_1-e_2}
+\]
+で定める(と$\mod 2$の合同部分群の不変量である．下の問題参照)．
+$J$\term[]{不変量}を
+\[
+	J(\tau)
+	=
+	\frac{4}{27}
+	\frac{(1-\lambda+\lambda^2)^3}{\lambda^2(1-\lambda)^2}%\quad
+%	\biggl(=\frac{12^3g_2^2}{g_2^3 -27g_3^2}\biggr)
+\]
+と置くと\term[]{モジュラー関数}(保型形式)の仲間が表れる．
+\begin{Quiz}
+$\SL(2,\mathbf Z) ( \PSL(2,\mathbf Z)) $の部分集合
+\[
+	\begin{pmatrix}
+		\alpha&\beta\\
+		\gamma&\delta
+	\end{pmatrix}
+	\equiv
+	\begin{pmatrix}
+		1&0\\
+		0&1
+	\end{pmatrix}
+	\quad\mod 2
+\]
+が部分群であることを示せ，ただし，これは各成分毎に
+$\alpha\equiv1\mod 2$, $\beta\equiv0\mod 2$などを意味している．これが$\mod 2$の合同部分群である．
+この群の元の作る一次変換
+$\frac{\alpha\tau+\beta}{\gamma\tau+\delta}$で$\lambda(\tau)$が不変なこと，
+つまり，
+\[
+	\lambda\biggl(\frac{\alpha\tau+\beta}
+		{\gamma\tau+\delta}\biggr)
+	=
+	\lambda(\tau)
+\]
+となることを示せ．
+\end{Quiz}
+
+\begin{figure}[htb]
+	\centering
+	\includegraphics{~/Documents/GitHub/bEuclideanGeo/ch3/figureHyperbolic21.5}
+	\caption{}\label{}
+\end{figure}
+
+
+%\begin{thebibliography}{99}
+%   \bibitem{A} Ahlfors, Complex analysis 3rd edition, McGraw-Hill, 1979
+%   
+%   \bibitem{S} Siegel, Topics in complex function theory I, II, III, 
+%   Wiley-Intersicence, 1969
+%   
+%   \bibitem{F}
+%   W.~Fulton, 
+%   ALGEBRAIC CURVES---An Introduction to Algebraic Geometry (3rd edition), 2008, 
+%   \href{https://dept.math.lsa.umich.edu/~wfulton/CurveBook.pdf}{ダウンロード}
+%   
+%   \bibitem{Se}
+%   セール, 数論講義, 岩波書店, 1979
+%   
+%   \bibitem{KKS}
+%   加藤和也, 黒川信重, 斎藤毅, 数論 I Fermatの夢と類体論, 岩波書店, 2016
+%   
+%   黒川 信重, 栗原 将人, 斎藤 毅, 数論II 岩澤理論と保型形式, 岩波書店,  2017
+%   
+%   \bibitem{Ko} Koblitz, A course in Number theory and Cryptography, GTM,  \href{https://link.springer.com/search?package=11649&facet-content-type=%22Book%22}{ダウンロード}
+%   
+%   
+%   \bibitem{ST} Silverman, Tate,
+%   Rational Points on Elliptic Curves, Springer, 2015 
+%   \href{https://link.springer.com/search?package=11649&facet-content-type=%22Book%22}{ダウンロード}
+%   
+%   \bibitem{T}高木貞治, 復刻版 近世数学史談・数学雑談, 共立出版
+%   
+%   \bibitem{Kl}F.~Kline, クライン:19世紀の数学, 彌永 昌吉監修, 共立出版, 1995
+%   
+%\end{thebibliography}
+
+

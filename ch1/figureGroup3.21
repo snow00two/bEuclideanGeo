@@ -1,0 +1,70 @@
+%!PS-Adobe-3.0 EPSF-3.0
+%%BoundingBox: 0 3 127 124 
+%%HiResBoundingBox: 0.719 3.59497 126.80249 123.92651 
+%%Creator: MetaPost 2.11
+%%CreationDate: 2026.08.01:1834
+%%Pages: 1
+%%DocumentResources: procset mpost-minimal
+%%DocumentSuppliedResources: procset mpost-minimal
+%%EndComments
+%%BeginProlog
+%%BeginResource: procset mpost-minimal
+/bd{bind def}bind def/fshow {exch findfont exch scalefont setfont show}bd
+/fcp{findfont dup length dict begin{1 index/FID ne{def}{pop pop}ifelse}forall}bd
+/fmc{FontMatrix dup length array copy dup dup}bd/fmd{/FontMatrix exch def}bd
+/Amul{4 -1 roll exch mul 1000 div}bd/ExtendFont{fmc 0 get Amul 0 exch put fmd}bd
+/ScaleFont{dup fmc 0 get Amul 0 exch put dup dup 3 get Amul 3 exch put fmd}bd
+/SlantFont{fmc 2 get dup 0 eq{pop 1}if Amul FontMatrix 0 get mul 2 exch put fmd}bd
+%%EndResource
+%%EndProlog
+%%BeginSetup
+%%EndSetup
+%%Page: 1 1
+ 0 0 0 setrgbcolor 0 0.5 dtransform truncate idtransform setlinewidth pop
+ [3 3 ] 0 setdash 1 setlinecap 1 setlinejoin 10 setmiterlimit
+newpath 0.969 67.54736 moveto
+74.83252 85.23682 lineto
+126.55249 59.97412 lineto stroke
+ [] 0 setdash
+newpath 126.55249 59.97412 moveto
+52.68896 42.28467 lineto
+0.969 67.54736 lineto stroke
+ [3 3 ] 0 setdash
+newpath 63.76074 123.67651 moveto
+74.83252 85.23682 lineto
+63.76074 3.84497 lineto stroke
+ [] 0 setdash
+newpath 63.76074 3.84497 moveto
+52.68896 42.28467 lineto
+63.76074 123.67651 lineto stroke
+newpath 63.76074 123.67651 moveto
+126.55249 59.97412 lineto
+63.76074 3.84497 lineto
+0.969 67.54736 lineto
+ closepath stroke
+ 1 0 0 setrgbcolor 0 0.99626 dtransform truncate idtransform setlinewidth pop
+newpath 88.38191 89.62915 moveto
+81.00073 75.31177 lineto
+39.13957 77.83618 lineto
+46.52075 92.15356 lineto
+ closepath stroke
+newpath 88.38191 49.6853 moveto
+81.00073 35.36792 lineto
+39.13957 37.89233 lineto stroke
+ [3 3 ] 0 setdash
+newpath 39.13957 37.89233 moveto
+46.52075 52.20972 lineto
+88.38191 49.6853 lineto stroke
+ 0.99626 0 dtransform exch truncate exch idtransform pop setlinewidth
+ [] 0 setdash
+newpath 88.38191 89.62915 moveto
+88.38191 49.6853 lineto stroke
+newpath 81.00073 75.31177 moveto
+81.00073 35.36792 lineto stroke
+newpath 39.13957 77.83618 moveto
+39.13957 37.89233 lineto stroke
+ [3 3 ] 0 setdash
+newpath 46.52075 92.15356 moveto
+46.52075 52.20972 lineto stroke
+showpage
+%%EOF

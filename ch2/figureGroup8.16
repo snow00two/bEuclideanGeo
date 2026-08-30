@@ -1,0 +1,77 @@
+%!PS-Adobe-3.0 EPSF-3.0
+%%BoundingBox: 7 -1 120 96 
+%%HiResBoundingBox: 7.7201 -0.25 119.80139 95.89111 
+%%Creator: MetaPost 2.10
+%%CreationDate: 2024.11.30:1344
+%%Pages: 1
+%%DocumentResources: procset mpost-minimal
+%%DocumentSuppliedResources: procset mpost-minimal
+%%EndComments
+%%BeginProlog
+%%BeginResource: procset mpost-minimal
+/bd{bind def}bind def/fshow {exch findfont exch scalefont setfont show}bd
+/fcp{findfont dup length dict begin{1 index/FID ne{def}{pop pop}ifelse}forall}bd
+/fmc{FontMatrix dup length array copy dup dup}bd/fmd{/FontMatrix exch def}bd
+/Amul{4 -1 roll exch mul 1000 div}bd/ExtendFont{fmc 0 get Amul 0 exch put fmd}bd
+/ScaleFont{dup fmc 0 get Amul 0 exch put dup dup 3 get Amul 3 exch put fmd}bd
+/SlantFont{fmc 2 get dup 0 eq{pop 1}if Amul FontMatrix 0 get mul 2 exch put fmd}bd
+%%EndResource
+%%EndProlog
+%%BeginSetup
+%%EndSetup
+%%Page: 1 1
+ 0 0 0 setrgbcolor 0 0.5 dtransform truncate idtransform setlinewidth pop
+ [] 0 setdash 1 setlinecap 1 setlinejoin 10 setmiterlimit
+newpath 7.9701 79.70093 moveto
+119.55139 79.70093 lineto stroke
+newpath 115.85646 78.1704 moveto
+119.55139 79.70093 lineto
+115.85646 81.23146 lineto
+ closepath
+gsave fill grestore stroke
+ 0.5 0 dtransform exch truncate exch idtransform pop setlinewidth
+newpath 63.76074 63.76074 moveto
+63.76074 95.64111 lineto stroke
+ 0 0.5 dtransform truncate idtransform setlinewidth pop
+newpath 65.29155 91.94551 moveto
+63.76074 95.64111 lineto
+62.22993 91.94551 lineto
+ closepath
+gsave fill grestore stroke
+newpath 7.9701 23.91028 moveto
+119.55139 23.91028 lineto stroke
+newpath 115.85646 22.37975 moveto
+119.55139 23.91028 lineto
+115.85646 25.44081 lineto
+ closepath
+gsave fill grestore stroke
+ 0.5 0 dtransform exch truncate exch idtransform pop setlinewidth
+newpath 63.76074 0 moveto
+63.76074 47.82056 lineto stroke
+ 0 0.5 dtransform truncate idtransform setlinewidth pop
+newpath 65.29155 44.12495 moveto
+63.76074 47.82056 lineto
+62.22993 44.12495 lineto
+ closepath
+gsave fill grestore stroke
+ 0.5 0 dtransform exch truncate exch idtransform pop setlinewidth
+newpath 103.6112 15.94019 moveto
+103.6112 31.88037 lineto stroke
+ 0 0.5 dtransform truncate idtransform setlinewidth pop
+newpath 105.14192 28.18497 moveto
+103.6112 31.88037 lineto
+102.08049 28.18497 lineto
+ closepath
+gsave fill grestore stroke
+newpath 102.08049 19.63559 moveto
+103.6112 15.94019 lineto
+105.14192 19.63559 lineto
+ closepath
+gsave fill grestore stroke
+ 0 1.4944 dtransform truncate idtransform setlinewidth pop
+newpath 63.76074 79.70093 moveto
+95.64111 79.70093 lineto stroke
+newpath 63.76074 23.91028 moveto
+95.64111 23.91028 lineto stroke
+showpage
+%%EOF

@@ -1,0 +1,64 @@
+%!PS-Adobe-3.0 EPSF-3.0
+%%BoundingBox: -8 0 76 92 
+%%HiResBoundingBox: -7.56804 0.85307 75.5755 91.711 
+%%Creator: MetaPost 2.10
+%%CreationDate: 2024.12.09:1330
+%%Pages: 1
+%%DocumentResources: procset mpost-minimal
+%%DocumentSuppliedResources: procset mpost-minimal
+%%EndComments
+%%BeginProlog
+%%BeginResource: procset mpost-minimal
+/bd{bind def}bind def/fshow {exch findfont exch scalefont setfont show}bd
+/fcp{findfont dup length dict begin{1 index/FID ne{def}{pop pop}ifelse}forall}bd
+/fmc{FontMatrix dup length array copy dup dup}bd/fmd{/FontMatrix exch def}bd
+/Amul{4 -1 roll exch mul 1000 div}bd/ExtendFont{fmc 0 get Amul 0 exch put fmd}bd
+/ScaleFont{dup fmc 0 get Amul 0 exch put dup dup 3 get Amul 3 exch put fmd}bd
+/SlantFont{fmc 2 get dup 0 eq{pop 1}if Amul FontMatrix 0 get mul 2 exch put fmd}bd
+%%EndResource
+%%EndProlog
+%%BeginSetup
+%%EndSetup
+%%Page: 1 1
+ 0 0 0 setrgbcolor 0 0.5 dtransform truncate idtransform setlinewidth pop
+ [] 0 setdash 1 setlinecap 1 setlinejoin 10 setmiterlimit
+newpath 62.76448 29.88785 moveto
+65.88084 27.27286 70.46902 26.94041 73.22523 23.91028 curveto
+74.70088 22.28798 75.41046 20.12483 75.3174 17.93271 curveto
+75.07613 12.24948 70.24135 8.21695 64.85664 5.97757 curveto
+59.76987 3.86209 54.28143 3.04604 48.81682 2.39099 curveto
+44.18202 1.83542 39.5334 1.38734 34.86916 1.1955 curveto
+25.28026 0.80112 15.49382 1.53812 6.97383 5.97757 curveto
+-2.26302 10.79056 -8.9372 19.96771 -6.97383 29.88785 curveto
+-4.82877 40.72603 6.53465 45.84772 13.94766 53.79813 curveto
+20.28879 60.59894 23.57698 69.50075 27.89532 77.7084 curveto
+30.42531 82.51701 33.48523 87.24792 38.35606 89.66354 curveto
+48.6304 94.75894 60.59866 88.47285 66.2514 77.7084 curveto
+70.08815 70.40213 70.84914 61.97437 69.73831 53.79813 curveto
+68.22409 42.65263 63.36017 32.22997 55.79065 23.91028 curveto stroke
+newpath 54.3959 35.86542 moveto
+48.67885 40.60884 44.34306 46.80281 41.84299 53.79813 curveto
+39.74112 59.67926 39.03804 66.17262 41.84299 71.73083 curveto
+43.29512 74.60834 45.68489 77.0016 48.81682 77.7084 curveto
+59.09096 80.02705 66.308 67.23802 62.76448 53.79813 curveto
+61.0715 47.37697 58.00404 41.43576 54.3959 35.86542 curveto
+53.0732 33.8234 51.67752 31.82959 50.21156 29.88785 curveto stroke
+ [3 3 ] 0 setdash
+newpath 55.79065 23.91028 moveto
+55.82959 22.9144 55.82959 21.91737 55.79065 20.9215 curveto
+55.75166 19.92444 55.67384 18.92436 55.79065 17.93271 curveto
+56.22562 14.23972 59.0852 11.29843 62.76448 10.75964 curveto stroke
+newpath 50.21156 29.88785 moveto
+48.66998 27.82689 47.04129 25.83255 45.3299 23.91028 curveto
+42.25607 20.45767 38.8951 17.22346 34.86916 14.94392 curveto
+30.61847 12.53712 25.80594 11.2996 20.9215 11.35735 curveto stroke
+newpath 18.82933 13.15063 moveto
+19.46577 12.48524 20.1666 11.88455 20.9215 11.35735 curveto
+26.8885 7.19019 34.5894 8.11981 41.84299 8.36856 curveto
+48.91821 8.61119 56.18929 8.07388 62.76448 10.75964 curveto
+63.97675 11.2548 65.1435 11.85486 66.2514 12.55293 curveto stroke
+newpath 20.9215 11.35735 moveto
+27.41588 14.59225 34.58812 16.23161 41.84299 16.13942 curveto
+49.1469 16.0466 56.32178 14.20164 62.76448 10.75964 curveto stroke
+showpage
+%%EOF
