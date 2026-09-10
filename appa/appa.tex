@@ -1,6 +1,5 @@
 
-\chapter{復習と補足}
-\section{群論の復習と補足}
+\chapter{群論の復習と補足}
 \subsection{群論や代数の復習}
 授業で取り上げるのは幾何学的な群論であるが，群論の一般論から分かることも多いのでここに簡単に群論や代数の初等的な概念や結果を纏めておくので参考にしてほしい．
 
@@ -737,7 +736,7 @@ $A_n=\{\sigma\in S_n\mid$ 偶置換 $\}$と置くと
 \]
 \begin{figure}[thb]
      \centering
-     \includegraphics{~/Documents/GitHub/bEuclideanGeo/ch1/figureGroup3.7}
+     \includegraphics{~/Documents/GitHub/bEuclideanGeo/ch1/images/figureGroup3.7}
      \caption{$\alpha$, $\beta$, $\gamma$}
 \end{figure}
 
@@ -751,7 +750,7 @@ $A_n=\{\sigma\in S_n\mid$ 偶置換 $\}$と置くと
 
 \begin{figure}[htb]
      \centering
-     \includegraphics{~/Documents/GitHub/bEuclideanGeo/ch1/figureGroup3.8}
+     \includegraphics{~/Documents/GitHub/bEuclideanGeo/ch1/images/figureGroup3.8}
      \caption{$\beta\alpha=\gamma=\alpha\beta$}\label{betaAlphaGamma}
 \end{figure}
 
@@ -884,13 +883,13 @@ $A_4/K=\{K, \sigma K, \sigma^{2}K\}$は$C_3$と同形となり，やはり可換
       \centering
       \begin{minipage}{0.4\columnwidth}
          \centering
-           \includegraphics{~/Documents/GitHub/bEuclideanGeo/ch1/figureGroup3.9}
+           \includegraphics{~/Documents/GitHub/bEuclideanGeo/ch1/images/figureGroup3.9}
            \caption{$h^{-1}g^{-1}hg$}
          \label{}
       \end{minipage} 
       \begin{minipage}{0.4\columnwidth}
          \centering
-           \includegraphics{~/Documents/GitHub/bEuclideanGeo/ch1/figureGroup3.10}
+           \includegraphics{~/Documents/GitHub/bEuclideanGeo/ch1/images/figureGroup3.10}
            \caption{$D_3$}
          \label{}
       \end{minipage} 
@@ -969,325 +968,6 @@ $a_1, \cdots, a_k\in G$が存在して
 
  
  %\section{Deck 変換と軌道体}
-
-\section{アプリのソースと解説}
-\subsection{p5.js}
-p5.js は Processing というJava用の描画プログラミング言語を Javascript に移植したものである．以下のウェブ上のエディターで実行可能である．
-
-\href{https://editor.p5js.org}{https://editor.p5js.org} （以下この色はハイパーリンク）
-
-\begin{figure}[htb]
-   \centering
-   \includegraphics[width=13cm]{~/Documents/GitHub/bEuclideanGeo/appa/images/ScreenCapture3.pdf}
-   \caption{ウェブ上の p5.js エディター}\label{}
-\end{figure}
-
-\noindent
-公開した sketch.js を sketch.js の部分にコピーし，
-（ファイル \href{https://www.printables.com/model/411768-octahedron-freecad/files}{octahedron.stl}\footnote{Ray Fox,
-This work is licensed under a Creative Commons (International License),
-Public Domain} をアップロードし）
-左上の三角のボタンを押すと右画面に描画が始まる．
-もちろん隣りの四角のボタンで止まる．
-%プログラムのソースファイルに是非適宜手を入れながら動かして見て欲しい．
-ただし .js はJavaScriptのファイルであることを示す拡張子 ( extension ) である．
-
-
-また以下のようにすると自分のパソコン上で動かせる．
- p5.js というライブラリーを\href{https://p5js.org/download/}{ダウンロード}するとp5というディレクトリが作られる．
- 公開されたsketch.jsをそのディレクトリーの sketch.js と置き換え，
-フリーのエディター\href{https://code.visualstudio.com}{Visual Studio Code}でそのディレクトリp5を開き，
- Live Server の拡張をVisual Studio Codeにインストールして
-Go Liveのボタンを押すと，chrome で再生を始める．
-
-%\subsection{ p5.js のソース}
-以下がソースファイル sketch.js の本質的な内容である．
-
-\begin{verbatim}
-/* Cubes landing before the Great Pyramids abbreviated version,
- * snow00two@gmail.com, 
- * \href{https://creativecommons.org/licenses/by-nc-nd/4.0/}{\ccbyncsa}
- */
-const widthCanvas = 720 * 3/2  ; //=1080
-const heightCanvas = 405 * 3/2 ; //=607.5
-const backColor = [150, 200, 250] ;//[200, 220, 200]
-
-let octahedron ; 
-function preload(){
-octahedron = loadModel('octahedron.stl'); 
-//https://www.printables.com/model/411768-octahedron-freecad/files
-}
-
-function setup(){//canvas : window of the projection coordinates
-createCanvas(widthCanvas, heightCanvas, WEBGL);
-background(backColor);
-}
-
-let i = 0;//basic parameter for frames
-
-function draw(){
-let I = 9425; //change the priod condition to 3x2Pi/0.002=9424.7... 
-
-if (i<I) {
-} else {
-i = 0;// reset basic parameter
-}
-
-  // define the camera coordinates from a camera on the helicopter
-  // of the following coordinates in the world coordinates : 
-  let cameraX = cos(0.5 + i * 0.002)*250 ;
-  let cameraY = sin(0.5 + i * 0.002)*250;
-  let cameraZ = 200+sin(0.5 + i * 0.002)*30;
-  camera(cameraX,cameraY, cameraZ, 100, 0, 100, 0, 0, -1);
-  // the output images are in the projection coordinates.
-
-  //The world coordinates : 
-  background(backColor);
-  directionalLight(250, 200, 200, 0, -1, -1); //light from the sun 
-  fill(250, 200, 200);
-  plane(10000,10000);
-
-  stroke(0);
-  strokeWeight(2);
-  fill(150,150, 150);
-  pyramid(3);
-
-  translate(-300,0,0);
-  pyramid(3);
-
-  translate(100,-300,0);
-  pyramid(2);
-
-  ambientMaterial(125);
-  ambientLight(100,100,100);
-  shininess(100.0);
-
-  translate(400, 500, max(500 - i * 0.3, 67) );
-  sCube(5);
-  
-  let M = 25;
-  for(let m = 0 ; m < M ; m++){
-    translate(140,140, max(650 + 150*m - i * 0.3, 0));
-    sCube(5);
-  } 
-  i++;
-}
-
-// The modeling coordinates :
-function pyramid(scaleN){
-  push();
-    scale(scaleN);
-    model(octahedron);
-  pop();
-}
-
-function sCube(scaleN){
-  push();
-    rotateZ(QUARTER_PI);
-    scale(scaleN);
-    box(25);
-  pop();
-}
-\end{verbatim}
-
-\subsection{JavaScriptの言語仕様}
-\begin{itemize}
-\item
-JavaScript には変数の型はなく，文の終りで ; が必要
-
-\item
-let は変数の宣言，以前は var も使われていた．
-
-\item
-const は定数の宣言
-
-\item
-\verb////はコメント文でこれ以降の文は無視される．
-
-\noindent
-/* */はブロックコメント文で途中の文は無視される．
-\end{itemize}
-
-
-よく使う制御構文：
-for 文の例：
-\begin{verbatim}
-   let I = 5;
-   for (let i=0; i < I; i++) {
-        console.log(i);
-   }
-
-\end{verbatim}
-
-if 文の例：
-\begin{verbatim}
-   let m = 80;
-   if ( m<60 ){
-        console.log('F');
-   } else if ( m<70  ) {
-        console.log('C');
-   } else if ( m<80  ) {
-        console.log('B');
-   } else if ( m<90  ) {
-        console.log('A');
-   } else {
-        console.log('S');
-   }
-
-\end{verbatim}
-
-
-function hoge(var1,\dots,var3) は関数hogeの宣言で，続く$\{ \}$の中に関数の定義を書く．var1,\dots,var3が関数の変数で定義の中で使える．
-関数の中で定義された変数はローカル変数で，関数外で使われる変数はユニバーサルな変数になる．
-
-
-%\subsection{p5.js の説明とソースファイルの解説}
-関数preload()でディレクトリにある図形 octahedron.stl を読み込み，
-関数setup()の中でウィンドウ等を初期化する．
-
-   createCanvas(widthCanvas, heightCanvas) ;
-
-\noindent
-で$2$次元の描画を行えるが，ここでは
-
-   createCanvas(widthCanvas, heightCanvas, WEBGL);
-
-\noindent
-で$3$次元の描画を行う．ただし，WEBGLとはブラウザ上でCGを描画するためのAPIである．ここでは$3$次元の描画のみ解説するが$2$次元の描画については\cite{P5} を参照してほしい．
-
-関数draw()が呼び出されると変数 i を1フレーム毎に1づつ増やしながら，
-その都度フレームを描画し続ける．いじってみるとだんだん理解が深まると思う．
-
-\emptyline
-
-p5.js 特有の組込関数の説明：
-\begin{itemize}
-   \item
-      translate(a, b, c); $(a, b,c)$だけ平行移動し，その点を$(0,0,0)$として描画
-   
-   \item
-      rotateZ(theta); $z$軸を中心に角度 theta だけ直交座標系を回転し，それを新たな直交座標系として描画．rotateX, rotateY も同様．
-   \item
-      scale(a) 座標系をa 倍する
-   
-   \item  
-      strokeWeight(a) 太さaで描く
-     
-   \item
-      background(a,b,c);  背後の画面をRGB [a,b,c] で埋める．
-      ただし$a, b, c$は$0$から$255=2^8-1$ の間の整数．
-   
-   \item directionalLight(a, b, c, d,e,f) RGB[a, b, c]の光で向き(d,e,f) $-1\le d,e,f\le 1$ で光を照らす
-   
-   \item
-       ambientLight(a, b, c) RGB[a, b, c]の光で背景となる光を照らす
-       
-    \item 
-       ambientMaterial(a, b, c) 次の図形の壁の色をRGB [a,b,c] で設定
-   
-   \item 
-      fill(a,b,c) 次の図形をRGB [a,b,c] で埋める．
-   
-   \item 
-      plane(a,b), box(c) などは3次元の組込立体図形
-   
-   \item
-      camera(a, b, c, a', b', c') カメラの位置$(a, b, c)$ 対象の中心$(a', b', c')$ に向けてウィンドウを描画
-   
-   \item
-      push(), pop() はその間に変えられた設定を元に戻すためのスタックに書き込むための関数
-   
-   \item
-      model(modelName) modelNameを描く
-
-\end{itemize}
-
-
-
-\subsection{一般のJavaScriptの動かし方}
-JavaScriptの処理の仕方は幾つかある．
-JavaScriptはブラウザーに組み込まれているので，まず
-\begin{verbatim}
-
-   <!DOCTYPE html>
-   <html>
-      <head>
-         <meta charset="UTF-8" />
-         <title>Hello JavaScript</title>
-      </head>
-      <body>
-         <script type="text/javascript" src="test.js"></script>
-      </body>
-   </html>
-   
-\end{verbatim}
-のようなhtml のファイルを hoge.html として保存し，次に
-\begin{verbatim}
-   window.alert('hello world!');
-\end{verbatim}
-という行のみからなるファイルを test.js として hoge.htmlと同じディレクトリに保存する．
-ブラウザー Chrome の
-メニューバーのFileのメニューOpen Files... からhoge.htmlを開くと
-
-\begin{figure}[htb]
-   \centering
-   \includegraphics[width=12cm, trim=0 1000  0 0, clip]{~/Documents/GitHub/bEuclideanGeo/appa/images/ScreenCapture1.pdf}
-   \caption{}\label{alart}
-\end{figure}
-
-\begin{figure}[htb]
-   \centering
-   \includegraphics[width=13cm, trim=0 800  0 0, clip]{~/Documents/GitHub/bEuclideanGeo/appa/images/ScreenCapture2.pdf}
-   \caption{}\label{console}
-\end{figure}
-
-\noindent
-図 \ref{alart}のような結果が得られる．あるいは
-Chrome の
-メニューバーのFileのメニュー View から Developer の Developer Tools を開き
-\begin{verbatim}
-   console.log('hello world!');
-\end{verbatim}
-をtest.jsとして保存し，またhoge.htmlを開くと図 \ref{console}
-のような結果が得られる．
-%\newpage
-
-他にも Terminal でtest.jsのあるディレクトリに移動し
-\begin{verbatim}
-   > osascript test.js
-\end{verbatim}
-でTerminalに結果が表示される．
-ただし，これはMacのみで，逆に言うとMacのスクリプト言語としてJavaScriptを使うことが出来る．
-一般的には Node.js を\href{https://nodejs.org/en}{ダウンロード}
-しインストールすると
-\begin{verbatim}
-   > node test.js
-\end{verbatim}
-でTerminalに結果が表示される．したがってMac を直接コントロールする必要が無いときは osascriptより node.js を使うことをお奨めしたい．
-%Node.js + Electron + Chromium で macOS, Windows, スマートホンに対応したデスクトップアプリケーション(One page application)を一度に作ることが出来る (例 VScode 図 \ref{vscode})．
-%
-%\begin{figure}[htb]
-%\centering
-%\includegraphics[width=7cm, trim=0 40  0 30, clip]{ScreenCapture4.pdf}
-%\caption{}\label{vscode}
-%\end{figure}
-%
-%\begin{thebibliography}{9}
-%   \bibitem{P5}
-%      松田晃一, p5.jsプログラミングガイド  改訂版, 2021, カットシステム
-%   
-%   \bibitem{T}
-%      山田祥寛, 
-%      改訂3版JavaScript本格入門, 2023, 技術評論社
-%\end{thebibliography}
-%
-%
-%\end{document}
-%
-%
-%\section{GPUとCPU}
-%
-%\section{剛体的な図形の作図}
 
 
 
