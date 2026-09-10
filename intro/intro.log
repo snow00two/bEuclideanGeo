@@ -1,4 +1,4 @@
-This is e-upTeX, Version 3.141592653-p4.1.2-u2.00-250202-2.6 (utf8.euc) (TeX Live 2025) (preloaded format=platex 2025.5.23)  22 AUG 2026 16:20
+This is e-upTeX, Version 3.141592653-p4.1.2-u2.00-250202-2.6 (utf8.euc) (TeX Live 2025) (preloaded format=platex 2025.5.23)  10 SEP 2026 10:57
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -12,15 +12,28 @@ L3 programming layer <2025-01-18>
 l.1 \chapter
             {イントロダクション}
 ? 
+
+./intro.tex:1: LaTeX Error: Missing \begin{document}.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.1 \chapter{イ
+               ントロダクション}
+? 
 ./intro.tex:1: Emergency stop.
-l.1 
-    
-End of file on the terminal!
+ ...                                              
+                                                  
+l.1 \chapter{イ
+               ントロダクション}
+You're in trouble here.  Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
 
  
 Here is how much of TeX's memory you used:
- 15 strings out of 473836
- 282 string characters out of 5731189
+ 16 strings out of 473836
+ 415 string characters out of 5731189
  385707 words of memory out of 5000000
  23370 multiletter control sequences out of 15000+600000
  562708 words of font info for 53 fonts, out of 8000000 for 9000
