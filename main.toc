@@ -33,8 +33,8 @@
 \contentsline {section}{\numberline {3.2}射影幾何学と射影空間}{93}{section.3.2}%
 \contentsline {subsection}{\numberline {3.2.1}投影を使った定理}{93}{subsection.3.2.1}%
 \contentsline {subsection}{\numberline {3.2.2}遠近法の無限遠点}{94}{subsection.3.2.2}%
-\contentsline {subsection}{\numberline {3.2.3}同次座標，実射影平面}{97}{subsection.3.2.3}%
-\contentsline {subsection}{\numberline {3.2.4}射影変換}{100}{subsection.3.2.4}%
+\contentsline {subsection}{\numberline {3.2.3}同次座標，実射影平面}{98}{subsection.3.2.3}%
+\contentsline {subsection}{\numberline {3.2.4}射影変換}{101}{subsection.3.2.4}%
 \contentsline {subsection}{\numberline {3.2.5}二次曲線}{102}{subsection.3.2.5}%
 \contentsline {section}{\numberline {3.3}リーマン球面と一次分数変換}{104}{section.3.3}%
 \contentsline {subsection}{\numberline {3.3.1}$\mathbf C\mathbf P^1$}{104}{subsection.3.3.1}%
