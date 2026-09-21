@@ -1,4 +1,4 @@
-This is e-upTeX, Version 3.141592653-p4.1.2-u2.00-250202-2.6 (utf8.euc) (TeX Live 2025) (preloaded format=platex 2025.5.23)  18 SEP 2026 04:15
+This is e-upTeX, Version 3.141592653-p4.1.2-u2.00-250202-2.6 (utf8.euc) (TeX Live 2025) (preloaded format=platex 2025.5.23)  18 SEP 2026 04:30
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1006,9 +1006,6 @@ LaTeX Warning: Label `' multiply defined.
 LaTeX Warning: Label `ref' multiply defined.
 
 
-LaTeX Warning: Label `projection' multiply defined.
-
-
 LaTeX Warning: Label `' multiply defined.
 
 
@@ -1016,6 +1013,9 @@ LaTeX Warning: Label `perspective' multiply defined.
 
 
 LaTeX Warning: Label `perspective2' multiply defined.
+
+
+LaTeX Warning: Label `projection' multiply defined.
 
 
 LaTeX Warning: Label `pinCamera' multiply defined.
@@ -2309,14 +2309,13 @@ File: ~/Documents/GitHub/bEuclideanGeo/ch3/images/figureProje2.3 Graphic file (t
 <~/Documents/GitHub/bEuclideanGeo/ch3/images/figureProje2.3>
 File: ~/Documents/GitHub/bEuclideanGeo/ch3/images/figureProje2.17 Graphic file (type eps)
 <~/Documents/GitHub/bEuclideanGeo/ch3/images/figureProje2.17>
-
-
-[95]
 File: ~/Documents/GitHub/bEuclideanGeo/ch3/images/figureProje2.12 Graphic file (type eps)
 <~/Documents/GitHub/bEuclideanGeo/ch3/images/figureProje2.12>
 File: ~/Documents/GitHub/bEuclideanGeo/ch3/images/figureProje2.13 Graphic file (type eps)
 <~/Documents/GitHub/bEuclideanGeo/ch3/images/figureProje2.13>
 
+
+[95]
 
 [96]
 
@@ -2379,9 +2378,9 @@ Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 (hyperref)                removing `math shift' on input line 1152.
 
+<xymatrix 2x2 141> <xymatrix 2x2 182>
 
-
-[104] <xymatrix 2x2 141> <xymatrix 2x2 182>
+[104]
 
 [105]
 Underfull \hbox (badness 1067) in paragraph at lines 1254--1262
@@ -2904,4 +2903,4 @@ Here is how much of TeX's memory you used:
  929 hyphenation exceptions out of 8191
  100i,22n,105p,906b,674s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
-Output written on main.dvi (172 pages, 674852 bytes).
+Output written on main.dvi (172 pages, 674680 bytes).

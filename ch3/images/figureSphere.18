@@ -1,0 +1,2377 @@
+%!PS-Adobe-3.0 EPSF-3.0
+%%BoundingBox: -1 -1 140 140 
+%%HiResBoundingBox: -0.4984 -0.4984 139.97502 139.97502 
+%%Creator: MetaPost 2.11
+%%CreationDate: 2025.09.16:1316
+%%Pages: 1
+%%DocumentResources: procset mpost-minimal
+%%DocumentSuppliedResources: procset mpost-minimal
+%%EndComments
+%%BeginProlog
+%%BeginResource: procset mpost-minimal
+/bd{bind def}bind def/fshow {exch findfont exch scalefont setfont show}bd
+/fcp{findfont dup length dict begin{1 index/FID ne{def}{pop pop}ifelse}forall}bd
+/fmc{FontMatrix dup length array copy dup dup}bd/fmd{/FontMatrix exch def}bd
+/Amul{4 -1 roll exch mul 1000 div}bd/ExtendFont{fmc 0 get Amul 0 exch put fmd}bd
+/ScaleFont{dup fmc 0 get Amul 0 exch put dup dup 3 get Amul 3 exch put fmd}bd
+/SlantFont{fmc 2 get dup 0 eq{pop 1}if Amul FontMatrix 0 get mul 2 exch put fmd}bd
+%%EndResource
+%%EndProlog
+%%BeginSetup
+%%EndSetup
+%%Page: 1 1
+ 0 0 0 setrgbcolor 0 0.5 dtransform truncate idtransform setlinewidth pop
+ [] 0 setdash 1 setlinecap 1 setlinejoin 10 setmiterlimit
+newpath 139.47658 101.69693 moveto
+135.67735 109.98721 130.4304 117.53368 123.98204 123.98204 curveto
+117.53368 130.4304 109.98721 135.67735 101.69693 139.47658 curveto stroke
+newpath 37.7797 139.47658 moveto
+29.48941 135.67735 21.94295 130.4304 15.49458 123.98204 curveto
+9.04622 117.53368 3.79927 109.98721 0.00005 101.69693 curveto stroke
+newpath 0.00005 37.7797 moveto
+3.79927 29.48941 9.04622 21.94295 15.49458 15.49458 curveto
+21.94295 9.04622 29.48941 3.79927 37.7797 0.00005 curveto stroke
+newpath 101.69693 0.00005 moveto
+109.98721 3.79927 117.53368 9.04622 123.98204 15.49458 curveto
+130.4304 21.94295 135.67735 29.48941 139.47658 37.7797 curveto stroke
+ 1 0 0 setrgbcolor
+newpath 139.47688 69.73833 moveto
+-0.00026 69.7383 lineto stroke
+newpath 139.47632 92.39781 moveto
+0.0003 47.07881 lineto stroke
+newpath 139.4764 120.40543 moveto
+0.00023 19.0712 lineto stroke
+newpath 120.40543 139.4764 moveto
+19.0712 0.00023 lineto stroke
+newpath 92.39781 139.47632 moveto
+47.07881 0.0003 lineto stroke
+ 0.5 0 dtransform exch truncate exch idtransform pop setlinewidth
+newpath 69.7383 139.47688 moveto
+69.73833 -0.00026 lineto stroke
+ 0 0.5 dtransform truncate idtransform setlinewidth pop
+newpath 47.07881 139.47632 moveto
+92.39781 0.0003 lineto stroke
+newpath 19.0712 139.4764 moveto
+120.40543 0.00023 lineto stroke
+newpath 0.00023 120.40543 moveto
+139.4764 19.0712 lineto stroke
+newpath 0.0003 92.39781 moveto
+139.47632 47.07881 lineto stroke
+ 0 0 0 setrgbcolor
+newpath 120.3686 69.73831 moveto
+120.3686 83.1663 115.0344 96.04434 105.53937 105.53937 curveto
+96.04434 115.0344 83.1663 120.3686 69.73831 120.3686 curveto
+56.31032 120.3686 43.43228 115.0344 33.93726 105.53937 curveto
+24.44223 96.04434 19.10802 83.1663 19.10802 69.73831 curveto
+19.10802 56.31032 24.44223 43.43228 33.93726 33.93726 curveto
+43.43228 24.44223 56.31032 19.10802 69.73831 19.10802 curveto
+83.1663 19.10802 96.04434 24.44223 105.53937 33.93726 curveto
+115.0344 43.43228 120.3686 56.31032 120.3686 69.73831 curveto closepath stroke
+newpath 103.15472 69.73831 moveto
+103.15472 78.6009 99.63411 87.10051 93.36731 93.36731 curveto
+87.10051 99.63411 78.6009 103.15472 69.73831 103.15472 curveto
+60.87572 103.15472 52.37611 99.63411 46.10931 93.36731 curveto
+39.84251 87.10051 36.3219 78.6009 36.3219 69.73831 curveto
+36.3219 60.87572 39.84251 52.37611 46.10931 46.10931 curveto
+52.37611 39.84251 60.87572 36.3219 69.73831 36.3219 curveto
+78.6009 36.3219 87.10051 39.84251 93.36731 46.10931 curveto
+99.63411 52.37611 103.15472 60.87572 103.15472 69.73831 curveto closepath stroke
+newpath 91.79234 69.73831 moveto
+91.79234 75.58742 89.46883 81.19695 85.33289 85.33289 curveto
+81.19695 89.46883 75.58742 91.79234 69.73831 91.79234 curveto
+63.8892 91.79234 58.27968 89.46883 54.14374 85.33289 curveto
+50.0078 81.19695 47.68428 75.58742 47.68428 69.73831 curveto
+47.68428 63.8892 50.0078 58.27968 54.14374 54.14374 curveto
+58.27968 50.0078 63.8892 47.68428 69.73831 47.68428 curveto
+75.58742 47.68428 81.19695 50.0078 85.33289 54.14374 curveto
+89.46883 58.27968 91.79234 63.8892 91.79234 69.73831 curveto closepath stroke
+newpath 84.2939 69.73831 moveto
+84.2939 73.5987 82.76039 77.30098 80.03069 80.03069 curveto
+77.30098 82.76039 73.5987 84.2939 69.73831 84.2939 curveto
+65.87793 84.2939 62.17564 82.76039 59.44594 80.03069 curveto
+56.71623 77.30098 55.18272 73.5987 55.18272 69.73831 curveto
+55.18272 65.87793 56.71623 62.17564 59.44594 59.44594 curveto
+62.17564 56.71623 65.87793 55.18272 69.73831 55.18272 curveto
+73.5987 55.18272 77.30098 56.71623 80.03069 59.44594 curveto
+82.76039 62.17564 84.2939 65.87793 84.2939 69.73831 curveto closepath stroke
+newpath 79.3449 69.73831 moveto
+79.3449 72.28613 78.33276 74.7296 76.53119 76.53119 curveto
+74.7296 78.33276 72.28613 79.3449 69.73831 79.3449 curveto
+67.19049 79.3449 64.74702 78.33276 62.94543 76.53119 curveto
+61.14386 74.7296 60.13173 72.28613 60.13173 69.73831 curveto
+60.13173 67.19049 61.14386 64.74702 62.94543 62.94543 curveto
+64.74702 61.14386 67.19049 60.13173 69.73831 60.13173 curveto
+72.28613 60.13173 74.7296 61.14386 76.53119 62.94543 curveto
+78.33276 64.74702 79.3449 67.19049 79.3449 69.73831 curveto closepath stroke
+newpath 76.0791 69.73831 moveto
+76.0791 71.42 75.41106 73.03279 74.22192 74.22192 curveto
+73.03279 75.41106 71.42 76.0791 69.73831 76.0791 curveto
+68.05663 76.0791 66.44383 75.41106 65.2547 74.22192 curveto
+64.06557 73.03279 63.39752 71.42 63.39752 69.73831 curveto
+63.39752 68.05663 64.06557 66.44383 65.2547 65.2547 curveto
+66.44383 64.06557 68.05663 63.39752 69.73831 63.39752 curveto
+71.42 63.39752 73.03279 64.06557 74.22192 65.2547 curveto
+75.41106 66.44383 76.0791 68.05663 76.0791 69.73831 curveto closepath stroke
+newpath 73.92297 69.73831 moveto
+73.92297 70.84816 73.48209 71.91254 72.69731 72.69731 curveto
+71.91254 73.48209 70.84816 73.92297 69.73831 73.92297 curveto
+68.62846 73.92297 67.56409 73.48209 66.77931 72.69731 curveto
+65.99454 71.91254 65.55365 70.84816 65.55365 69.73831 curveto
+65.55365 68.62846 65.99454 67.56409 66.77931 66.77931 curveto
+67.56409 65.99454 68.62846 65.55365 69.73831 65.55365 curveto
+70.84816 65.55365 71.91254 65.99454 72.69731 66.77931 curveto
+73.48209 67.56409 73.92297 68.62846 73.92297 69.73831 curveto closepath stroke
+newpath 72.4996 69.73831 moveto
+72.4996 70.47066 72.20868 71.173 71.69084 71.69084 curveto
+71.173 72.20868 70.47066 72.4996 69.73831 72.4996 curveto
+69.00597 72.4996 68.30362 72.20868 67.78578 71.69084 curveto
+67.26794 71.173 66.97702 70.47066 66.97702 69.73831 curveto
+66.97702 69.00597 67.26794 68.30362 67.78578 67.78578 curveto
+68.30362 67.26794 69.00597 66.97702 69.73831 66.97702 curveto
+70.47066 66.97702 71.173 67.26794 71.69084 67.78578 curveto
+72.20868 68.30362 72.4996 69.00597 72.4996 69.73831 curveto closepath stroke
+newpath 71.56084 69.73831 moveto
+71.56084 70.22168 71.36882 70.68524 71.02702 71.02702 curveto
+70.68524 71.36882 70.22168 71.56084 69.73831 71.56084 curveto
+69.25494 71.56084 68.79138 71.36882 68.4496 71.02702 curveto
+68.1078 70.68524 67.91579 70.22168 67.91579 69.73831 curveto
+67.91579 69.25494 68.1078 68.79138 68.4496 68.4496 curveto
+68.79138 68.1078 69.25494 67.91579 69.73831 67.91579 curveto
+70.22168 67.91579 70.68524 68.1078 71.02702 68.4496 curveto
+71.36882 68.79138 71.56084 69.25494 71.56084 69.73831 curveto closepath stroke
+newpath 70.94162 69.73831 moveto
+70.94162 70.05745 70.81485 70.36353 70.58919 70.58919 curveto
+70.36353 70.81485 70.05745 70.94162 69.73831 70.94162 curveto
+69.41917 70.94162 69.1131 70.81485 68.88744 70.58919 curveto
+68.66177 70.36353 68.535 70.05745 68.535 69.73831 curveto
+68.535 69.41917 68.66177 69.1131 68.88744 68.88744 curveto
+69.1131 68.66177 69.41917 68.535 69.73831 68.535 curveto
+70.05745 68.535 70.36353 68.66177 70.58919 68.88744 curveto
+70.81485 69.1131 70.94162 69.41917 70.94162 69.73831 curveto closepath stroke
+ 1 0 0 setrgbcolor 0 0.99626 dtransform truncate idtransform setlinewidth pop
+newpath 120.36848 69.73831 moveto
+103.15489 69.73831 lineto stroke
+newpath 106.85042 71.26909 moveto
+103.15489 69.73831 lineto
+106.85042 68.20753 lineto
+ closepath
+gsave fill grestore stroke
+newpath 117.89067 85.38406 moveto
+101.51926 80.06464 lineto stroke
+newpath 104.56094 82.66252 moveto
+101.51926 80.06464 lineto
+105.50702 79.75075 lineto
+ closepath
+gsave fill grestore stroke
+newpath 110.69945 99.49797 moveto
+96.77316 89.38005 lineto stroke
+newpath 98.86317 92.79066 moveto
+96.77316 89.38005 lineto
+100.6627 90.3138 lineto
+ closepath
+gsave fill grestore stroke
+newpath 99.49797 110.69945 moveto
+89.38005 96.77316 lineto stroke
+newpath 90.3138 100.6627 moveto
+89.38005 96.77316 lineto
+92.79066 98.86317 lineto
+ closepath
+gsave fill grestore stroke
+newpath 85.38406 117.89067 moveto
+80.06464 101.51926 lineto stroke
+newpath 79.75075 105.50702 moveto
+80.06464 101.51926 lineto
+82.66252 104.56094 lineto
+ closepath
+gsave fill grestore stroke
+ 0.99626 0 dtransform exch truncate exch idtransform pop setlinewidth
+newpath 69.73831 120.36848 moveto
+69.73831 103.15489 lineto stroke
+ 0 0.99626 dtransform truncate idtransform setlinewidth pop
+newpath 68.20753 106.85042 moveto
+69.73831 103.15489 lineto
+71.26909 106.85042 lineto
+ closepath
+gsave fill grestore stroke
+newpath 54.09256 117.89067 moveto
+59.41199 101.51926 lineto stroke
+newpath 56.8141 104.56094 moveto
+59.41199 101.51926 lineto
+59.72588 105.50702 lineto
+ closepath
+gsave fill grestore stroke
+newpath 39.97865 110.69945 moveto
+50.09657 96.77316 lineto stroke
+newpath 46.68596 98.86317 moveto
+50.09657 96.77316 lineto
+49.16283 100.6627 lineto
+ closepath
+gsave fill grestore stroke
+newpath 28.77718 99.49797 moveto
+42.70346 89.38005 lineto stroke
+newpath 38.81392 90.3138 moveto
+42.70346 89.38005 lineto
+40.61345 92.79066 lineto
+ closepath
+gsave fill grestore stroke
+newpath 21.58595 85.38406 moveto
+37.95737 80.06464 lineto stroke
+newpath 33.9696 79.75075 moveto
+37.95737 80.06464 lineto
+34.91568 82.66252 lineto
+ closepath
+gsave fill grestore stroke
+newpath 19.10814 69.73831 moveto
+36.32173 69.73831 lineto stroke
+newpath 32.6262 68.20753 moveto
+36.32173 69.73831 lineto
+32.6262 71.26909 lineto
+ closepath
+gsave fill grestore stroke
+newpath 21.58595 54.09256 moveto
+37.95737 59.41199 lineto stroke
+newpath 34.91568 56.8141 moveto
+37.95737 59.41199 lineto
+33.9696 59.72588 lineto
+ closepath
+gsave fill grestore stroke
+newpath 28.77718 39.97865 moveto
+42.70346 50.09657 lineto stroke
+newpath 40.61345 46.68596 moveto
+42.70346 50.09657 lineto
+38.81392 49.16283 lineto
+ closepath
+gsave fill grestore stroke
+newpath 39.97865 28.77718 moveto
+50.09657 42.70346 lineto stroke
+newpath 49.16283 38.81392 moveto
+50.09657 42.70346 lineto
+46.68596 40.61345 lineto
+ closepath
+gsave fill grestore stroke
+newpath 54.09256 21.58595 moveto
+59.41199 37.95737 lineto stroke
+newpath 59.72588 33.9696 moveto
+59.41199 37.95737 lineto
+56.8141 34.91568 lineto
+ closepath
+gsave fill grestore stroke
+ 0.99626 0 dtransform exch truncate exch idtransform pop setlinewidth
+newpath 69.73831 19.10814 moveto
+69.73831 36.32173 lineto stroke
+ 0 0.99626 dtransform truncate idtransform setlinewidth pop
+newpath 71.26909 32.6262 moveto
+69.73831 36.32173 lineto
+68.20753 32.6262 lineto
+ closepath
+gsave fill grestore stroke
+newpath 85.38406 21.58595 moveto
+80.06464 37.95737 lineto stroke
+newpath 82.66252 34.91568 moveto
+80.06464 37.95737 lineto
+79.75075 33.9696 lineto
+ closepath
+gsave fill grestore stroke
+newpath 99.49797 28.77718 moveto
+89.38005 42.70346 lineto stroke
+newpath 92.79066 40.61345 moveto
+89.38005 42.70346 lineto
+90.3138 38.81392 lineto
+ closepath
+gsave fill grestore stroke
+newpath 110.69945 39.97865 moveto
+96.77316 50.09657 lineto stroke
+newpath 100.6627 49.16283 moveto
+96.77316 50.09657 lineto
+98.86317 46.68596 lineto
+ closepath
+gsave fill grestore stroke
+newpath 117.89067 54.09256 moveto
+101.51926 59.41199 lineto stroke
+newpath 105.50702 59.72588 moveto
+101.51926 59.41199 lineto
+104.56094 56.8141 lineto
+ closepath
+gsave fill grestore stroke
+newpath 103.15489 69.73831 moveto
+91.79234 69.73831 lineto stroke
+newpath 95.48787 71.26909 moveto
+91.79234 69.73831 lineto
+95.48787 68.20753 lineto
+ closepath
+gsave fill grestore stroke
+newpath 101.51926 80.06464 moveto
+90.71304 76.55345 lineto stroke
+newpath 93.7546 79.15123 moveto
+90.71304 76.55345 lineto
+94.70064 76.23958 lineto
+ closepath
+gsave fill grestore stroke
+newpath 96.77316 89.38005 moveto
+87.58047 82.70128 lineto stroke
+newpath 89.67052 86.11191 moveto
+87.58047 82.70128 lineto
+91.47005 83.63501 lineto
+ closepath
+gsave fill grestore stroke
+newpath 89.38005 96.77316 moveto
+82.70128 87.58047 lineto stroke
+newpath 83.63501 91.47005 moveto
+82.70128 87.58047 lineto
+86.11191 89.67052 lineto
+ closepath
+gsave fill grestore stroke
+newpath 80.06464 101.51926 moveto
+76.55345 90.71304 lineto stroke
+newpath 76.23958 94.70064 moveto
+76.55345 90.71304 lineto
+79.15123 93.7546 lineto
+ closepath
+gsave fill grestore stroke
+ 0.99626 0 dtransform exch truncate exch idtransform pop setlinewidth
+newpath 69.73831 103.15489 moveto
+69.73831 91.79234 lineto stroke
+ 0 0.99626 dtransform truncate idtransform setlinewidth pop
+newpath 68.20753 95.48787 moveto
+69.73831 91.79234 lineto
+71.26909 95.48787 lineto
+ closepath
+gsave fill grestore stroke
+newpath 59.41199 101.51926 moveto
+62.92317 90.71304 lineto stroke
+newpath 60.3254 93.7546 moveto
+62.92317 90.71304 lineto
+63.23705 94.70064 lineto
+ closepath
+gsave fill grestore stroke
+newpath 50.09657 96.77316 moveto
+56.77534 87.58047 lineto stroke
+newpath 53.36472 89.67052 moveto
+56.77534 87.58047 lineto
+55.84161 91.47005 lineto
+ closepath
+gsave fill grestore stroke
+newpath 42.70346 89.38005 moveto
+51.89615 82.70128 lineto stroke
+newpath 48.00658 83.63501 moveto
+51.89615 82.70128 lineto
+49.8061 86.11191 lineto
+ closepath
+gsave fill grestore stroke
+newpath 37.95737 80.06464 moveto
+48.76358 76.55345 lineto stroke
+newpath 44.77599 76.23958 moveto
+48.76358 76.55345 lineto
+45.72203 79.15123 lineto
+ closepath
+gsave fill grestore stroke
+newpath 36.32173 69.73831 moveto
+47.68428 69.73831 lineto stroke
+newpath 43.98875 68.20753 moveto
+47.68428 69.73831 lineto
+43.98875 71.26909 lineto
+ closepath
+gsave fill grestore stroke
+newpath 37.95737 59.41199 moveto
+48.76358 62.92317 lineto stroke
+newpath 45.72203 60.3254 moveto
+48.76358 62.92317 lineto
+44.77599 63.23705 lineto
+ closepath
+gsave fill grestore stroke
+newpath 42.70346 50.09657 moveto
+51.89615 56.77534 lineto stroke
+newpath 49.8061 53.36472 moveto
+51.89615 56.77534 lineto
+48.00658 55.84161 lineto
+ closepath
+gsave fill grestore stroke
+newpath 50.09657 42.70346 moveto
+56.77534 51.89615 lineto stroke
+newpath 55.84161 48.00658 moveto
+56.77534 51.89615 lineto
+53.36472 49.8061 lineto
+ closepath
+gsave fill grestore stroke
+newpath 59.41199 37.95737 moveto
+62.92317 48.76358 lineto stroke
+newpath 63.23705 44.77599 moveto
+62.92317 48.76358 lineto
+60.3254 45.72203 lineto
+ closepath
+gsave fill grestore stroke
+ 0.99626 0 dtransform exch truncate exch idtransform pop setlinewidth
+newpath 69.73831 36.32173 moveto
+69.73831 47.68428 lineto stroke
+ 0 0.99626 dtransform truncate idtransform setlinewidth pop
+newpath 71.26909 43.98875 moveto
+69.73831 47.68428 lineto
+68.20753 43.98875 lineto
+ closepath
+gsave fill grestore stroke
+newpath 80.06464 37.95737 moveto
+76.55345 48.76358 lineto stroke
+newpath 79.15123 45.72203 moveto
+76.55345 48.76358 lineto
+76.23958 44.77599 lineto
+ closepath
+gsave fill grestore stroke
+newpath 89.38005 42.70346 moveto
+82.70128 51.89615 lineto stroke
+newpath 86.11191 49.8061 moveto
+82.70128 51.89615 lineto
+83.63501 48.00658 lineto
+ closepath
+gsave fill grestore stroke
+newpath 96.77316 50.09657 moveto
+87.58047 56.77534 lineto stroke
+newpath 91.47005 55.84161 moveto
+87.58047 56.77534 lineto
+89.67052 53.36472 lineto
+ closepath
+gsave fill grestore stroke
+newpath 101.51926 59.41199 moveto
+90.71304 62.92317 lineto stroke
+newpath 94.70064 63.23705 moveto
+90.71304 62.92317 lineto
+93.7546 60.3254 lineto
+ closepath
+gsave fill grestore stroke
+newpath 91.79234 69.73831 moveto
+84.29367 69.73831 lineto stroke
+newpath 87.9892 71.26909 moveto
+84.29367 69.73831 lineto
+87.9892 68.20753 lineto
+ closepath
+gsave fill grestore stroke
+newpath 90.71304 76.55345 moveto
+83.58147 74.23625 lineto stroke
+newpath 86.62305 76.83403 moveto
+83.58147 74.23625 lineto
+87.56909 73.92238 lineto
+ closepath
+gsave fill grestore stroke
+newpath 87.58047 82.70128 moveto
+81.514 78.29375 lineto stroke
+newpath 83.60397 81.7043 moveto
+81.514 78.29375 lineto
+85.40347 79.22746 lineto
+ closepath
+gsave fill grestore stroke
+newpath 82.70128 87.58047 moveto
+78.29375 81.514 lineto stroke
+newpath 79.22746 85.40347 moveto
+78.29375 81.514 lineto
+81.7043 83.60397 lineto
+ closepath
+gsave fill grestore stroke
+newpath 76.55345 90.71304 moveto
+74.23625 83.58147 lineto stroke
+newpath 73.92238 87.56909 moveto
+74.23625 83.58147 lineto
+76.83403 86.62305 lineto
+ closepath
+gsave fill grestore stroke
+ 0.99626 0 dtransform exch truncate exch idtransform pop setlinewidth
+newpath 69.73831 91.79234 moveto
+69.73831 84.29367 lineto stroke
+ 0 0.99626 dtransform truncate idtransform setlinewidth pop
+newpath 68.20753 87.9892 moveto
+69.73831 84.29367 lineto
+71.26909 87.9892 lineto
+ closepath
+gsave fill grestore stroke
+newpath 62.92317 90.71304 moveto
+65.24037 83.58147 lineto stroke
+newpath 62.6426 86.62305 moveto
+65.24037 83.58147 lineto
+65.55424 87.56909 lineto
+ closepath
+gsave fill grestore stroke
+newpath 56.77534 87.58047 moveto
+61.18288 81.514 lineto stroke
+newpath 57.77232 83.60397 moveto
+61.18288 81.514 lineto
+60.24916 85.40347 lineto
+ closepath
+gsave fill grestore stroke
+newpath 51.89615 82.70128 moveto
+57.96262 78.29375 lineto stroke
+newpath 54.07315 79.22746 moveto
+57.96262 78.29375 lineto
+55.87265 81.7043 lineto
+ closepath
+gsave fill grestore stroke
+newpath 48.76358 76.55345 moveto
+55.89516 74.23625 lineto stroke
+newpath 51.90753 73.92238 moveto
+55.89516 74.23625 lineto
+52.85358 76.83403 lineto
+ closepath
+gsave fill grestore stroke
+newpath 47.68428 69.73831 moveto
+55.18295 69.73831 lineto stroke
+newpath 51.48743 68.20753 moveto
+55.18295 69.73831 lineto
+51.48743 71.26909 lineto
+ closepath
+gsave fill grestore stroke
+newpath 48.76358 62.92317 moveto
+55.89516 65.24037 lineto stroke
+newpath 52.85358 62.6426 moveto
+55.89516 65.24037 lineto
+51.90753 65.55424 lineto
+ closepath
+gsave fill grestore stroke
+newpath 51.89615 56.77534 moveto
+57.96262 61.18288 lineto stroke
+newpath 55.87265 57.77232 moveto
+57.96262 61.18288 lineto
+54.07315 60.24916 lineto
+ closepath
+gsave fill grestore stroke
+newpath 56.77534 51.89615 moveto
+61.18288 57.96262 lineto stroke
+newpath 60.24916 54.07315 moveto
+61.18288 57.96262 lineto
+57.77232 55.87265 lineto
+ closepath
+gsave fill grestore stroke
+newpath 62.92317 48.76358 moveto
+65.24037 55.89516 lineto stroke
+newpath 65.55424 51.90753 moveto
+65.24037 55.89516 lineto
+62.6426 52.85358 lineto
+ closepath
+gsave fill grestore stroke
+ 0.99626 0 dtransform exch truncate exch idtransform pop setlinewidth
+newpath 69.73831 47.68428 moveto
+69.73831 55.18295 lineto stroke
+ 0 0.99626 dtransform truncate idtransform setlinewidth pop
+newpath 71.26909 51.48743 moveto
+69.73831 55.18295 lineto
+68.20753 51.48743 lineto
+ closepath
+gsave fill grestore stroke
+newpath 76.55345 48.76358 moveto
+74.23625 55.89516 lineto stroke
+newpath 76.83403 52.85358 moveto
+74.23625 55.89516 lineto
+73.92238 51.90753 lineto
+ closepath
+gsave fill grestore stroke
+newpath 82.70128 51.89615 moveto
+78.29375 57.96262 lineto stroke
+newpath 81.7043 55.87265 moveto
+78.29375 57.96262 lineto
+79.22746 54.07315 lineto
+ closepath
+gsave fill grestore stroke
+newpath 87.58047 56.77534 moveto
+81.514 61.18288 lineto stroke
+newpath 85.40347 60.24916 moveto
+81.514 61.18288 lineto
+83.60397 57.77232 lineto
+ closepath
+gsave fill grestore stroke
+newpath 90.71304 62.92317 moveto
+83.58147 65.24037 lineto stroke
+newpath 87.56909 65.55424 moveto
+83.58147 65.24037 lineto
+86.62305 62.6426 lineto
+ closepath
+gsave fill grestore stroke
+newpath 84.29367 69.73831 moveto
+79.34508 69.73831 lineto stroke
+newpath 83.04063 71.2691 moveto
+79.34508 69.73831 lineto
+83.04063 68.20752 lineto
+ closepath
+gsave fill grestore stroke
+newpath 83.58147 74.23625 moveto
+78.87477 72.70694 lineto stroke
+newpath 81.91635 75.30475 moveto
+78.87477 72.70694 lineto
+82.86243 72.39307 lineto
+ closepath
+gsave fill grestore stroke
+newpath 81.514 78.29375 moveto
+77.51044 75.38504 lineto stroke
+newpath 79.60042 78.79558 moveto
+77.51044 75.38504 lineto
+81.39992 76.31874 lineto
+ closepath
+gsave fill grestore stroke
+newpath 78.29375 81.514 moveto
+75.38504 77.51044 lineto stroke
+newpath 76.31874 81.39992 moveto
+75.38504 77.51044 lineto
+78.79558 79.60042 lineto
+ closepath
+gsave fill grestore stroke
+newpath 74.23625 83.58147 moveto
+72.70694 78.87477 lineto stroke
+newpath 72.39307 82.86243 moveto
+72.70694 78.87477 lineto
+75.30475 81.91635 lineto
+ closepath
+gsave fill grestore stroke
+ 0.99626 0 dtransform exch truncate exch idtransform pop setlinewidth
+newpath 69.73831 84.29367 moveto
+69.73831 79.34508 lineto stroke
+ 0 0.99626 dtransform truncate idtransform setlinewidth pop
+newpath 68.20752 83.04063 moveto
+69.73831 79.34508 lineto
+71.2691 83.04063 lineto
+ closepath
+gsave fill grestore stroke
+newpath 65.24037 83.58147 moveto
+66.76968 78.87477 lineto stroke
+newpath 64.17188 81.91635 moveto
+66.76968 78.87477 lineto
+67.08356 82.86243 lineto
+ closepath
+gsave fill grestore stroke
+newpath 61.18288 81.514 moveto
+64.09158 77.51044 lineto stroke
+newpath 60.68105 79.60042 moveto
+64.09158 77.51044 lineto
+63.15788 81.39992 lineto
+ closepath
+gsave fill grestore stroke
+newpath 57.96262 78.29375 moveto
+61.96619 75.38504 lineto stroke
+newpath 58.0767 76.31874 moveto
+61.96619 75.38504 lineto
+59.8762 78.79558 lineto
+ closepath
+gsave fill grestore stroke
+newpath 55.89516 74.23625 moveto
+60.60185 72.70694 lineto stroke
+newpath 56.6142 72.39307 moveto
+60.60185 72.70694 lineto
+57.56027 75.30475 lineto
+ closepath
+gsave fill grestore stroke
+newpath 55.18295 69.73831 moveto
+60.13155 69.73831 lineto stroke
+newpath 56.43599 68.20752 moveto
+60.13155 69.73831 lineto
+56.43599 71.2691 lineto
+ closepath
+gsave fill grestore stroke
+newpath 55.89516 65.24037 moveto
+60.60185 66.76968 lineto stroke
+newpath 57.56027 64.17188 moveto
+60.60185 66.76968 lineto
+56.6142 67.08356 lineto
+ closepath
+gsave fill grestore stroke
+newpath 57.96262 61.18288 moveto
+61.96619 64.09158 lineto stroke
+newpath 59.8762 60.68105 moveto
+61.96619 64.09158 lineto
+58.0767 63.15788 lineto
+ closepath
+gsave fill grestore stroke
+newpath 61.18288 57.96262 moveto
+64.09158 61.96619 lineto stroke
+newpath 63.15788 58.0767 moveto
+64.09158 61.96619 lineto
+60.68105 59.8762 lineto
+ closepath
+gsave fill grestore stroke
+newpath 65.24037 55.89516 moveto
+66.76968 60.60185 lineto stroke
+newpath 67.08356 56.6142 moveto
+66.76968 60.60185 lineto
+64.17188 57.56027 lineto
+ closepath
+gsave fill grestore stroke
+ 0.99626 0 dtransform exch truncate exch idtransform pop setlinewidth
+newpath 69.73831 55.18295 moveto
+69.73831 60.13155 lineto stroke
+ 0 0.99626 dtransform truncate idtransform setlinewidth pop
+newpath 71.2691 56.43599 moveto
+69.73831 60.13155 lineto
+68.20752 56.43599 lineto
+ closepath
+gsave fill grestore stroke
+newpath 74.23625 55.89516 moveto
+72.70694 60.60185 lineto stroke
+newpath 75.30475 57.56027 moveto
+72.70694 60.60185 lineto
+72.39307 56.6142 lineto
+ closepath
+gsave fill grestore stroke
+newpath 78.29375 57.96262 moveto
+75.38504 61.96619 lineto stroke
+newpath 78.79558 59.8762 moveto
+75.38504 61.96619 lineto
+76.31874 58.0767 lineto
+ closepath
+gsave fill grestore stroke
+newpath 81.514 61.18288 moveto
+77.51044 64.09158 lineto stroke
+newpath 81.39992 63.15788 moveto
+77.51044 64.09158 lineto
+79.60042 60.68105 lineto
+ closepath
+gsave fill grestore stroke
+newpath 83.58147 65.24037 moveto
+78.87477 66.76968 lineto stroke
+newpath 82.86243 67.08356 moveto
+78.87477 66.76968 lineto
+81.91635 64.17188 lineto
+ closepath
+gsave fill grestore stroke
+newpath 79.34508 69.73831 moveto
+76.07927 69.73831 lineto stroke
+newpath 76.07927 69.73831 moveto
+ closepath
+gsave fill grestore stroke
+newpath 78.87477 72.70694 moveto
+75.76872 71.69774 lineto stroke
+newpath 75.76872 71.69774 moveto
+ closepath
+gsave fill grestore stroke
+newpath 77.51044 75.38504 moveto
+74.86829 73.46541 lineto stroke
+newpath 74.86829 73.46541 moveto
+ closepath
+gsave fill grestore stroke
+newpath 75.38504 77.51044 moveto
+73.46541 74.86829 lineto stroke
+newpath 73.46541 74.86829 moveto
+ closepath
+gsave fill grestore stroke
+newpath 72.70694 78.87477 moveto
+71.69774 75.76872 lineto stroke
+newpath 71.69774 75.76872 moveto
+ closepath
+gsave fill grestore stroke
+ 0.99626 0 dtransform exch truncate exch idtransform pop setlinewidth
+newpath 69.73831 79.34508 moveto
+69.73831 76.07927 lineto stroke
+ 0 0.99626 dtransform truncate idtransform setlinewidth pop
+newpath 69.73831 76.07927 moveto
+ closepath
+gsave fill grestore stroke
+newpath 66.76968 78.87477 moveto
+67.77888 75.76872 lineto stroke
+newpath 67.77888 75.76872 moveto
+ closepath
+gsave fill grestore stroke
+newpath 64.09158 77.51044 moveto
+66.01122 74.86829 lineto stroke
+newpath 66.01122 74.86829 moveto
+ closepath
+gsave fill grestore stroke
+newpath 61.96619 75.38504 moveto
+64.60834 73.46541 lineto stroke
+newpath 64.60834 73.46541 moveto
+ closepath
+gsave fill grestore stroke
+newpath 60.60185 72.70694 moveto
+63.7079 71.69774 lineto stroke
+newpath 63.7079 71.69774 moveto
+ closepath
+gsave fill grestore stroke
+newpath 60.13155 69.73831 moveto
+63.39735 69.73831 lineto stroke
+newpath 63.39735 69.73831 moveto
+ closepath
+gsave fill grestore stroke
+newpath 60.60185 66.76968 moveto
+63.7079 67.77888 lineto stroke
+newpath 63.7079 67.77888 moveto
+ closepath
+gsave fill grestore stroke
+newpath 61.96619 64.09158 moveto
+64.60834 66.01122 lineto stroke
+newpath 64.60834 66.01122 moveto
+ closepath
+gsave fill grestore stroke
+newpath 64.09158 61.96619 moveto
+66.01122 64.60834 lineto stroke
+newpath 66.01122 64.60834 moveto
+ closepath
+gsave fill grestore stroke
+newpath 66.76968 60.60185 moveto
+67.77888 63.7079 lineto stroke
+newpath 67.77888 63.7079 moveto
+ closepath
+gsave fill grestore stroke
+ 0.99626 0 dtransform exch truncate exch idtransform pop setlinewidth
+newpath 69.73831 60.13155 moveto
+69.73831 63.39735 lineto stroke
+ 0 0.99626 dtransform truncate idtransform setlinewidth pop
+newpath 69.73831 63.39735 moveto
+ closepath
+gsave fill grestore stroke
+newpath 72.70694 60.60185 moveto
+71.69774 63.7079 lineto stroke
+newpath 71.69774 63.7079 moveto
+ closepath
+gsave fill grestore stroke
+newpath 75.38504 61.96619 moveto
+73.46541 64.60834 lineto stroke
+newpath 73.46541 64.60834 moveto
+ closepath
+gsave fill grestore stroke
+newpath 77.51044 64.09158 moveto
+74.86829 66.01122 lineto stroke
+newpath 74.86829 66.01122 moveto
+ closepath
+gsave fill grestore stroke
+newpath 78.87477 66.76968 moveto
+75.76872 67.77888 lineto stroke
+newpath 75.76872 67.77888 moveto
+ closepath
+gsave fill grestore stroke
+newpath 76.07927 69.73831 moveto
+73.92271 69.73831 lineto stroke
+newpath 73.92271 69.73831 moveto
+ closepath
+gsave fill grestore stroke
+newpath 75.76872 71.69774 moveto
+73.71814 71.03145 lineto stroke
+newpath 73.71814 71.03145 moveto
+ closepath
+gsave fill grestore stroke
+newpath 74.86829 73.46541 moveto
+73.12407 72.19818 lineto stroke
+newpath 73.12407 72.19818 moveto
+ closepath
+gsave fill grestore stroke
+newpath 73.46541 74.86829 moveto
+72.1978 73.12355 lineto stroke
+newpath 72.1978 73.12355 moveto
+ closepath
+gsave fill grestore stroke
+ 0.99626 0 dtransform exch truncate exch idtransform pop setlinewidth
+newpath 71.69774 75.76872 moveto
+71.03148 73.71812 lineto stroke
+ 0 0.99626 dtransform truncate idtransform setlinewidth pop
+newpath 71.03148 73.71812 moveto
+ closepath
+gsave fill grestore stroke
+ 0.99626 0 dtransform exch truncate exch idtransform pop setlinewidth
+newpath 69.73831 76.07927 moveto
+69.73831 73.92271 lineto stroke
+ 0 0.99626 dtransform truncate idtransform setlinewidth pop
+newpath 69.73831 73.92271 moveto
+ closepath
+gsave fill grestore stroke
+ 0.99626 0 dtransform exch truncate exch idtransform pop setlinewidth
+newpath 67.77888 75.76872 moveto
+68.44518 73.71814 lineto stroke
+ 0 0.99626 dtransform truncate idtransform setlinewidth pop
+newpath 68.44518 73.71814 moveto
+ closepath
+gsave fill grestore stroke
+newpath 66.01122 74.86829 moveto
+67.27844 73.12407 lineto stroke
+newpath 67.27844 73.12407 moveto
+ closepath
+gsave fill grestore stroke
+newpath 64.60834 73.46541 moveto
+66.35307 72.1978 lineto stroke
+newpath 66.35307 72.1978 moveto
+ closepath
+gsave fill grestore stroke
+newpath 63.7079 71.69774 moveto
+65.7585 71.03148 lineto stroke
+newpath 65.7585 71.03148 moveto
+ closepath
+gsave fill grestore stroke
+newpath 63.39735 69.73831 moveto
+65.55391 69.73831 lineto stroke
+newpath 65.55391 69.73831 moveto
+ closepath
+gsave fill grestore stroke
+newpath 63.7079 67.77888 moveto
+65.75848 68.44518 lineto stroke
+newpath 65.75848 68.44518 moveto
+ closepath
+gsave fill grestore stroke
+newpath 64.60834 66.01122 moveto
+66.35255 67.27844 lineto stroke
+newpath 66.35255 67.27844 moveto
+ closepath
+gsave fill grestore stroke
+newpath 66.01122 64.60834 moveto
+67.27882 66.35307 lineto stroke
+newpath 67.27882 66.35307 moveto
+ closepath
+gsave fill grestore stroke
+ 0.99626 0 dtransform exch truncate exch idtransform pop setlinewidth
+newpath 67.77888 63.7079 moveto
+68.44514 65.7585 lineto stroke
+ 0 0.99626 dtransform truncate idtransform setlinewidth pop
+newpath 68.44514 65.7585 moveto
+ closepath
+gsave fill grestore stroke
+ 0.99626 0 dtransform exch truncate exch idtransform pop setlinewidth
+newpath 69.73831 63.39735 moveto
+69.73831 65.55391 lineto stroke
+ 0 0.99626 dtransform truncate idtransform setlinewidth pop
+newpath 69.73831 65.55391 moveto
+ closepath
+gsave fill grestore stroke
+ 0.99626 0 dtransform exch truncate exch idtransform pop setlinewidth
+newpath 71.69774 63.7079 moveto
+71.03145 65.75848 lineto stroke
+ 0 0.99626 dtransform truncate idtransform setlinewidth pop
+newpath 71.03145 65.75848 moveto
+ closepath
+gsave fill grestore stroke
+newpath 73.46541 64.60834 moveto
+72.19818 66.35255 lineto stroke
+newpath 72.19818 66.35255 moveto
+ closepath
+gsave fill grestore stroke
+newpath 74.86829 66.01122 moveto
+73.12355 67.27882 lineto stroke
+newpath 73.12355 67.27882 moveto
+ closepath
+gsave fill grestore stroke
+newpath 75.76872 67.77888 moveto
+73.71812 68.44514 lineto stroke
+newpath 73.71812 68.44514 moveto
+ closepath
+gsave fill grestore stroke
+newpath 73.92271 69.73831 moveto
+72.49966 69.73831 lineto stroke
+newpath 72.49966 69.73831 moveto
+ closepath
+gsave fill grestore stroke
+newpath 73.71814 71.03145 moveto
+72.3645 70.59161 lineto stroke
+newpath 72.3645 70.59161 moveto
+ closepath
+gsave fill grestore stroke
+newpath 73.12407 72.19818 moveto
+71.97208 71.3612 lineto stroke
+newpath 71.97208 71.3612 moveto
+ closepath
+gsave fill grestore stroke
+ 0.99626 0 dtransform exch truncate exch idtransform pop setlinewidth
+newpath 72.1978 73.12355 moveto
+71.36124 71.97206 lineto stroke
+ 0 0.99626 dtransform truncate idtransform setlinewidth pop
+newpath 71.36124 71.97206 moveto
+ closepath
+gsave fill grestore stroke
+ 0.99626 0 dtransform exch truncate exch idtransform pop setlinewidth
+newpath 71.03148 73.71812 moveto
+70.59163 72.36449 lineto stroke
+ 0 0.99626 dtransform truncate idtransform setlinewidth pop
+newpath 70.59163 72.36449 moveto
+ closepath
+gsave fill grestore stroke
+ 0.99626 0 dtransform exch truncate exch idtransform pop setlinewidth
+newpath 69.73831 73.92271 moveto
+69.73831 72.49966 lineto stroke
+ 0 0.99626 dtransform truncate idtransform setlinewidth pop
+newpath 69.73831 72.49966 moveto
+ closepath
+gsave fill grestore stroke
+ 0.99626 0 dtransform exch truncate exch idtransform pop setlinewidth
+newpath 68.44518 73.71814 moveto
+68.88501 72.3645 lineto stroke
+ 0 0.99626 dtransform truncate idtransform setlinewidth pop
+newpath 68.88501 72.3645 moveto
+ closepath
+gsave fill grestore stroke
+ 0.99626 0 dtransform exch truncate exch idtransform pop setlinewidth
+newpath 67.27844 73.12407 moveto
+68.11542 71.97208 lineto stroke
+ 0 0.99626 dtransform truncate idtransform setlinewidth pop
+newpath 68.11542 71.97208 moveto
+ closepath
+gsave fill grestore stroke
+newpath 66.35307 72.1978 moveto
+67.50456 71.36124 lineto stroke
+newpath 67.50456 71.36124 moveto
+ closepath
+gsave fill grestore stroke
+newpath 65.7585 71.03148 moveto
+67.11214 70.59163 lineto stroke
+newpath 67.11214 70.59163 moveto
+ closepath
+gsave fill grestore stroke
+newpath 65.55391 69.73831 moveto
+66.97696 69.73831 lineto stroke
+newpath 66.97696 69.73831 moveto
+ closepath
+gsave fill grestore stroke
+newpath 65.75848 68.44518 moveto
+67.11212 68.88501 lineto stroke
+newpath 67.11212 68.88501 moveto
+ closepath
+gsave fill grestore stroke
+newpath 66.35255 67.27844 moveto
+67.50455 68.11542 lineto stroke
+newpath 67.50455 68.11542 moveto
+ closepath
+gsave fill grestore stroke
+ 0.99626 0 dtransform exch truncate exch idtransform pop setlinewidth
+newpath 67.27882 66.35307 moveto
+68.11539 67.50456 lineto stroke
+ 0 0.99626 dtransform truncate idtransform setlinewidth pop
+newpath 68.11539 67.50456 moveto
+ closepath
+gsave fill grestore stroke
+ 0.99626 0 dtransform exch truncate exch idtransform pop setlinewidth
+newpath 68.44514 65.7585 moveto
+68.885 67.11214 lineto stroke
+ 0 0.99626 dtransform truncate idtransform setlinewidth pop
+newpath 68.885 67.11214 moveto
+ closepath
+gsave fill grestore stroke
+ 0.99626 0 dtransform exch truncate exch idtransform pop setlinewidth
+newpath 69.73831 65.55391 moveto
+69.73831 66.97696 lineto stroke
+ 0 0.99626 dtransform truncate idtransform setlinewidth pop
+newpath 69.73831 66.97696 moveto
+ closepath
+gsave fill grestore stroke
+ 0.99626 0 dtransform exch truncate exch idtransform pop setlinewidth
+newpath 71.03145 65.75848 moveto
+70.59161 67.11212 lineto stroke
+ 0 0.99626 dtransform truncate idtransform setlinewidth pop
+newpath 70.59161 67.11212 moveto
+ closepath
+gsave fill grestore stroke
+ 0.99626 0 dtransform exch truncate exch idtransform pop setlinewidth
+newpath 72.19818 66.35255 moveto
+71.3612 67.50455 lineto stroke
+ 0 0.99626 dtransform truncate idtransform setlinewidth pop
+newpath 71.3612 67.50455 moveto
+ closepath
+gsave fill grestore stroke
+newpath 73.12355 67.27882 moveto
+71.97206 68.11539 lineto stroke
+newpath 71.97206 68.11539 moveto
+ closepath
+gsave fill grestore stroke
+newpath 73.71812 68.44514 moveto
+72.36449 68.885 lineto stroke
+newpath 72.36449 68.885 moveto
+ closepath
+gsave fill grestore stroke
+newpath 72.49966 69.73831 moveto
+71.561 69.73831 lineto stroke
+newpath 71.561 69.73831 moveto
+ closepath
+gsave fill grestore stroke
+newpath 72.3645 70.59161 moveto
+71.4717 70.30151 lineto stroke
+newpath 71.4717 70.30151 moveto
+ closepath
+gsave fill grestore stroke
+newpath 71.97208 71.3612 moveto
+71.21297 70.8097 lineto stroke
+newpath 71.21297 70.8097 moveto
+ closepath
+gsave fill grestore stroke
+newpath 71.36124 71.97206 moveto
+70.8097 71.21297 lineto stroke
+newpath 70.8097 71.21297 moveto
+ closepath
+gsave fill grestore stroke
+newpath 70.59163 72.36449 moveto
+70.30153 71.4717 lineto stroke
+newpath 70.30153 71.4717 moveto
+ closepath
+gsave fill grestore stroke
+newpath 69.73831 72.49966 moveto
+69.73831 71.561 lineto stroke
+newpath 69.73831 71.561 moveto
+ closepath
+gsave fill grestore stroke
+newpath 68.88501 72.3645 moveto
+69.17511 71.4717 lineto stroke
+newpath 69.17511 71.4717 moveto
+ closepath
+gsave fill grestore stroke
+newpath 68.11542 71.97208 moveto
+68.66693 71.21297 lineto stroke
+newpath 68.66693 71.21297 moveto
+ closepath
+gsave fill grestore stroke
+newpath 67.50456 71.36124 moveto
+68.26366 70.8097 lineto stroke
+newpath 68.26366 70.8097 moveto
+ closepath
+gsave fill grestore stroke
+newpath 67.11214 70.59163 moveto
+68.00493 70.30153 lineto stroke
+newpath 68.00493 70.30153 moveto
+ closepath
+gsave fill grestore stroke
+newpath 66.97696 69.73831 moveto
+67.91562 69.73831 lineto stroke
+newpath 67.91562 69.73831 moveto
+ closepath
+gsave fill grestore stroke
+newpath 67.11212 68.88501 moveto
+68.00493 69.17511 lineto stroke
+newpath 68.00493 69.17511 moveto
+ closepath
+gsave fill grestore stroke
+newpath 67.50455 68.11542 moveto
+68.26366 68.66693 lineto stroke
+newpath 68.26366 68.66693 moveto
+ closepath
+gsave fill grestore stroke
+newpath 68.11539 67.50456 moveto
+68.66693 68.26366 lineto stroke
+newpath 68.66693 68.26366 moveto
+ closepath
+gsave fill grestore stroke
+newpath 68.885 67.11214 moveto
+69.1751 68.00493 lineto stroke
+newpath 69.1751 68.00493 moveto
+ closepath
+gsave fill grestore stroke
+newpath 69.73831 66.97696 moveto
+69.73831 67.91562 lineto stroke
+newpath 69.73831 67.91562 moveto
+ closepath
+gsave fill grestore stroke
+newpath 70.59161 67.11212 moveto
+70.30151 68.00493 lineto stroke
+newpath 70.30151 68.00493 moveto
+ closepath
+gsave fill grestore stroke
+newpath 71.3612 67.50455 moveto
+70.8097 68.26366 lineto stroke
+newpath 70.8097 68.26366 moveto
+ closepath
+gsave fill grestore stroke
+newpath 71.97206 68.11539 moveto
+71.21297 68.66693 lineto stroke
+newpath 71.21297 68.66693 moveto
+ closepath
+gsave fill grestore stroke
+newpath 72.36449 68.885 moveto
+71.4717 69.1751 lineto stroke
+newpath 71.4717 69.1751 moveto
+ closepath
+gsave fill grestore stroke
+newpath 139.47688 69.73833 moveto
+120.36848 69.73831 lineto stroke
+newpath 124.06406 71.2691 moveto
+120.36848 69.73831 lineto
+124.06406 68.20752 lineto
+ closepath
+gsave fill grestore stroke
+newpath 139.47632 92.39781 moveto
+117.89067 85.38406 lineto stroke
+newpath 120.93228 87.9819 moveto
+117.89067 85.38406 lineto
+121.87836 85.07022 lineto
+ closepath
+gsave fill grestore stroke
+newpath 139.4764 120.40543 moveto
+110.69945 99.49797 lineto stroke
+newpath 112.78947 102.90865 moveto
+110.69945 99.49797 lineto
+114.58904 100.43175 lineto
+ closepath
+gsave fill grestore stroke
+newpath 120.40543 139.4764 moveto
+99.49797 110.69945 lineto stroke
+newpath 100.43175 114.58904 moveto
+99.49797 110.69945 lineto
+102.90865 112.78947 lineto
+ closepath
+gsave fill grestore stroke
+newpath 92.39781 139.47632 moveto
+85.38406 117.89067 lineto stroke
+newpath 85.07022 121.87836 moveto
+85.38406 117.89067 lineto
+87.9819 120.93228 lineto
+ closepath
+gsave fill grestore stroke
+ 0.99626 0 dtransform exch truncate exch idtransform pop setlinewidth
+newpath 69.7383 139.47688 moveto
+69.73831 120.36848 lineto stroke
+ 0 0.99626 dtransform truncate idtransform setlinewidth pop
+newpath 68.20752 124.06406 moveto
+69.73831 120.36848 lineto
+71.2691 124.06406 lineto
+ closepath
+gsave fill grestore stroke
+newpath 47.07881 139.47632 moveto
+54.09256 117.89067 lineto stroke
+newpath 51.49472 120.93228 moveto
+54.09256 117.89067 lineto
+54.4064 121.87836 lineto
+ closepath
+gsave fill grestore stroke
+newpath 19.0712 139.4764 moveto
+39.97865 110.69945 lineto stroke
+newpath 36.56798 112.78947 moveto
+39.97865 110.69945 lineto
+39.04488 114.58904 lineto
+ closepath
+gsave fill grestore stroke
+newpath 0.00023 120.40543 moveto
+28.77718 99.49797 lineto stroke
+newpath 24.88759 100.43175 moveto
+28.77718 99.49797 lineto
+26.68715 102.90865 lineto
+ closepath
+gsave fill grestore stroke
+newpath 0.0003 92.39781 moveto
+21.58595 85.38406 lineto stroke
+newpath 17.59827 85.07022 moveto
+21.58595 85.38406 lineto
+18.54434 87.9819 lineto
+ closepath
+gsave fill grestore stroke
+newpath -0.00026 69.7383 moveto
+19.10814 69.73831 lineto stroke
+newpath 15.41257 68.20752 moveto
+19.10814 69.73831 lineto
+15.41257 71.2691 lineto
+ closepath
+gsave fill grestore stroke
+newpath 0.0003 47.07881 moveto
+21.58595 54.09256 lineto stroke
+newpath 18.54434 51.49472 moveto
+21.58595 54.09256 lineto
+17.59827 54.4064 lineto
+ closepath
+gsave fill grestore stroke
+newpath 0.00023 19.0712 moveto
+28.77718 39.97865 lineto stroke
+newpath 26.68715 36.56798 moveto
+28.77718 39.97865 lineto
+24.88759 39.04488 lineto
+ closepath
+gsave fill grestore stroke
+newpath 19.0712 0.00023 moveto
+39.97865 28.77718 lineto stroke
+newpath 39.04488 24.88759 moveto
+39.97865 28.77718 lineto
+36.56798 26.68715 lineto
+ closepath
+gsave fill grestore stroke
+newpath 47.07881 0.0003 moveto
+54.09256 21.58595 lineto stroke
+newpath 54.4064 17.59827 moveto
+54.09256 21.58595 lineto
+51.49472 18.54434 lineto
+ closepath
+gsave fill grestore stroke
+ 0.99626 0 dtransform exch truncate exch idtransform pop setlinewidth
+newpath 69.73833 -0.00026 moveto
+69.73831 19.10814 lineto stroke
+ 0 0.99626 dtransform truncate idtransform setlinewidth pop
+newpath 71.2691 15.41257 moveto
+69.73831 19.10814 lineto
+68.20752 15.41257 lineto
+ closepath
+gsave fill grestore stroke
+newpath 92.39781 0.0003 moveto
+85.38406 21.58595 lineto stroke
+newpath 87.9819 18.54434 moveto
+85.38406 21.58595 lineto
+85.07022 17.59827 lineto
+ closepath
+gsave fill grestore stroke
+newpath 120.40543 0.00023 moveto
+99.49797 28.77718 lineto stroke
+newpath 102.90865 26.68715 moveto
+99.49797 28.77718 lineto
+100.43175 24.88759 lineto
+ closepath
+gsave fill grestore stroke
+newpath 139.4764 19.0712 moveto
+110.69945 39.97865 lineto stroke
+newpath 114.58904 39.04488 moveto
+110.69945 39.97865 lineto
+112.78947 36.56798 lineto
+ closepath
+gsave fill grestore stroke
+newpath 139.47632 47.07881 moveto
+117.89067 54.09256 lineto stroke
+newpath 121.87836 54.4064 moveto
+117.89067 54.09256 lineto
+120.93228 51.49472 lineto
+ closepath
+gsave fill grestore stroke
+newpath 120.36848 69.73831 moveto
+103.15489 69.73831 lineto stroke
+newpath 106.85042 71.26909 moveto
+103.15489 69.73831 lineto
+106.85042 68.20753 lineto
+ closepath
+gsave fill grestore stroke
+newpath 117.89067 85.38406 moveto
+101.51926 80.06464 lineto stroke
+newpath 104.56094 82.66252 moveto
+101.51926 80.06464 lineto
+105.50702 79.75075 lineto
+ closepath
+gsave fill grestore stroke
+newpath 110.69945 99.49797 moveto
+96.77316 89.38005 lineto stroke
+newpath 98.86317 92.79066 moveto
+96.77316 89.38005 lineto
+100.6627 90.3138 lineto
+ closepath
+gsave fill grestore stroke
+newpath 99.49797 110.69945 moveto
+89.38005 96.77316 lineto stroke
+newpath 90.3138 100.6627 moveto
+89.38005 96.77316 lineto
+92.79066 98.86317 lineto
+ closepath
+gsave fill grestore stroke
+newpath 85.38406 117.89067 moveto
+80.06464 101.51926 lineto stroke
+newpath 79.75075 105.50702 moveto
+80.06464 101.51926 lineto
+82.66252 104.56094 lineto
+ closepath
+gsave fill grestore stroke
+ 0.99626 0 dtransform exch truncate exch idtransform pop setlinewidth
+newpath 69.73831 120.36848 moveto
+69.73831 103.15489 lineto stroke
+ 0 0.99626 dtransform truncate idtransform setlinewidth pop
+newpath 68.20753 106.85042 moveto
+69.73831 103.15489 lineto
+71.26909 106.85042 lineto
+ closepath
+gsave fill grestore stroke
+newpath 54.09256 117.89067 moveto
+59.41199 101.51926 lineto stroke
+newpath 56.8141 104.56094 moveto
+59.41199 101.51926 lineto
+59.72588 105.50702 lineto
+ closepath
+gsave fill grestore stroke
+newpath 39.97865 110.69945 moveto
+50.09657 96.77316 lineto stroke
+newpath 46.68596 98.86317 moveto
+50.09657 96.77316 lineto
+49.16283 100.6627 lineto
+ closepath
+gsave fill grestore stroke
+newpath 28.77718 99.49797 moveto
+42.70346 89.38005 lineto stroke
+newpath 38.81392 90.3138 moveto
+42.70346 89.38005 lineto
+40.61345 92.79066 lineto
+ closepath
+gsave fill grestore stroke
+newpath 21.58595 85.38406 moveto
+37.95737 80.06464 lineto stroke
+newpath 33.9696 79.75075 moveto
+37.95737 80.06464 lineto
+34.91568 82.66252 lineto
+ closepath
+gsave fill grestore stroke
+newpath 19.10814 69.73831 moveto
+36.32173 69.73831 lineto stroke
+newpath 32.6262 68.20753 moveto
+36.32173 69.73831 lineto
+32.6262 71.26909 lineto
+ closepath
+gsave fill grestore stroke
+newpath 21.58595 54.09256 moveto
+37.95737 59.41199 lineto stroke
+newpath 34.91568 56.8141 moveto
+37.95737 59.41199 lineto
+33.9696 59.72588 lineto
+ closepath
+gsave fill grestore stroke
+newpath 28.77718 39.97865 moveto
+42.70346 50.09657 lineto stroke
+newpath 40.61345 46.68596 moveto
+42.70346 50.09657 lineto
+38.81392 49.16283 lineto
+ closepath
+gsave fill grestore stroke
+newpath 39.97865 28.77718 moveto
+50.09657 42.70346 lineto stroke
+newpath 49.16283 38.81392 moveto
+50.09657 42.70346 lineto
+46.68596 40.61345 lineto
+ closepath
+gsave fill grestore stroke
+newpath 54.09256 21.58595 moveto
+59.41199 37.95737 lineto stroke
+newpath 59.72588 33.9696 moveto
+59.41199 37.95737 lineto
+56.8141 34.91568 lineto
+ closepath
+gsave fill grestore stroke
+ 0.99626 0 dtransform exch truncate exch idtransform pop setlinewidth
+newpath 69.73831 19.10814 moveto
+69.73831 36.32173 lineto stroke
+ 0 0.99626 dtransform truncate idtransform setlinewidth pop
+newpath 71.26909 32.6262 moveto
+69.73831 36.32173 lineto
+68.20753 32.6262 lineto
+ closepath
+gsave fill grestore stroke
+newpath 85.38406 21.58595 moveto
+80.06464 37.95737 lineto stroke
+newpath 82.66252 34.91568 moveto
+80.06464 37.95737 lineto
+79.75075 33.9696 lineto
+ closepath
+gsave fill grestore stroke
+newpath 99.49797 28.77718 moveto
+89.38005 42.70346 lineto stroke
+newpath 92.79066 40.61345 moveto
+89.38005 42.70346 lineto
+90.3138 38.81392 lineto
+ closepath
+gsave fill grestore stroke
+newpath 110.69945 39.97865 moveto
+96.77316 50.09657 lineto stroke
+newpath 100.6627 49.16283 moveto
+96.77316 50.09657 lineto
+98.86317 46.68596 lineto
+ closepath
+gsave fill grestore stroke
+newpath 117.89067 54.09256 moveto
+101.51926 59.41199 lineto stroke
+newpath 105.50702 59.72588 moveto
+101.51926 59.41199 lineto
+104.56094 56.8141 lineto
+ closepath
+gsave fill grestore stroke
+newpath 103.15489 69.73831 moveto
+91.79234 69.73831 lineto stroke
+newpath 95.48787 71.26909 moveto
+91.79234 69.73831 lineto
+95.48787 68.20753 lineto
+ closepath
+gsave fill grestore stroke
+newpath 101.51926 80.06464 moveto
+90.71304 76.55345 lineto stroke
+newpath 93.7546 79.15123 moveto
+90.71304 76.55345 lineto
+94.70064 76.23958 lineto
+ closepath
+gsave fill grestore stroke
+newpath 96.77316 89.38005 moveto
+87.58047 82.70128 lineto stroke
+newpath 89.67052 86.11191 moveto
+87.58047 82.70128 lineto
+91.47005 83.63501 lineto
+ closepath
+gsave fill grestore stroke
+newpath 89.38005 96.77316 moveto
+82.70128 87.58047 lineto stroke
+newpath 83.63501 91.47005 moveto
+82.70128 87.58047 lineto
+86.11191 89.67052 lineto
+ closepath
+gsave fill grestore stroke
+newpath 80.06464 101.51926 moveto
+76.55345 90.71304 lineto stroke
+newpath 76.23958 94.70064 moveto
+76.55345 90.71304 lineto
+79.15123 93.7546 lineto
+ closepath
+gsave fill grestore stroke
+ 0.99626 0 dtransform exch truncate exch idtransform pop setlinewidth
+newpath 69.73831 103.15489 moveto
+69.73831 91.79234 lineto stroke
+ 0 0.99626 dtransform truncate idtransform setlinewidth pop
+newpath 68.20753 95.48787 moveto
+69.73831 91.79234 lineto
+71.26909 95.48787 lineto
+ closepath
+gsave fill grestore stroke
+newpath 59.41199 101.51926 moveto
+62.92317 90.71304 lineto stroke
+newpath 60.3254 93.7546 moveto
+62.92317 90.71304 lineto
+63.23705 94.70064 lineto
+ closepath
+gsave fill grestore stroke
+newpath 50.09657 96.77316 moveto
+56.77534 87.58047 lineto stroke
+newpath 53.36472 89.67052 moveto
+56.77534 87.58047 lineto
+55.84161 91.47005 lineto
+ closepath
+gsave fill grestore stroke
+newpath 42.70346 89.38005 moveto
+51.89615 82.70128 lineto stroke
+newpath 48.00658 83.63501 moveto
+51.89615 82.70128 lineto
+49.8061 86.11191 lineto
+ closepath
+gsave fill grestore stroke
+newpath 37.95737 80.06464 moveto
+48.76358 76.55345 lineto stroke
+newpath 44.77599 76.23958 moveto
+48.76358 76.55345 lineto
+45.72203 79.15123 lineto
+ closepath
+gsave fill grestore stroke
+newpath 36.32173 69.73831 moveto
+47.68428 69.73831 lineto stroke
+newpath 43.98875 68.20753 moveto
+47.68428 69.73831 lineto
+43.98875 71.26909 lineto
+ closepath
+gsave fill grestore stroke
+newpath 37.95737 59.41199 moveto
+48.76358 62.92317 lineto stroke
+newpath 45.72203 60.3254 moveto
+48.76358 62.92317 lineto
+44.77599 63.23705 lineto
+ closepath
+gsave fill grestore stroke
+newpath 42.70346 50.09657 moveto
+51.89615 56.77534 lineto stroke
+newpath 49.8061 53.36472 moveto
+51.89615 56.77534 lineto
+48.00658 55.84161 lineto
+ closepath
+gsave fill grestore stroke
+newpath 50.09657 42.70346 moveto
+56.77534 51.89615 lineto stroke
+newpath 55.84161 48.00658 moveto
+56.77534 51.89615 lineto
+53.36472 49.8061 lineto
+ closepath
+gsave fill grestore stroke
+newpath 59.41199 37.95737 moveto
+62.92317 48.76358 lineto stroke
+newpath 63.23705 44.77599 moveto
+62.92317 48.76358 lineto
+60.3254 45.72203 lineto
+ closepath
+gsave fill grestore stroke
+ 0.99626 0 dtransform exch truncate exch idtransform pop setlinewidth
+newpath 69.73831 36.32173 moveto
+69.73831 47.68428 lineto stroke
+ 0 0.99626 dtransform truncate idtransform setlinewidth pop
+newpath 71.26909 43.98875 moveto
+69.73831 47.68428 lineto
+68.20753 43.98875 lineto
+ closepath
+gsave fill grestore stroke
+newpath 80.06464 37.95737 moveto
+76.55345 48.76358 lineto stroke
+newpath 79.15123 45.72203 moveto
+76.55345 48.76358 lineto
+76.23958 44.77599 lineto
+ closepath
+gsave fill grestore stroke
+newpath 89.38005 42.70346 moveto
+82.70128 51.89615 lineto stroke
+newpath 86.11191 49.8061 moveto
+82.70128 51.89615 lineto
+83.63501 48.00658 lineto
+ closepath
+gsave fill grestore stroke
+newpath 96.77316 50.09657 moveto
+87.58047 56.77534 lineto stroke
+newpath 91.47005 55.84161 moveto
+87.58047 56.77534 lineto
+89.67052 53.36472 lineto
+ closepath
+gsave fill grestore stroke
+newpath 101.51926 59.41199 moveto
+90.71304 62.92317 lineto stroke
+newpath 94.70064 63.23705 moveto
+90.71304 62.92317 lineto
+93.7546 60.3254 lineto
+ closepath
+gsave fill grestore stroke
+newpath 91.79234 69.73831 moveto
+84.29367 69.73831 lineto stroke
+newpath 87.9892 71.26909 moveto
+84.29367 69.73831 lineto
+87.9892 68.20753 lineto
+ closepath
+gsave fill grestore stroke
+newpath 90.71304 76.55345 moveto
+83.58147 74.23625 lineto stroke
+newpath 86.62305 76.83403 moveto
+83.58147 74.23625 lineto
+87.56909 73.92238 lineto
+ closepath
+gsave fill grestore stroke
+newpath 87.58047 82.70128 moveto
+81.514 78.29375 lineto stroke
+newpath 83.60397 81.7043 moveto
+81.514 78.29375 lineto
+85.40347 79.22746 lineto
+ closepath
+gsave fill grestore stroke
+newpath 82.70128 87.58047 moveto
+78.29375 81.514 lineto stroke
+newpath 79.22746 85.40347 moveto
+78.29375 81.514 lineto
+81.7043 83.60397 lineto
+ closepath
+gsave fill grestore stroke
+newpath 76.55345 90.71304 moveto
+74.23625 83.58147 lineto stroke
+newpath 73.92238 87.56909 moveto
+74.23625 83.58147 lineto
+76.83403 86.62305 lineto
+ closepath
+gsave fill grestore stroke
+ 0.99626 0 dtransform exch truncate exch idtransform pop setlinewidth
+newpath 69.73831 91.79234 moveto
+69.73831 84.29367 lineto stroke
+ 0 0.99626 dtransform truncate idtransform setlinewidth pop
+newpath 68.20753 87.9892 moveto
+69.73831 84.29367 lineto
+71.26909 87.9892 lineto
+ closepath
+gsave fill grestore stroke
+newpath 62.92317 90.71304 moveto
+65.24037 83.58147 lineto stroke
+newpath 62.6426 86.62305 moveto
+65.24037 83.58147 lineto
+65.55424 87.56909 lineto
+ closepath
+gsave fill grestore stroke
+newpath 56.77534 87.58047 moveto
+61.18288 81.514 lineto stroke
+newpath 57.77232 83.60397 moveto
+61.18288 81.514 lineto
+60.24916 85.40347 lineto
+ closepath
+gsave fill grestore stroke
+newpath 51.89615 82.70128 moveto
+57.96262 78.29375 lineto stroke
+newpath 54.07315 79.22746 moveto
+57.96262 78.29375 lineto
+55.87265 81.7043 lineto
+ closepath
+gsave fill grestore stroke
+newpath 48.76358 76.55345 moveto
+55.89516 74.23625 lineto stroke
+newpath 51.90753 73.92238 moveto
+55.89516 74.23625 lineto
+52.85358 76.83403 lineto
+ closepath
+gsave fill grestore stroke
+newpath 47.68428 69.73831 moveto
+55.18295 69.73831 lineto stroke
+newpath 51.48743 68.20753 moveto
+55.18295 69.73831 lineto
+51.48743 71.26909 lineto
+ closepath
+gsave fill grestore stroke
+newpath 48.76358 62.92317 moveto
+55.89516 65.24037 lineto stroke
+newpath 52.85358 62.6426 moveto
+55.89516 65.24037 lineto
+51.90753 65.55424 lineto
+ closepath
+gsave fill grestore stroke
+newpath 51.89615 56.77534 moveto
+57.96262 61.18288 lineto stroke
+newpath 55.87265 57.77232 moveto
+57.96262 61.18288 lineto
+54.07315 60.24916 lineto
+ closepath
+gsave fill grestore stroke
+newpath 56.77534 51.89615 moveto
+61.18288 57.96262 lineto stroke
+newpath 60.24916 54.07315 moveto
+61.18288 57.96262 lineto
+57.77232 55.87265 lineto
+ closepath
+gsave fill grestore stroke
+newpath 62.92317 48.76358 moveto
+65.24037 55.89516 lineto stroke
+newpath 65.55424 51.90753 moveto
+65.24037 55.89516 lineto
+62.6426 52.85358 lineto
+ closepath
+gsave fill grestore stroke
+ 0.99626 0 dtransform exch truncate exch idtransform pop setlinewidth
+newpath 69.73831 47.68428 moveto
+69.73831 55.18295 lineto stroke
+ 0 0.99626 dtransform truncate idtransform setlinewidth pop
+newpath 71.26909 51.48743 moveto
+69.73831 55.18295 lineto
+68.20753 51.48743 lineto
+ closepath
+gsave fill grestore stroke
+newpath 76.55345 48.76358 moveto
+74.23625 55.89516 lineto stroke
+newpath 76.83403 52.85358 moveto
+74.23625 55.89516 lineto
+73.92238 51.90753 lineto
+ closepath
+gsave fill grestore stroke
+newpath 82.70128 51.89615 moveto
+78.29375 57.96262 lineto stroke
+newpath 81.7043 55.87265 moveto
+78.29375 57.96262 lineto
+79.22746 54.07315 lineto
+ closepath
+gsave fill grestore stroke
+newpath 87.58047 56.77534 moveto
+81.514 61.18288 lineto stroke
+newpath 85.40347 60.24916 moveto
+81.514 61.18288 lineto
+83.60397 57.77232 lineto
+ closepath
+gsave fill grestore stroke
+newpath 90.71304 62.92317 moveto
+83.58147 65.24037 lineto stroke
+newpath 87.56909 65.55424 moveto
+83.58147 65.24037 lineto
+86.62305 62.6426 lineto
+ closepath
+gsave fill grestore stroke
+newpath 84.29367 69.73831 moveto
+79.34508 69.73831 lineto stroke
+newpath 83.04063 71.2691 moveto
+79.34508 69.73831 lineto
+83.04063 68.20752 lineto
+ closepath
+gsave fill grestore stroke
+newpath 83.58147 74.23625 moveto
+78.87477 72.70694 lineto stroke
+newpath 81.91635 75.30475 moveto
+78.87477 72.70694 lineto
+82.86243 72.39307 lineto
+ closepath
+gsave fill grestore stroke
+newpath 81.514 78.29375 moveto
+77.51044 75.38504 lineto stroke
+newpath 79.60042 78.79558 moveto
+77.51044 75.38504 lineto
+81.39992 76.31874 lineto
+ closepath
+gsave fill grestore stroke
+newpath 78.29375 81.514 moveto
+75.38504 77.51044 lineto stroke
+newpath 76.31874 81.39992 moveto
+75.38504 77.51044 lineto
+78.79558 79.60042 lineto
+ closepath
+gsave fill grestore stroke
+newpath 74.23625 83.58147 moveto
+72.70694 78.87477 lineto stroke
+newpath 72.39307 82.86243 moveto
+72.70694 78.87477 lineto
+75.30475 81.91635 lineto
+ closepath
+gsave fill grestore stroke
+ 0.99626 0 dtransform exch truncate exch idtransform pop setlinewidth
+newpath 69.73831 84.29367 moveto
+69.73831 79.34508 lineto stroke
+ 0 0.99626 dtransform truncate idtransform setlinewidth pop
+newpath 68.20752 83.04063 moveto
+69.73831 79.34508 lineto
+71.2691 83.04063 lineto
+ closepath
+gsave fill grestore stroke
+newpath 65.24037 83.58147 moveto
+66.76968 78.87477 lineto stroke
+newpath 64.17188 81.91635 moveto
+66.76968 78.87477 lineto
+67.08356 82.86243 lineto
+ closepath
+gsave fill grestore stroke
+newpath 61.18288 81.514 moveto
+64.09158 77.51044 lineto stroke
+newpath 60.68105 79.60042 moveto
+64.09158 77.51044 lineto
+63.15788 81.39992 lineto
+ closepath
+gsave fill grestore stroke
+newpath 57.96262 78.29375 moveto
+61.96619 75.38504 lineto stroke
+newpath 58.0767 76.31874 moveto
+61.96619 75.38504 lineto
+59.8762 78.79558 lineto
+ closepath
+gsave fill grestore stroke
+newpath 55.89516 74.23625 moveto
+60.60185 72.70694 lineto stroke
+newpath 56.6142 72.39307 moveto
+60.60185 72.70694 lineto
+57.56027 75.30475 lineto
+ closepath
+gsave fill grestore stroke
+newpath 55.18295 69.73831 moveto
+60.13155 69.73831 lineto stroke
+newpath 56.43599 68.20752 moveto
+60.13155 69.73831 lineto
+56.43599 71.2691 lineto
+ closepath
+gsave fill grestore stroke
+newpath 55.89516 65.24037 moveto
+60.60185 66.76968 lineto stroke
+newpath 57.56027 64.17188 moveto
+60.60185 66.76968 lineto
+56.6142 67.08356 lineto
+ closepath
+gsave fill grestore stroke
+newpath 57.96262 61.18288 moveto
+61.96619 64.09158 lineto stroke
+newpath 59.8762 60.68105 moveto
+61.96619 64.09158 lineto
+58.0767 63.15788 lineto
+ closepath
+gsave fill grestore stroke
+newpath 61.18288 57.96262 moveto
+64.09158 61.96619 lineto stroke
+newpath 63.15788 58.0767 moveto
+64.09158 61.96619 lineto
+60.68105 59.8762 lineto
+ closepath
+gsave fill grestore stroke
+newpath 65.24037 55.89516 moveto
+66.76968 60.60185 lineto stroke
+newpath 67.08356 56.6142 moveto
+66.76968 60.60185 lineto
+64.17188 57.56027 lineto
+ closepath
+gsave fill grestore stroke
+ 0.99626 0 dtransform exch truncate exch idtransform pop setlinewidth
+newpath 69.73831 55.18295 moveto
+69.73831 60.13155 lineto stroke
+ 0 0.99626 dtransform truncate idtransform setlinewidth pop
+newpath 71.2691 56.43599 moveto
+69.73831 60.13155 lineto
+68.20752 56.43599 lineto
+ closepath
+gsave fill grestore stroke
+newpath 74.23625 55.89516 moveto
+72.70694 60.60185 lineto stroke
+newpath 75.30475 57.56027 moveto
+72.70694 60.60185 lineto
+72.39307 56.6142 lineto
+ closepath
+gsave fill grestore stroke
+newpath 78.29375 57.96262 moveto
+75.38504 61.96619 lineto stroke
+newpath 78.79558 59.8762 moveto
+75.38504 61.96619 lineto
+76.31874 58.0767 lineto
+ closepath
+gsave fill grestore stroke
+newpath 81.514 61.18288 moveto
+77.51044 64.09158 lineto stroke
+newpath 81.39992 63.15788 moveto
+77.51044 64.09158 lineto
+79.60042 60.68105 lineto
+ closepath
+gsave fill grestore stroke
+newpath 83.58147 65.24037 moveto
+78.87477 66.76968 lineto stroke
+newpath 82.86243 67.08356 moveto
+78.87477 66.76968 lineto
+81.91635 64.17188 lineto
+ closepath
+gsave fill grestore stroke
+newpath 79.34508 69.73831 moveto
+76.07927 69.73831 lineto stroke
+newpath 76.07927 69.73831 moveto
+ closepath
+gsave fill grestore stroke
+newpath 78.87477 72.70694 moveto
+75.76872 71.69774 lineto stroke
+newpath 75.76872 71.69774 moveto
+ closepath
+gsave fill grestore stroke
+newpath 77.51044 75.38504 moveto
+74.86829 73.46541 lineto stroke
+newpath 74.86829 73.46541 moveto
+ closepath
+gsave fill grestore stroke
+newpath 75.38504 77.51044 moveto
+73.46541 74.86829 lineto stroke
+newpath 73.46541 74.86829 moveto
+ closepath
+gsave fill grestore stroke
+newpath 72.70694 78.87477 moveto
+71.69774 75.76872 lineto stroke
+newpath 71.69774 75.76872 moveto
+ closepath
+gsave fill grestore stroke
+ 0.99626 0 dtransform exch truncate exch idtransform pop setlinewidth
+newpath 69.73831 79.34508 moveto
+69.73831 76.07927 lineto stroke
+ 0 0.99626 dtransform truncate idtransform setlinewidth pop
+newpath 69.73831 76.07927 moveto
+ closepath
+gsave fill grestore stroke
+newpath 66.76968 78.87477 moveto
+67.77888 75.76872 lineto stroke
+newpath 67.77888 75.76872 moveto
+ closepath
+gsave fill grestore stroke
+newpath 64.09158 77.51044 moveto
+66.01122 74.86829 lineto stroke
+newpath 66.01122 74.86829 moveto
+ closepath
+gsave fill grestore stroke
+newpath 61.96619 75.38504 moveto
+64.60834 73.46541 lineto stroke
+newpath 64.60834 73.46541 moveto
+ closepath
+gsave fill grestore stroke
+newpath 60.60185 72.70694 moveto
+63.7079 71.69774 lineto stroke
+newpath 63.7079 71.69774 moveto
+ closepath
+gsave fill grestore stroke
+newpath 60.13155 69.73831 moveto
+63.39735 69.73831 lineto stroke
+newpath 63.39735 69.73831 moveto
+ closepath
+gsave fill grestore stroke
+newpath 60.60185 66.76968 moveto
+63.7079 67.77888 lineto stroke
+newpath 63.7079 67.77888 moveto
+ closepath
+gsave fill grestore stroke
+newpath 61.96619 64.09158 moveto
+64.60834 66.01122 lineto stroke
+newpath 64.60834 66.01122 moveto
+ closepath
+gsave fill grestore stroke
+newpath 64.09158 61.96619 moveto
+66.01122 64.60834 lineto stroke
+newpath 66.01122 64.60834 moveto
+ closepath
+gsave fill grestore stroke
+newpath 66.76968 60.60185 moveto
+67.77888 63.7079 lineto stroke
+newpath 67.77888 63.7079 moveto
+ closepath
+gsave fill grestore stroke
+ 0.99626 0 dtransform exch truncate exch idtransform pop setlinewidth
+newpath 69.73831 60.13155 moveto
+69.73831 63.39735 lineto stroke
+ 0 0.99626 dtransform truncate idtransform setlinewidth pop
+newpath 69.73831 63.39735 moveto
+ closepath
+gsave fill grestore stroke
+newpath 72.70694 60.60185 moveto
+71.69774 63.7079 lineto stroke
+newpath 71.69774 63.7079 moveto
+ closepath
+gsave fill grestore stroke
+newpath 75.38504 61.96619 moveto
+73.46541 64.60834 lineto stroke
+newpath 73.46541 64.60834 moveto
+ closepath
+gsave fill grestore stroke
+newpath 77.51044 64.09158 moveto
+74.86829 66.01122 lineto stroke
+newpath 74.86829 66.01122 moveto
+ closepath
+gsave fill grestore stroke
+newpath 78.87477 66.76968 moveto
+75.76872 67.77888 lineto stroke
+newpath 75.76872 67.77888 moveto
+ closepath
+gsave fill grestore stroke
+newpath 76.07927 69.73831 moveto
+73.92271 69.73831 lineto stroke
+newpath 73.92271 69.73831 moveto
+ closepath
+gsave fill grestore stroke
+newpath 75.76872 71.69774 moveto
+73.71814 71.03145 lineto stroke
+newpath 73.71814 71.03145 moveto
+ closepath
+gsave fill grestore stroke
+newpath 74.86829 73.46541 moveto
+73.12407 72.19818 lineto stroke
+newpath 73.12407 72.19818 moveto
+ closepath
+gsave fill grestore stroke
+newpath 73.46541 74.86829 moveto
+72.1978 73.12355 lineto stroke
+newpath 72.1978 73.12355 moveto
+ closepath
+gsave fill grestore stroke
+ 0.99626 0 dtransform exch truncate exch idtransform pop setlinewidth
+newpath 71.69774 75.76872 moveto
+71.03148 73.71812 lineto stroke
+ 0 0.99626 dtransform truncate idtransform setlinewidth pop
+newpath 71.03148 73.71812 moveto
+ closepath
+gsave fill grestore stroke
+ 0.99626 0 dtransform exch truncate exch idtransform pop setlinewidth
+newpath 69.73831 76.07927 moveto
+69.73831 73.92271 lineto stroke
+ 0 0.99626 dtransform truncate idtransform setlinewidth pop
+newpath 69.73831 73.92271 moveto
+ closepath
+gsave fill grestore stroke
+ 0.99626 0 dtransform exch truncate exch idtransform pop setlinewidth
+newpath 67.77888 75.76872 moveto
+68.44518 73.71814 lineto stroke
+ 0 0.99626 dtransform truncate idtransform setlinewidth pop
+newpath 68.44518 73.71814 moveto
+ closepath
+gsave fill grestore stroke
+newpath 66.01122 74.86829 moveto
+67.27844 73.12407 lineto stroke
+newpath 67.27844 73.12407 moveto
+ closepath
+gsave fill grestore stroke
+newpath 64.60834 73.46541 moveto
+66.35307 72.1978 lineto stroke
+newpath 66.35307 72.1978 moveto
+ closepath
+gsave fill grestore stroke
+newpath 63.7079 71.69774 moveto
+65.7585 71.03148 lineto stroke
+newpath 65.7585 71.03148 moveto
+ closepath
+gsave fill grestore stroke
+newpath 63.39735 69.73831 moveto
+65.55391 69.73831 lineto stroke
+newpath 65.55391 69.73831 moveto
+ closepath
+gsave fill grestore stroke
+newpath 63.7079 67.77888 moveto
+65.75848 68.44518 lineto stroke
+newpath 65.75848 68.44518 moveto
+ closepath
+gsave fill grestore stroke
+newpath 64.60834 66.01122 moveto
+66.35255 67.27844 lineto stroke
+newpath 66.35255 67.27844 moveto
+ closepath
+gsave fill grestore stroke
+newpath 66.01122 64.60834 moveto
+67.27882 66.35307 lineto stroke
+newpath 67.27882 66.35307 moveto
+ closepath
+gsave fill grestore stroke
+ 0.99626 0 dtransform exch truncate exch idtransform pop setlinewidth
+newpath 67.77888 63.7079 moveto
+68.44514 65.7585 lineto stroke
+ 0 0.99626 dtransform truncate idtransform setlinewidth pop
+newpath 68.44514 65.7585 moveto
+ closepath
+gsave fill grestore stroke
+ 0.99626 0 dtransform exch truncate exch idtransform pop setlinewidth
+newpath 69.73831 63.39735 moveto
+69.73831 65.55391 lineto stroke
+ 0 0.99626 dtransform truncate idtransform setlinewidth pop
+newpath 69.73831 65.55391 moveto
+ closepath
+gsave fill grestore stroke
+ 0.99626 0 dtransform exch truncate exch idtransform pop setlinewidth
+newpath 71.69774 63.7079 moveto
+71.03145 65.75848 lineto stroke
+ 0 0.99626 dtransform truncate idtransform setlinewidth pop
+newpath 71.03145 65.75848 moveto
+ closepath
+gsave fill grestore stroke
+newpath 73.46541 64.60834 moveto
+72.19818 66.35255 lineto stroke
+newpath 72.19818 66.35255 moveto
+ closepath
+gsave fill grestore stroke
+newpath 74.86829 66.01122 moveto
+73.12355 67.27882 lineto stroke
+newpath 73.12355 67.27882 moveto
+ closepath
+gsave fill grestore stroke
+newpath 75.76872 67.77888 moveto
+73.71812 68.44514 lineto stroke
+newpath 73.71812 68.44514 moveto
+ closepath
+gsave fill grestore stroke
+newpath 73.92271 69.73831 moveto
+72.49966 69.73831 lineto stroke
+newpath 72.49966 69.73831 moveto
+ closepath
+gsave fill grestore stroke
+newpath 73.71814 71.03145 moveto
+72.3645 70.59161 lineto stroke
+newpath 72.3645 70.59161 moveto
+ closepath
+gsave fill grestore stroke
+newpath 73.12407 72.19818 moveto
+71.97208 71.3612 lineto stroke
+newpath 71.97208 71.3612 moveto
+ closepath
+gsave fill grestore stroke
+ 0.99626 0 dtransform exch truncate exch idtransform pop setlinewidth
+newpath 72.1978 73.12355 moveto
+71.36124 71.97206 lineto stroke
+ 0 0.99626 dtransform truncate idtransform setlinewidth pop
+newpath 71.36124 71.97206 moveto
+ closepath
+gsave fill grestore stroke
+ 0.99626 0 dtransform exch truncate exch idtransform pop setlinewidth
+newpath 71.03148 73.71812 moveto
+70.59163 72.36449 lineto stroke
+ 0 0.99626 dtransform truncate idtransform setlinewidth pop
+newpath 70.59163 72.36449 moveto
+ closepath
+gsave fill grestore stroke
+ 0.99626 0 dtransform exch truncate exch idtransform pop setlinewidth
+newpath 69.73831 73.92271 moveto
+69.73831 72.49966 lineto stroke
+ 0 0.99626 dtransform truncate idtransform setlinewidth pop
+newpath 69.73831 72.49966 moveto
+ closepath
+gsave fill grestore stroke
+ 0.99626 0 dtransform exch truncate exch idtransform pop setlinewidth
+newpath 68.44518 73.71814 moveto
+68.88501 72.3645 lineto stroke
+ 0 0.99626 dtransform truncate idtransform setlinewidth pop
+newpath 68.88501 72.3645 moveto
+ closepath
+gsave fill grestore stroke
+ 0.99626 0 dtransform exch truncate exch idtransform pop setlinewidth
+newpath 67.27844 73.12407 moveto
+68.11542 71.97208 lineto stroke
+ 0 0.99626 dtransform truncate idtransform setlinewidth pop
+newpath 68.11542 71.97208 moveto
+ closepath
+gsave fill grestore stroke
+newpath 66.35307 72.1978 moveto
+67.50456 71.36124 lineto stroke
+newpath 67.50456 71.36124 moveto
+ closepath
+gsave fill grestore stroke
+newpath 65.7585 71.03148 moveto
+67.11214 70.59163 lineto stroke
+newpath 67.11214 70.59163 moveto
+ closepath
+gsave fill grestore stroke
+newpath 65.55391 69.73831 moveto
+66.97696 69.73831 lineto stroke
+newpath 66.97696 69.73831 moveto
+ closepath
+gsave fill grestore stroke
+newpath 65.75848 68.44518 moveto
+67.11212 68.88501 lineto stroke
+newpath 67.11212 68.88501 moveto
+ closepath
+gsave fill grestore stroke
+newpath 66.35255 67.27844 moveto
+67.50455 68.11542 lineto stroke
+newpath 67.50455 68.11542 moveto
+ closepath
+gsave fill grestore stroke
+ 0.99626 0 dtransform exch truncate exch idtransform pop setlinewidth
+newpath 67.27882 66.35307 moveto
+68.11539 67.50456 lineto stroke
+ 0 0.99626 dtransform truncate idtransform setlinewidth pop
+newpath 68.11539 67.50456 moveto
+ closepath
+gsave fill grestore stroke
+ 0.99626 0 dtransform exch truncate exch idtransform pop setlinewidth
+newpath 68.44514 65.7585 moveto
+68.885 67.11214 lineto stroke
+ 0 0.99626 dtransform truncate idtransform setlinewidth pop
+newpath 68.885 67.11214 moveto
+ closepath
+gsave fill grestore stroke
+ 0.99626 0 dtransform exch truncate exch idtransform pop setlinewidth
+newpath 69.73831 65.55391 moveto
+69.73831 66.97696 lineto stroke
+ 0 0.99626 dtransform truncate idtransform setlinewidth pop
+newpath 69.73831 66.97696 moveto
+ closepath
+gsave fill grestore stroke
+ 0.99626 0 dtransform exch truncate exch idtransform pop setlinewidth
+newpath 71.03145 65.75848 moveto
+70.59161 67.11212 lineto stroke
+ 0 0.99626 dtransform truncate idtransform setlinewidth pop
+newpath 70.59161 67.11212 moveto
+ closepath
+gsave fill grestore stroke
+ 0.99626 0 dtransform exch truncate exch idtransform pop setlinewidth
+newpath 72.19818 66.35255 moveto
+71.3612 67.50455 lineto stroke
+ 0 0.99626 dtransform truncate idtransform setlinewidth pop
+newpath 71.3612 67.50455 moveto
+ closepath
+gsave fill grestore stroke
+newpath 73.12355 67.27882 moveto
+71.97206 68.11539 lineto stroke
+newpath 71.97206 68.11539 moveto
+ closepath
+gsave fill grestore stroke
+newpath 73.71812 68.44514 moveto
+72.36449 68.885 lineto stroke
+newpath 72.36449 68.885 moveto
+ closepath
+gsave fill grestore stroke
+newpath 72.49966 69.73831 moveto
+71.561 69.73831 lineto stroke
+newpath 71.561 69.73831 moveto
+ closepath
+gsave fill grestore stroke
+newpath 72.3645 70.59161 moveto
+71.4717 70.30151 lineto stroke
+newpath 71.4717 70.30151 moveto
+ closepath
+gsave fill grestore stroke
+newpath 71.97208 71.3612 moveto
+71.21297 70.8097 lineto stroke
+newpath 71.21297 70.8097 moveto
+ closepath
+gsave fill grestore stroke
+newpath 71.36124 71.97206 moveto
+70.8097 71.21297 lineto stroke
+newpath 70.8097 71.21297 moveto
+ closepath
+gsave fill grestore stroke
+newpath 70.59163 72.36449 moveto
+70.30153 71.4717 lineto stroke
+newpath 70.30153 71.4717 moveto
+ closepath
+gsave fill grestore stroke
+newpath 69.73831 72.49966 moveto
+69.73831 71.561 lineto stroke
+newpath 69.73831 71.561 moveto
+ closepath
+gsave fill grestore stroke
+newpath 68.88501 72.3645 moveto
+69.17511 71.4717 lineto stroke
+newpath 69.17511 71.4717 moveto
+ closepath
+gsave fill grestore stroke
+newpath 68.11542 71.97208 moveto
+68.66693 71.21297 lineto stroke
+newpath 68.66693 71.21297 moveto
+ closepath
+gsave fill grestore stroke
+newpath 67.50456 71.36124 moveto
+68.26366 70.8097 lineto stroke
+newpath 68.26366 70.8097 moveto
+ closepath
+gsave fill grestore stroke
+newpath 67.11214 70.59163 moveto
+68.00493 70.30153 lineto stroke
+newpath 68.00493 70.30153 moveto
+ closepath
+gsave fill grestore stroke
+newpath 66.97696 69.73831 moveto
+67.91562 69.73831 lineto stroke
+newpath 67.91562 69.73831 moveto
+ closepath
+gsave fill grestore stroke
+newpath 67.11212 68.88501 moveto
+68.00493 69.17511 lineto stroke
+newpath 68.00493 69.17511 moveto
+ closepath
+gsave fill grestore stroke
+newpath 67.50455 68.11542 moveto
+68.26366 68.66693 lineto stroke
+newpath 68.26366 68.66693 moveto
+ closepath
+gsave fill grestore stroke
+newpath 68.11539 67.50456 moveto
+68.66693 68.26366 lineto stroke
+newpath 68.66693 68.26366 moveto
+ closepath
+gsave fill grestore stroke
+newpath 68.885 67.11214 moveto
+69.1751 68.00493 lineto stroke
+newpath 69.1751 68.00493 moveto
+ closepath
+gsave fill grestore stroke
+newpath 69.73831 66.97696 moveto
+69.73831 67.91562 lineto stroke
+newpath 69.73831 67.91562 moveto
+ closepath
+gsave fill grestore stroke
+newpath 70.59161 67.11212 moveto
+70.30151 68.00493 lineto stroke
+newpath 70.30151 68.00493 moveto
+ closepath
+gsave fill grestore stroke
+newpath 71.3612 67.50455 moveto
+70.8097 68.26366 lineto stroke
+newpath 70.8097 68.26366 moveto
+ closepath
+gsave fill grestore stroke
+newpath 71.97206 68.11539 moveto
+71.21297 68.66693 lineto stroke
+newpath 71.21297 68.66693 moveto
+ closepath
+gsave fill grestore stroke
+newpath 72.36449 68.885 moveto
+71.4717 69.1751 lineto stroke
+newpath 71.4717 69.1751 moveto
+ closepath
+gsave fill grestore stroke
+newpath 139.4764 120.40543 moveto
+131.79997 114.82819 lineto stroke
+newpath 133.89 118.23885 moveto
+131.79997 114.82819 lineto
+135.68956 115.76195 lineto
+ closepath
+gsave fill grestore stroke
+newpath 120.40543 139.4764 moveto
+114.82819 131.79997 lineto stroke
+newpath 115.76195 135.68956 moveto
+114.82819 131.79997 lineto
+118.23885 133.89 lineto
+ closepath
+gsave fill grestore stroke
+newpath 19.0712 139.4764 moveto
+24.64844 131.79997 lineto stroke
+newpath 21.23778 133.89 moveto
+24.64844 131.79997 lineto
+23.71468 135.68956 lineto
+ closepath
+gsave fill grestore stroke
+newpath 0.00023 120.40543 moveto
+7.67665 114.82819 lineto stroke
+newpath 3.78706 115.76195 moveto
+7.67665 114.82819 lineto
+5.58662 118.23885 lineto
+ closepath
+gsave fill grestore stroke
+newpath 0.00023 19.0712 moveto
+7.67665 24.64844 lineto stroke
+newpath 5.58662 21.23778 moveto
+7.67665 24.64844 lineto
+3.78706 23.71468 lineto
+ closepath
+gsave fill grestore stroke
+newpath 19.0712 0.00023 moveto
+24.64844 7.67665 lineto stroke
+newpath 23.71468 3.78706 moveto
+24.64844 7.67665 lineto
+21.23778 5.58662 lineto
+ closepath
+gsave fill grestore stroke
+newpath 120.40543 0.00023 moveto
+114.82819 7.67665 lineto stroke
+newpath 118.23885 5.58662 moveto
+114.82819 7.67665 lineto
+115.76195 3.78706 lineto
+ closepath
+gsave fill grestore stroke
+newpath 139.4764 19.0712 moveto
+131.79997 24.64844 lineto stroke
+newpath 135.68956 23.71468 moveto
+131.79997 24.64844 lineto
+133.89 21.23778 lineto
+ closepath
+gsave fill grestore stroke
+showpage
+%%EOF

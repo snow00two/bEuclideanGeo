@@ -1,0 +1,138 @@
+%!PS-Adobe-3.0 EPSF-3.0
+%%BoundingBox: -1 19 150 160 
+%%HiResBoundingBox: -0.49814 19.67523 149.93738 159.65186 
+%%Creator: MetaPost 2.11
+%%CreationDate: 2026.09.13:0838
+%%Pages: 1
+%%DocumentResources: procset mpost-minimal
+%%DocumentSuppliedResources: procset mpost-minimal
+%%EndComments
+%%BeginProlog
+%%BeginResource: procset mpost-minimal
+/bd{bind def}bind def/fshow {exch findfont exch scalefont setfont show}bd
+/fcp{findfont dup length dict begin{1 index/FID ne{def}{pop pop}ifelse}forall}bd
+/fmc{FontMatrix dup length array copy dup dup}bd/fmd{/FontMatrix exch def}bd
+/Amul{4 -1 roll exch mul 1000 div}bd/ExtendFont{fmc 0 get Amul 0 exch put fmd}bd
+/ScaleFont{dup fmc 0 get Amul 0 exch put dup dup 3 get Amul 3 exch put fmd}bd
+/SlantFont{fmc 2 get dup 0 eq{pop 1}if Amul FontMatrix 0 get mul 2 exch put fmd}bd
+%%EndResource
+%%EndProlog
+%%BeginSetup
+%%EndSetup
+%%Page: 1 1
+ 0.6 0.6 0.6 setrgbcolor
+newpath 9.96262 39.85046 moveto
+19.92523 39.85046 lineto
+9.96262 59.7757 lineto
+ closepath fill
+ 0 0 0 setrgbcolor 0 0.5 dtransform truncate idtransform setlinewidth pop
+ [] 0 setdash 1 setlinejoin 10 setmiterlimit
+newpath 9.96262 39.85046 moveto
+19.92523 39.85046 lineto
+9.96262 59.7757 lineto
+ closepath stroke
+ 0.6 0.6 0.6 setrgbcolor
+newpath 39.85046 39.85046 moveto
+49.81308 39.85046 lineto
+39.85046 59.7757 lineto
+ closepath fill
+ 0 0 0 setrgbcolor
+newpath 39.85046 39.85046 moveto
+49.81308 39.85046 lineto
+39.85046 59.7757 lineto
+ closepath stroke
+ 0.6 0.6 0.6 setrgbcolor
+newpath 69.73831 39.85046 moveto
+79.70093 39.85046 lineto
+69.73831 59.7757 lineto
+ closepath fill
+ 0 0 0 setrgbcolor
+newpath 69.73831 39.85046 moveto
+79.70093 39.85046 lineto
+69.73831 59.7757 lineto
+ closepath stroke
+ 0.6 0.6 0.6 setrgbcolor
+newpath 99.62616 39.85046 moveto
+109.58878 39.85046 lineto
+99.62616 59.7757 lineto
+ closepath fill
+ 0 0 0 setrgbcolor
+newpath 99.62616 39.85046 moveto
+109.58878 39.85046 lineto
+99.62616 59.7757 lineto
+ closepath stroke
+ 0.6 0.6 0.6 setrgbcolor
+newpath 129.514 39.85046 moveto
+139.47662 39.85046 lineto
+129.514 59.7757 lineto
+ closepath fill
+ 0 0 0 setrgbcolor
+newpath 129.514 39.85046 moveto
+139.47662 39.85046 lineto
+129.514 59.7757 lineto
+ closepath stroke
+ 0.6 0.6 0.6 setrgbcolor
+newpath 9.96262 129.514 moveto
+19.92523 129.514 lineto
+9.96262 109.58878 lineto
+ closepath fill
+ 0 0 0 setrgbcolor
+newpath 9.96262 129.514 moveto
+19.92523 129.514 lineto
+9.96262 109.58878 lineto
+ closepath stroke
+ 0.6 0.6 0.6 setrgbcolor
+newpath 39.85046 129.514 moveto
+49.81308 129.514 lineto
+39.85046 109.58878 lineto
+ closepath fill
+ 0 0 0 setrgbcolor
+newpath 39.85046 129.514 moveto
+49.81308 129.514 lineto
+39.85046 109.58878 lineto
+ closepath stroke
+ 0.6 0.6 0.6 setrgbcolor
+newpath 69.73831 129.514 moveto
+79.70093 129.514 lineto
+69.73831 109.58878 lineto
+ closepath fill
+ 0 0 0 setrgbcolor
+newpath 69.73831 129.514 moveto
+79.70093 129.514 lineto
+69.73831 109.58878 lineto
+ closepath stroke
+ 0.6 0.6 0.6 setrgbcolor
+newpath 99.62616 129.514 moveto
+109.58878 129.514 lineto
+99.62616 109.58878 lineto
+ closepath fill
+ 0 0 0 setrgbcolor
+newpath 99.62616 129.514 moveto
+109.58878 129.514 lineto
+99.62616 109.58878 lineto
+ closepath stroke
+ 0.6 0.6 0.6 setrgbcolor
+newpath 129.514 129.514 moveto
+139.47662 129.514 lineto
+129.514 109.58878 lineto
+ closepath fill
+ 0 0 0 setrgbcolor
+newpath 129.514 129.514 moveto
+139.47662 129.514 lineto
+129.514 109.58878 lineto
+ closepath stroke
+ 0.5 0 dtransform exch truncate exch idtransform pop setlinewidth
+ [0 5 ] 2.5 setdash 1 setlinecap
+newpath 29.88785 19.92523 moveto
+29.88785 159.40186 lineto stroke
+newpath 59.7757 19.92523 moveto
+59.7757 159.40186 lineto stroke
+newpath 89.66354 19.92523 moveto
+89.66354 159.40186 lineto stroke
+newpath 119.55139 19.92523 moveto
+119.55139 159.40186 lineto stroke
+ 0 0.99626 dtransform truncate idtransform setlinewidth pop [] 0 setdash
+newpath 0 89.66354 moveto
+149.43924 89.66354 lineto stroke
+showpage
+%%EOF

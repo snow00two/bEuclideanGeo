@@ -1,0 +1,70 @@
+%!PS-Adobe-3.0 EPSF-3.0
+%%BoundingBox: -1 4 93 112 
+%%HiResBoundingBox: -0.25 4.97934 92.57935 111.95248 
+%%Creator: MetaPost 2.11
+%%CreationDate: 2026.08.01:1834
+%%Pages: 1
+%%DocumentResources: procset mpost-minimal
+%%DocumentSuppliedResources: procset mpost-minimal
+%%EndComments
+%%BeginProlog
+%%BeginResource: procset mpost-minimal
+/bd{bind def}bind def/fshow {exch findfont exch scalefont setfont show}bd
+/fcp{findfont dup length dict begin{1 index/FID ne{def}{pop pop}ifelse}forall}bd
+/fmc{FontMatrix dup length array copy dup dup}bd/fmd{/FontMatrix exch def}bd
+/Amul{4 -1 roll exch mul 1000 div}bd/ExtendFont{fmc 0 get Amul 0 exch put fmd}bd
+/ScaleFont{dup fmc 0 get Amul 0 exch put dup dup 3 get Amul 3 exch put fmd}bd
+/SlantFont{fmc 2 get dup 0 eq{pop 1}if Amul FontMatrix 0 get mul 2 exch put fmd}bd
+%%EndResource
+%%EndProlog
+%%BeginSetup
+%%EndSetup
+%%Page: 1 1
+ 0 0 0 setrgbcolor 0 0.5 dtransform truncate idtransform setlinewidth pop
+ [] 0 setdash 1 setlinejoin 10 setmiterlimit
+newpath 0 84.85739 moveto
+78.48962 80.12411 lineto
+92.32935 106.96921 lineto
+13.83972 111.70248 lineto
+ closepath stroke
+ 1 setlinecap
+newpath 0 9.96262 moveto
+78.48962 5.22934 lineto
+92.32935 32.07443 lineto stroke
+ [3 3 ] 0 setdash
+newpath 0 9.96262 moveto
+13.83972 36.80771 lineto
+92.32935 32.07443 lineto stroke
+ 0.5 0 dtransform exch truncate exch idtransform pop setlinewidth
+newpath 13.83972 111.70248 moveto
+13.83972 36.80771 lineto stroke
+ [] 0 setdash
+newpath 0 84.85739 moveto
+0 9.96262 lineto stroke
+newpath 78.48962 80.12411 moveto
+78.48962 5.22934 lineto stroke
+newpath 92.32935 106.96921 moveto
+92.32935 32.07443 lineto stroke
+ 1 0 0 setrgbcolor 0 0.79701 dtransform truncate idtransform setlinewidth pop
+newpath 46.16467 95.9133 moveto
+85.40948 56.09927 lineto
+46.16467 21.01852 lineto
+6.91986 60.83255 lineto
+ closepath stroke
+ [3 3 ] 0 setdash
+newpath 46.16467 21.01852 moveto
+53.08453 71.88846 lineto
+46.16467 95.9133 lineto stroke
+ [] 0 setdash
+newpath 46.16467 95.9133 moveto
+39.24481 45.04337 lineto
+46.16467 21.01852 lineto stroke
+newpath 85.40948 56.09927 moveto
+39.24481 45.04337 lineto
+6.91986 60.83255 lineto stroke
+ [3 3 ] 0 setdash
+newpath 6.91986 60.83255 moveto
+53.08453 71.88846 lineto
+85.40948 56.09927 lineto stroke
+showpage
+%%EOF
